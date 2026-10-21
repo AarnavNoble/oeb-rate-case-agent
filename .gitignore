@@ -11,3 +11,4 @@ web/.next/
 .DS_Store
 logs/
 data/temporal.db*
+evals/results/pilot_runs/
