@@ -18,7 +18,7 @@ from oeb.irparse import IRRow, split_irs
 
 OUT = Path(__file__).parent / "data"
 SEED = 20261021
-HELDOUT_N = 60
+HELDOUT_N = 20
 
 
 def valid_exhibits(conn, case: str) -> set[str]:

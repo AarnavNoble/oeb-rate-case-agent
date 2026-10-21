@@ -1,11 +1,12 @@
-"""LLM judge (run through Claude Code headless, like the agent): compares the agent's
-answer with the utility's actual interrogatory response."""
+"""LLM judge (run through Claude Code headless on the user's plan, like the agent):
+compares the agent's answer with the utility's actual interrogatory response."""
 
 import json
 import os
-import shutil
 import subprocess
 import tempfile
+
+from oeb.agent.claude_cli import check_init_event, claude_bin, plan_env, verify_plan_auth
 
 JUDGE_MODEL = os.environ.get("OEB_JUDGE_MODEL", "claude-opus-5-5")
 
@@ -40,21 +41,24 @@ SCHEMA = {
 def judge(question: str, reference: str, candidate: str, model: str = JUDGE_MODEL) -> dict:
     prompt = (f"<question>\n{question}\n</question>\n\n<reference_response>\n{reference}\n</reference_response>\n\n"
               f"<candidate_answer>\n{candidate}\n</candidate_answer>\n\nGrade the candidate.")
-    claude = shutil.which("claude")
-    if not claude:
-        raise RuntimeError("Claude Code CLI not found on PATH")
-    env = {**os.environ}
-    env.pop("ANTHROPIC_API_KEY", None)  # use the Claude Code login
+    verify_plan_auth()  # claude.ai plan login only, never API billing
     with tempfile.TemporaryDirectory(prefix="oeb-judge-") as cwd:
         proc = subprocess.run(
-            [claude, "-p", prompt, "--model", model, "--system-prompt", SYSTEM, "--tools", "",
+            [claude_bin(), "-p", prompt, "--model", model, "--system-prompt", SYSTEM, "--tools", "",
              "--strict-mcp-config", "--setting-sources", "", "--no-session-persistence",
-             "--output-format", "json", "--json-schema", json.dumps(SCHEMA)],
-            cwd=cwd, env=env, capture_output=True, text=True, timeout=600)
-    try:
-        out = json.loads(proc.stdout)
-    except json.JSONDecodeError as e:
-        raise RuntimeError(f"judge failed (exit {proc.returncode}): {proc.stderr[-800:]}") from e
-    if out.get("is_error") or not out.get("structured_output"):
-        raise RuntimeError(f"judge error: {out.get('subtype')} {str(out.get('result'))[:300]}")
-    return {**out["structured_output"], "model": model, "cost_usd_equivalent": out.get("total_cost_usd")}
+             "--output-format", "stream-json", "--verbose", "--json-schema", json.dumps(SCHEMA)],
+            cwd=cwd, env=plan_env(), capture_output=True, text=True, timeout=600)
+    events = []
+    for line in proc.stdout.splitlines():
+        try:
+            events.append(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+    for ev in events:
+        check_init_event(ev)  # raises if this run used an API key
+    result = next((ev for ev in reversed(events) if ev.get("type") == "result"), None)
+    if result is None:
+        raise RuntimeError(f"judge failed (exit {proc.returncode}): {proc.stderr[-800:]}")
+    if result.get("is_error") or not result.get("structured_output"):
+        raise RuntimeError(f"judge error: {result.get('subtype')} {str(result.get('result'))[:300]}")
+    return {**result["structured_output"], "model": model, "cost_usd_equivalent": result.get("total_cost_usd")}

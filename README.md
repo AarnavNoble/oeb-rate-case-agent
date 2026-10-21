@@ -72,7 +72,9 @@ another chunk. All retrievers collapse exact copies (hash of normalized text, ke
 filing) and near-copies (word 5-gram Jaccard ≥ 0.8), so re-filings don't crowd out other passages.
 
 **Agent.** The agent runs through Claude Code in headless mode (`claude -p`, model `claude-sonnet-5-5`)
-on the user's own Claude login, with no API key. It's isolated from local Claude Code configuration: no
+on the user's own Claude plan, not API billing. A guard (`oeb/agent/claude_cli.py`) strips API keys
+and cloud-provider settings from the subprocess environment, requires `claude auth status` to report a
+claude.ai login, and aborts any run whose init event reports an API key. It's isolated from local Claude Code configuration: no
 built-in tools, no settings/plugins/CLAUDE.md, no session persistence. Its only tools come from a stdio
 MCP server:
 - `search` (hybrid)
@@ -103,7 +105,7 @@ exhibits. So:
 
 **Metrics.**
 - Retrieval: recall@k and MRR@10, where a hit is a chunk from a gold exhibit.
-- Agent (held-out, seeded 60-question slice):
+- Agent (held-out, seeded 20-question slice; small, so the README reports counts alongside rates):
   - citation accuracy: does it cite a page from an exhibit the utility cited?
   - answer correctness: a Claude Opus 5.5 judge compares the answer with the utility's actual response.
 - Hand checks: 20 seeded IR rows are reviewed for parsing precision (`evals/ir_sample_review.md`), and

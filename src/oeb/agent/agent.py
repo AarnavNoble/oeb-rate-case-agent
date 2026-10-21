@@ -10,9 +10,7 @@ working directory.
 """
 
 import json
-import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -20,6 +18,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from oeb.agent.claude_cli import BillingGuardError, check_init_event, claude_bin, plan_env, verify_plan_auth
 from oeb.config import AGENT_MODEL, ROOT
 from oeb.db import connect
 
@@ -73,16 +72,9 @@ class AgentResult:
         return [c for c in self.citations if not c.seen]
 
 
-def _claude_bin() -> str:
-    path = shutil.which("claude")
-    if not path:
-        raise RuntimeError("Claude Code CLI not found on PATH (needed for the agent)")
-    return path
-
-
 def _command(question: str, mcp_config: Path, model: str) -> list[str]:
     return [
-        _claude_bin(), "-p", question,
+        claude_bin(), "-p", question,
         "--model", model,
         "--system-prompt", SYSTEM_PROMPT,
         "--tools", "",                       # no built-in tools (Bash, Read, WebFetch, ...)
@@ -113,8 +105,8 @@ def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = A
             "args": ["-m", "oeb.agent.mcp_server"], "env": env}}}))
         workdir = tmpdir / "cwd"  # empty dir: no project CLAUDE.md is discovered
         workdir.mkdir()
-        proc_env = {**os.environ, "MCP_TIMEOUT": "120000"}  # MCP server loads the embedding model
-        proc_env.pop("ANTHROPIC_API_KEY", None)  # use the Claude Code login, never an API key
+        verify_plan_auth()  # claude.ai plan login only, never API billing
+        proc_env = plan_env({"MCP_TIMEOUT": "120000"})  # MCP server loads the embedding model
 
         proc = subprocess.Popen(_command(question, mcp_config, model), cwd=workdir, env=proc_env,
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1)
@@ -128,7 +120,13 @@ def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = A
             except json.JSONDecodeError:
                 continue
             kind = ev.get("type")
-            if kind == "stream_event":
+            if kind == "system":
+                try:
+                    check_init_event(ev)
+                except BillingGuardError:
+                    proc.kill()
+                    raise
+            elif kind == "stream_event":
                 inner = ev.get("event", {})
                 delta = inner.get("delta", {}) if inner.get("type") == "content_block_delta" else {}
                 if delta.get("type") == "text_delta":
