@@ -198,10 +198,13 @@ def _extract_tables(path: str, page_nos: list[int], out: ParsedDoc) -> None:
     except Exception as e:  # pdfminer is stricter than MuPDF; keep the text, record the loss
         out.table_errors.append(f"open: {type(e).__name__}: {e}"[:300])
         return
-    with pdf:
+    try:
         for page_no in page_nos:
             try:
-                found = pdf.pages[page_no - 1].extract_tables()
+                # pdf.pages parses the page tree lazily and can itself raise on malformed files
+                page = pdf.pages[page_no - 1]
+                found = page.extract_tables()
+                page.flush_cache()
             except Exception as e:  # malformed page streams; recorded, not fatal
                 out.table_errors.append(f"p{page_no}: {type(e).__name__}: {e}"[:300])
                 continue
@@ -215,7 +218,11 @@ def _extract_tables(path: str, page_nos: list[int], out: ParsedDoc) -> None:
                 if len(rows) < 2 or max(len(r) for r in rows) < 2:
                     continue
                 out.tables.append(Table(page_no, idx, rows[0], rows[1:]))
-            pdf.pages[page_no - 1].flush_cache()
+    finally:
+        try:
+            pdf.close()  # close() walks the page tree too, so it can raise on the same files
+        except Exception as e:
+            out.table_errors.append(f"close: {type(e).__name__}: {e}"[:300])
 
 
 _NUM = re.compile(r"^\(?-?\$?\s*-?[\d,]*\.?\d+\s*%?\)?$")
