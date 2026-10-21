@@ -67,6 +67,10 @@ restarted worker's work is retried within a minute.
 2. *Vector*: cosine over bge-small embeddings (HNSW, iterative scan for filtered queries).
 3. *Hybrid*: reciprocal rank fusion (k=60) over the top 50 of each.
 
+Utilities re-file updated exhibits, so 16% of Toronto Hydro's chunks are verbatim copies of
+another chunk. All retrievers collapse exact copies (hash of normalized text, keeping the latest
+filing) and near-copies (word 5-gram Jaccard ≥ 0.8), so re-filings don't crowd out other passages.
+
 **Agent.** The agent runs through Claude Code in headless mode (`claude -p`, model `claude-sonnet-5-5`)
 on the user's own Claude login, with no API key. It's isolated from local Claude Code configuration: no
 built-in tools, no settings/plugins/CLAUDE.md, no session persistence. Its only tools come from a stdio
