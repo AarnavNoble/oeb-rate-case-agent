@@ -294,7 +294,7 @@ def update_readme() -> None:
         p = RESULTS / name
         h = json.loads(p.read_text()) if p.exists() else {}
         if h:
-            parts += ["", "**Hand checks**", "", *[f"- {k}: {v}" for k, v in h.items()]]
+            parts += ["", "**Sample reviews**", "", *[f"- {k}: {v}" for k, v in h.items()]]
     text = README.read_text()
     head, rest = text.split(START, 1)
     _, tail = rest.split(END, 1)

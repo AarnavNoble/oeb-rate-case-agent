@@ -5,7 +5,12 @@ A row is **correct** if (1) the question is the intervenor's question, complete 
 with another IR, (2) the response is Toronto Hydro's response to it, and (3) every gold exhibit
 is cited in the response as a place where the answer/evidence is found.
 
-Mark each `verdict:` as `correct` or `wrong (<reason>)`.
+Mark each `verdict:` as `correct` or `wrong (<reason>)`. `label-for-query:` records the looser question that
+matters for the retrieval eval: do the gold exhibits locate the answer to the part of the question that is
+actually in the query?
+
+**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-21, at the user's
+request. Each row was checked against the full response text, split by sub-question.
 
 ## 1. 2B-VECC-13  (doc `rds-851961`, pp. 335-337)
 
@@ -102,7 +107,8 @@ RESPONSES TO VULNERABLE ENERGY CONSUMERS COALITION
 INTERROGATORIES
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); part (b) and its answer are in the response field)
+label-for-query: no (gold 2B is cited only in the answer to part (b), which is not in the query)
 
 ## 2. 2B-DRC-10  (doc `th-consolidated-interrogatory-responses`, pp. 2227-2230)
 
@@ -196,7 +202,8 @@ Richview
 95
 ```
 
-verdict: 
+verdict: wrong (question holds parts (a)-(b); parts (c)-(f) are in the response field)
+label-for-query: yes
 
 ## 3. 2B-STAFF-186  (doc `th-consolidated-interrogatory-responses`, pp. 1796-1796)
 
@@ -246,7 +253,8 @@ contemplate additional use cases to support the distribution system. Please see 
 7.2.2 for more details.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 4. 2A-SEC-30  (doc `rds-843543`, pp. 41-42)
 
@@ -331,7 +339,8 @@ Revenue Requirement
 Rounding variances may exist
 ```
 
-verdict: 
+verdict: wrong (Exhibit 6 is cited as where updated figures are 'not yet available', not where the answer is)
+label-for-query: no (same reason)
 
 ## 5. 4-VECC-75  (doc `th-consolidated-interrogatory-responses`, pp. 3271-3271)
 
@@ -366,7 +375,8 @@ The amortized costs are not broken out in the noted appendices, but are included
 of the Regulatory Affairs segment at Exhibit 4, Tab 2, Schedule 18.
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); part (b) is in the response field)
+label-for-query: no (gold 4 is cited only in the answer to part (b))
 
 ## 6. 1B-SEC-25  (doc `th-consolidated-interrogatory-responses`, pp. 1474-1474)
 
@@ -409,7 +419,8 @@ Schedule 3 for a detailed list and explanation of over 30 productivity initiativ
 current rate period, and the response to 1B-AMPCO-07 for more information about these initiatives.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 7. 1B-CCC-27  (doc `th-consolidated-interrogatory-responses`, pp. 587-587)
 
@@ -446,7 +457,8 @@ footnote directing the reader to the evidence where detailed information, includ
 as appropriate, about each driver can be found.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 8. 4-STAFF-305  (doc `th-consolidated-interrogatory-responses`, pp. 3060-3062)
 
@@ -512,7 +524,8 @@ noted in 2B-AMPCO-29(d) and annual investment planning activities as described i
 Section D1; (4) measuring and trackin
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 9. 1B-STAFF-8  (doc `th-consolidated-interrogatory-responses`, pp. 253-255)
 
@@ -591,7 +604,8 @@ to 4.20 million in 2046, which is the largest population gain among the census d
 rate growth of 37.7 percent is slightly slower than the provincial rate of growth of 43.6 percent.
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); part (b) is in the response field)
+label-for-query: yes
 
 ## 10. 1B-STAFF-52  (doc `th-consolidated-interrogatory-responses`, pp. 380-384)
 
@@ -695,7 +709,8 @@ Incentive
 Qu
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); part (b) is in the response field)
+label-for-query: yes
 
 ## 11. 1B-STAFF-63  (doc `th-consolidated-interrogatory-responses`, pp. 415-416)
 
@@ -774,7 +789,8 @@ reduced from approximately 4.5 FTEs in 2015 to 3.0 FTEs in 2020.
 1 EB-2018-0165, Exhibit 9, Tab 1, Schedule 1, Page 20 to 31
 ```
 
-verdict: 
+verdict: wrong (gold 9 comes from 'EB-2018-0165, Exhibit 9', an exhibit of the previous rate case)
+label-for-query: no (same reason)
 
 ## 12. 1A-CCC-2  (doc `rds-845747`, pp. 212-215)
 
@@ -923,7 +939,8 @@ the Filing Requirements; what may be helpful to the OEB in understanding and ass
 Hydro’s application; and precedent from prior proceedings. In
 ```
 
-verdict: 
+verdict: wrong (question holds parts (a)-(c); parts (d)-(g) are in the response field)
+label-for-query: yes (exhibits are cited as where each consultant's evidence is filed; borderline)
 
 ## 13. 3-STAFF-274  (doc `rds-843536`, pp. 1-4)
 
@@ -1006,7 +1023,8 @@ Enbridge Gas Inc.’s recent rate proceeding (EB-2022-0200) related to the reven
 cu
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); parts (b)-(h) are in the response field)
+label-for-query: yes
 
 ## 14. 4-STAFF-306  (doc `th-consolidated-interrogatory-responses`, pp. 3063-3064)
 
@@ -1064,7 +1082,8 @@ communications and engagement needs. For example, the volume of customers contac
 Hydro regarding equipment placement has increased approximately 258 % since 2019.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 15. 2B-STAFF-161  (doc `th-consolidated-interrogatory-responses`, pp. 1740-1740)
 
@@ -1117,7 +1136,8 @@ Modernization Strategy, and how the utility is pacing and prioritizing deploymen
 Exhibit 2B, Section D5.2.1 and Sections E5.4, E6.6, and E7.3.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 16. 1B-PP-12  (doc `th-consolidated-interrogatory-responses`, pp. 780-780)
 
@@ -1168,7 +1188,8 @@ more distributed energy resources (including battery storage), and enabling grid
 such as microgrids technologies”.
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes
 
 ## 17. 1B-CCC-37  (doc `th-consolidated-interrogatory-responses`, pp. 598-602)
 
@@ -1371,7 +1392,8 @@ OM&A Segments
 20
 ```
 
-verdict: 
+verdict: wrong (exhibits appear as table row labels for segments, not as where the requested figures are; parts (b)-(d) in response)
+label-for-query: no (same reason)
 
 ## 18. 1B-STAFF-19  (doc `th-consolidated-interrogatory-responses`, pp. 287-290)
 
@@ -1505,7 +1527,8 @@ Toronto Hydro’s proposed CRCI plan and explain the similarities and difference
 Please refer to Figure 1 in Exhibit 1B-2-1 Appendix A, (Review of Rate Framework), pp. 5-6.
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); parts (b)-(e) are in the response field)
+label-for-query: no (gold 1B is cited only in the answer to part (e))
 
 ## 19. 1B-STAFF-16  (doc `th-consolidated-interrogatory-responses`, pp. 274-278)
 
@@ -1592,7 +1615,8 @@ asset data and related data sources to support improved analytics & asset
 manageme
 ```
 
-verdict: 
+verdict: wrong (question holds only part (a); part (b) is in the response field)
+label-for-query: yes
 
 ## 20. 2B-AMPCO-27  (doc `th-consolidated-interrogatory-responses`, pp. 2094-2096)
 
@@ -1661,4 +1685,5 @@ new opportunities to enhance program execution effectiveness in the 2025-2029 pe
 see Exhibit 2B, Section D1, page 14 fo
 ```
 
-verdict: 
+verdict: correct
+label-for-query: yes

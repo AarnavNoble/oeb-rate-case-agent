@@ -125,8 +125,11 @@ exhibits. So:
 - Agent (held-out, seeded 20-question slice; small, so the README reports counts alongside rates):
   - citation accuracy, at section/schedule and exhibit level: does it cite a page the utility cited?
   - answer correctness: a Claude Opus 5.5 judge compares the answer with the utility's actual response.
-- Hand checks: 20 seeded IR rows are reviewed for parsing precision (`evals/ir_sample_review.md`), and
-  20 judge verdicts for human/judge agreement (`evals/judge_review.md`).
+- Sample reviews:
+  - 20 seeded IR rows for label quality (`evals/ir_sample_review.md`).
+  - 20 judge verdicts for agreement (`evals/judge_review.md`).
+  - These were reviewed by Claude, not a human. The sheets say so, and the numbers update if they are
+    re-marked by hand (`uv run python -m evals.record_hand_checks`).
 
 ## Results
 
@@ -191,6 +194,12 @@ Agent eval on 20 held-out IR questions (agent `claude-sonnet-5-5`, judge `claude
 | Citations to pages the agent never saw | 0.0% |
 | Median tool calls / seconds per question | 6 / 26.7 |
 
+
+**Sample reviews**
+
+- IR eval-set rows passing the full review rubric (complete question, right response, every gold exhibit is an answer location): 8/20 = 40% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)
+- IR eval-set rows whose gold exhibits locate the answer to the queried question: 14/20 = 70% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)
+- Agreement with the LLM judge's verdicts: 19/20 = 95% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)
 <!-- results:end -->
 
 ### Reading the results
@@ -214,6 +223,16 @@ Agent eval on 20 held-out IR questions (agent `claude-sonnet-5-5`, judge `claude
     for 2023 actuals. "Not in the evidence" is then the right answer, but the judge scores it as an
     abstention, not as correct. The 4 abstentions include cases like this as well as genuine misses
     (`1A-PP-2` was answerable from Exhibit 9).
+- **Eval-set label quality (sample of 20, reviewed by Claude, not a human):**
+  - 14 of 20 rows have gold exhibits that locate the answer to the question in the query (70%).
+  - 8 of 20 pass the stricter rubric, which also requires the question to be complete.
+  - The review found two parser bugs, so the retrieval numbers carry this label noise. It applies
+    to every retriever and to the random baseline alike.
+    - Multi-part IRs: later sub-questions and their answers land in the response field. The query
+      is then only part (a), and a gold exhibit can come from a later part.
+    - References to exhibits of *other* proceedings ("EB-2018-0165, Exhibit 9") are counted.
+  - The judge review found 19 of 20 verdicts agreeable. This is weaker evidence than a human
+    check, since the reviewer and the judge are both Claude models.
 - **Cross-case comparisons:** six questions comparing Toronto Hydro and Hydro One (capital growth,
   ROE and capital structure, rate frameworks, bill impacts, ...) have no ground truth. They are
   answered in [`evals/results/comparisons.md`](evals/results/comparisons.md) for review.
@@ -290,4 +309,5 @@ A human made the calls on:
 - which cases to use
 - crawl politeness (≤1 request/s, backing off when the server struggles)
 - running the agent on a Claude subscription instead of API billing
-- the hand checks behind the precision and judge-agreement numbers
+- having Claude do the sample reviews (eval-set labels and judge verdicts) in place of a human; the
+  sheets are in `evals/` and record who reviewed them, so they can be re-marked by hand

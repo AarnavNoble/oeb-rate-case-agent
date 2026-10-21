@@ -2,6 +2,9 @@
 
 Seeded sample (seed 20261022) of 20 judge verdicts. For each, read the utility's response and the agent's answer, decide the verdict yourself, and mark `agree: yes` or `agree: no (<your verdict>)`.
 
+**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-21, at the user's request.
+The judge is also a Claude model, so this agreement is weaker evidence than a human check.
+
 ## 1. 2B-SEC-69: judge says **abstained**
 
 > The candidate says the evidence has no 2023 data and that it cannot update the figures. It gives only 2018–2022 context and no 2023 values. The reference supplies the updated figures with 2023 data.
@@ -253,7 +256,7 @@ Section E6.5's only 2023 value is the segment cost: Overhead System Renewal for 
 Updating these figures would require Toronto Hydro's 2023 outage records and asset condition data. Those would have to come from the utility, for example through an interrogatory response, and they are not in the documents I can access. I can read the page text for the other figures if you want me to check them individually.
 ```
 
-agree: 
+agree: yes
 
 ## 2. 4-VECC-71: judge says **abstained**
 
@@ -413,7 +416,7 @@ Could you tell me one of these?
 With either answer I can pull the Appendix 2-K and customer-count tables and set them out year by year.
 ```
 
-agree: 
+agree: yes
 
 ## 3. 2B-EP-25: judge says **partially_correct**
 
@@ -492,7 +495,7 @@ Toronto Hydro doesn't pick DER locations by detailed siting. It assumes DERs wil
 **Limitation.** The location forecast is an assumption that the future will resemble the past. It is not based on site-specific customer siting data.
 ```
 
-agree: 
+agree: yes
 
 ## 4. 1B-STAFF-62: judge says **correct**
 
@@ -923,7 +926,7 @@ The filings I can access don't give the empirical, physical justification you're
 Your question reads like an interrogatory, so the answer m
 ```
 
-agree: 
+agree: yes
 
 ## 5. 1A-PP-2: judge says **abstained**
 
@@ -990,7 +993,7 @@ I'm wrapping up the search. The filings don't seem to hold a Toronto Hydro-speci
 **Wh
 ```
 
-agree: 
+agree: yes
 
 ## 6. 2B-STAFF-187: judge says **partially_correct**
 
@@ -1060,7 +1063,7 @@ The filings don't identify any capital intended specifically for post-2029 conne
 - Toronto Hydro says it won't
 ```
 
-agree: 
+agree: yes
 
 ## 7. 1B-CCC-32: judge says **correct**
 
@@ -1107,7 +1110,7 @@ A 0% productivity factor is appropriate, in Toronto Hydro's filing, because it f
 All of this is Toronto Hydro's own evidence. I did not look for OEB staff or intervenor positions, or for any decision on the point.
 ```
 
-agree: 
+agree: yes
 
 ## 8. 2B-STAFF-231: judge says **correct**
 
@@ -1162,7 +1165,7 @@ criteria will not be affected.
 To confirm the exact wording and context of your quote, please give me the exhibit or interrogatory it comes from. If it's an interrogatory response, it may add context that I haven't found.
 ```
 
-agree: 
+agree: yes
 
 ## 9. 2B-STAFF-161: judge says **partially_correct**
 
@@ -1228,7 +1231,7 @@ The filings I can access do not give a site-by-site list of where Toronto Hydro 
 4. **Network vaults in the downtown core (Network Condition Monitoring & Control
 ```
 
-agree: 
+agree: yes
 
 ## 10. 1-ED-02: judge says **correct**
 
@@ -1304,7 +1307,7 @@ The filings don't contain a standalone analysis, study or workpaper behind that 
 If you want the underlying analysis, ask Toronto Hydro for it in an interrogatory. It would need to include the full list of jurisdictions and sources, the R&D spending data, and the calculations behind 0.3 to 1 percent.
 ```
 
-agree: 
+agree: yes
 
 ## 11. 2B-ED-30: judge says **partially_correct**
 
@@ -1381,7 +1384,7 @@ This answer covers Toronto Hydro (EB-2023-0195) only. The filings don't give one
 - **Flexibility Services:** this is operating cost, so it is recovered from Toronto Hydro's ow
 ```
 
-agree: 
+agree: yes
 
 ## 12. 1B-AMPCO-12: judge says **abstained**
 
@@ -1458,7 +1461,7 @@ What the October 2023 study does show:
 I'd suggest asking Toronto Hydro to produce the earlier version of the study, or to confirm whether peer data for those two categories was too thin or too hard to compare to include.
 ```
 
-agree: 
+agree: yes
 
 ## 13. 2B-EP-28: judge says **correct**
 
@@ -1540,7 +1543,7 @@ Its conclusion was that its forecast is generally aligned with the Consumer Tran
 **Limits.** The same page cautions that the utility could still face incremental capacity constraints at a localized level [EB-2023-0195 / Exhibit 2B / p.537]. The pages I read do not give a percentage of homes converting or a quantified winter-peak result for a given conversion share. I did not find a separate residential-only study, and I did not search for interrogatory responses.
 ```
 
-agree: 
+agree: yes
 
 ## 14. 2B-STAFF-241: judge says **correct**
 
@@ -1603,7 +1606,7 @@ Grid Modernization Strategy (Exhibit 2B, Section D5.2.1).
 - Reducing the probability of failure is handled elsewhere, by the System Renewal programs, which replace assets before they fail. Those programs say timely replacement "will mitigate the frequency an
 ```
 
-agree: 
+agree: yes
 
 ## 15. 2B-AMPCO-30: judge says **partially_correct**
 
@@ -1673,7 +1676,7 @@ INTERROGATORIES
 - If you meant a specific table or interrogatory titled "Program Accomplishments," please point me to it. I could then search for it directly.
 ```
 
-agree: 
+agree: no (correct: the agent's program-level tracking rolled up into portfolios does not contradict the reference's 'segment/program level, aggregated to higher levels if needed')
 
 ## 16. 2B-VECC-13: judge says **incorrect**
 
@@ -1799,7 +1802,7 @@ The filing does not say how these replacements divide between Residential and GS
 A response to an interrogatory (a written information request) may contain the class-level split, but I did not find one. You could ask Toronto Hydro directly for the new installs and reverified/resealed counts by class and year.
 ```
 
-agree: 
+agree: yes
 
 ## 17. 2B-ED-28: judge says **correct**
 
@@ -1841,7 +1844,7 @@ The filings I can access don't give a single "vehicles owned by Toronto Hydro cu
 I did not find a stated current-year total vehicle count in the filings. If you need one, the Future Energy Scenarios report (Exhibit 2B, Section D4, Appendix B) builds a 2021 base-year vehicle stock, but the pages I saw didn't show the number.
 ```
 
-agree: 
+agree: yes
 
 ## 18. 1B-STAFF-46: judge says **partially_correct**
 
@@ -1960,7 +1963,7 @@ The 16 measures in the 2020-2024 list are:
 - **Customer Satisfac
 ```
 
-agree: 
+agree: yes
 
 ## 19. 9-STAFF-342: judge says **partially_correct**
 
@@ -2053,7 +2056,7 @@ The filings describe the IFVA as "symmetrical" [EB-2023-0195 / Exhibit 9 / p.40]
 - **Prudence:** The $16M is based on comparable ratepayer-fu
 ```
 
-agree: 
+agree: yes
 
 ## 20. 2B-STAFF-247: judge says **partially_correct**
 
@@ -2142,4 +2145,4 @@ Exhibit 9 reports M&V results for individual CHP projects against a summer peak 
 - 109
 ```
 
-agree: 
+agree: yes

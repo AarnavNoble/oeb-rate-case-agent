@@ -1,1 +1,5 @@
-{}
+{
+  "IR eval-set rows passing the full review rubric (complete question, right response, every gold exhibit is an answer location)": "8/20 = 40% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)",
+  "IR eval-set rows whose gold exhibits locate the answer to the queried question": "14/20 = 70% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)",
+  "Agreement with the LLM judge's verdicts": "19/20 = 95% (reviewed by Claude (claude-opus-5-5 in Claude Code), not a human)"
+}
