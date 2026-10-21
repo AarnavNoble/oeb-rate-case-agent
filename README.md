@@ -47,9 +47,12 @@ flowchart LR
 times out server-side) and downloads each record from `/CMWebDrawer/Record/{uri}/File/document`. Every
 request goes through one fetcher that spaces requests ≥1.1 s apart per host (shared across processes
 with a file lock), sends a descriptive User-Agent, caches every response on disk, and verifies the byte
-count against both `Content-Length` and the size RDS lists (RDS once returned a body 80 KiB short with
-a 200). PyMuPDF extracts text per page. Margin line numbers and the header block (`Exhibit 2B / Tab 1 /
-Schedule 1 / Page n of m`) are stripped from the text, and the header becomes the page's exhibit
+count. RDS truncates large files by exactly 80 KiB when it streams the whole file (with a 200 status),
+but serves byte ranges intact and reports the true size in `Content-Range`. So files are fetched in
+8 MiB ranges, each piece is length-checked, and the total must match both `Content-Range` and the size
+RDS lists. PyMuPDF extracts text per page. Margin line numbers and the header block (`Exhibit 2B / Tab 1 /
+Schedule 1 / Page n of m`, or `Section D1` in Exhibit 2B) are stripped from the text, and the header
+becomes the page's exhibit reference. Appendix pages without a header inherit the preceding schedule's
 reference. pdfplumber extracts tables only on pages with ruling lines. Chunks follow detected headings,
 target 500–800 tokens, never cross an exhibit boundary, and keep their page range. Embeddings use
 `BAAI/bge-small-en-v1.5` locally.
@@ -57,8 +60,11 @@ target 500–800 tokens, never cross an exhibit boundary, and keep their page ra
 **Orchestration.** One child workflow per document runs download → parse/chunk → embed. Each activity
 is idempotent on `documents.status`, so re-running a case skips finished documents. Network-bound and
 CPU-bound activities use separate task queues with separate concurrency limits, so a slow RDS response
-(RDS sometimes takes >4 minutes to first byte) never blocks parsing. Activities heartbeat, so a
-restarted worker's work is retried within a minute.
+(RDS sometimes takes >4 minutes to first byte) never blocks parsing. Each host gets one request in
+flight at a time, and a host-wide circuit breaker backs off when a server starts failing. Activities
+heartbeat, so a restarted worker's work is retried within a minute. Because the download queue is FIFO,
+`oeb.crawl --process` can run alongside the worker to fetch the documents the eval needs first; the
+workflow's activities then find that work done and skip it.
 
 **Retrieval.** Three retrievers return chunks with case/exhibit/page citations:
 1. *Full-text*: Postgres `tsvector` with `ts_rank_cd`. This is BM25-*style*, not BM25: there is no IDF
@@ -74,8 +80,9 @@ filing) and near-copies (word 5-gram Jaccard ≥ 0.8), so re-filings don't crowd
 **Agent.** The agent runs through Claude Code in headless mode (`claude -p`, model `claude-sonnet-5-5`)
 on the user's own Claude plan, not API billing. A guard (`oeb/agent/claude_cli.py`) strips API keys
 and cloud-provider settings from the subprocess environment, requires `claude auth status` to report a
-claude.ai login, and aborts any run whose init event reports an API key. It's isolated from local Claude Code configuration: no
-built-in tools, no settings/plugins/CLAUDE.md, no session persistence. Its only tools come from a stdio
+claude.ai login, and aborts any run whose init event reports an API key. The agent is isolated from
+local Claude Code configuration: no built-in tools, no settings/plugins/CLAUDE.md, no session
+persistence. Its only tools come from a stdio
 MCP server:
 - `search` (hybrid)
 - `fetch_page`
@@ -97,16 +104,26 @@ exhibits. So:
 - Retrieval during eval is restricted to the utility's pre-filed **evidence**. IR responses,
   undertakings, settlement proposals, arguments and decisions (which quote IR answers) are excluded
   by a filter inside the SQL, which is equivalent to removing them from the index.
+- Document type comes from the title as well as RDS's tag. Three Toronto Hydro IR-response updates
+  are tagged "Application and Evidence" on RDS; before this fix they sat in the evidence index and
+  inflated the scores.
 - Queries are the question with every record location stripped: exhibit/tab/schedule/page/section
   references, IR numbers (`2B-SEC-45` encodes the exhibit) and case numbers.
-- Gold labels are the exhibits cited in the *response*, not the question's "Reference:" line. Both
-  variants are reported.
+- Gold labels are the locations cited in the *response*, not the question's "Reference:" line (both
+  variants are reported). The agent eval also limits the agent's tools to the question's own case.
 - An ablation reruns hybrid search with IR documents left in to show what the leak would do.
 
 **Metrics.**
-- Retrieval: recall@k and MRR@10, where a hit is a chunk from a gold exhibit.
+- Retrieval: recall@k and MRR@10 at two levels.
+  - **Section/schedule level** is the headline. A hit is a chunk on a page whose header matches a
+    section, tab or schedule the utility cited ("Exhibit 4, Tab 2, Schedule 14"; "Exhibit 2B,
+    Section E5").
+  - **Exhibit level** is reported for completeness but is weak here. There are about a dozen exhibits
+    and the labels are skewed toward 2B, so a prior that always answers "2B, 1B, 3" beats every
+    retriever.
+  - Random-chunk and label-prior baselines are shown next to both.
 - Agent (held-out, seeded 20-question slice; small, so the README reports counts alongside rates):
-  - citation accuracy: does it cite a page from an exhibit the utility cited?
+  - citation accuracy, at section/schedule and exhibit level: does it cite a page the utility cited?
   - answer correctness: a Claude Opus 5.5 judge compares the answer with the utility's actual response.
 - Hand checks: 20 seeded IR rows are reviewed for parsing precision (`evals/ir_sample_review.md`), and
   20 judge verdicts for human/judge agreement (`evals/judge_review.md`).
