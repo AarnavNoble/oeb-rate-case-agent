@@ -214,6 +214,12 @@ Agent eval on 20 held-out IR questions (agent `claude-sonnet-5-5`, judge `claude
     for 2023 actuals. "Not in the evidence" is then the right answer, but the judge scores it as an
     abstention, not as correct. The 4 abstentions include cases like this as well as genuine misses
     (`1A-PP-2` was answerable from Exhibit 9).
+- **Cross-case comparisons:** six questions comparing Toronto Hydro and Hydro One (capital growth,
+  ROE and capital structure, rate frameworks, bill impacts, ...) have no ground truth. They are
+  answered in [`evals/results/comparisons.md`](evals/results/comparisons.md) for review.
+  - Every answer cites both cases.
+  - 1 of 62 citations was flagged by the citation check: the agent shortened a document ID, so it
+    pointed at a document that does not exist.
 - **Cost:** the agent eval used about $5 equivalent of Claude plan usage (Claude Code's estimate),
   with no API billing.
 
