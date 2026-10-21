@@ -77,7 +77,7 @@ def _page_lines(page: pymupdf.Page) -> tuple[list[tuple[str, float, bool]], str]
         for line in block.get("lines", []):
             spans = []
             for s in line["spans"]:
-                t = s["text"]
+                t = s["text"] = s["text"].replace("\x00", "")  # some PDFs embed NULs; Postgres text rejects them
                 x0, y0, _, y1 = s["bbox"]
                 if not t.strip():
                     continue
@@ -163,7 +163,7 @@ def _has_ruling(page: pymupdf.Page) -> bool:
 
 
 def _clean(cell: str | None) -> str:
-    return " ".join((cell or "").split())
+    return " ".join((cell or "").replace("\x00", "").split())
 
 
 def _extract_tables(path: str, page_nos: list[int], out: ParsedDoc) -> None:

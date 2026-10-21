@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 import psycopg
 from temporalio.client import Client
@@ -35,8 +36,10 @@ async def main() -> None:
     workers = [
         Worker(client, task_queue=TASK_QUEUE, workflows=[IngestCaseWorkflow, IngestDocWorkflow],
                activities=[activities.register_case]),
-        # at most 3 downloads in flight; http.py also spaces request starts >= 1.1 s apart per host
-        Worker(client, task_queue=DOWNLOAD_QUEUE, activities=[activities.download], max_concurrent_activities=3),
+        # downloads in flight (default 1: with 3, RDS started resetting connections); http.py also
+        # spaces request starts >= 1.1 s apart per host
+        Worker(client, task_queue=DOWNLOAD_QUEUE, activities=[activities.download],
+               max_concurrent_activities=int(os.environ.get("OEB_DOWNLOAD_SLOTS", "1"))),
         Worker(client, task_queue=CPU_QUEUE,
                activities=[activities.parse, activities.embed, activities.refresh_search_stats],
                max_concurrent_activities=2),
