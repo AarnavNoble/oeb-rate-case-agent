@@ -47,7 +47,30 @@ class Hit:
         return f"{self.case_number} / {ex} / {pages}"
 
 
-HIT_COLUMNS = """c.chunk_id, c.doc_id, c.case_number, c.exhibit, d.title, c.page_start, c.page_end,
+NEAR_DUP_JACCARD = 0.8
+OVERFETCH = 4  # SQL fetches k * OVERFETCH so k remain after collapsing duplicates
+
+
+def _shingles(text: str, n: int = 5) -> set[tuple[str, ...]]:
+    words = text.lower().split()
+    return {tuple(words[i:i + n]) for i in range(max(1, len(words) - n + 1))}
+
+
+def collapse_near_duplicates(hits: list[Hit], k: int, threshold: float = NEAR_DUP_JACCARD) -> list[Hit]:
+    """Keep hits in rank order, dropping any whose word 5-grams overlap a kept hit by
+    >= threshold (Jaccard). Re-filed exhibit versions differ only in headers/markers."""
+    kept: list[tuple[Hit, set]] = []
+    for h in hits:
+        sh = _shingles(h.text)
+        if any(len(sh & s) / max(1, len(sh | s)) >= threshold for _, s in kept):
+            continue
+        kept.append((h, sh))
+        if len(kept) == k:
+            break
+    return [h for h, _ in kept]
+
+
+HIT_COLUMNS ="""c.chunk_id, c.doc_id, c.case_number, c.exhibit, d.title, c.page_start, c.page_end,
                  c.heading, c.text"""
 
 

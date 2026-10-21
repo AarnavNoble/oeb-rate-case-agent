@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
-      <main className="flex-1 px-4 py-8 sm:px-8 lg:max-w-3xl lg:px-12">
+      <main className={`w-full flex-1 px-4 py-8 sm:px-8 lg:max-w-3xl lg:px-12 ${open ? "" : "mx-auto"}`}>
         <header className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-teal-700 dark:text-teal-400">
             Ontario Energy Board · rate cases

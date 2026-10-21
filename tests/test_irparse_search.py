@@ -1,5 +1,5 @@
 from oeb.irparse import split_irs, strip_locations
-from oeb.search import Hit
+from oeb.search import Hit, collapse_near_duplicates
 from oeb.search.hybrid import rrf
 
 VALID = {"1A", "1B", "2B", "4", "5"}
@@ -50,6 +50,15 @@ def test_query_has_no_location_leakage():
 
 def _hit(cid: int) -> Hit:
     return Hit(cid, "d", "EB", None, "t", 1, 1, None, "x", 0.0)
+
+
+def test_collapse_near_duplicates_keeps_first_version():
+    base = "Table 11 below presents the 2025 forecast versus 2029 forecast PP&E NBV values by asset class " * 3
+    hits = [Hit(1, "a", "EB", "2A", "t", 18, 19, None, base, 0.9),
+            Hit(2, "b", "EB", "2A", "t", 18, 19, None, base + " Updated", 0.8),
+            Hit(3, "c", "EB", "4", "t", 5, 5, None, "Operating expenses for vegetation management", 0.7)]
+    assert [h.chunk_id for h in collapse_near_duplicates(hits, k=3)] == [1, 3]
+    assert [h.chunk_id for h in collapse_near_duplicates(hits, k=1)] == [1]
 
 
 def test_rrf_rewards_agreement():

@@ -2,12 +2,13 @@
 frequency and proximity with length normalization, but has no IDF. We add the IDF
 idea as a filter: query lexemes that occur in more than MAX_DF of all chunks
 ('toronto', 'hydro', 'rate', ...) are dropped, and the rest are OR-ed so long
-natural-language questions still match."""
+natural-language questions still match. Verbatim copies from re-filed exhibits are
+collapsed to the most recently filed one."""
 
 from psycopg import sql
 
 from oeb.db import connect
-from oeb.search import HIT_COLUMNS, Filters, Hit, row_to_hit
+from oeb.search import HIT_COLUMNS, OVERFETCH, Filters, Hit, collapse_near_duplicates, row_to_hit
 
 # 1 = divide rank by 1 + log(document length)
 _NORMALIZATION = 1
@@ -29,13 +30,15 @@ def search(query: str, k: int = 10, filters: Filters | None = None) -> list[Hit]
             SELECT to_tsquery('english', coalesce(
                 (SELECT string_agg(quote_literal(word), ' | ') FROM kept),
                 (SELECT string_agg(quote_literal(word), ' | ') FROM lex))) AS tsq
+        ), scored AS (
+            SELECT DISTINCT ON (c.text_hash) {cols}, ts_rank_cd(c.tsv, q.tsq, {norm}) AS score
+            FROM chunks c JOIN documents d USING (doc_id), q
+            WHERE c.tsv @@ q.tsq AND {where}
+            ORDER BY c.text_hash, score DESC, d.date_received DESC NULLS LAST, c.chunk_id DESC
         )
-        SELECT {cols}, ts_rank_cd(c.tsv, q.tsq, {norm}) AS score
-        FROM chunks c JOIN documents d USING (doc_id), q
-        WHERE c.tsv @@ q.tsq AND {where}
-        ORDER BY score DESC, c.chunk_id
-        LIMIT %s""").format(cols=sql.SQL(HIT_COLUMNS), norm=sql.Literal(_NORMALIZATION),  # type: ignore[arg-type]
-                            max_df=sql.Literal(MAX_DF), where=sql.SQL(where))  # type: ignore[arg-type]
+        SELECT * FROM scored ORDER BY score DESC, chunk_id LIMIT %s""").format(
+        cols=sql.SQL(HIT_COLUMNS), norm=sql.Literal(_NORMALIZATION),  # type: ignore[arg-type]
+        max_df=sql.Literal(MAX_DF), where=sql.SQL(where))  # type: ignore[arg-type]
     with connect() as conn:
-        rows = conn.execute(q, [query, *params, k]).fetchall()
-    return [row_to_hit(r, float(r["score"])) for r in rows]
+        rows = conn.execute(q, [query, *params, k * OVERFETCH]).fetchall()
+    return collapse_near_duplicates([row_to_hit(r, float(r["score"])) for r in rows], k)

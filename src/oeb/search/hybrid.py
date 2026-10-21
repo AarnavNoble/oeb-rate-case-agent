@@ -1,6 +1,6 @@
 """Reciprocal rank fusion of the full-text and vector retrievers."""
 
-from oeb.search import Filters, Hit, fts, vector
+from oeb.search import Filters, Hit, collapse_near_duplicates, fts, vector
 
 RRF_K = 60
 CANDIDATES = 50
@@ -24,5 +24,7 @@ def rrf(rankings: dict[str, list[Hit]], k: int = 10, rrf_k: int = RRF_K) -> list
 
 
 def search(query: str, k: int = 10, filters: Filters | None = None) -> list[Hit]:
-    return rrf({"fts": fts.search(query, CANDIDATES, filters),
-                "vector": vector.search(query, CANDIDATES, filters)}, k)
+    fused = rrf({"fts": fts.search(query, CANDIDATES, filters),
+                 "vector": vector.search(query, CANDIDATES, filters)}, CANDIDATES)
+    # the two lists can each hold a different version of the same re-filed passage
+    return collapse_near_duplicates(fused, k)

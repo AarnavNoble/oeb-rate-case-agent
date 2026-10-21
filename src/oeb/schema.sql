@@ -95,6 +95,11 @@ REVOKE ALL ON ALL TABLES IN SCHEMA public FROM agent_ro;
 GRANT USAGE ON SCHEMA public TO agent_ro;
 GRANT SELECT ON agent_tables, agent_table_cells TO agent_ro;
 
+-- Utilities re-file updated exhibits, so many chunks are verbatim copies (16% in EB-2023-0195);
+-- retrievers collapse them on this hash and keep the most recently filed copy.
+ALTER TABLE chunks ADD COLUMN IF NOT EXISTS text_hash text
+    GENERATED ALWAYS AS (md5(regexp_replace(text, '\s+', ' ', 'g'))) STORED;
+
 CREATE INDEX IF NOT EXISTS chunks_doc_idx ON chunks (doc_id);
 CREATE INDEX IF NOT EXISTS chunks_tsv_idx ON chunks USING gin (tsv);
 CREATE INDEX IF NOT EXISTS chunks_emb_idx ON chunks USING hnsw (embedding vector_cosine_ops);
