@@ -133,6 +133,25 @@ Raw PDFs are cached under `data/raw/` (git-ignored, ~1.25 GB for both cases).
 
 `make check` runs ruff, pyright and pytest.
 
+## Data and attribution
+
+All filings are public records of the Ontario Energy Board's proceedings, retrieved from the
+OEB's [Regulatory Document Search](https://www.oeb.ca/rds) and, for EB-2026-0164 (not yet posted
+there), from [Hydro One's regulatory site](https://www.hydroone.com/about/regulatory/joint-rate-applications).
+Source: Ontario Energy Board. Crown copyright and the filers' own rights apply to the documents.
+
+This repository does not redistribute the PDFs. `data/raw/` is git-ignored, and the crawler fetches
+them from the original sources. The eval set (`evals/data/ir_eval.jsonl`) and the hand-check sheets
+quote interrogatory questions and Toronto Hydro's responses from the public record of EB-2023-0195,
+for evaluation only.
+
+The crawler:
+- identifies itself in its User-Agent
+- starts at most one request every 1.1 s per host
+- keeps one download in flight by default
+- backs off host-wide when a server starts failing
+- never fetches the same file twice
+
 ## Built with Claude Code
 
 This repo was built in a single Claude Code session. Claude Code:
@@ -147,6 +166,6 @@ This repo was built in a single Claude Code session. Claude Code:
 
 A human made the calls on:
 - which cases to use
-- crawl politeness (3 downloads in flight, ≤1 request/s)
+- crawl politeness (≤1 request/s, backing off when the server struggles)
 - running the agent on a Claude subscription instead of API billing
 - the hand checks behind the precision and judge-agreement numbers
