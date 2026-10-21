@@ -131,21 +131,24 @@ def download(url: str, dest: Path, timeout: float = 600.0, attempts: int = 4,
     So we fetch ranges, check every piece's length, and require the total to match both
     Content-Range and expected_size (the source's listed size). Servers that ignore Range
     get a single full download with the same checks."""
-    if dest.exists():
-        if expected_size is None or dest.stat().st_size == expected_size:
-            return _sha256(dest), dest.stat().st_size, False
-        dest.unlink()  # cached file from before integrity checks; refetch
     dest.parent.mkdir(parents=True, exist_ok=True)
-    tmp = dest.with_suffix(dest.suffix + ".part")
-    try:
-        with open(tmp, "wb") as f:
-            total = _fetch_ranges(url, f, timeout, attempts)
-        if expected_size is not None and total != expected_size:
-            raise FetchError(f"size mismatch: got {total} bytes, listed size {expected_size}")
-        tmp.rename(dest)
-    finally:
-        tmp.unlink(missing_ok=True)
-    return _sha256(dest), total, True
+    # one writer per file: the Temporal worker and the priority crawler may race for it
+    with open(dest.with_suffix(dest.suffix + ".lock"), "a+") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        if dest.exists():
+            if expected_size is None or dest.stat().st_size == expected_size:
+                return _sha256(dest), dest.stat().st_size, False
+            dest.unlink()  # cached file from before integrity checks; refetch
+        tmp = dest.with_suffix(dest.suffix + ".part")
+        try:
+            with open(tmp, "wb") as f:
+                total = _fetch_ranges(url, f, timeout, attempts)
+            if expected_size is not None and total != expected_size:
+                raise FetchError(f"size mismatch: got {total} bytes, listed size {expected_size}")
+            tmp.rename(dest)
+        finally:
+            tmp.unlink(missing_ok=True)
+        return _sha256(dest), total, True
 
 
 def _fetch_ranges(url: str, f, timeout: float, attempts: int) -> int:

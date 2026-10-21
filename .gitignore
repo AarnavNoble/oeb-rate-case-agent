@@ -12,3 +12,4 @@ web/.next/
 logs/
 data/temporal.db*
 evals/results/pilot_runs/
+data/raw/**/*.lock
