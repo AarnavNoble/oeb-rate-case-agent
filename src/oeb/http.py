@@ -2,11 +2,13 @@
 breaker on failures, descriptive UA, retry on 429/5xx, and an on-disk cache so nothing
 is fetched twice."""
 
+import contextlib
 import fcntl
 import hashlib
 import json
 import re
 import time
+from collections.abc import Iterator
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -57,6 +59,17 @@ def _wait_turn(host: str) -> None:
         state["last"] = time.time()
         _store(f, state)
         # lock released on close
+
+
+@contextlib.contextmanager
+def _in_flight(host: str) -> Iterator[None]:
+    """At most one request in flight per host, across threads and processes. Lets the
+    worker run several download slots (cache hits, other hosts) while each server still
+    sees one connection at a time."""
+    _LOCK_DIR.mkdir(parents=True, exist_ok=True)
+    with open(_LOCK_DIR / f"{host}.inflight", "a+") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        yield
 
 
 def _record(host: str, ok: bool) -> None:
@@ -142,31 +155,34 @@ def _fetch_ranges(url: str, f, timeout: float, attempts: int) -> int:
         end = start + RANGE_CHUNK - 1
         last_err: Exception | None = None
         for i in range(attempts):
-            _wait_turn(host)
             try:
                 f.seek(start)
                 f.truncate()
                 n = 0
-                with _client(timeout) as c, c.stream("GET", url, headers={"Range": f"bytes={start}-{end}"}) as r:
-                    if r.status_code == 429 or r.status_code >= 500:
-                        raise FetchError(f"HTTP {r.status_code}")
-                    r.raise_for_status()
-                    declared = int(r.headers["content-length"]) if "content-length" in r.headers else None
-                    if r.status_code == 206:
-                        m = _CONTENT_RANGE.fullmatch(r.headers.get("content-range", "").strip())
-                        if not m or int(m.group(1)) != start:
-                            raise FetchError(f"bad Content-Range: {r.headers.get('content-range')!r}")
-                        want, total = int(m.group(2)) - start + 1, int(m.group(3))
-                    elif start == 0:  # server ignored Range: whole file in one response
-                        want = declared
-                    else:
-                        raise FetchError(f"server stopped honouring Range at byte {start}")
-                    for block in r.iter_bytes(1 << 20):
-                        f.write(block)
-                        n += len(block)
+                with _in_flight(host):
+                    _wait_turn(host)
+                    with _client(timeout) as c, c.stream("GET", url,
+                                                         headers={"Range": f"bytes={start}-{end}"}) as r:
+                        status = r.status_code
+                        if r.status_code == 429 or r.status_code >= 500:
+                            raise FetchError(f"HTTP {r.status_code}")
+                        r.raise_for_status()
+                        declared = int(r.headers["content-length"]) if "content-length" in r.headers else None
+                        if r.status_code == 206:
+                            m = _CONTENT_RANGE.fullmatch(r.headers.get("content-range", "").strip())
+                            if not m or int(m.group(1)) != start:
+                                raise FetchError(f"bad Content-Range: {r.headers.get('content-range')!r}")
+                            want, total = int(m.group(2)) - start + 1, int(m.group(3))
+                        elif start == 0:  # server ignored Range: whole file in one response
+                            want = declared
+                        else:
+                            raise FetchError(f"server stopped honouring Range at byte {start}")
+                        for block in r.iter_bytes(1 << 20):
+                            f.write(block)
+                            n += len(block)
                 if want is not None and n != want:
                     raise FetchError(f"truncated body: got {n} bytes, expected {want}")
-                if r.status_code != 206:
+                if status != 206:
                     total = n
                 _record(host, ok=True)
                 break

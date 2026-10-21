@@ -33,8 +33,9 @@ def build(case: str) -> dict:
         valid = valid_exhibits(conn, case)
         docs = conn.execute(
             """SELECT doc_id, title, date_received FROM documents
-               WHERE case_number = %s AND doc_kind = 'ir_response'
-                 AND doc_type ILIKE '%%Interrogatory Response from Applicant%%' AND n_pages IS NOT NULL
+               WHERE case_number = %s AND doc_kind = 'ir_response' AND n_pages IS NOT NULL
+                 -- the utility's own responses (some are mis-tagged 'Application and Evidence' on RDS)
+                 AND coalesce(doc_type, '') NOT ILIKE '%%from Intervenor%%'
                ORDER BY date_received, doc_id""", (case,)).fetchall()
         all_rows: list[tuple[IRRow, str]] = []
         for d in docs:

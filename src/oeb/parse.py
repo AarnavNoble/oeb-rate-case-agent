@@ -16,6 +16,7 @@ _LINE_NO = re.compile(r"\d{1,2}")
 _HEADING_NUM = re.compile(r"^(?:[A-Z]?\d+(?:\.\d+)*\.?|[A-Z]\.|[IVX]+\.)\s+\S")
 _EXHIBIT_REF = re.compile(
     r"Exhibit\s+([0-9]{1,2}[A-Z]?|[A-Z][0-9]?)\b"
+    r"(?:[\s,]*Section\s+([A-Z]{0,2}\d+(?:\.\d+)*))?"
     r"(?:[\s,]*Tab\s+(\d+))?(?:[\s,]*Schedule\s+(\d+))?", re.I)
 
 
@@ -54,17 +55,30 @@ class ParsedDoc:
 
 
 def parse_exhibit_ref(text: str) -> tuple[str | None, str | None]:
-    """'Exhibit 2B Tab 1 Schedule 1' -> ('2B', 'Exhibit 2B, Tab 1, Schedule 1')"""
+    """'Exhibit 2B Tab 1 Schedule 1' -> ('2B', 'Exhibit 2B, Tab 1, Schedule 1');
+    'Exhibit 2B Section D1' -> ('2B', 'Exhibit 2B, Section D1')"""
     m = _EXHIBIT_REF.search(text)
     if not m:
         return None, None
     ex = m.group(1).upper()
     parts = [f"Exhibit {ex}"]
     if m.group(2):
-        parts.append(f"Tab {m.group(2)}")
+        parts.append(f"Section {m.group(2).upper()}")
     if m.group(3):
-        parts.append(f"Schedule {m.group(3)}")
+        parts.append(f"Tab {m.group(3)}")
+    if m.group(4):
+        parts.append(f"Schedule {m.group(4)}")
     return ex, ", ".join(parts)
+
+
+def carry_forward_refs(refs: list[str | None]) -> list[str | None]:
+    """Appendix pages (attached studies, maps) have no OEB header; they belong to the
+    schedule/section they follow, so inherit the previous page's reference."""
+    out, last = [], None
+    for r in refs:
+        last = r or last
+        out.append(last)
+    return out
 
 
 def _page_lines(page: pymupdf.Page) -> tuple[list[tuple[str, float, bool]], str]:
@@ -139,16 +153,28 @@ def parse_pdf(path: str, title_exhibit: str | None = None, tables: bool = True) 
     doc.close()
     body_size = statistics.median(sizes) if sizes else 11.0
 
+    parsed_refs = [parse_exhibit_ref(header) for _, _, header in raw]
+    refs = carry_forward_refs([ref for _, ref in parsed_refs])
     pages: list[Page] = []
-    for page_no, body, header in raw:
-        ex, ref = parse_exhibit_ref(header)
+    for (page_no, body, header), (ex, _), ref in zip(raw, parsed_refs, refs, strict=True):
         lines = [Line(t, _is_heading(t, sz, b, body_size)) for t, sz, b in body]
+        ex = ex or (parse_exhibit_ref(ref)[0] if ref else None)
         pages.append(Page(page_no, lines, header, ref, ex or title_exhibit))
 
     out = ParsedDoc(pages)
     if ruled_pages:
         _extract_tables(path, ruled_pages, out)
     return out
+
+
+def page_refs(path: str) -> list[str | None]:
+    """Header exhibit references for every page (with carry-forward), without the full
+    parse; used to backfill pages.exhibit_ref when the header rules change."""
+    doc = pymupdf.open(path)
+    try:
+        return carry_forward_refs([parse_exhibit_ref(_page_lines(p)[1])[1] for p in doc.pages()])
+    finally:
+        doc.close()
 
 
 def _has_ruling(page: pymupdf.Page) -> bool:

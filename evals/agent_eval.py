@@ -35,6 +35,17 @@ def _load_heldout() -> list[dict]:
     return [r for r in rows if r["split"] == "heldout"]
 
 
+def _unit_hit(row: dict, citations: list[dict], pages) -> bool | None:
+    """Does any cited page sit in a section/tab/schedule the utility cited? None if the
+    response only cites whole exhibits."""
+    from oeb.irparse import unit_matches
+
+    if not row["response_units"]:
+        return None
+    return any(unit_matches(g, u) for c in citations for u in pages.of(c["doc_id"], c["page"], c["page"])
+               for g in row["response_units"])
+
+
 def _run_one(row: dict) -> dict:
     path = RUNS / f"{row['ir_id']}.json"
     if path.exists():
@@ -62,10 +73,14 @@ def _run_one(row: dict) -> dict:
 
 
 def run_agent_eval(limit: int | None = None) -> dict:
+    from evals.run import PageUnits
+
     rows = _load_heldout()[:limit] if limit else _load_heldout()
+    pages = PageUnits(rows[0]["case_number"])
     recs = []
     for i, row in enumerate(rows, 1):
         rec = _run_one(row)
+        rec["citation_unit_hit"] = _unit_hit(row, rec["citations"], pages)
         recs.append(rec)
         print(f"[{i}/{len(rows)}] {rec['ir_id']}: cite_hit={rec['citation_hit']} "
               f"verdict={rec['judge']['verdict']} ({rec['seconds']}s)", flush=True)
@@ -76,6 +91,9 @@ def run_agent_eval(limit: int | None = None) -> dict:
     out = {
         "n": n, "agent_model": AGENT_MODEL, "judge_model": JUDGE_MODEL,
         "citation_accuracy": round(sum(r["citation_hit"] for r in recs) / n, 3),
+        "citation_unit_accuracy": round(sum(1 for r in recs if r["citation_unit_hit"])
+                                        / max(1, sum(1 for r in recs if r["citation_unit_hit"] is not None)), 3),
+        "n_unit": sum(1 for r in recs if r["citation_unit_hit"] is not None),
         "answers_with_citations": round(sum(1 for r in recs if r["citations"]) / n, 3),
         "unverified_citation_rate": round(sum(r["n_unverified"] for r in recs) / max(1, n_cites), 3),
         "verdicts": dict(verdicts),
@@ -99,7 +117,8 @@ def agent_md(o: dict) -> str:
         f"Agent eval on {o['n']} held-out IR questions (agent `{o['agent_model']}`, judge `{o['judge_model']}`), "
         "evidence-only tools, record locations stripped from questions.", "",
         "| Metric | Value |", "|---|---|",
-        f"| Citation accuracy (cites an exhibit the utility cited) | {o['citation_accuracy']:.1%} |",
+        f"| Citation accuracy, section/schedule level (n={o['n_unit']}) | {o['citation_unit_accuracy']:.1%} |",
+        f"| Citation accuracy, exhibit level (cites an exhibit the utility cited) | {o['citation_accuracy']:.1%} |",
         f"| Judge: correct | {o['correct_rate']:.1%} |",
         f"| Judge: correct or partially correct | {o['correct_or_partial_rate']:.1%} |",
         f"| Verdicts (correct / partial / incorrect / abstained / error) | {v.get('correct', 0)} / "

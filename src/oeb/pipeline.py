@@ -43,6 +43,9 @@ def register_case(case: str) -> list[str]:
                        date_received = EXCLUDED.date_received, listed_size_bytes = EXCLUDED.listed_size_bytes""",
                 r,
             )
+        # keep chunk-level kinds in step if classification rules changed
+        conn.execute("""UPDATE chunks c SET doc_kind = d.doc_kind FROM documents d
+                        WHERE c.doc_id = d.doc_id AND d.case_number = %s AND c.doc_kind <> d.doc_kind""", (case,))
     return [d.doc_id for d in docs if d.ext == "pdf"]
 
 

@@ -21,6 +21,7 @@ from pathlib import Path
 from oeb.agent.claude_cli import BillingGuardError, check_init_event, claude_bin, plan_env, verify_plan_auth
 from oeb.config import AGENT_MODEL, ROOT
 from oeb.db import connect
+from oeb.parse import parse_exhibit_ref
 
 SYSTEM_PROMPT = """\
 You are a research assistant for Ontario Energy Board (OEB) rate cases. You answer questions \
@@ -182,10 +183,17 @@ def resolve_citations(answer: str, seen: set[tuple[str, int]]) -> list[Citation]
         meta = {r["doc_id"]: r for r in conn.execute(
             "SELECT doc_id, case_number, exhibit, title FROM documents WHERE doc_id = ANY(%s)",
             ([d for d, _ in pairs],))}
+        # the page header is more precise than the document: evidence-update filings bundle
+        # pages from several exhibits
+        page_refs = {(r["doc_id"], r["page_no"]): r["exhibit_ref"] for r in conn.execute(
+            "SELECT doc_id, page_no, exhibit_ref FROM pages WHERE (doc_id, page_no) IN "
+            "(SELECT * FROM unnest(%s::text[], %s::int[]))",
+            ([d for d, _ in pairs], [p for _, p in pairs]))}
     out = []
     for doc_id, page in pairs:
         m = meta.get(doc_id) or {}
-        out.append(Citation(doc_id, page, m.get("case_number"), m.get("exhibit"), m.get("title"),
+        page_exhibit = parse_exhibit_ref(page_refs.get((doc_id, page)) or "")[0]
+        out.append(Citation(doc_id, page, m.get("case_number"), page_exhibit or m.get("exhibit"), m.get("title"),
                             seen=(doc_id, page) in seen))
     return out
 

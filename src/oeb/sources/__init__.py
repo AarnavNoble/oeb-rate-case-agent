@@ -54,11 +54,22 @@ _KIND_RULES: list[tuple[str, str]] = [
 ]
 
 
+# Filers sometimes tag IR responses as "Application and Evidence" (EB-2023-0195's
+# 2024-05-07 'THESL_IRR Exhibit 2B_..._Updated' records), so the title wins.
+_TITLE_KIND = [
+    (re.compile(r"(?:^|[_\s])IRRs?(?=[_\s]|$)|IR_Responses|Interrogatory Response", re.I), "ir_response"),
+    (re.compile(r"Undertaking Response|(?:^|[_\s])UTs?(?=[_\s]|$)", re.I), "undertaking"),
+]
+
+
 def classify_kind(doc_type: str | None, title: str) -> str:
+    for pattern, kind in _TITLE_KIND:
+        if pattern.search(title):
+            return kind
     if doc_type:
         for needle, kind in _KIND_RULES:
             if needle.lower() in doc_type.lower():
                 return kind
         return "other"
     # hydroone.com has no document type; the 2028-32 page only lists application evidence
-    return "ir_response" if re.search(r"\bIRR?\b", title) else "evidence"
+    return "evidence"

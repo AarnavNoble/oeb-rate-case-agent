@@ -30,6 +30,31 @@ def test_breaker_doubles_cooldown_and_resets(tmp_path, monkeypatch):
     assert reset["fails"] == 0 and reset["cooldown_until"] == 0.0
 
 
+def test_in_flight_allows_one_request_per_host(tmp_path, monkeypatch):
+    import threading
+
+    monkeypatch.setattr(http, "_LOCK_DIR", tmp_path)
+    active, peak = 0, 0
+    guard = threading.Lock()
+
+    def worker(host: str) -> None:
+        nonlocal active, peak
+        with http._in_flight(host):
+            with guard:
+                active += 1
+                peak = max(peak, active)
+            time.sleep(0.05)
+            with guard:
+                active -= 1
+
+    threads = [threading.Thread(target=worker, args=("same.test",)) for _ in range(4)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    assert peak == 1
+
+
 def test_wait_turn_reads_legacy_float_state(tmp_path, monkeypatch):
     monkeypatch.setattr(http, "_LOCK_DIR", tmp_path)
     (tmp_path / "h").write_text("0.0")

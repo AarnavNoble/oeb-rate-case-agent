@@ -7,14 +7,16 @@
 Retrieval: for each IR row, query = the intervenor's question with all record locations
 stripped; search is restricted to doc_kind='evidence' (IR responses, undertakings,
 settlement, argument and decisions are excluded: leakage control). A hit is relevant if
-its chunk's exhibit is one the utility cited in its response."""
+its chunk's exhibit is one the utility cited in its response (exhibit level), or if its
+page header matches a section/tab/schedule the response cites (unit level). Random-chunk
+and label-prior baselines calibrate both."""
 
 import argparse
 import json
 import time
 from pathlib import Path
 
-from oeb.search import Filters, Hit, fts, hybrid, vector
+from oeb.search import Filters, fts, hybrid, vector
 
 HERE = Path(__file__).parent
 DATA = HERE / "data" / "ir_eval.jsonl"
@@ -28,7 +30,7 @@ def load_rows(split: str | None = None) -> list[dict]:
     return [r for r in rows if split is None or r["split"] == split]
 
 
-def first_relevant(hits: list[Hit], gold: set[str]) -> int | None:
+def first_relevant(hits: list, gold: set[str]) -> int | None:  # Hit or any object with .exhibit
     for i, h in enumerate(hits, 1):
         if h.exhibit in gold:
             return i
@@ -46,26 +48,105 @@ def metrics(ranks: list[int | None]) -> dict:
     }
 
 
+class PageUnits:
+    """Header-derived location units ('exhibit|section|tab|schedule') for evidence pages."""
+
+    def __init__(self, case: str):
+        from oeb.db import connect
+        from oeb.irparse import ref_to_unit
+
+        self.units: dict[tuple[str, int], str] = {}
+        with connect() as conn:
+            for r in conn.execute("""SELECT p.doc_id, p.page_no, p.exhibit_ref FROM pages p
+                                     JOIN documents d USING (doc_id)
+                                     WHERE d.case_number = %s AND d.doc_kind = 'evidence'
+                                       AND p.exhibit_ref IS NOT NULL""", (case,)):
+                unit = ref_to_unit(r["exhibit_ref"])
+                if unit:
+                    self.units[(r["doc_id"], r["page_no"])] = unit
+
+    def of(self, doc_id: str, page_start: int, page_end: int) -> set[str]:
+        return {u for p in range(page_start, page_end + 1) if (u := self.units.get((doc_id, p)))}
+
+
+def first_relevant_unit(hits: list, gold_units: list[str], pages: PageUnits) -> int | None:
+    from oeb.irparse import unit_matches
+
+    for i, h in enumerate(hits, 1):
+        if any(unit_matches(g, u) for g in gold_units for u in pages.of(h.doc_id, h.page_start, h.page_end)):
+            return i
+    return None
+
+
+def baselines(rows: list[dict], pages: PageUnits, seeds: int = 20) -> dict:
+    """Reference points for the metrics: random evidence chunks, and a label prior that
+    always ranks exhibits by how often they are gold (it peeks at the labels, so it is an
+    optimistic version of 'just guess the big exhibit')."""
+    import random
+    from collections import Counter
+
+    from oeb.db import connect
+
+    case = rows[0]["case_number"]
+    with connect() as conn:
+        chunks = [(r["doc_id"], r["exhibit"], r["page_start"], r["page_end"]) for r in conn.execute(
+            "SELECT doc_id, exhibit, page_start, page_end FROM chunks WHERE case_number = %s AND doc_kind = 'evidence'",
+            (case,))]
+
+    class _H:  # minimal hit shape for first_relevant / first_relevant_unit
+        def __init__(self, c):
+            self.doc_id, self.exhibit, self.page_start, self.page_end = c
+
+    rand_ex: list[dict] = []
+    rand_unit: list[dict] = []
+    fine_rows = [r for r in rows if r["response_units"]]
+    for seed in range(seeds):
+        rng = random.Random(seed)
+        ex_ranks = []
+        for row in rows:
+            ex_ranks.append(first_relevant([_H(c) for c in rng.sample(chunks, K)], set(row["response_exhibits"])))
+        rand_ex.append(metrics(ex_ranks))
+        unit_ranks = [first_relevant_unit([_H(c) for c in rng.sample(chunks, K)], row["response_units"], pages)
+                      for row in fine_rows]
+        rand_unit.append(metrics(unit_ranks))
+
+    def avg(ms: list[dict]) -> dict:
+        return {k: (round(sum(m[k] for m in ms) / len(ms), 3) if k != "n" else ms[0]["n"]) for k in ms[0]}
+
+    order = [e for e, _ in Counter(e for r in rows for e in r["response_exhibits"]).most_common()]
+    prior_ranks = [next((i for i, e in enumerate(order[:K], 1) if e in set(r["response_exhibits"])), None)
+                   for r in rows]
+    return {"random_chunks": {"exhibit": avg(rand_ex), "unit": avg(rand_unit), "seeds": seeds},
+            "exhibit_label_prior": {"exhibit": metrics(prior_ranks), "order": order[:5]}}
+
+
 def run_retrieval() -> dict:
     rows = load_rows()
-    evidence_only = Filters(doc_kinds=["evidence"])
-    out: dict = {"n_rows": len(rows), "k": K, "retrievers": {}}
+    case = rows[0]["case_number"]
+    pages = PageUnits(case)
+    fine_rows = {r["ir_id"] for r in rows if r["response_units"]}
+    out: dict = {"n_rows": len(rows), "n_unit_rows": len(fine_rows), "k": K, "retrievers": {}}
     per_row: list[dict] = []
     ranks: dict[str, dict[str, list[int | None]]] = {
-        name: {"response_gold": [], "question_ref_gold": []} for name in RETRIEVERS}
+        name: {"response_gold": [], "unit_gold": [], "question_ref_gold": []} for name in RETRIEVERS}
     leak: list[bool] = []
     for row in rows:
         gold = set(row["response_exhibits"])
         ref_gold = set(row["reference_exhibits"]) | {row["ir_exhibit"]}
-        rec = {"ir_id": row["ir_id"], "gold": sorted(gold)}
+        rec = {"ir_id": row["ir_id"], "gold": sorted(gold), "gold_units": row["response_units"]}
         for name, fn in RETRIEVERS.items():
             t = time.time()
-            hits = fn(row["query"], K, Filters(case_numbers=[row["case_number"]], doc_kinds=evidence_only.doc_kinds))
+            hits = fn(row["query"], K, Filters(case_numbers=[row["case_number"]], doc_kinds=["evidence"]))
             rec[f"{name}_ms"] = round((time.time() - t) * 1000)
             r = first_relevant(hits, gold)
             ranks[name]["response_gold"].append(r)
             ranks[name]["question_ref_gold"].append(first_relevant(hits, ref_gold))
-            rec[name] = {"rank": r, "top5": [f"{h.exhibit}|{h.doc_id}|p{h.page_start}" for h in hits[:5]]}
+            ru = None
+            if row["ir_id"] in fine_rows:
+                ru = first_relevant_unit(hits, row["response_units"], pages)
+                ranks[name]["unit_gold"].append(ru)
+            rec[name] = {"rank": r, "unit_rank": ru,
+                         "top5": [f"{h.exhibit}|{h.doc_id}|p{h.page_start}" for h in hits[:5]]}
         # ablation: same query, IR documents left in the index
         leaky = hybrid.search(row["query"], 5, Filters(case_numbers=[row["case_number"]]))
         leak.append(any(h.doc_id == row["doc_id"] and h.page_start <= row["page_end"]
@@ -75,9 +156,11 @@ def run_retrieval() -> dict:
     for name in RETRIEVERS:
         out["retrievers"][name] = {
             "response_gold": metrics(ranks[name]["response_gold"]),
+            "unit_gold": metrics(ranks[name]["unit_gold"]),
             "question_ref_gold": metrics(ranks[name]["question_ref_gold"]),
             "median_latency_ms": sorted(r[f"{name}_ms"] for r in per_row)[len(per_row) // 2],
         }
+    out["baselines"] = baselines(rows, pages)
     out["leakage_ablation"] = {
         "description": "hybrid top-5 over ALL documents (no leakage control): share of queries whose own "
                        "IR response pages are retrieved",
@@ -90,15 +173,30 @@ def run_retrieval() -> dict:
     return out
 
 
+def _row(label: str, m: dict, extra: str | None = None) -> str:
+    cells = [label, *(f"{m[k]:.3f}" for k in ("recall@1", "recall@5", "recall@10", "mrr@10"))]
+    return "| " + " | ".join(cells + ([extra] if extra is not None else [])) + " |"
+
+
 def retrieval_md(out: dict) -> str:
-    lines = [f"Retrieval on {out['n_rows']} IR questions (EB-2023-0195), evidence-only index, exhibit-level relevance.",
-             "", "| Retriever | Recall@1 | Recall@5 | Recall@10 | MRR@10 | Median latency |",
+    b = out["baselines"]
+    rx, ru, pr = b["random_chunks"]["exhibit"], b["random_chunks"]["unit"], b["exhibit_label_prior"]["exhibit"]
+    lines = [f"Retrieval on {out['n_rows']} IR questions (EB-2023-0195), evidence-only index, k={out['k']}.", "",
+             "**Exhibit level**: a hit is any chunk from an exhibit the utility cited in its response.", "",
+             "| Retriever | Recall@1 | Recall@5 | Recall@10 | MRR@10 | Median latency |",
              "|---|---|---|---|---|---|"]
     for name, r in out["retrievers"].items():
-        m = r["response_gold"]
-        lines.append(f"| {name} | {m['recall@1']:.3f} | {m['recall@5']:.3f} | {m['recall@10']:.3f} | "
-                     f"{m['mrr@10']:.3f} | {r['median_latency_ms']} ms |")
-    lines += ["", "Secondary (gold = exhibit named in the question's reference line / IR number):", "",
+        lines.append(_row(name, r["response_gold"], f"{r['median_latency_ms']} ms"))
+    prior = ", ".join(b["exhibit_label_prior"]["order"][:3])
+    lines += [_row(f"_random chunks ({b['random_chunks']['seeds']} seeds)_", rx, ""),
+              _row(f"_label prior (always {prior}, ...)_", pr, ""),
+              "", f"**Section/schedule level** ({out['n_unit_rows']} questions whose response cites a section, tab or "
+              "schedule): a hit is a chunk on a page whose header matches it.", "",
+              "| Retriever | Recall@1 | Recall@5 | Recall@10 | MRR@10 |", "|---|---|---|---|---|"]
+    for name, r in out["retrievers"].items():
+        lines.append(_row(name, r["unit_gold"]))
+    lines += [_row("_random chunks_", ru),
+              "", "Secondary (exhibit level, gold = exhibit named in the question's reference line / IR number):", "",
               "| Retriever | Recall@5 | MRR@10 |", "|---|---|---|"]
     for name, r in out["retrievers"].items():
         m = r["question_ref_gold"]

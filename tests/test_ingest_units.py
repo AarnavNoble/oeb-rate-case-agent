@@ -2,7 +2,7 @@ import pymupdf
 import pytest
 
 from oeb.chunk import MAX_TOKENS, chunk_pages
-from oeb.parse import Line, Page, parse_exhibit_ref, parse_pdf, to_number
+from oeb.parse import Line, Page, carry_forward_refs, parse_exhibit_ref, parse_pdf, to_number
 from oeb.sources import classify_kind, exhibit_from_title
 
 
@@ -24,12 +24,26 @@ def test_classify_kind_prefers_leaky_type():
     assert classify_kind("Application and Evidence; Interrogatory Response from Applicant", "x") == "ir_response"
     assert classify_kind("Correspondence", "x") == "other"
     assert classify_kind(None, "HONI_Appl_Ex B3_DSP_20261007") == "evidence"
+    # mis-tagged on RDS: title wins
+    assert classify_kind("Application and Evidence", "THESL_IRR Exhibit 2B_Part3of3_Updated_20240507") == "ir_response"
+    assert classify_kind("Application and Evidence", "THESL_2025-2029 Rate Application_IR_Responses_20240311") \
+        == "ir_response"
+    assert classify_kind("Application and Evidence", "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3") \
+        == "evidence"
 
 
 def test_parse_exhibit_ref():
     assert parse_exhibit_ref("Toronto Hydro EB-2023-0195 Exhibit 5 Tab 1 Schedule 1 ORIGINAL Page 1 of 7") == (
         "5", "Exhibit 5, Tab 1, Schedule 1")
     assert parse_exhibit_ref("Interrogatory Responses 5-Staff-312") == (None, None)
+    assert parse_exhibit_ref("Toronto Hydro EB-2023-0195 Exhibit 2B Section D1 ORIGINAL") == (
+        "2B", "Exhibit 2B, Section D1")
+
+
+def test_carry_forward_refs():
+    assert carry_forward_refs([None, "Exhibit 4, Tab 1, Schedule 1", None, None, "Exhibit 4, Tab 2, Schedule 1"]) == [
+        None, "Exhibit 4, Tab 1, Schedule 1", "Exhibit 4, Tab 1, Schedule 1", "Exhibit 4, Tab 1, Schedule 1",
+        "Exhibit 4, Tab 2, Schedule 1"]
 
 
 @pytest.mark.parametrize(("s", "v"), [("9.30%", 9.3), ("(1,234)", -1234.0), ("$ 12.5", 12.5), ("2018", 2018.0),

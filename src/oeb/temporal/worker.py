@@ -33,10 +33,11 @@ async def main() -> None:
                 raise
             await asyncio.sleep(2)
     client = await _connect()
-    # downloads in flight (default 1: with 3, RDS started resetting connections); http.py also
-    # spaces request starts >= 1.1 s apart per host. OEB_DOWNLOAD_SLOTS=0 pauses crawling:
-    # download tasks wait in Temporal while parse/embed keep running.
-    download_slots = int(os.environ.get("OEB_DOWNLOAD_SLOTS", "1"))
+    # Download activity slots. Each host still gets one request in flight (http._in_flight)
+    # spaced >= 1.1 s apart; extra slots only let cache hits and other hosts proceed while
+    # a slow RDS response is pending. OEB_DOWNLOAD_SLOTS=0 pauses crawling: download tasks
+    # wait in Temporal while parse/embed keep running.
+    download_slots = int(os.environ.get("OEB_DOWNLOAD_SLOTS", "3"))
     workers = [
         Worker(client, task_queue=TASK_QUEUE, workflows=[IngestCaseWorkflow, IngestDocWorkflow],
                activities=[activities.register_case]),

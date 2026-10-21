@@ -1,4 +1,4 @@
-from oeb.irparse import split_irs, strip_locations
+from oeb.irparse import ref_to_unit, split_irs, strip_locations, unit_matches
 from oeb.search import Hit, collapse_near_duplicates
 from oeb.search.hybrid import rrf
 
@@ -38,6 +38,17 @@ def test_split_irs_labels_from_response():
     assert "a) Please provide the forecast by class." in b.question
     assert b.response_exhibits == []
     assert (b.page_start, b.page_end) == (2, 2)
+
+
+def test_units_and_matching():
+    rows = split_irs("doc", [(1, PAGE_1)], VALID)
+    assert rows[0].response_units == ["2B|E6||", "4||2|1"]
+    assert ref_to_unit("Exhibit 4, Tab 2, Schedule 1") == "4||2|1"
+    assert ref_to_unit("Exhibit 2B, Section E6") == "2B|E6||"
+    assert unit_matches("2B|E6||", "2B|E6||")
+    assert not unit_matches("2B|E6||", "2B|E5||")
+    assert unit_matches("4||2|", "4||2|14")      # tab-only gold matches any schedule in the tab
+    assert not unit_matches("4||2|1", "4||2|14")
 
 
 def test_query_has_no_location_leakage():

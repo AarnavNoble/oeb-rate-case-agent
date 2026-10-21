@@ -45,6 +45,7 @@ class IRRow:
     response: str
     reference_exhibits: list[str] = field(default_factory=list)
     response_exhibits: list[str] = field(default_factory=list)
+    response_units: list[str] = field(default_factory=list)  # finer refs, see unit_key()
 
     @property
     def query(self) -> str:
@@ -54,6 +55,40 @@ class IRRow:
 def strip_locations(text: str) -> str:
     text = _LOCATION.sub(" ", text)
     return re.sub(r"[ \t]+", " ", re.sub(r"\s*\n\s*", "\n", text)).strip()
+
+
+_UNIT_REF = re.compile(
+    r"\bExhibit\s+([0-9]{1,2}[A-Z]?)\b[\s,]*(?:Section\s+([A-Z]{1,2}\d+)(?:\.\d+)*)?"
+    r"[\s,]*(?:Tab\s+(\d+))?[\s,]*(?:Schedule\s+(\d+))?")
+
+
+def unit_key(exhibit: str, section: str | None = None, tab: str | None = None, schedule: str | None = None) -> str:
+    """Location below exhibit level: 'exhibit|section|tab|schedule', empty where absent.
+    Sections keep only the top level (E5.4 -> E5), matching page headers."""
+    return "|".join([exhibit.upper(), (section or "").upper(), tab or "", schedule or ""])
+
+
+def ref_to_unit(ref: str) -> str | None:
+    """Page header ref ('Exhibit 4, Tab 2, Schedule 14' / 'Exhibit 2B, Section E5') -> unit key."""
+    m = _UNIT_REF.search(ref)
+    return unit_key(*m.groups()) if m else None
+
+
+def unit_matches(gold: str, page_unit: str) -> bool:
+    """A gold unit matches a page if every field the gold reference specifies is equal."""
+    return all(g == "" or g == p for g, p in zip(gold.split("|"), page_unit.split("|"), strict=True))
+
+
+def _units(text: str, valid: set[str]) -> list[str]:
+    seen: list[str] = []
+    for m in _UNIT_REF.finditer(text):
+        ex, section, tab, schedule = m.groups()
+        if ex.upper() not in valid or not (section or tab):
+            continue  # exhibit-only references carry no finer location
+        key = unit_key(ex, section, tab, schedule)
+        if key not in seen:
+            seen.append(key)
+    return seen
 
 
 def _exhibits(text: str, valid: set[str]) -> list[str]:
@@ -134,5 +169,6 @@ def split_irs(doc_id: str, pages: list[tuple[int, str]], valid_exhibits: set[str
             references=refs, question=question, response=response,
             reference_exhibits=_exhibits(refs, valid_exhibits),
             response_exhibits=_exhibits(response, valid_exhibits),
+            response_units=_units(response, valid_exhibits),
         ))
     return rows
