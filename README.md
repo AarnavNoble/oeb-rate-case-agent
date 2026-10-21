@@ -264,11 +264,21 @@ This repo was built in a single Claude Code session. Claude Code:
 - **Recon:** reverse-engineered the RDS WebDrawer JSON API from the public search form.
 - **Code:** wrote the pipeline, retrievers, evals, agent and UI.
 - **Debugging:** diagnosed problems from evidence rather than guessing:
-  - a truncated download, found by comparing on-disk bytes with the listed size and the PDF's `startxref`
-  - slow downloads blocking parsing, fixed by splitting the Temporal task queues
+  - RDS truncating large files by exactly 80 KiB, found by comparing on-disk bytes with the listed
+    size and the PDF's `startxref`, then confirmed with a `Range` request that reports the true size
+  - slow downloads blocking parsing, fixed by splitting the Temporal task queues and limiting
+    in-flight requests per host instead of per worker
   - full-text search missing an obvious hit because `ts_rank_cd` has no IDF, fixed with the
     document-frequency filter
-- **Agent wiring:** set up the agent to run through Claude Code headless.
+- **Eval integrity:** questioned its own numbers before reporting them:
+  - found IR responses mis-tagged as evidence on RDS that were leaking answers into the index
+  - showed that exhibit-level recall loses to a label prior, so added section/schedule-level
+    relevance and baselines
+  - fixed a leakage ablation that undercounted when the same answer was filed twice
+- **Data source:** when RDS slowed to minutes per request, found that Toronto Hydro posts the same
+  filings itself. 27 slow files became 2 fast ones.
+- **Agent wiring:** set up the agent to run through Claude Code headless, with a guard that refuses to
+  run on API billing.
 
 A human made the calls on:
 - which cases to use
