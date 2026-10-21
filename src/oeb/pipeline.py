@@ -15,18 +15,20 @@ from oeb.db import connect
 from oeb.embed import embed_passages
 from oeb.http import download
 from oeb.parse import parse_pdf, to_number
-from oeb.sources import DocMeta, hydroone, rds
+from oeb.sources import DocMeta, hydroone, rds, torontohydro
 
 STAGES = ["listed", "downloaded", "parsed", "embedded"]
 
 
-def _source_for(case: str):
-    return hydroone if case in hydroone.CASES else rds
+def _sources_for(case: str) -> list:
+    if case in hydroone.CASES:
+        return [hydroone]
+    return [rds, torontohydro]  # torontohydro.list_case adds consolidated files for EB-2023-0195 only
 
 
 def register_case(case: str) -> list[str]:
     """List every document in the case and upsert metadata. Returns doc_ids to process."""
-    docs: list[DocMeta] = _source_for(case).list_case(case)
+    docs: list[DocMeta] = [d for src in _sources_for(case) for d in src.list_case(case)]
     with connect() as conn:
         for d in docs:
             r = d.row()

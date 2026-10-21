@@ -42,7 +42,9 @@ def build(case: str) -> dict:
             pages = [(r["page_no"], r["text"]) for r in conn.execute(
                 "SELECT page_no, text FROM pages WHERE doc_id = %s ORDER BY page_no", (d["doc_id"],))]
             for row in split_irs(d["doc_id"], pages, valid):
-                all_rows.append((row, str(d["date_received"])))
+                # undated (torontohydro.com consolidated file) sorts oldest, so a dated RDS
+                # filing of the same IR, including updates, wins
+                all_rows.append((row, str(d["date_received"] or "0000-00-00")))
 
     # re-filed / updated responses: keep the latest filing of each IR
     latest: dict[str, tuple[IRRow, str]] = {}
