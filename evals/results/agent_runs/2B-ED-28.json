@@ -1,0 +1,60 @@
+{
+  "ir_id": "2B-ED-28",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "a) Approximately how many vehicles are owned by Toronto Hydro customers?",
+  "answer": "The filings I can access don't give a single \"vehicles owned by Toronto Hydro customers\" figure. The closest number is about 1.1 million light-duty vehicles registered in Toronto.\n\n- **Basis:** Toronto Hydro's electric-vehicle forecast says its methodology \"estimates 1.1M LDVs registered in Toronto by 2030,\" growing about 1% a year [cite:rds-823165:21]. That is a 2030 projection, not a current count. It is also a count for the City of Toronto, which I'm using as a proxy for Toronto Hydro's service territory.\n- **Scale check:** The same page says 220,000 light-duty EVs would be 20% of the light-duty fleet. That target comes from the City of Toronto's EV Strategy [cite:rds-823165:21]. With a 1% annual growth rate, the current fleet would be a bit under 1.1 million, so \"roughly 1 million\" is a fair approximation.\n- **Medium and heavy vehicles:** These are extra. Toronto Hydro's Table 10 forecasts about 6,462 medium-duty and 6,305 heavy-duty electric vehicles in Toronto by 2029, but that covers electric vehicles only [cite:rds-823165:75]. Other statements say Toronto accounts for about 20% of Ontario's medium- and heavy-duty vehicle population [cite:rds-823165:21].\n- **Not customer-owned:** Toronto Hydro's own fleet is separate. It owns 13 electric and 20 hybrid light-duty vehicles [cite:rds-823163:748]. The TTC's roughly 2,357 buses are operated by the TTC, not by Toronto Hydro customers [cite:rds-823163:614].\n\nI did not find a stated current-year total vehicle count in the filings. If you need one, the Future Energy Scenarios report (Exhibit 2B, Section D4, Appendix B) builds a 2021 base-year vehicle stock, but the pages I saw didn't show the number.",
+  "answer_rendered": "The filings I can access don't give a single \"vehicles owned by Toronto Hydro customers\" figure. The closest number is about 1.1 million light-duty vehicles registered in Toronto.\n\n- **Basis:** Toronto Hydro's electric-vehicle forecast says its methodology \"estimates 1.1M LDVs registered in Toronto by 2030,\" growing about 1% a year [EB-2023-0195 / Exhibit 3 / p.21]. That is a 2030 projection, not a current count. It is also a count for the City of Toronto, which I'm using as a proxy for Toronto Hydro's service territory.\n- **Scale check:** The same page says 220,000 light-duty EVs would be 20% of the light-duty fleet. That target comes from the City of Toronto's EV Strategy [EB-2023-0195 / Exhibit 3 / p.21]. With a 1% annual growth rate, the current fleet would be a bit under 1.1 million, so \"roughly 1 million\" is a fair approximation.\n- **Medium and heavy vehicles:** These are extra. Toronto Hydro's Table 10 forecasts about 6,462 medium-duty and 6,305 heavy-duty electric vehicles in Toronto by 2029, but that covers electric vehicles only [EB-2023-0195 / Exhibit 3 / p.75]. Other statements say Toronto accounts for about 20% of Ontario's medium- and heavy-duty vehicle population [EB-2023-0195 / Exhibit 3 / p.21].\n- **Not customer-owned:** Toronto Hydro's own fleet is separate. It owns 13 electric and 20 hybrid light-duty vehicles [EB-2023-0195 / Exhibit 2B / p.748]. The TTC's roughly 2,357 buses are operated by the TTC, not by Toronto Hydro customers [EB-2023-0195 / Exhibit 2B / p.614].\n\nI did not find a stated current-year total vehicle count in the filings. If you need one, the Future Energy Scenarios report (Exhibit 2B, Section D4, Appendix B) builds a 2021 base-year vehicle stock, but the pages I saw didn't show the number.",
+  "citations": [
+    {
+      "doc_id": "rds-823165",
+      "page": 21,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 75,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 748,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 614,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "2B",
+    "3"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 4,
+  "num_turns": 5,
+  "seconds": 28.7,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.1147713,
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The reference says Toronto has about 1.1 million passenger vehicles. The candidate gives the same figure, about 1.1 million light-duty vehicles in Toronto, though it frames it as a 2030 projection and suggests the current fleet is slightly smaller. That hedge doesn't really contradict the reference's approximate number, and the candidate's other context is consistent with it.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0209276
+  }
+}

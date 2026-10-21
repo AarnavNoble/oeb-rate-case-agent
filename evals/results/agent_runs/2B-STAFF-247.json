@@ -1,0 +1,118 @@
+{
+  "ir_id": "2B-STAFF-247",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "Toronto Hydro states: \u201cThe NWS strategy for the 2025-2029 period is focused on being flexible and\nadaptable to help system planners respond to load growth while navigating the underlying\nuncertainty that stems from changing demand patterns and increased reliance on electrification.\nThis strategy builds on Toronto Hydro\u2019s experience utilizing DERs to reduce peak demand, helping\nto defer grid expansions or, in most cases, avoid grid expansions should demand not materialize as\nexpected (e.g., lower than expected demand, fluctuating demand).\u201d\na) Please quantify by technology type the alignment of energy production by the DERs\npresently installed in Toronto Hydro\u2019s service area with the summer and winter peak\ndemand hours on Toronto Hydro\u2019s distribution system.",
+  "answer": "The filings I can access don't quantify DER output at the actual summer and winter system peak hours. Toronto Hydro gives hourly capacity-factor profiles by technology, but I found no statement of the system peak hours and no calculation of output at those hours. I also can't say whether Toronto Hydro answered this question in an interrogatory response, because I didn't find one. The closest evidence is below.\n\n**Hourly profile assumed for installed DERs (kWh per kW of nameplate, average day)**\n\nThe profiles are in the load-forecast integration model. Toronto Hydro supplied the capacity factors to its consultant, Clearspring [cite:rds-847604:115].\n\n| Technology | Summer | Winter |\n|---|---|---|\n| Solar (the model treats all renewables as solar) | 0 before 07:00. Output is 0.28\u20130.35 from 10:00 to 17:00 and peaks at 0.35 in the 13:00 hour. It falls to 0.09 at 19:00 and 0 from 20:00. | Much lower. The maximum is 0.07 at 13:00, and output is 0 from 20:00. |\n| Non-renewable (for example CHP) | Flat all day at about 0.65\u20130.68 | Same as summer |\n| Energy storage | 0 in every hour | 0 in every hour |\n\nThe solar profile sums to about 3.22 kWh per kW per summer day and about 0.60 kWh per kW per winter day [cite:rds-823165:83].\n\n- **Energy storage:** It is set to zero because \"there is not yet evidence\" on whether storage will be used to avoid billing demand or other peaks, or only for resiliency [cite:rds-847604:115]. Storage is also assumed not to be actively charged and discharged [cite:rds-847604:112]. So no peak alignment is modelled for storage.\n- **Non-renewables:** The model applies no seasonal adjustment to them [cite:rds-847604:112]. Their output is flat across the day, so it should overlap with any peak hour.\n- **Basis:** These are modelled average-day assumptions from a revenue and billing-demand model. They are not metered output at coincident system peak.\n\n**Installed capacity by type (end of 2022)**\n\n- Toronto Hydro had 2,424 DER connections totalling over 304.9 MW. Of that, renewables were 116.2 MW [cite:rds-823236:449].\n- Non-renewables were the largest category by capacity, at 56% of installed capacity for 2022 [cite:rds-823164:61].\n- Energy storage was 28 projects totalling 18.7 MW, mostly commercial and industrial. Many of them are used to reduce global adjustment charges [cite:rds-823164:61].\n- The model's renewable nameplate for 2022 is 100,366 kW [cite:rds-823165:82].\n\n**Measured CHP output in a summer peak window**\n\nExhibit 9 reports M&V results for individual CHP projects against a summer peak period defined as June 1 to August 31, Monday to Friday, 1:00\u20137:00 pm. Four examples:\n\n- 111 kW summer peak generation against 104 kW average [cite:rds-828907:248].\n- 101 kW peak savings against 90 kW average [cite:rds-828907:291].\n- 115 kW against 114 kW [cite:rds-828907:393].\n- 109 kW against 105 kW [cite:rds-828907:332].\n\nThese are individual CHP units, not a system-wide figure. They use an M&V window, not a Toronto Hydro system peak hour. They do indicate that CHP output during summer afternoons is at or slightly above its average.\n\n**System peak timing**\n\nThe filings say summer peak (3.9 GW) exceeds winter peak (3.7 GW) in the base year. They say the network peak is expected to shift to winter in the 2030s [cite:rds-823163:647]. I did not find the hour of day of either peak. Without it, I can't state what share of solar output falls within the peak hours.\n\nA follow-up interrogatory asking for DER output at the coincident summer and winter peak hours, by technology, would be the way to get a quantified answer.",
+  "answer_rendered": "The filings I can access don't quantify DER output at the actual summer and winter system peak hours. Toronto Hydro gives hourly capacity-factor profiles by technology, but I found no statement of the system peak hours and no calculation of output at those hours. I also can't say whether Toronto Hydro answered this question in an interrogatory response, because I didn't find one. The closest evidence is below.\n\n**Hourly profile assumed for installed DERs (kWh per kW of nameplate, average day)**\n\nThe profiles are in the load-forecast integration model. Toronto Hydro supplied the capacity factors to its consultant, Clearspring [EB-2023-0195 / Exhibit 1B / p.115].\n\n| Technology | Summer | Winter |\n|---|---|---|\n| Solar (the model treats all renewables as solar) | 0 before 07:00. Output is 0.28\u20130.35 from 10:00 to 17:00 and peaks at 0.35 in the 13:00 hour. It falls to 0.09 at 19:00 and 0 from 20:00. | Much lower. The maximum is 0.07 at 13:00, and output is 0 from 20:00. |\n| Non-renewable (for example CHP) | Flat all day at about 0.65\u20130.68 | Same as summer |\n| Energy storage | 0 in every hour | 0 in every hour |\n\nThe solar profile sums to about 3.22 kWh per kW per summer day and about 0.60 kWh per kW per winter day [EB-2023-0195 / Exhibit 3 / p.83].\n\n- **Energy storage:** It is set to zero because \"there is not yet evidence\" on whether storage will be used to avoid billing demand or other peaks, or only for resiliency [EB-2023-0195 / Exhibit 1B / p.115]. Storage is also assumed not to be actively charged and discharged [EB-2023-0195 / Exhibit 1B / p.112]. So no peak alignment is modelled for storage.\n- **Non-renewables:** The model applies no seasonal adjustment to them [EB-2023-0195 / Exhibit 1B / p.112]. Their output is flat across the day, so it should overlap with any peak hour.\n- **Basis:** These are modelled average-day assumptions from a revenue and billing-demand model. They are not metered output at coincident system peak.\n\n**Installed capacity by type (end of 2022)**\n\n- Toronto Hydro had 2,424 DER connections totalling over 304.9 MW. Of that, renewables were 116.2 MW [EB-2023-0195 / Exhibit 1B / p.449].\n- Non-renewables were the largest category by capacity, at 56% of installed capacity for 2022 [EB-2023-0195 / Exhibit 2B / p.61].\n- Energy storage was 28 projects totalling 18.7 MW, mostly commercial and industrial. Many of them are used to reduce global adjustment charges [EB-2023-0195 / Exhibit 2B / p.61].\n- The model's renewable nameplate for 2022 is 100,366 kW [EB-2023-0195 / Exhibit 3 / p.82].\n\n**Measured CHP output in a summer peak window**\n\nExhibit 9 reports M&V results for individual CHP projects against a summer peak period defined as June 1 to August 31, Monday to Friday, 1:00\u20137:00 pm. Four examples:\n\n- 111 kW summer peak generation against 104 kW average [EB-2023-0195 / Exhibit 9 / p.248].\n- 101 kW peak savings against 90 kW average [EB-2023-0195 / Exhibit 9 / p.291].\n- 115 kW against 114 kW [EB-2023-0195 / Exhibit 9 / p.393].\n- 109 kW against 105 kW [EB-2023-0195 / Exhibit 9 / p.332].\n\nThese are individual CHP units, not a system-wide figure. They use an M&V window, not a Toronto Hydro system peak hour. They do indicate that CHP output during summer afternoons is at or slightly above its average.\n\n**System peak timing**\n\nThe filings say summer peak (3.9 GW) exceeds winter peak (3.7 GW) in the base year. They say the network peak is expected to shift to winter in the 2030s [EB-2023-0195 / Exhibit 2B / p.647]. I did not find the hour of day of either peak. Without it, I can't state what share of solar output falls within the peak hours.\n\nA follow-up interrogatory asking for DER output at the coincident summer and winter peak hours, by technology, would be the way to get a quantified answer.",
+  "citations": [
+    {
+      "doc_id": "rds-847604",
+      "page": 115,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 83,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 112,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 449,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 61,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 82,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 248,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 291,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 393,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 332,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 647,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B",
+    "3",
+    "9"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 26.7,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.2033318,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The reference says Toronto Hydro can't provide the data because it doesn't procure energy (kWh) from DERs. It procures only dispatchable demand response capacity. The candidate agrees that the alignment with peak hours isn't quantified, and adds modelled profiles and installed-capacity figures from the evidence. But it misses the reason the reference gives, and it doesn't mention that Toronto Hydro relies on procured dispatchable demand response.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0336116
+  }
+}

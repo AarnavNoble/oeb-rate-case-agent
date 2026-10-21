@@ -1,0 +1,77 @@
+{
+  "ir_id": "9-STAFF-342",
+  "gold_exhibits": [
+    "1B",
+    "9"
+  ],
+  "query": "Toronto Hydro proposes to establish an Innovation Fund to support the design and execution of\ninnovative pilot projects over the 2025-2029 rate period. The pilot projects undertaken through the\nInnovation Fund would be focused on testing new technologies, advanced capabilities and\nalternative strategies that enable electrification grid readiness and are responsive to the OEB\u2019s\nexpectations with respect to facilitating DER integration, as expressed in the Framework for Energy\nInnovation (FEI) report.\nToronto Hydro proposes to collect an amount of $16M through a rate rider rather than through\nbase rates to provide transparency to ratepayers on the bill and flexibility to the utility to\ndetermine how the funds should be allocated across capital and operational expenditures on the\nbasis of the selected pilot projects. Toronto Hydro proposes to establish a new symmetrical\nvariance account to record variances between the amounts collected by the rate rider and the\nactual costs incurred to execute the selected pilot projects as part of the Innovation Fund.\nToronto Hydro expects to collect the $16M during 2029.\na) Please elaborate on the rate mechanism of Toronto Hydro\u2019s collection of the $16M fund in\n2029 and how it plans to track the variance, given that the funding will be collected in\n2029.\ni. Please discuss why it is appropriate for the IFDA to be symmetrical.",
+  "answer": "The filings available to me don't answer either part directly. They give the basic design of the rate rider and the variance account, but not how a 2029-only collection is tracked, and not a separate reason for the account being symmetrical. The filings call the account the Innovation Fund Variance Account (IFVA), not \"IFDA\". I'm treating them as the same account.\n\n**a) Rate mechanism and tracking**\n\n- **Rate rider:** Toronto Hydro proposes to recover about $16M through an Innovation Fund rate rider, not base rates. It gives three reasons: the rider appears as a separate line on the bill, it gives the utility funding certainty, and it keeps the fund outside the base revenue requirement. That last point lets the utility decide whether each project's spending is capital or operating [cite:rds-823236:470].\n- **Timing:** The rate rider table shows the Innovation Fund rider with a one-year recovery period, starting and ending in 2029. It is allocated to rate classes on 2022 distribution revenue [cite:rds-847604:50]. The rider is a single fixed or volumetric charge, depending on the class, like the other rate riders [cite:rds-823176:38]. The $16M is therefore not collected evenly across 2025\u20132029. It is collected in one year, while the pilots run over the whole period.\n- **Tracking:** The IFVA records variances between the amounts collected by the rider and the actual costs of the selected pilot projects [cite:rds-823236:470]. The draft accounting order sets it up as a sub-account of Account 1508, Other Regulatory Assets. It records the difference between the Innovation Fund amount in the rider and the actual revenue requirement over the CIR period, and the entry runs through 4080 Distribution Services Revenue. A separate carrying-charges sub-account records interest at the OEB-approved rate for deferral and variance accounts, and Toronto Hydro would apply later to clear the balance [cite:rds-828907:52].\n- **What the filings don't say:** They don't explain how costs incurred in 2025\u20132028 are tracked before the 2029 collection, or whether interest accrues on that spending. They also don't give the exact mechanics of the 2029 true-up or the date of the clearance application. The draft order's wording (\"actual revenue requirement\") might imply a revenue-requirement basis, but I can't confirm that from what I read.\n\n**i) Why the account is symmetrical**\n\nThe filings describe the IFVA as \"symmetrical\" [cite:rds-828907:40], but I found no passage that argues why that is appropriate. The text that comes closest is the justification for the account as a whole:\n\n- **Causation:** The pilot costs sit outside the base revenue requirement [cite:rds-823236:470].\n- **Materiality:** The recorded amounts depend on actual pilot spending, which is set under the governance framework [cite:rds-823236:470].\n- **Prudence:** The $16M is based on comparable ratepayer-funded innovation spending elsewhere, and the governance framework gives rigour to how the funds are used [cite:rds-823236:470].\n\nThe inference is that a symmetrical account returns any unspent money to ratepayers and lets the utility recover overspending, so the rider funds only what is actually spent. This is my reading, not Toronto Hydro's stated reasoning. The company does use similar language for the Demand-Related Variance Account, which it says \"protects both ratepayers and the utility\" [cite:rds-823236:452]. That is a different account, so it only suggests how the company might argue the point.\n\nIf you need Toronto Hydro's own rationale, check its interrogatory responses on this question, which I did not find in the filings I searched.",
+  "answer_rendered": "The filings available to me don't answer either part directly. They give the basic design of the rate rider and the variance account, but not how a 2029-only collection is tracked, and not a separate reason for the account being symmetrical. The filings call the account the Innovation Fund Variance Account (IFVA), not \"IFDA\". I'm treating them as the same account.\n\n**a) Rate mechanism and tracking**\n\n- **Rate rider:** Toronto Hydro proposes to recover about $16M through an Innovation Fund rate rider, not base rates. It gives three reasons: the rider appears as a separate line on the bill, it gives the utility funding certainty, and it keeps the fund outside the base revenue requirement. That last point lets the utility decide whether each project's spending is capital or operating [EB-2023-0195 / Exhibit 1B / p.470].\n- **Timing:** The rate rider table shows the Innovation Fund rider with a one-year recovery period, starting and ending in 2029. It is allocated to rate classes on 2022 distribution revenue [EB-2023-0195 / Exhibit 1B / p.50]. The rider is a single fixed or volumetric charge, depending on the class, like the other rate riders [EB-2023-0195 / Exhibit 9 / p.38]. The $16M is therefore not collected evenly across 2025\u20132029. It is collected in one year, while the pilots run over the whole period.\n- **Tracking:** The IFVA records variances between the amounts collected by the rider and the actual costs of the selected pilot projects [EB-2023-0195 / Exhibit 1B / p.470]. The draft accounting order sets it up as a sub-account of Account 1508, Other Regulatory Assets. It records the difference between the Innovation Fund amount in the rider and the actual revenue requirement over the CIR period, and the entry runs through 4080 Distribution Services Revenue. A separate carrying-charges sub-account records interest at the OEB-approved rate for deferral and variance accounts, and Toronto Hydro would apply later to clear the balance [EB-2023-0195 / Exhibit 9 / p.52].\n- **What the filings don't say:** They don't explain how costs incurred in 2025\u20132028 are tracked before the 2029 collection, or whether interest accrues on that spending. They also don't give the exact mechanics of the 2029 true-up or the date of the clearance application. The draft order's wording (\"actual revenue requirement\") might imply a revenue-requirement basis, but I can't confirm that from what I read.\n\n**i) Why the account is symmetrical**\n\nThe filings describe the IFVA as \"symmetrical\" [EB-2023-0195 / Exhibit 9 / p.40], but I found no passage that argues why that is appropriate. The text that comes closest is the justification for the account as a whole:\n\n- **Causation:** The pilot costs sit outside the base revenue requirement [EB-2023-0195 / Exhibit 1B / p.470].\n- **Materiality:** The recorded amounts depend on actual pilot spending, which is set under the governance framework [EB-2023-0195 / Exhibit 1B / p.470].\n- **Prudence:** The $16M is based on comparable ratepayer-funded innovation spending elsewhere, and the governance framework gives rigour to how the funds are used [EB-2023-0195 / Exhibit 1B / p.470].\n\nThe inference is that a symmetrical account returns any unspent money to ratepayers and lets the utility recover overspending, so the rider funds only what is actually spent. This is my reading, not Toronto Hydro's stated reasoning. The company does use similar language for the Demand-Related Variance Account, which it says \"protects both ratepayers and the utility\" [EB-2023-0195 / Exhibit 1B / p.452]. That is a different account, so it only suggests how the company might argue the point.\n\nIf you need Toronto Hydro's own rationale, check its interrogatory responses on this question, which I did not find in the filings I searched.",
+  "citations": [
+    {
+      "doc_id": "rds-823236",
+      "page": 470,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 50,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823176",
+      "page": 38,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 52,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 40,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 452,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "9"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 3,
+  "num_turns": 4,
+  "seconds": 29.9,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.1106401,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate gets the basic design right: a rate rider of about $16M collected only in 2029, plus the IFVA, which tracks rider revenue against actual pilot costs and earns carrying charges. It misses the reference's key mechanics: the account sits in a debit position from 2025 to 2028, 2029 collections credit it, and the balance is reconciled at the end of the term and disposed of in the 2030+ rebasing application. It also leaves out Toronto Hydro's stated reason for symmetry (flexibility and no hard cap, given funding at the low end of the range) and offers only its own inference instead.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0437756
+  }
+}

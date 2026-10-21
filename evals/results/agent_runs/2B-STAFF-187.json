@@ -1,0 +1,108 @@
+{
+  "ir_id": "2B-STAFF-187",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "Toronto Hydro states: \u201cToronto Hydro does not propose any net expenditure under this Program\nfor the years 2025 to 2029. If during the course of the project, Toronto Hydro does not use all of\nthe fees collected from the customer to facilitate the DER connection, Toronto Hydro will refund\nthe difference back to the customer.\u201d\na) Please identify all capital expenditures planned for 2025-2029 intended to enable the\nToronto Hydro system to host new DERs connecting solely within the 2025-2029 test\nperiod.\nb) Please identify all capital expenditures planned for 2025-2029 intended to enable the\nToronto Hydro system to host new DERs connecting beyond the test period.",
+  "answer": "**Short answer:** The filings available to me don't split capital between DERs that connect within 2025\u20132029 and DERs that connect after 2029. No program is labelled that way. The only DER-hosting capital I found is in two programs. Toronto Hydro describes both as serving DER growth forecast through 2029, and says nothing about connections after 2029.\n\n**Context for the quoted statement.** The \"no net expenditure\" sentence applies only to the Generation Connection segment. Customer capital contributions recover the project costs of connecting DERs [cite:rds-823164:117]. The hosting-capacity investments below sit in separate programs and are funded by the utility.\n\n**a) Capital for DERs connecting within 2025\u20132029**\n\n- **Generation Protection, Monitoring and Control (GPMC) program, $35.0M over 2025\u20132029** [cite:rds-823164:212]. It is customer-driven, and the investment is sized to the 2023\u20132029 DER connection forecast. That forecast reaches about 516.7 MW by 2029 [cite:rds-823164:198].\n  - **Monitoring and control systems (MCS), about $14.5M.** These are installed at renewable DER sites as connections occur, at about $25,000 per site [cite:rds-823164:213].\n  - **Bus-tie reactors, $20.4M.** They mitigate short-circuit limits at six Hydro One-owned transformer stations, with one installed per year from 2025 [cite:rds-823164:212]:\n\n| Year | Station |\n|---|---|\n| 2025 | Richview |\n| 2026 | Runnymede |\n| 2027 | Cecil |\n| 2028 | Esplanade |\n| 2029 | Leslie and Woodbridge |\n\n  The bus-tie reactors address eight stations that Toronto Hydro expects to exceed short-circuit capacity by 2029 [cite:rds-823164:201]. Annual program costs run $5.9M, $6.1M, $6.3M, $6.5M and $10.3M for 2025\u20132029 [cite:rds-823164:212].\n\n- **Renewable-enabling energy storage systems (Non-Wires Solutions program), $22.5M.** Toronto Hydro plans nine systems totalling 10.2 MW on nine feeders. The feeders were chosen because of forecast generation-to-minimum-load ratios over 2025\u20132029 [cite:rds-823163:687] [cite:rds-832681:380].\n\n**b) Capital for DERs connecting beyond the test period**\n\nThe filings don't identify any capital intended specifically for post-2029 connections. These are the nearest items:\n\n- Toronto Hydro says MCS data will feed hosting-capacity analysis and \"lay the foundation\" for longer-term DER management. It also says this has \"long-term value\" for planning future DER connections [cite:rds-823164:207] [cite:rds-823164:198]. The spending is still part of the GPMC program above.\n- Toronto Hydro notes that the Future Energy Scenarios high case (Net Zero by 2040) could reach 1,249 MW by 2029 and \"could require significant investment in hosting capacity expansion, grid modernization, and innovation.\" No funding is requested for that scenario in this passage [cite:rds-823164:198].\n- Toronto Hydro says it won't build station expansions solely for DER connections. DER capacity is treated as a secondary benefit of expansions needed for load, such as Sheppard TS [cite:rds-823164:201].\n\n**Related items that are not hosting-capacity capital** (these are in the Grid Modernization Strategy, with costs as listed there):\n- Hosting capacity map: $1M, in IT/OT systems [cite:rds-823163:686].\n- GIS DER asset tracking: $1.5M, in IT/OT systems [cite:rds-823163:686].\n- Flexibility Services: $5.7M OPEX [cite:rds-823163:688].\n- Energy Centre enhancement: $150K OPEX [cite:rds-823163:688].\n\nI did not find interrogatory responses in these filings. The formal answer to this question may be in one, so you may want to check for it.",
+  "answer_rendered": "**Short answer:** The filings available to me don't split capital between DERs that connect within 2025\u20132029 and DERs that connect after 2029. No program is labelled that way. The only DER-hosting capital I found is in two programs. Toronto Hydro describes both as serving DER growth forecast through 2029, and says nothing about connections after 2029.\n\n**Context for the quoted statement.** The \"no net expenditure\" sentence applies only to the Generation Connection segment. Customer capital contributions recover the project costs of connecting DERs [EB-2023-0195 / Exhibit 2B / p.117]. The hosting-capacity investments below sit in separate programs and are funded by the utility.\n\n**a) Capital for DERs connecting within 2025\u20132029**\n\n- **Generation Protection, Monitoring and Control (GPMC) program, $35.0M over 2025\u20132029** [EB-2023-0195 / Exhibit 2B / p.212]. It is customer-driven, and the investment is sized to the 2023\u20132029 DER connection forecast. That forecast reaches about 516.7 MW by 2029 [EB-2023-0195 / Exhibit 2B / p.198].\n  - **Monitoring and control systems (MCS), about $14.5M.** These are installed at renewable DER sites as connections occur, at about $25,000 per site [EB-2023-0195 / Exhibit 2B / p.213].\n  - **Bus-tie reactors, $20.4M.** They mitigate short-circuit limits at six Hydro One-owned transformer stations, with one installed per year from 2025 [EB-2023-0195 / Exhibit 2B / p.212]:\n\n| Year | Station |\n|---|---|\n| 2025 | Richview |\n| 2026 | Runnymede |\n| 2027 | Cecil |\n| 2028 | Esplanade |\n| 2029 | Leslie and Woodbridge |\n\n  The bus-tie reactors address eight stations that Toronto Hydro expects to exceed short-circuit capacity by 2029 [EB-2023-0195 / Exhibit 2B / p.201]. Annual program costs run $5.9M, $6.1M, $6.3M, $6.5M and $10.3M for 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.212].\n\n- **Renewable-enabling energy storage systems (Non-Wires Solutions program), $22.5M.** Toronto Hydro plans nine systems totalling 10.2 MW on nine feeders. The feeders were chosen because of forecast generation-to-minimum-load ratios over 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.687] [EB-2023-0195 / Exhibit 2A / p.380].\n\n**b) Capital for DERs connecting beyond the test period**\n\nThe filings don't identify any capital intended specifically for post-2029 connections. These are the nearest items:\n\n- Toronto Hydro says MCS data will feed hosting-capacity analysis and \"lay the foundation\" for longer-term DER management. It also says this has \"long-term value\" for planning future DER connections [EB-2023-0195 / Exhibit 2B / p.207] [EB-2023-0195 / Exhibit 2B / p.198]. The spending is still part of the GPMC program above.\n- Toronto Hydro notes that the Future Energy Scenarios high case (Net Zero by 2040) could reach 1,249 MW by 2029 and \"could require significant investment in hosting capacity expansion, grid modernization, and innovation.\" No funding is requested for that scenario in this passage [EB-2023-0195 / Exhibit 2B / p.198].\n- Toronto Hydro says it won't build station expansions solely for DER connections. DER capacity is treated as a secondary benefit of expansions needed for load, such as Sheppard TS [EB-2023-0195 / Exhibit 2B / p.201].\n\n**Related items that are not hosting-capacity capital** (these are in the Grid Modernization Strategy, with costs as listed there):\n- Hosting capacity map: $1M, in IT/OT systems [EB-2023-0195 / Exhibit 2B / p.686].\n- GIS DER asset tracking: $1.5M, in IT/OT systems [EB-2023-0195 / Exhibit 2B / p.686].\n- Flexibility Services: $5.7M OPEX [EB-2023-0195 / Exhibit 2B / p.688].\n- Energy Centre enhancement: $150K OPEX [EB-2023-0195 / Exhibit 2B / p.688].\n\nI did not find interrogatory responses in these filings. The formal answer to this question may be in one, so you may want to check for it.",
+  "citations": [
+    {
+      "doc_id": "rds-823164",
+      "page": 117,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 212,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 198,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 213,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 201,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 687,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-832681",
+      "page": 380,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2A",
+      "title": "THESL_Exhibit 2A_Rate Base_20240124",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 207,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 686,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 688,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "2A",
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 8,
+  "num_turns": 9,
+  "seconds": 32.5,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.22067179999999997,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate correctly identifies GPMC and Non-Wires Solutions as DER-hosting capital and covers the grid modernization investments. However, it says DER-hosting capital is limited to two programs and treats Sheppard TS only as a side benefit of a load-driven expansion, so it misses the reference's third program (Station Expansion \u2013 Sheppard TS). Its answer to part (b) also differs from the reference, which says some of these expenditures may enable hosting capacity beyond the test period.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0400196
+  }
+}

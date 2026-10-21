@@ -16,7 +16,7 @@ import json
 import time
 from pathlib import Path
 
-from oeb.search import Filters, fts, hybrid, vector
+from oeb.search import Filters, _shingles, fts, hybrid, vector
 
 HERE = Path(__file__).parent
 DATA = HERE / "data" / "ir_eval.jsonl"
@@ -120,6 +120,20 @@ def baselines(rows: list[dict], pages: PageUnits, seeds: int = 20) -> dict:
             "exhibit_label_prior": {"exhibit": metrics(prior_ranks), "order": order[:5]}}
 
 
+def _evidence_doc_ids(case: str) -> set[str]:
+    from oeb.db import connect
+
+    with connect() as conn:
+        return {r["doc_id"] for r in conn.execute(
+            "SELECT doc_id FROM documents WHERE case_number = %s AND doc_kind = 'evidence'", (case,))}
+
+
+def _containment(text: str, reference: set) -> float:
+    """Share of the hit's word 5-grams that also occur in the reference text."""
+    sh = _shingles(text)
+    return len(sh & reference) / max(1, len(sh))
+
+
 def run_retrieval() -> dict:
     rows = load_rows()
     case = rows[0]["case_number"]
@@ -130,7 +144,9 @@ def run_retrieval() -> dict:
     ranks: dict[str, dict[str, list[int | None]]] = {
         name: {"response_gold": [], "unit_gold": [], "question_ref_gold": []} for name in RETRIEVERS}
     leak: list[bool] = []
+    evidence_docs = _evidence_doc_ids(case)
     for row in rows:
+        response_shingles = _shingles(row["response"])
         gold = set(row["response_exhibits"])
         ref_gold = set(row["reference_exhibits"]) | {row["ir_exhibit"]}
         rec = {"ir_id": row["ir_id"], "gold": sorted(gold), "gold_units": row["response_units"]}
@@ -147,10 +163,12 @@ def run_retrieval() -> dict:
                 ranks[name]["unit_gold"].append(ru)
             rec[name] = {"rank": r, "unit_rank": ru,
                          "top5": [f"{h.exhibit}|{h.doc_id}|p{h.page_start}" for h in hits[:5]]}
-        # ablation: same query, IR documents left in the index
+        # ablation: same query, IR documents left in the index. A leak is any non-evidence hit
+        # whose text is largely the utility's own response (matched by content, because the
+        # same response can be filed in several documents and duplicates are collapsed).
         leaky = hybrid.search(row["query"], 5, Filters(case_numbers=[row["case_number"]]))
-        leak.append(any(h.doc_id == row["doc_id"] and h.page_start <= row["page_end"]
-                        and h.page_end >= row["page_start"] for h in leaky))
+        leak.append(any(h.doc_id not in evidence_docs and _containment(h.text, response_shingles) >= 0.3
+                        for h in leaky))
         per_row.append(rec)
 
     for name in RETRIEVERS:
@@ -162,8 +180,9 @@ def run_retrieval() -> dict:
         }
     out["baselines"] = baselines(rows, pages)
     out["leakage_ablation"] = {
-        "description": "hybrid top-5 over ALL documents (no leakage control): share of queries whose own "
-                       "IR response pages are retrieved",
+        "description": "hybrid top-5 over ALL documents (no leakage control): share of queries for which a "
+                       "non-evidence hit is largely the utility's own response text (>=30% of its word "
+                       "5-grams; unrelated chunks score <0.15)",
         "share": round(sum(leak) / len(leak), 3),
     }
     RESULTS.mkdir(exist_ok=True)
@@ -202,8 +221,8 @@ def retrieval_md(out: dict) -> str:
         m = r["question_ref_gold"]
         lines.append(f"| {name} | {m['recall@5']:.3f} | {m['mrr@10']:.3f} |")
     a = out["leakage_ablation"]
-    lines += ["", f"Leakage ablation: without the evidence-only filter, hybrid top-5 contains the query's own "
-                  f"IR response for **{a['share']:.1%}** of questions.", ""]
+    lines += ["", f"Leakage ablation: without the evidence-only filter, hybrid top-5 contains the utility's own "
+                  f"answer to the question (matched by text, in any filing) for **{a['share']:.1%}** of questions.", ""]
     return "\n".join(lines)
 
 
@@ -273,8 +292,8 @@ def update_readme() -> None:
         parts += ["", "**Agent**", "", agent_md(json.loads((RESULTS / "agent.json").read_text()))]
     for name in ("hand_checks.json",):
         p = RESULTS / name
-        if p.exists():
-            h = json.loads(p.read_text())
+        h = json.loads(p.read_text()) if p.exists() else {}
+        if h:
             parts += ["", "**Hand checks**", "", *[f"- {k}: {v}" for k, v in h.items()]]
     text = README.read_text()
     head, rest = text.split(START, 1)

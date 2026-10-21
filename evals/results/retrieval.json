@@ -1,0 +1,118 @@
+{
+  "n_rows": 472,
+  "n_unit_rows": 449,
+  "k": 10,
+  "retrievers": {
+    "fts": {
+      "response_gold": {
+        "n": 472,
+        "recall@1": 0.547,
+        "recall@5": 0.828,
+        "recall@10": 0.896,
+        "mrr@10": 0.665
+      },
+      "unit_gold": {
+        "n": 449,
+        "recall@1": 0.281,
+        "recall@5": 0.506,
+        "recall@10": 0.606,
+        "mrr@10": 0.377
+      },
+      "question_ref_gold": {
+        "n": 472,
+        "recall@1": 0.544,
+        "recall@5": 0.82,
+        "recall@10": 0.886,
+        "mrr@10": 0.658
+      },
+      "median_latency_ms": 115
+    },
+    "vector": {
+      "response_gold": {
+        "n": 472,
+        "recall@1": 0.646,
+        "recall@5": 0.856,
+        "recall@10": 0.913,
+        "mrr@10": 0.733
+      },
+      "unit_gold": {
+        "n": 449,
+        "recall@1": 0.425,
+        "recall@5": 0.628,
+        "recall@10": 0.717,
+        "mrr@10": 0.514
+      },
+      "question_ref_gold": {
+        "n": 472,
+        "recall@1": 0.657,
+        "recall@5": 0.858,
+        "recall@10": 0.915,
+        "mrr@10": 0.745
+      },
+      "median_latency_ms": 52
+    },
+    "hybrid": {
+      "response_gold": {
+        "n": 472,
+        "recall@1": 0.65,
+        "recall@5": 0.858,
+        "recall@10": 0.896,
+        "mrr@10": 0.733
+      },
+      "unit_gold": {
+        "n": 449,
+        "recall@1": 0.396,
+        "recall@5": 0.617,
+        "recall@10": 0.697,
+        "mrr@10": 0.489
+      },
+      "question_ref_gold": {
+        "n": 472,
+        "recall@1": 0.667,
+        "recall@5": 0.875,
+        "recall@10": 0.922,
+        "mrr@10": 0.75
+      },
+      "median_latency_ms": 247
+    }
+  },
+  "baselines": {
+    "random_chunks": {
+      "exhibit": {
+        "n": 472,
+        "recall@1": 0.339,
+        "recall@5": 0.748,
+        "recall@10": 0.845,
+        "mrr@10": 0.508
+      },
+      "unit": {
+        "n": 449,
+        "recall@1": 0.038,
+        "recall@5": 0.161,
+        "recall@10": 0.289,
+        "mrr@10": 0.096
+      },
+      "seeds": 20
+    },
+    "exhibit_label_prior": {
+      "exhibit": {
+        "n": 472,
+        "recall@1": 0.604,
+        "recall@5": 0.941,
+        "recall@10": 1.0,
+        "mrr@10": 0.741
+      },
+      "order": [
+        "2B",
+        "1B",
+        "4",
+        "3",
+        "2A"
+      ]
+    }
+  },
+  "leakage_ablation": {
+    "description": "hybrid top-5 over ALL documents (no leakage control): share of queries for which a non-evidence hit is largely the utility's own response text (>=30% of its word 5-grams; unrelated chunks score <0.15)",
+    "share": 0.606
+  }
+}

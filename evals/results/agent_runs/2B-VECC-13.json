@@ -1,0 +1,68 @@
+{
+  "ir_id": "2B-VECC-13",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "a) Please provide a table showing the number of new meters installed and, separately, the\nnumber of meters reverified/resealed for the residential and GS<50 rate classes",
+  "answer": "The filings I can access don't give a table that splits new meters installed and meters reverified/resealed by rate class, either for the Residential class or for GS<50 kW. They give combined totals, so I can't fill in the table you asked for without guessing. I searched the Toronto Hydro application (EB-2023-0195). The Hydro One application (EB-2026-0164) did not surface in any of the metering searches.\n\n**Reverified/resealed (sampling and re-verification units)**\n\nThese are forecast totals for all meter classes, not Residential and GS<50 only. They are the \"Sampling/Re-verification units\" under the seal-expiry testing program [cite:rds-832675:93].\n\n| Year | Seal-expiring meters | Sampling/re-verification units |\n|---|---|---|\n| 2025 | 196,127 | 10,464 |\n| 2026 | 155,463 | 13,201 |\n| 2027 | 70,968 | 14,783 |\n| 2028 | 68,151 | 15,396 |\n| 2029 | 28,242 | 11,311 |\n| Total | 518,951 | 65,155 |\n\nIf a sampled group passes testing, the seals for all meters in that group are extended, by eight years for smart meters with a ten-year initial seal [cite:rds-832675:93]. So the number of meters resealed is larger than the number of units tested.\n\nThe filing says the bulk of Residential and small commercial meters have seals expiring in 2024\u20132026 [cite:rds-823164:177].\n\n**New meters installed**\n\nThe filing gives only aggregate counts for Residential and small commercial & industrial (GS<50) meters combined:\n- About 50,000 meters are planned for replacement in 2020\u20132024 as part of the AMI 2.0 project [cite:rds-823164:187].\n- About 630,000 meters are planned for replacement in 2025\u20132029 [cite:rds-823164:187].\n- Elsewhere the filing states approximately 680,000 meters for 2023\u20132028 [cite:rds-823164:182].\n\nThe filing does not say how these replacements divide between Residential and GS<50, or by year. These are also replacements, not new-connection installs.\n\n**Other classes (not the ones you asked about)**\n- Suite meters (a separate class from Residential and GS<50): about 2,000 new units a year on average in 2025\u20132029 [cite:rds-823164:178].\n- Large-user ION meters: shown only in a chart [cite:rds-823164:178].\n\nA response to an interrogatory (a written information request) may contain the class-level split, but I did not find one. You could ask Toronto Hydro directly for the new installs and reverified/resealed counts by class and year.",
+  "answer_rendered": "The filings I can access don't give a table that splits new meters installed and meters reverified/resealed by rate class, either for the Residential class or for GS<50 kW. They give combined totals, so I can't fill in the table you asked for without guessing. I searched the Toronto Hydro application (EB-2023-0195). The Hydro One application (EB-2026-0164) did not surface in any of the metering searches.\n\n**Reverified/resealed (sampling and re-verification units)**\n\nThese are forecast totals for all meter classes, not Residential and GS<50 only. They are the \"Sampling/Re-verification units\" under the seal-expiry testing program [EB-2023-0195 / Exhibit 4 / p.93].\n\n| Year | Seal-expiring meters | Sampling/re-verification units |\n|---|---|---|\n| 2025 | 196,127 | 10,464 |\n| 2026 | 155,463 | 13,201 |\n| 2027 | 70,968 | 14,783 |\n| 2028 | 68,151 | 15,396 |\n| 2029 | 28,242 | 11,311 |\n| Total | 518,951 | 65,155 |\n\nIf a sampled group passes testing, the seals for all meters in that group are extended, by eight years for smart meters with a ten-year initial seal [EB-2023-0195 / Exhibit 4 / p.93]. So the number of meters resealed is larger than the number of units tested.\n\nThe filing says the bulk of Residential and small commercial meters have seals expiring in 2024\u20132026 [EB-2023-0195 / Exhibit 2B / p.177].\n\n**New meters installed**\n\nThe filing gives only aggregate counts for Residential and small commercial & industrial (GS<50) meters combined:\n- About 50,000 meters are planned for replacement in 2020\u20132024 as part of the AMI 2.0 project [EB-2023-0195 / Exhibit 2B / p.187].\n- About 630,000 meters are planned for replacement in 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.187].\n- Elsewhere the filing states approximately 680,000 meters for 2023\u20132028 [EB-2023-0195 / Exhibit 2B / p.182].\n\nThe filing does not say how these replacements divide between Residential and GS<50, or by year. These are also replacements, not new-connection installs.\n\n**Other classes (not the ones you asked about)**\n- Suite meters (a separate class from Residential and GS<50): about 2,000 new units a year on average in 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.178].\n- Large-user ION meters: shown only in a chart [EB-2023-0195 / Exhibit 2B / p.178].\n\nA response to an interrogatory (a written information request) may contain the class-level split, but I did not find one. You could ask Toronto Hydro directly for the new installs and reverified/resealed counts by class and year.",
+  "citations": [
+    {
+      "doc_id": "rds-832675",
+      "page": 93,
+      "case_number": "EB-2023-0195",
+      "exhibit": "4",
+      "title": "THESL_Exhibit 4_Operating Expenses_20240124",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 177,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 187,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 182,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 178,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "2B",
+    "4"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 20.0,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.18406060000000002,
+  "judge": {
+    "verdict": "incorrect",
+    "rationale": "The reference gives yearly tables for 2020\u20132029. The candidate gives no year-by-year new-installation figures. Its reverification counts don't match the reference: for 2025, for example, it gives 10,464 against the reference's 9,782. Its aggregate of about 50,000 new meters for 2020\u20132024 contradicts the reference, whose figures for those years add up to roughly 164,000.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0287436
+  }
+}

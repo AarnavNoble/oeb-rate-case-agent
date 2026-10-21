@@ -1,0 +1,84 @@
+{
+  "ir_id": "2B-ED-30",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "a) Please provide a table showing the forecast spending on distributed energy resources\n(DER) in each year, and total over the five-year term, with a breakdown by (i) type of DER\n(efficiency, demand response, storage, etc.), (ii) cost amount by source of funding\n(ratepayers, government, etc.), (iii) capital versus operational spending, and (iv) whether\nthe spending is likely to be on new DERs facilities versus existing DERs (e.g. contracting for\nan addition service from a pre-existing generator).",
+  "answer": "This answer covers Toronto Hydro (EB-2023-0195) only. The filings don't give one consolidated DER spending table with all four breakdowns. I built the table below from three program tables and the funding rules in the filing. I found no DER spending forecast for Hydro One (EB-2026-0164): two searches limited to that case returned errors, and an unfiltered search returned only Toronto Hydro material. So I can't say whether Hydro One has comparable figures.\n\n**Toronto Hydro 2025\u20132029 DER-related spending ($M, nominal)**\n\n| Program | Type of DER | Capex / Opex | 2025 | 2026 | 2027 | 2028 | 2029 | Total |\n|---|---|---|---|---|---|---|---|---|\n| Renewable-enabling battery storage (BESS) | Storage | Capex | 3.6 | 3.6 | 7.5 | 3.8 | 4.0 | 22.5 [cite:rds-823164:589] |\n| Generation protection: bus-tie reactors | Connection enabling (solar, storage, other generation) | Capex | 3.2 | 3.3 | 3.4 | 3.5 | 7.1 | 20.4 [cite:rds-823164:212] |\n| Generation protection: monitoring and control | Connection enabling (solar, storage, other generation) | Capex | 2.6 | 2.8 | 2.9 | 3.0 | 3.2 | 14.5 (sum of the rounded annual figures) [cite:rds-823164:212] |\n| Flexibility Services (local demand response) | Demand response | Opex | 0.2 | 0.9 | 1.1 | 1.6 | 1.9 | 5.7 [cite:rds-834051:138] |\n| **Total** | | | **9.6** | **10.6** | **14.9** | **11.9** | **17.1** | **~63.2** |\n\n- The monitoring-and-control line is the filed program total of $35.0M minus the bus-tie reactor total of $20.4M. The filed annual totals for the generation-protection program are 5.9, 6.1, 6.3, 6.5 and 10.3, which sum to $35.1M (shown as $35.0M) [cite:rds-823164:212].\n- Efficiency/CDM is not in this table. I found no energy-efficiency spending in these DER programs.\n\n**(i) Type.** The spending is storage (BESS), demand response (Flexibility Services) and grid upgrades that let customers' DERs connect (bus-tie reactors, monitoring and control).\n- The BESS plan is nine projects totalling 10.2 MW, deployed 1, 2, 2, 2 and 2 across 2025\u20132029. They are aimed at feeders where solar penetration is high [cite:rds-823164:590].\n- Flexibility Services targets are 10 MW in 2026, 15 MW in 2027, 25 MW in 2028 and 30 MW in 2029 [cite:rds-834051:138].\n\n**(ii) Source of funding.**\n- **Renewable-enabling BESS:** 94% comes from the provincial renewable-enabling-improvement revenue stream, which is recovered from Ontario ratepayers generally. The other 6% goes into Toronto Hydro's rate base [cite:rds-823164:590]. The filing says this 6% share is $1.6M, but 6% of $22.5M is about $1.35M. I flag the discrepancy rather than resolve it.\n- **Generation protection:** the same exhibit lists it as a renewable-enabling improvement [cite:rds-832681:382]. I did not see its provincial/local split stated on the pages I read.\n- **Flexibility Services:** this is operating cost, so it is recovered from Toronto Hydro's own ratepayers through distribution rates. That is my inference, not an explicit statement.\n- **Other sources:** I found no government grants, subsidies or third-party contributions in these programs.\n\n**(iii) Capital versus operating.** Everything above is capital except Flexibility Services, which is \"OPEX only\". That is about $57.4M capital (about 91%) and $5.7M operating.\n\n**(iv) New versus existing DERs.**\n- **New facilities:** the BESS units are new utility-owned assets. The bus-tie reactors and monitoring equipment are new utility assets that enable customers' new connections.\n- **Contracted capacity:** Flexibility Services buys capacity from \"owners of DERs and flexible loads\" through aggregators [cite:rds-823163:688]. The filing doesn't say how much of this will be new versus existing resources. The capacity payment is assumed at $700/MW-day and is expected to fall with competitive procurement, so $5.7M is a ceiling [cite:rds-834051:138].\n\n**Other DER-related items not in the table.** The grid-modernization summary lists an Energy Centre (DERMS) enhancement for monitoring and forecasting DERs at $2.5M, and $150K of opex for leveraging DERs [cite:rds-823163:689]. It does not give a year-by-year split or a capital/operating split for the $2.5M, so I left it out. The $248.1M smart-meter program is also tied to DER monitoring, but it is mostly a general meter replacement, so I left it out too [cite:rds-823163:689].",
+  "answer_rendered": "This answer covers Toronto Hydro (EB-2023-0195) only. The filings don't give one consolidated DER spending table with all four breakdowns. I built the table below from three program tables and the funding rules in the filing. I found no DER spending forecast for Hydro One (EB-2026-0164): two searches limited to that case returned errors, and an unfiltered search returned only Toronto Hydro material. So I can't say whether Hydro One has comparable figures.\n\n**Toronto Hydro 2025\u20132029 DER-related spending ($M, nominal)**\n\n| Program | Type of DER | Capex / Opex | 2025 | 2026 | 2027 | 2028 | 2029 | Total |\n|---|---|---|---|---|---|---|---|---|\n| Renewable-enabling battery storage (BESS) | Storage | Capex | 3.6 | 3.6 | 7.5 | 3.8 | 4.0 | 22.5 [EB-2023-0195 / Exhibit 2B / p.589] |\n| Generation protection: bus-tie reactors | Connection enabling (solar, storage, other generation) | Capex | 3.2 | 3.3 | 3.4 | 3.5 | 7.1 | 20.4 [EB-2023-0195 / Exhibit 2B / p.212] |\n| Generation protection: monitoring and control | Connection enabling (solar, storage, other generation) | Capex | 2.6 | 2.8 | 2.9 | 3.0 | 3.2 | 14.5 (sum of the rounded annual figures) [EB-2023-0195 / Exhibit 2B / p.212] |\n| Flexibility Services (local demand response) | Demand response | Opex | 0.2 | 0.9 | 1.1 | 1.6 | 1.9 | 5.7 [EB-2023-0195 / Exhibit 2B / p.138] |\n| **Total** | | | **9.6** | **10.6** | **14.9** | **11.9** | **17.1** | **~63.2** |\n\n- The monitoring-and-control line is the filed program total of $35.0M minus the bus-tie reactor total of $20.4M. The filed annual totals for the generation-protection program are 5.9, 6.1, 6.3, 6.5 and 10.3, which sum to $35.1M (shown as $35.0M) [EB-2023-0195 / Exhibit 2B / p.212].\n- Efficiency/CDM is not in this table. I found no energy-efficiency spending in these DER programs.\n\n**(i) Type.** The spending is storage (BESS), demand response (Flexibility Services) and grid upgrades that let customers' DERs connect (bus-tie reactors, monitoring and control).\n- The BESS plan is nine projects totalling 10.2 MW, deployed 1, 2, 2, 2 and 2 across 2025\u20132029. They are aimed at feeders where solar penetration is high [EB-2023-0195 / Exhibit 2B / p.590].\n- Flexibility Services targets are 10 MW in 2026, 15 MW in 2027, 25 MW in 2028 and 30 MW in 2029 [EB-2023-0195 / Exhibit 2B / p.138].\n\n**(ii) Source of funding.**\n- **Renewable-enabling BESS:** 94% comes from the provincial renewable-enabling-improvement revenue stream, which is recovered from Ontario ratepayers generally. The other 6% goes into Toronto Hydro's rate base [EB-2023-0195 / Exhibit 2B / p.590]. The filing says this 6% share is $1.6M, but 6% of $22.5M is about $1.35M. I flag the discrepancy rather than resolve it.\n- **Generation protection:** the same exhibit lists it as a renewable-enabling improvement [EB-2023-0195 / Exhibit 2A / p.382]. I did not see its provincial/local split stated on the pages I read.\n- **Flexibility Services:** this is operating cost, so it is recovered from Toronto Hydro's own ratepayers through distribution rates. That is my inference, not an explicit statement.\n- **Other sources:** I found no government grants, subsidies or third-party contributions in these programs.\n\n**(iii) Capital versus operating.** Everything above is capital except Flexibility Services, which is \"OPEX only\". That is about $57.4M capital (about 91%) and $5.7M operating.\n\n**(iv) New versus existing DERs.**\n- **New facilities:** the BESS units are new utility-owned assets. The bus-tie reactors and monitoring equipment are new utility assets that enable customers' new connections.\n- **Contracted capacity:** Flexibility Services buys capacity from \"owners of DERs and flexible loads\" through aggregators [EB-2023-0195 / Exhibit 2B / p.688]. The filing doesn't say how much of this will be new versus existing resources. The capacity payment is assumed at $700/MW-day and is expected to fall with competitive procurement, so $5.7M is a ceiling [EB-2023-0195 / Exhibit 2B / p.138].\n\n**Other DER-related items not in the table.** The grid-modernization summary lists an Energy Centre (DERMS) enhancement for monitoring and forecasting DERs at $2.5M, and $150K of opex for leveraging DERs [EB-2023-0195 / Exhibit 2B / p.689]. It does not give a year-by-year split or a capital/operating split for the $2.5M, so I left it out. The $248.1M smart-meter program is also tied to DER monitoring, but it is mostly a general meter replacement, so I left it out too [EB-2023-0195 / Exhibit 2B / p.689].",
+  "citations": [
+    {
+      "doc_id": "rds-823164",
+      "page": 589,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 212,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 138,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 590,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-832681",
+      "page": 382,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2A",
+      "title": "THESL_Exhibit 2A_Rate Base_20240124",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 688,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 689,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "2A",
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 30,
+  "num_turns": 31,
+  "seconds": 104.0,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.6526514999999998,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate gets the core figures right. It has $5.7M of opex for local demand response, and it has $22.5M of BESS capex, split 94% provincial and 6% rate base. That works out to about $21.2M and $1.35M, which matches the reference's $21.2M and $1.4M, and it correctly calls the storage assets new. However, it says the filing doesn't show whether demand response will come from new or existing DERs, while the reference states it contracts existing customer-owned DERs. It also adds $35M of generation-protection capex, which pushes its total to about $63M, outside the reference's scope. The reference itself says Toronto Hydro proposes no net spending on DER connections.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0411676
+  }
+}

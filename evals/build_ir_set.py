@@ -95,7 +95,7 @@ def write_review_sample(rows: list[IRRow], n: int = 20) -> None:
         lines += [f"## {i}. {r.ir_id}  (doc `{r.doc_id}`, pp. {r.page_start}-{r.page_end})", "",
                   f"- gold (response) exhibits: **{', '.join(r.response_exhibits)}**",
                   f"- reference-line exhibits: {', '.join(r.reference_exhibits) or '-'}",
-                  f"- PDF: `/pdf/{r.doc_id}#page={r.page_start}`", "",
+                  f"- PDF: http://localhost:3077/api/pdf/{r.doc_id}#page={r.page_start}", "",
                   "**Question (as filed)**", "", "```", r.question[:2500], "```", "",
                   "**Query used for retrieval (locations stripped)**", "", "```", r.query[:1500], "```", "",
                   "**Response**", "", "```", r.response[:3000], "```", "",

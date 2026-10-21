@@ -1,0 +1,86 @@
+{
+  "ir_id": "2B-AMPCO-30",
+  "gold_exhibits": [
+    "1B",
+    "2B"
+  ],
+  "query": "a) Please discuss if Toronto Hydro tracks Program Accomplishments at the segment/program\nlevel or portfolio level, or both.",
+  "answer": "**Answer: both.** The filings show Toronto Hydro tracking at several levels: individual project, program, and portfolio. I found no filing that uses \"Program Accomplishments\" as a defined term or reporting category. The evidence below is therefore about how Toronto Hydro monitors and reports its work, not a formal \"Program Accomplishments\" metric.\n\n**Project and program level**\n- Program Management staff \"track the status of projects in the work program and the roll-up of the projects into programs and portfolios\" [cite:rds-832675:329].\n- The Scope Issuance and Tracking function tracks all issued scopes to completion. It captures cancellations and unassigned scopes [cite:rds-832675:329].\n- Projects are tracked from detailed design through construction. Toronto Hydro monitors changes through monthly executive performance reporting, key program status reporting, change requests and project variance analysis [cite:rds-823163:26].\n\n**Portfolio level**\n- Under the annual Investment Planning and Portfolio Reporting (IPPR) process, Toronto Hydro \"monitors and assesses the progress of its system capital and maintenance programs against annual and longer-term budget, execution, and performance objectives\" [cite:rds-823163:5].\n- Portfolio Reporting covers \"program level expenditures, project-specific execution status and project expenditures.\" Toronto Hydro also watches system-level outcomes, such as average reliability. It tracks the effect of specific programs on specific outcomes, such as the reduction in poles at end of serviceable life [cite:rds-823163:20].\n\n**Program-level accomplishments used in planning**\n- Toronto Hydro analyzed \"actual project accomplishments and costs in each program\" to set the project- and volume-based assumptions for its 2025\u20132029 program cost estimates [cite:rds-823164:56].\n- That is a program-level use of accomplishments data. The wording is \"project accomplishments,\" not \"Program Accomplishments.\"\n\n**Utility-wide measures**\n- A performance outcomes framework reports 41 measures annually. These include 29 OEB service quality measures and 12 custom metrics [cite:rds-823236:33].\n- Those measures sit above the program level.\n\n**Segment level**\n- I did not find segment-level tracking of accomplishments. In the operating expense evidence, \"segment\" is the unit for cost forecasts and year-over-year variance analysis, as in the Program Management and Support segment [cite:rds-832675:333].\n- If you meant a specific table or interrogatory titled \"Program Accomplishments,\" please point me to it. I could then search for it directly.",
+  "answer_rendered": "**Answer: both.** The filings show Toronto Hydro tracking at several levels: individual project, program, and portfolio. I found no filing that uses \"Program Accomplishments\" as a defined term or reporting category. The evidence below is therefore about how Toronto Hydro monitors and reports its work, not a formal \"Program Accomplishments\" metric.\n\n**Project and program level**\n- Program Management staff \"track the status of projects in the work program and the roll-up of the projects into programs and portfolios\" [EB-2023-0195 / Exhibit 4 / p.329].\n- The Scope Issuance and Tracking function tracks all issued scopes to completion. It captures cancellations and unassigned scopes [EB-2023-0195 / Exhibit 4 / p.329].\n- Projects are tracked from detailed design through construction. Toronto Hydro monitors changes through monthly executive performance reporting, key program status reporting, change requests and project variance analysis [EB-2023-0195 / Exhibit 2B / p.26].\n\n**Portfolio level**\n- Under the annual Investment Planning and Portfolio Reporting (IPPR) process, Toronto Hydro \"monitors and assesses the progress of its system capital and maintenance programs against annual and longer-term budget, execution, and performance objectives\" [EB-2023-0195 / Exhibit 2B / p.5].\n- Portfolio Reporting covers \"program level expenditures, project-specific execution status and project expenditures.\" Toronto Hydro also watches system-level outcomes, such as average reliability. It tracks the effect of specific programs on specific outcomes, such as the reduction in poles at end of serviceable life [EB-2023-0195 / Exhibit 2B / p.20].\n\n**Program-level accomplishments used in planning**\n- Toronto Hydro analyzed \"actual project accomplishments and costs in each program\" to set the project- and volume-based assumptions for its 2025\u20132029 program cost estimates [EB-2023-0195 / Exhibit 2B / p.56].\n- That is a program-level use of accomplishments data. The wording is \"project accomplishments,\" not \"Program Accomplishments.\"\n\n**Utility-wide measures**\n- A performance outcomes framework reports 41 measures annually. These include 29 OEB service quality measures and 12 custom metrics [EB-2023-0195 / Exhibit 1B / p.33].\n- Those measures sit above the program level.\n\n**Segment level**\n- I did not find segment-level tracking of accomplishments. In the operating expense evidence, \"segment\" is the unit for cost forecasts and year-over-year variance analysis, as in the Program Management and Support segment [EB-2023-0195 / Exhibit 4 / p.333].\n- If you meant a specific table or interrogatory titled \"Program Accomplishments,\" please point me to it. I could then search for it directly.",
+  "citations": [
+    {
+      "doc_id": "rds-832675",
+      "page": 329,
+      "case_number": "EB-2023-0195",
+      "exhibit": "4",
+      "title": "THESL_Exhibit 4_Operating Expenses_20240124",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 26,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 5,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 20,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 56,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 33,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-832675",
+      "page": 333,
+      "case_number": "EB-2023-0195",
+      "exhibit": "4",
+      "title": "THESL_Exhibit 4_Operating Expenses_20240124",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B",
+    "4"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 20.8,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.20180510000000002,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The reference says Toronto Hydro tracks accomplishments at the segment/program level and can add them up to higher levels if needed. The candidate gets program-level tracking and the roll-up to portfolios right. However, its headline answer is \"both\" rather than primarily program level. It also says it found no segment-level tracking, which conflicts with the reference treating segment and program as the same level.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0273956
+  }
+}

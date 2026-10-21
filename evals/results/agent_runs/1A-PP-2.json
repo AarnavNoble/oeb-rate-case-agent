@@ -1,0 +1,92 @@
+{
+  "ir_id": "1A-PP-2",
+  "gold_exhibits": [
+    "3",
+    "9"
+  ],
+  "query": "THESL indicates that it has \u201cEnhanced the load forecast to consider electrification drivers and\nchanges to the availability of conservation and demand management (\u201cCDM\u201d) savings in producing\nthe revenue forecast that underpins to 2025-2029 rates\u201d\na) Please provide what CDM results THESL will have achieved by end of the 2024 rate term\nagainst the total achievable CDM results and what potential remains, by sector if possible",
+  "answer": "I'm wrapping up the search. The filings don't seem to hold a Toronto Hydro-specific answer, so I'm writing up what they do contain.\n\n**Short answer:** The filings available to me don't state what CDM results Toronto Hydro (THESL) will have achieved by the end of 2024. They also don't give a \"total achievable\" CDM figure, a remaining-potential figure, or a split of either by sector. I found no achievable-potential study for its service territory.\n\n**Why the numbers aren't there**\n- The IESO no longer provides CDM savings forecasts or program results for distributors' service territories. Since the Conservation First Framework ended in 2019, CDM delivery has been provincially centralized under the IESO [cite:rds-823165:10].\n- Toronto Hydro now enters CDM as a variable in its load-forecast regression. It does not track CDM against a target. It builds the variable from cumulative savings for 2006\u20132029, split into residential savings (used in the Residential class model) and business savings (used in the General Service models) [cite:rds-823165:12].\n- The variable has four components [cite:rds-823165:12]:\n  - Verified IESO results for 2006\u20132017.\n  - Unverified post-CFF savings for 2015\u20132022.\n  - 2021\u20132024 savings extrapolated from the IESO's provincial plan.\n  - 2025\u20132029 savings, assumed to continue at \"status quo\" delivery.\n- The 2021\u20132024 portion is a scaled-down share of the provincial plan, based on Toronto Hydro's 2015\u20132017 ratio of its savings to provincial savings [cite:rds-823165:13][cite:rds-823165:14]. The year-by-year Toronto Hydro numbers are in Exhibit 3, Tab 1, Schedule 1, Appendices C, D and E. Those appendices did not come up in my searches or table queries.\n- The April 2024 evidence update says Appendices C, D and E were revised to include 2021\u20132022 actuals under the 2021\u20132024 framework [cite:rds-847604:5]. So even the 2021\u20132022 portion is partly actuals, and 2023\u20132024 remain forecasts.\n\n**Provincial context (not Toronto Hydro-specific)**\n- The IESO's 2021\u20132024 CDM Framework plan targets about 725 MW of peak demand savings and 3.8 TWh of energy savings by 2026. The budget is up to $1.034 billion [cite:rds-823165:54][cite:rds-823165:56].\n- The plan's annual provincial energy savings rise from about 357 GWh in 2021 to about 1,575 GWh in 2024. The table is only partly legible, so I'm reading these as running totals [cite:rds-823165:56].\n- The plan breaks savings out by program, such as Retrofit, Small Business and Energy Affordability, not by residential versus business sector. I can't turn this into a Toronto Hydro share or a remaining-potential number without inventing one.\n- The 2019\u20132020 Interim Framework hit 106% of its energy target provincially (1,516.9 GWh against 1,429.4 GWh) [cite:rds-823165:51]. That is a past result and says nothing about 2024.\n\n**What would answer your question:** an information request asking Toronto Hydro for the Appendix C/E cumulative savings by sector through 2024. It would also need to ask whether any achievable-potential study, such as an IESO potential study, supports a \"remaining potential\" figure.",
+  "answer_rendered": "I'm wrapping up the search. The filings don't seem to hold a Toronto Hydro-specific answer, so I'm writing up what they do contain.\n\n**Short answer:** The filings available to me don't state what CDM results Toronto Hydro (THESL) will have achieved by the end of 2024. They also don't give a \"total achievable\" CDM figure, a remaining-potential figure, or a split of either by sector. I found no achievable-potential study for its service territory.\n\n**Why the numbers aren't there**\n- The IESO no longer provides CDM savings forecasts or program results for distributors' service territories. Since the Conservation First Framework ended in 2019, CDM delivery has been provincially centralized under the IESO [EB-2023-0195 / Exhibit 3 / p.10].\n- Toronto Hydro now enters CDM as a variable in its load-forecast regression. It does not track CDM against a target. It builds the variable from cumulative savings for 2006\u20132029, split into residential savings (used in the Residential class model) and business savings (used in the General Service models) [EB-2023-0195 / Exhibit 3 / p.12].\n- The variable has four components [EB-2023-0195 / Exhibit 3 / p.12]:\n  - Verified IESO results for 2006\u20132017.\n  - Unverified post-CFF savings for 2015\u20132022.\n  - 2021\u20132024 savings extrapolated from the IESO's provincial plan.\n  - 2025\u20132029 savings, assumed to continue at \"status quo\" delivery.\n- The 2021\u20132024 portion is a scaled-down share of the provincial plan, based on Toronto Hydro's 2015\u20132017 ratio of its savings to provincial savings [EB-2023-0195 / Exhibit 3 / p.13][EB-2023-0195 / Exhibit 3 / p.14]. The year-by-year Toronto Hydro numbers are in Exhibit 3, Tab 1, Schedule 1, Appendices C, D and E. Those appendices did not come up in my searches or table queries.\n- The April 2024 evidence update says Appendices C, D and E were revised to include 2021\u20132022 actuals under the 2021\u20132024 framework [EB-2023-0195 / THESL_2025-2029 Rate Application_Evidence Update_20240402 / p.5]. So even the 2021\u20132022 portion is partly actuals, and 2023\u20132024 remain forecasts.\n\n**Provincial context (not Toronto Hydro-specific)**\n- The IESO's 2021\u20132024 CDM Framework plan targets about 725 MW of peak demand savings and 3.8 TWh of energy savings by 2026. The budget is up to $1.034 billion [EB-2023-0195 / Exhibit 3 / p.54][EB-2023-0195 / Exhibit 3 / p.56].\n- The plan's annual provincial energy savings rise from about 357 GWh in 2021 to about 1,575 GWh in 2024. The table is only partly legible, so I'm reading these as running totals [EB-2023-0195 / Exhibit 3 / p.56].\n- The plan breaks savings out by program, such as Retrofit, Small Business and Energy Affordability, not by residential versus business sector. I can't turn this into a Toronto Hydro share or a remaining-potential number without inventing one.\n- The 2019\u20132020 Interim Framework hit 106% of its energy target provincially (1,516.9 GWh against 1,429.4 GWh) [EB-2023-0195 / Exhibit 3 / p.51]. That is a past result and says nothing about 2024.\n\n**What would answer your question:** an information request asking Toronto Hydro for the Appendix C/E cumulative savings by sector through 2024. It would also need to ask whether any achievable-potential study, such as an IESO potential study, supports a \"remaining potential\" figure.",
+  "citations": [
+    {
+      "doc_id": "rds-823165",
+      "page": 10,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 12,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 13,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 14,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 5,
+      "case_number": "EB-2023-0195",
+      "exhibit": null,
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 54,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 56,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 51,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "3"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 9,
+  "num_turns": 10,
+  "seconds": 30.3,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.24487540000000002,
+  "judge": {
+    "verdict": "abstained",
+    "rationale": "The reference says THESL's CDM results achieved by 2024 are set out in the LRAMVA evidence (Exhibit 9, Tab 2, Schedule 3) and in 9-Staff-354. The candidate says the filings don't give these results and points instead to the load-forecast appendices. It adds methodology and provincial background but gives no Toronto Hydro achieved-results figures, so it is effectively an abstention.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0310236
+  }
+}
