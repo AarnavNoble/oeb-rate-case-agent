@@ -75,8 +75,10 @@ _FORBIDDEN = re.compile(r";\s*\S|\b(?:insert|update|delete|drop|alter|create|gra
 
 @dataclass
 class ToolContext:
-    """Per-run state: allowed document kinds (eval leakage control) and what was seen."""
+    """Per-run state: allowed document kinds (eval leakage control), allowed cases,
+    and what was seen."""
     doc_kinds: list[str] | None = None
+    cases: list[str] | None = None
     seen_pages: set[tuple[str, int]] = field(default_factory=set)
 
     def _see(self, doc_id: str, start: int, end: int) -> None:
@@ -103,9 +105,11 @@ def _search(ctx: ToolContext, args: dict) -> str:
     if not isinstance(query, str) or not query.strip():
         raise ValueError("query must be a non-empty string")
     case = args.get("case_number")
+    if ctx.cases and case and case not in ctx.cases:
+        raise ValueError(f"only these cases are available in this session: {', '.join(ctx.cases)}")
     k = int(args.get("k") or 8)
     hits = hybrid.search(query, max(1, min(k, 15)),
-                         Filters(case_numbers=[case] if case else None, doc_kinds=ctx.doc_kinds))
+                         Filters(case_numbers=[case] if case else ctx.cases, doc_kinds=ctx.doc_kinds))
     out = []
     for h in hits:
         ctx._see(h.doc_id, h.page_start, h.page_end)
@@ -126,7 +130,8 @@ def _fetch_page(ctx: ToolContext, args: dict) -> str:
                            (doc_id,)).fetchone()
         if doc is None:
             raise ValueError(f"unknown doc_id {doc_id}")
-        if ctx.doc_kinds and doc["doc_kind"] not in ctx.doc_kinds:
+        if (ctx.doc_kinds and doc["doc_kind"] not in ctx.doc_kinds) or (
+                ctx.cases and doc["case_number"] not in ctx.cases):
             raise ValueError(f"{doc_id} is not available in this session")
         row = conn.execute("SELECT text, exhibit_ref FROM pages WHERE doc_id = %s AND page_no = %s",
                            (doc_id, page)).fetchone()
@@ -156,13 +161,15 @@ def _query_table(ctx: ToolContext, args: dict) -> str:
         # agent_ro can SELECT only the agent_* views; everything is rolled back afterwards
         with psycopg.Connection[DictRow].connect(AGENT_DATABASE_URL, row_factory=dict_row) as conn:
             conn.execute("SET statement_timeout = '5s'")
-            if ctx.doc_kinds:
-                # temp views shadow the public ones (pg_temp is searched first), restricting doc kinds
-                kinds = sql.Literal(ctx.doc_kinds)
-                conn.execute(sql.SQL("CREATE TEMP VIEW agent_tables AS SELECT * FROM public.agent_tables "
-                                     "WHERE doc_kind = ANY({k})").format(k=kinds))
-                conn.execute(sql.SQL("CREATE TEMP VIEW agent_table_cells AS SELECT * FROM public.agent_table_cells "
-                                     "WHERE doc_kind = ANY({k})").format(k=kinds))
+            if ctx.doc_kinds or ctx.cases:
+                # temp views shadow the public ones (pg_temp is searched first), restricting kinds/cases
+                cond = sql.SQL(" AND ").join([
+                    *([sql.SQL("doc_kind = ANY({})").format(sql.Literal(ctx.doc_kinds))] if ctx.doc_kinds else []),
+                    *([sql.SQL("case_number = ANY({})").format(sql.Literal(ctx.cases))] if ctx.cases else []),
+                ])
+                for view in ("agent_tables", "agent_table_cells"):
+                    conn.execute(sql.SQL("CREATE TEMP VIEW {v} AS SELECT * FROM {pv} WHERE {c}").format(
+                        v=sql.Identifier(view), pv=sql.Identifier("public", view), c=cond))
             rows = conn.execute(wrapped).fetchall()
             conn.rollback()
     except psycopg.Error as e:

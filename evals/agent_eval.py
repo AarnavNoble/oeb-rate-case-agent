@@ -1,7 +1,8 @@
 """Agent eval on the held-out IR slice.
 
 Leakage control is the same as for retrieval: the agent's tools only see
-doc_kind='evidence', and the question is given with record locations stripped.
+doc_kind='evidence' of the question's own case, and the question is given with
+record locations stripped.
 
 Metrics
 - citation accuracy: share of questions where at least one citation is on a page of an
@@ -39,7 +40,7 @@ def _run_one(row: dict) -> dict:
     if path.exists():
         return json.loads(path.read_text())
     t0 = time.time()
-    res = agent.run(row["query"], doc_kinds=["evidence"])
+    res = agent.run(row["query"], doc_kinds=["evidence"], cases=[row["case_number"]])
     cited_exhibits = sorted({c.exhibit for c in res.citations if c.exhibit})
     gold = set(row["response_exhibits"])
     rec = {

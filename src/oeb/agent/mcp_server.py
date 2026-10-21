@@ -2,6 +2,7 @@
 
 Env:
   OEB_DOC_KINDS  comma-separated doc kinds the tools may return (eval leakage control)
+  OEB_CASES      comma-separated case numbers the tools may return
   OEB_SEEN_LOG   JSONL file; every page the agent sees is appended, for citation checking
 """
 
@@ -15,7 +16,8 @@ from oeb.agent.tools import TOOL_DEFS, ToolContext, run_tool
 
 _DESC = {t["name"]: t["description"] for t in TOOL_DEFS}
 _kinds = os.environ.get("OEB_DOC_KINDS")
-_ctx = ToolContext(doc_kinds=_kinds.split(",") if _kinds else None)
+_cases = os.environ.get("OEB_CASES")
+_ctx = ToolContext(doc_kinds=_kinds.split(",") if _kinds else None, cases=_cases.split(",") if _cases else None)
 _seen_log = os.environ.get("OEB_SEEN_LOG")
 
 server = MCPServer("oeb", instructions="Ontario Energy Board rate-case filings: search, read pages, query tables.")

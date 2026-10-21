@@ -94,7 +94,8 @@ def _command(question: str, mcp_config: Path, model: str) -> list[str]:
     ]
 
 
-def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = AGENT_MODEL) -> Iterator[dict]:
+def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = AGENT_MODEL,
+               cases: list[str] | None = None) -> Iterator[dict]:
     """Yields events: {"type": "text", "text"}, {"type": "tool_use", "name", "input"},
     {"type": "tool_result", "is_error", "preview"}, and finally {"type": "done", "result": AgentResult}."""
     with tempfile.TemporaryDirectory(prefix="oeb-agent-") as tmp:
@@ -104,6 +105,8 @@ def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = A
         env = {"PYTHONPATH": str(ROOT / "src"), "OEB_SEEN_LOG": str(seen_log)}
         if doc_kinds:
             env["OEB_DOC_KINDS"] = ",".join(doc_kinds)
+        if cases:
+            env["OEB_CASES"] = ",".join(cases)
         mcp_config = tmpdir / "mcp.json"
         mcp_config.write_text(json.dumps({"mcpServers": {"oeb": {
             "command": str(ROOT / ".venv" / "bin" / "python"),
@@ -165,8 +168,9 @@ def run_stream(question: str, doc_kinds: list[str] | None = None, model: str = A
     yield {"type": "done", "result": result}
 
 
-def run(question: str, doc_kinds: list[str] | None = None, model: str = AGENT_MODEL) -> AgentResult:
-    for ev in run_stream(question, doc_kinds, model):
+def run(question: str, doc_kinds: list[str] | None = None, model: str = AGENT_MODEL,
+        cases: list[str] | None = None) -> AgentResult:
+    for ev in run_stream(question, doc_kinds, model, cases):
         if ev["type"] == "done":
             return ev["result"]
     raise RuntimeError("agent produced no result")
