@@ -1,5 +1,6 @@
-"""Polite HTTP: one request per MIN_REQUEST_INTERVAL_S per host, descriptive UA,
-retry on 429/5xx, and an on-disk cache so nothing is fetched twice."""
+"""Polite HTTP: one request per MIN_REQUEST_INTERVAL_S per host, a host-wide circuit
+breaker on failures, descriptive UA, retry on 429/5xx, and an on-disk cache so nothing
+is fetched twice."""
 
 import fcntl
 import hashlib
@@ -19,23 +20,58 @@ class FetchError(Exception):
     pass
 
 
+COOLDOWN_BASE_S = 30.0
+COOLDOWN_MAX_S = 600.0  # below the download activity's 15 min start-to-close timeout
+
+
+def _load(f) -> dict:
+    f.seek(0)
+    raw = f.read().strip()
+    try:
+        state = json.loads(raw) if raw else {}
+    except json.JSONDecodeError:
+        state = {}
+    return state if isinstance(state, dict) else {"last": float(state)}
+
+
+def _store(f, state: dict) -> None:
+    f.seek(0)
+    f.truncate()
+    f.write(json.dumps(state))
+
+
 def _wait_turn(host: str) -> None:
-    """Cross-process rate limit: a lock file per host holds the last request time.
-    Temporal runs activities concurrently, so an in-process limiter is not enough."""
+    """Cross-process rate limit and circuit breaker: a lock file per host holds the last
+    request time and a cooldown. Temporal runs many activities (each with its own retry
+    backoff) at once, so per-request backoff alone still lets a failing host get a steady
+    stream of requests; the shared cooldown stops that."""
     _LOCK_DIR.mkdir(parents=True, exist_ok=True)
-    path = _LOCK_DIR / host
-    with open(path, "a+") as f:
+    with open(_LOCK_DIR / host, "a+") as f:
         fcntl.flock(f, fcntl.LOCK_EX)
-        f.seek(0)
-        raw = f.read().strip()
-        last = float(raw) if raw else 0.0
-        delay = last + MIN_REQUEST_INTERVAL_S - time.time()
+        state = _load(f)
+        resume_at = max(state.get("last", 0.0) + MIN_REQUEST_INTERVAL_S, state.get("cooldown_until", 0.0))
+        delay = resume_at - time.time()
         if delay > 0:
             time.sleep(delay)
-        f.seek(0)
-        f.truncate()
-        f.write(str(time.time()))
+        state["last"] = time.time()
+        _store(f, state)
         # lock released on close
+
+
+def _record(host: str, ok: bool) -> None:
+    """Success resets the breaker; each failure doubles the host-wide cooldown."""
+    _LOCK_DIR.mkdir(parents=True, exist_ok=True)
+    with open(_LOCK_DIR / host, "a+") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        state = _load(f)
+        if ok:
+            state["fails"] = 0
+            state["cooldown_until"] = 0.0
+        else:
+            fails = state.get("fails", 0) + 1
+            state["fails"] = fails
+            state["cooldown_until"] = time.time() + min(COOLDOWN_MAX_S, COOLDOWN_BASE_S * 2 ** (fails - 1))
+        _store(f, state)
 
 
 def _client(timeout: float) -> httpx.Client:
@@ -56,11 +92,13 @@ def get_json(url: str, cache_path: Path, timeout: float = 180.0, attempts: int =
                 raise FetchError(f"HTTP {r.status_code}")
             r.raise_for_status()
             data = r.json()
+            _record(host, ok=True)
             cache_path.parent.mkdir(parents=True, exist_ok=True)
             cache_path.write_text(json.dumps(data))
             return data
         except (httpx.HTTPError, FetchError) as e:
             last_err = e
+            _record(host, ok=False)
             time.sleep(min(60, 5 * 2**i))
     raise FetchError(f"{url}: {last_err}")
 
@@ -97,9 +135,11 @@ def download(url: str, dest: Path, timeout: float = 600.0, attempts: int = 4,
                 if want is not None and n != want:
                     raise FetchError(f"truncated body: got {n} bytes, {what} {want}")
             tmp.rename(dest)
+            _record(host, ok=True)
             return h.hexdigest(), n, True
         except (httpx.HTTPError, FetchError) as e:
             last_err = e
+            _record(host, ok=False)
             tmp.unlink(missing_ok=True)
             time.sleep(min(60, 5 * 2**i))
     raise FetchError(f"{url}: {last_err}")

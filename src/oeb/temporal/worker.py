@@ -33,17 +33,20 @@ async def main() -> None:
                 raise
             await asyncio.sleep(2)
     client = await _connect()
+    # downloads in flight (default 1: with 3, RDS started resetting connections); http.py also
+    # spaces request starts >= 1.1 s apart per host. OEB_DOWNLOAD_SLOTS=0 pauses crawling:
+    # download tasks wait in Temporal while parse/embed keep running.
+    download_slots = int(os.environ.get("OEB_DOWNLOAD_SLOTS", "1"))
     workers = [
         Worker(client, task_queue=TASK_QUEUE, workflows=[IngestCaseWorkflow, IngestDocWorkflow],
                activities=[activities.register_case]),
-        # downloads in flight (default 1: with 3, RDS started resetting connections); http.py also
-        # spaces request starts >= 1.1 s apart per host
-        Worker(client, task_queue=DOWNLOAD_QUEUE, activities=[activities.download],
-               max_concurrent_activities=int(os.environ.get("OEB_DOWNLOAD_SLOTS", "1"))),
         Worker(client, task_queue=CPU_QUEUE,
                activities=[activities.parse, activities.embed, activities.refresh_search_stats],
                max_concurrent_activities=2),
     ]
+    if download_slots > 0:
+        workers.append(Worker(client, task_queue=DOWNLOAD_QUEUE, activities=[activities.download],
+                              max_concurrent_activities=download_slots))
     print(f"worker on {TEMPORAL_ADDRESS} queues={TASK_QUEUE},{DOWNLOAD_QUEUE},{CPU_QUEUE}", flush=True)
     await asyncio.gather(*(w.run() for w in workers))
 
