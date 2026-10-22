@@ -8,7 +8,9 @@ links to the page of the filing it came from. Built over two real proceedings:
 | [EB-2023-0195](https://www.rds.oeb.ca/CMWebDrawer/Record?q=CaseNumber:EB-2023-0195) | Toronto Hydro-Electric System Limited | 2025–2029 custom IR application, settled 2024 |
 | EB-2026-0164 | Hydro One Networks Inc. | 2028–2032 joint transmission + distribution application, filed 2026-10-07 |
 
-![Demo: a cited answer, opening a footnote, the figure check jumping to the right page, passage search and the filings list](docs/demo.gif)
+![Demo: the ingested data, the three retrievers, the evaluation, a live cross-case question with citations, and the figure check catching an off-by-page citation](docs/demo.gif)
+
+The demo is also available as an [MP4](docs/demo.mp4).
 
 ## At a glance
 
@@ -28,9 +30,11 @@ Everything below is committed, so the work can be checked without running anythi
 - [Eval-label review](evals/ir_sample_review.md) and [judge review](evals/judge_review.md): spot checks marked as done by Claude, not a human
 - [Previous eval version](evals/results/v1/): the results from before two parser bugs were fixed, kept so the change can be audited
 
-| Passage search (no LLM) | Filings |
+| Passage search (no LLM) | Retrieval eval |
 |---|---|
-| ![Passage search with the source panel open](docs/search.jpg) | ![Filings by case and type](docs/filings.jpg) |
+| ![Full-text passage search with matched terms highlighted](docs/search.jpg) | ![Recall@5 per retriever against a random baseline, and the leakage control](docs/evaluation.jpg) |
+| **Agent eval** | **Data and ingestion** |
+| ![The 20 held-out questions, each with the judge's verdict and reasoning](docs/agent-eval.jpg) | ![Both cases and the three Temporal pipeline stages with their run times](docs/data.jpg) |
 
 ## The problem
 
@@ -115,22 +119,26 @@ MCP server:
 Every claim must carry a `[cite:doc_id:page]` token copied from a tool result. Tokens are then checked
 against the pages the agent actually saw, and unverified ones are flagged in the UI.
 
-**UI.** The UI is designed to read like the record itself: serif text, footnote citations, and a source
-panel that shows the cited page, with the matching passage highlighted, beside the answer.
+**UI.** Dark by default, set in IBM Plex, with one amber accent for actions and citations. The source
+panel shows the cited page under the same header block an OEB filing carries (filed date, case number,
+exhibit, page), with the matching passage highlighted, beside the answer.
 
-![Research thread with a cited answer and the source panel open](docs/ui.jpg)
+![A cross-case answer with the source panel open, flagging that the cited figures are on page 94, not 92](docs/ui.jpg)
 
 - **Thread:** the agent's searches and page reads stream in as steps, then the answer arrives with a
-  footnoted source list. Every source has to pass the citation check.
+  numbered source list. Every source has to pass the citation check.
 - **Source panel:** shows the cited page's extracted text with the passage that best matches the cited
   sentence highlighted, or the PDF itself.
 - **Figure check:** if none of a claim's figures (for example "$220.9M") appear on the cited page, the
-  panel says so and checks the two pages on either side. In two test questions it caught off-by-page
-  citations: p. 352 instead of p. 354 in a Toronto Hydro undertaking response, and p. 78 instead of
-  p. 79 in Hydro One's Exhibit E (shown above). In both cases the agent had retrieved the page, so
-  the citation check alone passed them.
-- **Other views:** *Passage search* runs the same retrievers with no language model, and you can switch
-  between hybrid, vector and full-text. *Filings* lists every ingested document by case and type.
+  panel says so and checks the two pages on either side. In test questions it caught off-by-page
+  citations: p. 352 instead of p. 354 in a Toronto Hydro undertaking response, p. 78 instead of
+  p. 79 in Hydro One's Exhibit E, and p. 92 instead of p. 94 in Toronto Hydro's capital expenditure
+  plan (shown above). In each case the agent had retrieved the page, so the citation check alone
+  passed it.
+- **Other views:** *Search* runs the same retrievers with no language model, and you can switch
+  between hybrid, vector and full-text. *Evaluation* shows the retrieval and agent results, including
+  each held-out question with the judge's reasoning. *Data* shows the ingestion pipeline and lists every
+  ingested filing by case and type.
 
 ## Evaluation
 
