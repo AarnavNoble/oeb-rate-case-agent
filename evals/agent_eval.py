@@ -15,6 +15,7 @@ Runs are cached per IR in results/agent_runs/ so an interrupted eval resumes.
 
 import json
 import random
+import re
 import time
 from collections import Counter
 from dataclasses import asdict
@@ -105,6 +106,9 @@ def run_agent_eval(limit: int | None = None) -> dict:
         "median_tool_calls": sorted(r["tool_calls"] for r in recs)[n // 2],
         "cost_usd_equivalent_total": round(sum((r.get("agent_cost_usd_equivalent") or 0)
                                                + (r["judge"].get("cost_usd_equivalent") or 0) for r in recs), 2),
+        "per_question": [{"ir_id": r["ir_id"], "citation_hit": r["citation_hit"],
+                          "citation_unit_hit": r["citation_unit_hit"], "verdict": r["judge"]["verdict"]}
+                         for r in recs],
     }
     RESULTS.mkdir(exist_ok=True)
     (RESULTS / "agent.json").write_text(json.dumps(out, indent=2))
@@ -130,6 +134,9 @@ def agent_md(o: dict) -> str:
 
 
 def write_judge_review(recs: list[dict], n: int = 20) -> None:
+    path = HERE / "judge_review.md"
+    if path.exists() and re.search(r"^agree:[ \t]*\S", path.read_text(), re.M):
+        return  # already reviewed: regenerating would erase the marks
     sample = random.Random(SEED).sample(sorted(recs, key=lambda r: r["ir_id"]), min(n, len(recs)))
     rows = [json.loads(line) for line in (HERE / "data" / "ir_eval.jsonl").read_text().splitlines()]
     by_id = {r["ir_id"]: r for r in rows}
@@ -144,7 +151,7 @@ def write_judge_review(recs: list[dict], n: int = 20) -> None:
                   f"> {r['judge']['rationale']}", "", "**Question**", "", "```", row["question"][:2000], "```", "",
                   "**Utility's response (reference)**", "", "```", row["response"][:3000], "```", "",
                   "**Agent answer**", "", "```", r["answer_rendered"][:3000], "```", "", "agree: ", ""]
-    (HERE / "judge_review.md").write_text("\n".join(lines))
+    path.write_text("\n".join(lines))
 
 
 if __name__ == "__main__":

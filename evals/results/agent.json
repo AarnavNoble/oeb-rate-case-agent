@@ -16,5 +16,127 @@
   "correct_or_partial_rate": 0.95,
   "median_seconds": 35.2,
   "median_tool_calls": 8,
-  "cost_usd_equivalent_total": 5.49
+  "cost_usd_equivalent_total": 5.49,
+  "per_question": [
+    {
+      "ir_id": "1-ED-02",
+      "citation_hit": true,
+      "citation_unit_hit": false,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "1A-PP-2",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "1B-AMPCO-12",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "1B-CCC-32",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "1B-STAFF-46",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "1B-STAFF-62",
+      "citation_hit": false,
+      "citation_unit_hit": false,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-AMPCO-35",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-ED-29",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-ED-31",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-EP-25",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-EP-28",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-SEC-69",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-STAFF-161",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-STAFF-187",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "correct"
+    },
+    {
+      "ir_id": "2B-STAFF-233",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-STAFF-242",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "2B-STAFF-248",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "correct"
+    },
+    {
+      "ir_id": "2B-VECC-18",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "5-EP-34",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "partially_correct"
+    },
+    {
+      "ir_id": "9-STAFF-350",
+      "citation_hit": true,
+      "citation_unit_hit": true,
+      "verdict": "abstained"
+    }
+  ]
 }

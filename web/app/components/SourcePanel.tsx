@@ -1,10 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { caseLabel, claimFigures, figuresOn, fmtDate, pageBlocks, pdfUrl, type PageText, type SourceRef } from "../lib";
+import { caseLabel, claimFigures, figuresOn, pageBlocks, pdfUrl, type PageText, type SourceRef } from "../lib";
 import { Icon } from "./Icon";
 
 type View = "text" | "pdf";
+
+/**
+ * The page header every OEB filing carries in its top-right corner (Filed date, case number, exhibit
+ * reference, page). Reproducing it here makes a citation look like what it points to.
+ */
+function FilingHeader({ page }: { page: PageText }) {
+  const ref = page.exhibit_ref ?? (page.exhibit ? `Exhibit ${page.exhibit}` : null);
+  return (
+    <dl className="shrink-0 text-right font-mono text-[11px] leading-[1.55] text-muted">
+      <div>
+        <dt className="inline">Filed: </dt>
+        <dd className="inline text-text">{page.date_received ?? "n/a"}</dd>
+      </div>
+      <dd className="text-text">{page.case_number}</dd>
+      {ref && <dd>{ref}</dd>}
+      <dd>
+        Page {page.page_no}
+        {page.n_pages ? ` of ${page.n_pages}` : ""}
+      </dd>
+    </dl>
+  );
+}
 
 /** Right-hand source viewer: the cited page's extracted text with the best-matching passage marked, or the PDF itself. */
 export function SourcePanel({
@@ -26,7 +48,7 @@ export function SourcePanel({
   useEffect(() => {
     const ctrl = new AbortController();
     fetch(`/api/page/${encodeURIComponent(source.docId)}/${source.page}`, { signal: ctrl.signal })
-      .then(async (r) => (r.ok ? setData({ key, page: await r.json() }) : setData({ key, error: `Page not available (${r.status})` })))
+      .then(async (r) => (r.ok ? setData({ key, page: await r.json() }) : setData({ key, error: `This page isn't in the index (HTTP ${r.status}).` })))
       .catch((e) => e.name !== "AbortError" && setData({ key, error: String(e) }));
     return () => ctrl.abort();
   }, [key, source.docId, source.page]);
@@ -65,131 +87,127 @@ export function SourcePanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [missing, key, source.claim]);
   const found = nearby?.key === key ? nearby : null;
+  const figuresOk = !!page && figures.length > 0 && !missing;
 
   return (
-    <aside className="fixed inset-0 z-30 flex flex-col bg-panel lg:static lg:z-auto lg:w-[46%] lg:max-w-[720px] lg:shrink-0 lg:border-l lg:border-line">
+    <aside
+      aria-label="Source"
+      className="fixed inset-0 z-30 flex flex-col bg-surface lg:static lg:z-auto lg:w-[46%] lg:max-w-[720px] lg:shrink-0 lg:border-l lg:border-line"
+    >
       <header className="border-b border-line px-5 pb-3 pt-4">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-2 font-mono text-[11px] text-muted">
-            {source.n && (
-              <span className="rounded-[3px] bg-cite px-1 py-px text-[10.5px] font-semibold text-panel">{source.n}</span>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              {source.n && (
+                <span className="inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-[5px] bg-amber px-1 font-mono text-[10.5px] font-medium text-on-amber">
+                  {source.n}
+                </span>
+              )}
+              <h2 className="text-[16px] font-semibold">{page ? caseLabel(page.case_number) : "Loading page"}</h2>
+            </div>
+            {page && (
+              <p className="mt-1 line-clamp-2 text-[12.5px] text-muted" title={page.title}>
+                {page.title}
+              </p>
             )}
-            <span className="truncate">
-              {page ? `${page.case_number} · ${page.exhibit_ref ?? (page.exhibit ? `Exhibit ${page.exhibit}` : page.record_number ?? page.doc_id)}` : source.docId}
-            </span>
           </div>
-          <div className="flex shrink-0 items-center gap-1">
-            <a
-              href={pdfUrl(source.docId, source.page)}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1 rounded-md px-2 py-1 text-[12px] text-muted hover:bg-sunken hover:text-ink"
-            >
-              Open PDF <Icon name="external" className="size-3.5" />
-            </a>
-            <button onClick={onClose} aria-label="Close source" className="rounded-md p-1.5 text-muted hover:bg-sunken hover:text-ink">
-              <Icon name="x" />
-            </button>
-          </div>
+          {page ? <FilingHeader page={page} /> : <span className="h-14 w-36 animate-pulse rounded bg-raised" />}
         </div>
-        <h2 className="mt-2 font-serif text-[19px] font-semibold leading-snug tracking-tight">
-          {page ? `${caseLabel(page.case_number)} · p. ${page.page_no}` : `Page ${source.page}`}
-          {page?.n_pages ? <span className="font-normal text-faint"> of {page.n_pages}</span> : null}
-        </h2>
-        {page && (
-          <p className="mt-0.5 truncate text-[12px] text-muted" title={page.title}>
-            {page.title} · filed {fmtDate(page.date_received)}
-          </p>
-        )}
-        <div className="mt-3 flex items-center justify-between">
-          <div className="inline-flex rounded-md bg-sunken p-0.5 text-[12px]">
+
+        <div className="mt-3 flex items-center justify-between gap-2">
+          <div className="inline-flex rounded-md bg-ground p-0.5 text-[12.5px]" role="tablist">
             {(["text", "pdf"] as View[]).map((v) => (
               <button
                 key={v}
+                role="tab"
+                aria-selected={view === v}
                 onClick={() => setView(v)}
-                className={`rounded px-2.5 py-1 ${view === v ? "bg-panel font-medium text-ink shadow-sm" : "text-muted hover:text-ink"}`}
+                className={`rounded-[5px] px-2.5 py-1 ${view === v ? "bg-raised font-medium text-text" : "text-muted hover:text-text"}`}
               >
-                {v === "text" ? "Extracted text" : "PDF page"}
+                {v === "text" ? "Page text" : "PDF"}
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-1 font-mono text-[11px] text-muted">
-            <button
-              disabled={source.page <= 1}
-              onClick={() => onPage(source.page - 1)}
-              className="rounded px-1.5 py-1 hover:bg-sunken disabled:opacity-30"
-              aria-label="Previous page"
-            >
-              ←
+          <div className="flex items-center gap-0.5 text-muted">
+            <button disabled={source.page <= 1} onClick={() => onPage(source.page - 1)} className="rounded-md p-1.5 hover:bg-raised disabled:opacity-30" aria-label="Previous page">
+              <Icon name="left" className="size-4" />
             </button>
-            p. {source.page}
             <button
               disabled={!!page?.n_pages && source.page >= page.n_pages}
               onClick={() => onPage(source.page + 1)}
-              className="rounded px-1.5 py-1 hover:bg-sunken disabled:opacity-30"
+              className="rounded-md p-1.5 hover:bg-raised disabled:opacity-30"
               aria-label="Next page"
             >
-              →
+              <Icon name="right" className="size-4" />
+            </button>
+            <a href={pdfUrl(source.docId, source.page)} target="_blank" rel="noreferrer" className="ml-1 flex items-center gap-1 rounded-md px-2 py-1 text-[12.5px] hover:bg-raised hover:text-text">
+              Open PDF <Icon name="external" className="size-3.5" />
+            </a>
+            <button onClick={onClose} aria-label="Close source" className="rounded-md p-1.5 hover:bg-raised hover:text-text">
+              <Icon name="x" />
             </button>
           </div>
         </div>
       </header>
 
+      {page && missing && (
+        <div className="flex items-start gap-2.5 border-b border-line bg-serious/10 px-5 py-2.5 text-[13px]">
+          <Icon name="alert" className="mt-0.5 size-4 shrink-0 text-serious" />
+          <p className="flex-1">
+            <span className="font-medium text-serious">Figures not on this page.</span>{" "}
+            <span className="text-muted">
+              The claim cites {figures.join(", ")}.{found === null && " Checking the pages either side."}
+              {found?.page && ` They are on page ${found.page}.`}
+              {found && !found.page && " They aren't on the two pages either side either."}
+            </span>
+          </p>
+          {found?.page && (
+            <button onClick={() => onJump(found.page!)} className="shrink-0 rounded-md bg-amber px-2.5 py-1 text-[12.5px] font-semibold text-on-amber hover:bg-amber-hover">
+              Go to page {found.page}
+            </button>
+          )}
+        </div>
+      )}
+      {figuresOk && (
+        <div className="flex items-center gap-2 border-b border-line px-5 py-2 text-[12.5px] text-muted">
+          <Icon name="check" className="size-4 text-good" />
+          The figures in this claim ({figures.join(", ")}) appear on this page.
+        </div>
+      )}
+
       {view === "pdf" ? (
         // key forces a reload so #page= takes effect when switching citations
-        <iframe key={key} src={pdfUrl(source.docId, source.page)} title={page?.title ?? source.docId} className="flex-1 bg-sunken" />
+        <iframe key={key} src={pdfUrl(source.docId, source.page)} title={page?.title ?? source.docId} className="flex-1 bg-ground" />
       ) : (
-        <div className="flex-1 overflow-y-auto bg-canvas px-5 py-4">
-          {error && <p className="text-sm text-warn">{error}</p>}
+        <div className="flex-1 overflow-y-auto bg-ground px-5 py-5">
+          {error && <p className="text-[13px] text-serious">{error}</p>}
           {!page && !error && (
             <div className="space-y-2.5">
               {[92, 100, 84, 96, 70].map((w, i) => (
-                <div key={i} className="h-2.5 animate-pulse rounded bg-line" style={{ width: `${w}%` }} />
+                <div key={i} className="h-2.5 animate-pulse rounded bg-raised" style={{ width: `${w}%` }} />
               ))}
             </div>
           )}
           {page && (
-            <>
-              {missing && (
-                <div className="mb-3 flex items-start gap-2 rounded-lg border border-warn/30 bg-warn-bg px-3 py-2 text-[12.5px] text-warn">
-                  <Icon name="alert" className="mt-0.5 size-4 shrink-0" />
-                  <span className="flex-1">
-                    The figures in this claim ({figures.join(", ")}) are not on this page.
-                    {found === null && " Checking nearby pages…"}
-                    {found?.page && <> They appear on p. {found.page}.</>}
-                    {found && !found.page && " They are not on the two pages either side either."}
-                  </span>
-                  {found?.page && (
-                    <button onClick={() => onJump(found.page!)} className="shrink-0 rounded-md border border-warn/40 px-2 py-0.5 font-medium hover:bg-panel">
-                      Go to p. {found.page}
-                    </button>
-                  )}
-                </div>
-              )}
-              {best >= 0 && !missing && (
-                <p className="mx-auto mb-3 max-w-[620px] text-[11.5px] text-muted">
-                  <span className="mr-1 rounded-sm bg-hl px-1 text-ink">Highlighted</span>
-                  is the passage on this page that best matches {source.n ? "the cited sentence" : "your search"} (by shared terms).
+            <article className="mx-auto max-w-[640px] rounded-lg border border-line bg-surface py-4">
+              {blocks.map((b, i) => (
+                <p
+                  key={i}
+                  ref={i === best ? mark : undefined}
+                  className={`whitespace-pre-wrap border-l-2 px-5 py-1 text-[13.5px] leading-relaxed ${
+                    i === best ? "border-amber bg-amber-wash text-text" : "border-transparent text-text/75"
+                  }`}
+                >
+                  {b}
                 </p>
-              )}
-              <div className="mx-auto max-w-[620px] rounded-sm border border-line bg-panel px-3 py-6 font-serif shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                {blocks.map((b, i) => (
-                  <p
-                    key={i}
-                    ref={i === best ? mark : undefined}
-                    className={`whitespace-pre-wrap rounded-sm px-4 py-1 text-[14px] leading-relaxed ${
-                      i === best ? "bg-hl text-ink" : "text-ink/80"
-                    }`}
-                  >
-                    {b}
-                  </p>
-                ))}
-                {!blocks.length && <p className="px-4 text-sm text-muted">No text was extracted from this page (it may be an image).</p>}
-                <p className="mt-6 text-center font-mono text-[10.5px] text-faint">
-                  {page.exhibit_ref ?? page.title} · page {page.page_no}
-                </p>
-              </div>
-            </>
+              ))}
+              {!blocks.length && <p className="px-5 text-[13px] text-muted">No text was extracted from this page. It may be a scanned image.</p>}
+            </article>
+          )}
+          {page && best >= 0 && (
+            <p className="mx-auto mt-3 max-w-[640px] text-[12px] text-faint">
+              The marked passage shares the most terms with {source.n ? "the cited sentence" : "your search"}. The agent cites pages, not passages.
+            </p>
           )}
         </div>
       )}

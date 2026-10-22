@@ -170,3 +170,57 @@ export function figuresOn(text: string, figures: string[]) {
   const flat = text.replace(/(\d),(\d)/g, "$1$2");
   return figures.filter((f) => new RegExp(`(^|[^\\d.])${f.replace(".", "\\.")}(?![\\d])`).test(flat));
 }
+
+export type RetrieverScores = { n: number; "recall@1": number; "recall@5": number; "recall@10": number; "mrr@10": number };
+
+export type AgentRun = {
+  ir_id: string;
+  query: string;
+  gold_exhibits: string[];
+  cited_exhibits: string[];
+  citation_hit: boolean;
+  section_hit: boolean | null;
+  verdict: "correct" | "partially_correct" | "incorrect" | "abstained" | "error";
+  rationale: string;
+  n_unverified: number;
+  seconds: number;
+};
+
+export type Evals = {
+  retrieval: {
+    n_rows: number;
+    n_unit_rows: number;
+    retrievers: Record<string, { response_gold: RetrieverScores; unit_gold: RetrieverScores; median_latency_ms: number }>;
+    baselines: { random_chunks: { unit: RetrieverScores } };
+    leakage_ablation: { share: number };
+  };
+  agent: {
+    n: number;
+    agent_model: string;
+    judge_model: string;
+    citation_accuracy: number;
+    citation_unit_accuracy: number;
+    correct_or_partial_rate: number;
+    unverified_citation_rate: number;
+    verdicts: Record<string, number>;
+    median_seconds: number;
+    median_tool_calls: number;
+  };
+  hand_checks: Record<string, string>;
+  runs: AgentRun[];
+};
+
+export type Pipeline = {
+  statuses: { status: string; n: number }[];
+  sources: { source: string; n: number }[];
+  totals: { pages: number; chunks: number; tables: number };
+  corpus: {
+    cases: { case_number: string; records: number; pdfs: number; ingested: number; mb: string; pages: number; chunks: number; tables: number }[];
+    stage_hours_summed: { download_h: string; parse_h: string; embed_h: string };
+  };
+};
+
+/** "EB-2023-0195, Exhibit 2B, p. 89": the way a filing cites itself. */
+export function recordRef(caseNumber: string | null | undefined, exhibit: string | null | undefined, page: number) {
+  return [caseNumber, exhibit ? `Exhibit ${exhibit}` : null, `p. ${page}`].filter(Boolean).join(", ");
+}

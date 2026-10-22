@@ -1,39 +1,36 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { caseLabel, type Hit, type SourceRef } from "../lib";
+import { caseLabel, recordRef, type Hit, type SourceRef } from "../lib";
 import { ScopeChips, type Scope } from "./Composer";
 import { Icon } from "./Icon";
 
 const RETRIEVERS = [
-  ["hybrid", "Hybrid (RRF)"],
-  ["vector", "Vector"],
-  ["fts", "Full-text"],
+  ["hybrid", "Hybrid", "Full-text and vector results merged with reciprocal rank fusion. This is what the agent uses."],
+  ["vector", "Vector", "Cosine similarity over bge-small embeddings. Finds passages with the same meaning in different words."],
+  ["fts", "Full-text", "Postgres full-text ranking. Finds the exact terms, and drops words that appear in more than 10% of passages."],
 ] as const;
 
 function highlight(text: string, q: string): ReactNode[] {
   const words = [...new Set(q.toLowerCase().match(/[a-z0-9]{4,}/g) ?? [])];
   if (!words.length) return [text];
   const re = new RegExp(`(${words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
-  return text.split(re).map((part, i) => (i % 2 ? <mark key={i} className="rounded-sm bg-hl text-ink">{part}</mark> : part));
+  return text.split(re).map((part, i) => (i % 2 ? <mark key={i} className="rounded-sm bg-amber-wash text-text">{part}</mark> : part));
 }
 
-export function PageHeader({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
+export function PageHeader({ title, children }: { title: string; children?: ReactNode }) {
   return (
-    <div className="flex items-end gap-3 border-b border-line pb-4">
-      <div className="min-w-0 flex-1">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1 className="mt-1 font-serif text-[30px] font-semibold leading-tight tracking-tight">{title}</h1>
-      </div>
-      {children}
-    </div>
+    <header className="max-w-[72ch]">
+      <h1 className="text-[28px] font-semibold tracking-[-0.015em]">{title}</h1>
+      {children && <div className="mt-2 text-[15px] leading-relaxed text-muted">{children}</div>}
+    </header>
   );
 }
 
 export function SearchView({ active, onOpen, scope, onScope }: { active: SourceRef | null; onOpen: (s: SourceRef) => void; scope: Scope; onScope: (s: Scope) => void }) {
   const [q, setQ] = useState("");
   const [retriever, setRetriever] = useState<string>("hybrid");
-  const [result, setResult] = useState<{ q: string; hits: Hit[]; ms: number } | null>(null);
+  const [result, setResult] = useState<{ q: string; retriever: string; hits: Hit[]; ms: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -46,8 +43,8 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
       const params = new URLSearchParams({ q: q.trim(), k: "15", retriever: nextRetriever });
       if (nextScope) params.set("case", nextScope);
       const res = await fetch(`/api/search?${params}`);
-      if (!res.ok) throw new Error(`Search failed (${res.status})`);
-      setResult({ q: q.trim(), hits: await res.json(), ms: performance.now() - t0 });
+      if (!res.ok) throw new Error(`Search failed (HTTP ${res.status}). Check that the API is running.`);
+      setResult({ q: q.trim(), retriever: nextRetriever, hits: await res.json(), ms: performance.now() - t0 });
     } catch (e) {
       setError(String((e as Error).message ?? e));
     } finally {
@@ -55,97 +52,112 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
     }
   }
 
+  const current = RETRIEVERS.find(([k]) => k === retriever)!;
+
   return (
-    <div className="mx-auto w-full max-w-[900px] px-4 py-6 sm:px-6">
-      <PageHeader eyebrow="Retrieval only · no language model" title="Search passages" />
-      <p className="mt-3 text-[13.5px] text-muted">
-        The same index and retrievers the agent searches. Use it to see what retrieval finds for a question before the agent reads anything.
-      </p>
+    <div className="mx-auto w-full max-w-[960px] px-5 py-10 sm:px-8">
+      <PageHeader title="Search passages">
+        The three retrievers the agent is built on, with no language model involved. Compare what each one finds for the same question.
+      </PageHeader>
 
       <form
         onSubmit={(e) => {
           e.preventDefault();
           run();
         }}
-        className="mt-5 flex flex-wrap items-center gap-2"
+        className="mt-7 rounded-xl border border-line-strong bg-surface p-2 focus-within:border-amber-line"
       >
-        <label className="flex min-w-[240px] flex-1 items-center gap-2 rounded-lg border border-line-strong bg-panel px-3 focus-within:border-accent/40">
-          <Icon name="search" className="size-4 text-faint" />
+        <div className="flex items-center gap-2">
+          <Icon name="search" className="ml-2 size-4 shrink-0 text-faint" />
+          <label htmlFor="search-q" className="sr-only">
+            Search the filings
+          </label>
           <input
+            id="search-q"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="e.g. vegetation management cycle"
-            className="h-9 w-full bg-transparent text-[13.5px] outline-none placeholder:text-faint"
+            placeholder="vegetation management cycle length"
+            className="h-10 w-full bg-transparent text-[15px] outline-none placeholder:text-faint focus-visible:outline-none"
           />
-        </label>
-        <div className="inline-flex rounded-lg border border-line bg-panel p-0.5 text-[12px]">
-          {RETRIEVERS.map(([k, label]) => (
-            <button
-              key={k}
-              type="button"
-              onClick={() => {
-                setRetriever(k);
-                if (result) run(k);
-              }}
-              className={`rounded-md px-2.5 py-1.5 ${retriever === k ? "bg-accent text-on-accent" : "text-muted hover:text-ink"}`}
-            >
-              {label}
-            </button>
-          ))}
+          <button type="submit" disabled={busy || q.trim().length < 2} className="h-9 shrink-0 rounded-lg bg-amber px-4 text-[13px] font-semibold text-on-amber hover:bg-amber-hover disabled:opacity-40">
+            {busy ? "Searching" : "Search"}
+          </button>
         </div>
-        <button type="submit" disabled={busy || q.trim().length < 2} className="h-9 rounded-lg bg-accent px-4 text-[13px] font-medium text-on-accent hover:bg-accent-hover disabled:opacity-40">
-          {busy ? "Searching…" : "Search"}
-        </button>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line px-1 pt-2">
+          <div className="inline-flex rounded-md bg-ground p-0.5" role="radiogroup" aria-label="Retriever">
+            {RETRIEVERS.map(([k, label]) => (
+              <button
+                key={k}
+                type="button"
+                role="radio"
+                aria-checked={retriever === k}
+                onClick={() => {
+                  setRetriever(k);
+                  if (result) run(k);
+                }}
+                className={`rounded-[5px] px-2.5 py-1 text-[12.5px] ${retriever === k ? "bg-raised font-medium text-text" : "text-muted hover:text-text"}`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <ScopeChips
+            scope={scope}
+            onScope={(s) => {
+              onScope(s);
+              if (result) run(retriever, s);
+            }}
+          />
+        </div>
       </form>
-      <div className="mt-3 px-1">
-        <ScopeChips
-          scope={scope}
-          onScope={(s) => {
-            onScope(s);
-            if (result) run(retriever, s);
-          }}
-        />
-      </div>
+      <p className="mt-2 px-1 text-[12.5px] text-faint">{current[2]}</p>
 
-      {error && <p className="mt-4 text-[13px] text-warn">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-4 text-[13px] text-serious">
+          {error}
+        </p>
+      )}
+
+      {!result && !error && (
+        <p className="mt-10 text-[14px] text-muted">
+          Try a phrase a regulatory analyst would use, like &ldquo;station renewal backlog&rdquo; or &ldquo;deemed short-term debt rate&rdquo;.
+        </p>
+      )}
 
       {result && (
-        <div className="mt-5 overflow-hidden rounded-lg border border-line bg-panel">
-          <div className="grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-line bg-sunken/60 px-4 py-2 text-[11.5px] text-muted">
-            <span className="font-mono">#</span>
-            <span>
-              {result.hits.length} passages for “{result.q}”
-            </span>
-            <span className="font-mono">{Math.round(result.ms)} ms</span>
-          </div>
-          {result.hits.length === 0 && <p className="px-4 py-6 text-[13px] text-muted">No passages matched.</p>}
-          <ol className="divide-y divide-line">
+        <section className="mt-6" aria-label="Results">
+          <p className="mb-2 px-1 text-[12.5px] text-muted">
+            {result.hits.length} passages for &ldquo;{result.q}&rdquo; from the {RETRIEVERS.find(([k]) => k === result.retriever)?.[1].toLowerCase()} retriever,{" "}
+            {Math.round(result.ms)} ms
+          </p>
+          {result.hits.length === 0 && <p className="rounded-xl border border-line bg-surface px-4 py-6 text-[14px] text-muted">No passages matched. Try fewer or broader words.</p>}
+          <ol className="overflow-hidden rounded-xl border border-line bg-surface">
             {result.hits.map((h, i) => {
               const isActive = active?.docId === h.doc_id && active.page === h.page_start;
               return (
-                <li key={h.chunk_id}>
+                <li key={h.chunk_id} className="border-b border-line last:border-0">
                   <button
                     onClick={() => onOpen({ docId: h.doc_id, page: h.page_start, claim: result.q })}
-                    className={`grid w-full grid-cols-[2.5rem_1fr] gap-3 px-4 py-3 text-left transition-colors ${isActive ? "bg-cite-bg" : "hover:bg-sunken/60"}`}
+                    className={`grid w-full grid-cols-[2rem_1fr] gap-2 px-4 py-3.5 text-left transition-colors ${isActive ? "bg-amber-wash" : "hover:bg-raised"}`}
                   >
-                    <span className="pt-0.5 font-mono text-[11px] text-faint">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="pt-0.5 font-mono text-[12px] text-faint">{i + 1}</span>
                     <span className="min-w-0">
-                      <span className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                        <span className="text-[13px] font-medium">
-                          {caseLabel(h.case_number)} · {h.exhibit ? `Ex. ${h.exhibit}` : h.title} · p. {h.page_start}
+                      <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
+                        <span className="text-[14px] font-medium">{caseLabel(h.case_number)}</span>
+                        <span className="font-mono text-[12px] text-muted">
+                          {recordRef(h.case_number, h.exhibit, h.page_start)}
                           {h.page_end !== h.page_start && `–${h.page_end}`}
                         </span>
-                        <span className="font-mono text-[10.5px] text-faint">{h.case_number}</span>
                       </span>
-                      {h.heading && <span className="mt-0.5 block truncate text-[12px] font-medium text-muted">{h.heading}</span>}
-                      <span className="mt-1 line-clamp-3 text-[12.5px] leading-relaxed text-ink/80">{highlight(h.text, result.q)}</span>
+                      {h.heading && <span className="mt-0.5 block truncate text-[12.5px] text-faint">{h.heading}</span>}
+                      <span className="mt-1.5 line-clamp-3 text-[13.5px] leading-relaxed text-text/80">{highlight(h.text, result.q)}</span>
                     </span>
                   </button>
                 </li>
               );
             })}
           </ol>
-        </div>
+        </section>
       )}
     </div>
   );

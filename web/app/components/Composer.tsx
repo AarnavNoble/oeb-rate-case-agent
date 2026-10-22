@@ -6,11 +6,11 @@ import { Icon } from "./Icon";
 
 export type Scope = string | null; // a case number, or null for both
 
-/** Segmented case filter: Both / Toronto Hydro / Hydro One. */
+/** Segmented case filter: both cases, or one. */
 export function ScopeChips({ scope, onScope }: { scope: Scope; onScope: (s: Scope) => void }) {
   const options: [Scope, string][] = [[null, "Both cases"], ...Object.entries(CASES).map(([k, v]) => [k, v.utility] as [Scope, string])];
   return (
-    <div className="inline-flex rounded-md border border-line bg-canvas p-0.5" role="radiogroup" aria-label="Case">
+    <div className="inline-flex rounded-md bg-ground p-0.5" role="radiogroup" aria-label="Which case to search">
       {options.map(([value, label]) => (
         <button
           key={label}
@@ -19,8 +19,8 @@ export function ScopeChips({ scope, onScope }: { scope: Scope; onScope: (s: Scop
           aria-checked={scope === value}
           onClick={() => onScope(value)}
           title={value ?? "EB-2023-0195 and EB-2026-0164"}
-          className={`rounded-[5px] px-2.5 py-1 text-[12px] transition-colors ${
-            scope === value ? "bg-panel font-medium text-ink shadow-[0_1px_2px_rgba(0,0,0,0.08)]" : "text-muted hover:text-ink"
+          className={`rounded-[5px] px-2.5 py-1 text-[12.5px] transition-colors ${
+            scope === value ? "bg-raised font-medium text-text" : "text-muted hover:text-text"
           }`}
         >
           {label}
@@ -61,15 +61,32 @@ export function Composer({
     el.style.height = `${Math.min(el.scrollHeight, 220)}px`;
   }, [value]);
 
+  // "/" focuses the question box from anywhere, unless the person is already typing
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (e.key === "/" && !/^(INPUT|TEXTAREA)$/.test(t.tagName) && !t.isContentEditable) {
+        e.preventDefault();
+        ref.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit();
       }}
-      className="rounded-lg border border-line-strong bg-panel transition-shadow focus-within:border-accent/50 focus-within:shadow-[0_0_0_3px_var(--tint)]"
+      className="rounded-xl border border-line-strong bg-surface transition-colors focus-within:border-amber-line"
     >
+      <label htmlFor="question" className="sr-only">
+        Question
+      </label>
       <textarea
+        id="question"
         ref={ref}
         value={value}
         autoFocus={autoFocus}
@@ -82,27 +99,27 @@ export function Composer({
         }}
         rows={compact ? 1 : 2}
         placeholder={placeholder}
-        className={`block w-full resize-none bg-transparent px-4 outline-none placeholder:text-faint ${compact ? "pb-1 pt-3 text-[14px]" : "pb-2 pt-4 text-[15.5px]"}`}
+        className={`block w-full resize-none bg-transparent px-4 outline-none placeholder:text-faint focus-visible:outline-none ${compact ? "pb-1 pt-3 text-[14.5px]" : "pb-2 pt-4 text-[16px]"}`}
       />
       <div className="flex flex-wrap items-center justify-between gap-2 px-2.5 pb-2.5 pt-1">
         <ScopeChips scope={scope} onScope={onScope} />
-        {busy ? (
-          <button
-            type="button"
-            onClick={onStop}
-            className="flex h-8 items-center gap-1.5 rounded-md border border-line-strong px-3 text-[12.5px] text-ink hover:bg-sunken"
-          >
-            <Icon name="stop" className="size-3.5" /> Stop
-          </button>
-        ) : (
-          <button
-            type="submit"
-            disabled={!value.trim()}
-            className="flex h-8 items-center gap-2 rounded-md bg-accent px-3.5 text-[13px] font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-40"
-          >
-            Ask <span className="font-mono text-[11px] opacity-70">↵</span>
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          {!compact && <span className="hidden text-[12px] text-faint sm:inline">Enter to ask, Shift+Enter for a new line</span>}
+          {busy ? (
+            <button type="button" onClick={onStop} className="flex h-8 items-center gap-1.5 rounded-lg border border-line-strong px-3 text-[13px] hover:bg-raised">
+              <Icon name="stop" className="size-3.5" /> Stop
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={!value.trim()}
+              className="flex h-8 items-center gap-1.5 rounded-lg bg-amber px-3.5 text-[13px] font-semibold text-on-amber transition-colors hover:bg-amber-hover disabled:opacity-40"
+            >
+              Ask
+              <Icon name="arrowUp" className="size-3.5" />
+            </button>
+          )}
+        </div>
       </div>
     </form>
   );

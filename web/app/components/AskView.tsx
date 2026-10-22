@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { caseLabel, CASES, fmt, readSSE, type CaseStats, type Citation, type SourceRef, type ToolEvent } from "../lib";
+import { caseLabel, CASES, fmt, readSSE, type Citation, type Pipeline, type SourceRef, type ToolEvent } from "../lib";
 import { Answer } from "./Answer";
 import { Composer, type Scope } from "./Composer";
 import { Icon } from "./Icon";
 
-const EXAMPLES = [
-  "What return on equity did Toronto Hydro use for its 2025 revenue requirement?",
-  "Why does Toronto Hydro's short-term debt rate differ from the OEB's deemed rate?",
-  "How does Hydro One justify its proposed vegetation management spending?",
-  "Compare proposed distribution capital spending growth for Toronto Hydro (2025–2029) and Hydro One (2028–2032).",
+const EXAMPLES: { q: string; scope: Scope }[] = [
+  { q: "Compare proposed distribution capital spending growth for Toronto Hydro (2025–2029) and Hydro One (2028–2032).", scope: null },
+  { q: "What return on equity did Toronto Hydro use for its 2025 revenue requirement?", scope: "EB-2023-0195" },
+  { q: "How does Hydro One justify its proposed vegetation management spending?", scope: "EB-2026-0164" },
+  { q: "Why does Toronto Hydro's short-term debt rate differ from the OEB's deemed rate?", scope: "EB-2023-0195" },
 ];
 
 type Turn = {
@@ -28,48 +28,49 @@ type Turn = {
 
 function describeStep(t: ToolEvent) {
   const i = t.input;
-  if (t.name === "search")
-    return { icon: "search" as const, text: `Searched “${String(i.query ?? "")}”`, meta: i.case_number ? caseLabel(String(i.case_number)) : undefined };
-  if (t.name === "fetch_page") return { icon: "page" as const, text: `Read page ${i.page}`, meta: String(i.doc_id ?? "") };
-  if (t.name === "query_table")
-    return { icon: "table" as const, text: "Queried extracted tables", meta: String(i.sql ?? "").replace(/\s+/g, " ").slice(0, 70) };
-  return { icon: "chevron" as const, text: t.name, meta: undefined };
+  if (t.name === "search") return { text: `“${String(i.query ?? "")}”`, meta: i.case_number ? caseLabel(String(i.case_number)) : "both cases" };
+  if (t.name === "fetch_page") return { text: `page ${i.page}`, meta: String(i.doc_id ?? "") };
+  if (t.name === "query_table") return { text: String(i.sql ?? "").replace(/\s+/g, " ").slice(0, 90), meta: undefined };
+  return { text: "", meta: undefined };
 }
 
-function Steps({ steps, running }: { steps: ToolEvent[]; running: boolean }) {
+/** The agent's tool calls, as they happen: the same three tools the MCP server exposes. */
+function Trace({ steps, running }: { steps: ToolEvent[]; running: boolean }) {
   const [open, setOpen] = useState(false);
   if (!steps.length && !running) return null;
   const expanded = open || running;
-  const reads = steps.filter((s) => s.name === "fetch_page").length;
-  const searches = steps.filter((s) => s.name === "search").length;
+  const count = (name: string) => steps.filter((s) => s.name === name).length;
+  const summary = [
+    [count("search"), "search", "searches"],
+    [count("fetch_page"), "page read", "pages read"],
+    [count("query_table"), "table query", "table queries"],
+  ]
+    .filter(([n]) => n)
+    .map(([n, one, many]) => `${n} ${n === 1 ? one : many}`)
+    .join(", ");
   return (
-    <div className="mb-3 text-[12.5px]">
-      <button onClick={() => setOpen(!open)} className="flex items-center gap-1.5 text-muted hover:text-ink">
+    <div className="mb-4 rounded-lg border border-line bg-surface/60">
+      <button onClick={() => setOpen(!open)} aria-expanded={expanded} className="flex w-full items-center gap-2 px-3 py-2 text-left text-[13px] text-muted hover:text-text">
         <Icon name="chevron" className={`size-3.5 transition-transform ${expanded ? "rotate-90" : ""}`} />
         {running ? (
-          <span className="flex items-center gap-2">
-            Reading the record
-            <span className="flex gap-0.5">
-              {[0, 1, 2].map((d) => (
-                <span key={d} className="size-1 animate-bounce rounded-full bg-muted" style={{ animationDelay: `${d * 120}ms` }} />
-              ))}
-            </span>
+          <span className="flex items-center gap-2 text-text">
+            <span className="size-1.5 animate-pulse rounded-full bg-amber" />
+            Researching the record{steps.length ? `: ${summary}` : ""}
           </span>
         ) : (
-          <span>
-            {searches} search{searches === 1 ? "" : "es"} · {reads} full page{reads === 1 ? "" : "s"} opened
-          </span>
+          <span>Research trace: {summary || "no tool calls"}</span>
         )}
       </button>
       {expanded && steps.length > 0 && (
-        <ol className="ml-[7px] mt-2 space-y-1.5 border-l border-line pl-4">
+        <ol className="space-y-1 border-t border-line px-3 py-2.5">
           {steps.map((s, i) => {
             const d = describeStep(s);
             return (
-              <li key={i} className="flex min-w-0 items-center gap-2 text-muted">
-                <Icon name={d.icon} className={`size-3.5 shrink-0 ${s.isError ? "text-warn" : "text-faint"}`} />
-                <span className="truncate text-ink/85">{d.text}</span>
-                {d.meta && <span className="truncate font-mono text-[10.5px] text-faint">{d.meta}</span>}
+              <li key={i} className="flex min-w-0 items-baseline gap-3 text-[12.5px]">
+                <code className={`w-[86px] shrink-0 font-mono text-[11.5px] ${s.isError ? "text-serious" : "text-amber"}`}>{s.name}</code>
+                <span className="truncate text-text/85">{d.text}</span>
+                {d.meta && <span className="hidden shrink-0 truncate font-mono text-[11px] text-faint sm:inline">{d.meta}</span>}
+                {!s.done && running && i === steps.length - 1 && <span className="size-1.5 shrink-0 animate-pulse rounded-full bg-amber" />}
               </li>
             );
           })}
@@ -89,30 +90,69 @@ function CopyButton({ text }: { text: string }) {
           setTimeout(() => setDone(false), 1200);
         });
       }}
-      aria-label="Copy answer"
-      className="rounded-md p-1.5 text-faint hover:bg-sunken hover:text-ink"
+      className="flex items-center gap-1.5 rounded-md px-2 py-1 text-[12.5px] text-faint hover:bg-raised hover:text-text"
     >
       <Icon name={done ? "check" : "copy"} className="size-3.5" />
+      {done ? "Copied" : "Copy answer"}
     </button>
   );
 }
 
+function HowItWorks({ pipeline, onNavigate }: { pipeline: Pipeline | null; onNavigate: (v: "evals" | "data") => void }) {
+  const t = pipeline?.totals;
+  const n = (v: number | undefined) => (v === undefined ? "…" : fmt.format(v));
+  const docs = pipeline?.statuses.find((s) => s.status === "embedded")?.n;
+  const steps = [
+    ["Collect", <>{n(docs)} PDF filings from the OEB&apos;s document search and the utilities&apos; sites, downloaded by a Temporal workflow.</>],
+    ["Index", <>{n(t?.pages)} pages split into {n(t?.chunks)} passages and {n(t?.tables)} tables, searchable by keyword and by meaning.</>],
+    ["Research", <>The agent calls <code className="font-mono text-amber">search</code>, <code className="font-mono text-amber">fetch_page</code> and <code className="font-mono text-amber">query_table</code> until it has the evidence, or says it isn&apos;t there.</>],
+    ["Cite", <>Every claim points to a case, exhibit and page you can open beside the answer.</>],
+    ["Check", <>Cited pages must be ones the agent retrieved, and cited figures are matched against the page.</>],
+  ] as const;
+  return (
+    <section className="mt-14 border-t border-line pt-8" aria-labelledby="how">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="how" className="text-[15px] font-semibold">
+          How an answer is made
+        </h2>
+        <p className="text-[13px] text-muted">
+          Measured on 470 real interrogatories:{" "}
+          <button onClick={() => onNavigate("evals")} className="text-amber underline-offset-2 hover:underline">
+            see the evaluation
+          </button>
+        </p>
+      </div>
+      <ol className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-5">
+        {steps.map(([title, body], i) => (
+          <li key={title} className="relative">
+            <div className="flex items-center gap-2">
+              <span className="flex size-6 items-center justify-center rounded-full border border-line-strong font-mono text-[11px] text-muted">{i + 1}</span>
+              <h3 className="text-[14px] font-medium">{title}</h3>
+            </div>
+            <p className="mt-2 text-[13px] leading-relaxed text-muted">{body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 export function AskView({
-  corpus,
+  pipeline,
   active,
   onOpen,
   scope,
   onScope,
   resetSignal,
-  onBrowse,
+  onNavigate,
 }: {
-  corpus: CaseStats[] | null;
+  pipeline: Pipeline | null;
   active: SourceRef | null;
   onOpen: (s: SourceRef) => void;
   scope: Scope;
   onScope: (s: Scope) => void;
   resetSignal: number;
-  onBrowse: (s: Scope) => void;
+  onNavigate: (v: "evals" | "data") => void;
 }) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [draft, setDraft] = useState("");
@@ -135,21 +175,21 @@ export function AskView({
     setTurns((ts) => ts.map((t) => (t.id === id ? { ...t, ...f(t) } : t)));
   }
 
-  async function ask(q: string) {
+  async function ask(q: string, s: Scope = scope) {
     if (!q.trim() || busy) return;
     const ctrl = new AbortController();
     abort.current = ctrl;
     const id = Date.now();
-    setTurns((ts) => [...ts, { id, question: q.trim(), scope, answer: "", steps: [], citations: null, error: null, status: "running", startedAt: id }]);
+    setTurns((ts) => [...ts, { id, question: q.trim(), scope: s, answer: "", steps: [], citations: null, error: null, status: "running", startedAt: id }]);
     setDraft("");
     try {
       const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ question: q.trim(), case: scope }),
+        body: JSON.stringify({ question: q.trim(), case: s }),
         signal: ctrl.signal,
       });
-      if (!res.ok || !res.body) throw new Error(`The agent request failed (${res.status}).`);
+      if (!res.ok || !res.body) throw new Error(`The agent couldn't start (HTTP ${res.status}). Check that the API is running.`);
       for await (const { event, data } of readSSE(res)) {
         const d = data as Record<string, unknown>;
         if (event === "text") patch(id, (t) => ({ answer: t.answer + (d.text as string) }));
@@ -157,7 +197,7 @@ export function AskView({
         else if (event === "tool_result")
           patch(id, (t) => {
             const steps = [...t.steps];
-            const last = steps.findLastIndex((s) => !s.done);
+            const last = steps.findLastIndex((x) => !x.done);
             if (last >= 0) steps[last] = { ...steps[last], done: true, isError: Boolean(d.is_error) };
             return { steps };
           });
@@ -177,20 +217,16 @@ export function AskView({
     }
   }
 
-  const totals = corpus && {
-    docs: corpus.reduce((a, c) => a + c.documents, 0),
-    pages: corpus.reduce((a, c) => a + c.pages, 0),
-  };
-
   if (!turns.length)
     return (
-      <div className="mx-auto grid w-full max-w-[1120px] gap-10 px-4 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:py-16">
-        <div className="min-w-0">
-          <p className="eyebrow">Ontario Energy Board · rate applications</p>
-          <h1 className="mt-3 font-serif text-[40px] font-semibold leading-[1.1] tracking-tight sm:text-[46px]">Ask the record.</h1>
-          <p className="mt-3 max-w-[540px] text-[15px] leading-relaxed text-muted">
-            Questions are answered only from the filed evidence, interrogatory responses and decisions. Every sentence
-            carries a footnote to the page it came from.
+      <div className="mx-auto w-full max-w-[1080px] px-5 pb-16 pt-12 sm:px-8 lg:pt-20">
+        <div className="max-w-[760px]">
+          <h1 className="text-[34px] font-semibold leading-[1.15] tracking-[-0.015em] text-balance sm:text-[42px]">
+            Ask two Ontario rate cases a question. Get the answer with the page it came from.
+          </h1>
+          <p className="mt-4 max-w-[60ch] text-[16px] leading-relaxed text-muted">
+            The agent reads Toronto Hydro&apos;s 2025–2029 and Hydro One&apos;s 2028–2032 applications to the Ontario Energy Board: evidence,
+            interrogatory responses, settlements and decisions.
           </p>
           <div className="mt-8">
             <Composer
@@ -201,80 +237,57 @@ export function AskView({
               busy={false}
               scope={scope}
               onScope={onScope}
-              placeholder="e.g. How does Hydro One justify its vegetation management spending?"
+              placeholder="Ask about spending, rates, a program, or how the two utilities compare"
               autoFocus
             />
           </div>
-          <div className="mt-10">
-            <p className="eyebrow mb-1">Try one of these</p>
-            <ol className="divide-y divide-line border-y border-line">
-              {EXAMPLES.map((ex, i) => (
-                <li key={ex}>
-                  <button onClick={() => ask(ex)} className="group flex w-full items-baseline gap-4 py-3 text-left">
-                    <span className="font-mono text-[11px] text-faint">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="flex-1 text-[14px] leading-snug text-ink/85 group-hover:text-ink">{ex}</span>
-                    <span className="text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-accent">→</span>
+          <div className="mt-6">
+            <h2 className="text-[13px] text-muted">Questions that work well</h2>
+            <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+              {EXAMPLES.map((ex) => (
+                <li key={ex.q}>
+                  <button
+                    onClick={() => {
+                      onScope(ex.scope);
+                      ask(ex.q, ex.scope);
+                    }}
+                    className="h-full w-full rounded-lg border border-line bg-surface/50 px-3.5 py-3 text-left text-[13.5px] leading-snug text-text/85 transition-colors hover:border-line-strong hover:bg-surface hover:text-text"
+                  >
+                    {ex.q}
+                    <span className="mt-1.5 block text-[12px] text-faint">{ex.scope ? CASES[ex.scope]?.utility : "Both cases"}</span>
                   </button>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </div>
-
-        <aside className="space-y-3 lg:pt-[52px]">
-          <p className="eyebrow">On the record</p>
-          {(corpus ?? []).map((c) => (
-            <div key={c.case_number} className="rounded-lg border border-line bg-panel p-4">
-              <p className="font-mono text-[11px] text-muted">{c.case_number}</p>
-              <p className="mt-1 font-serif text-[19px] font-semibold leading-tight">{CASES[c.case_number]?.utility ?? c.applicant}</p>
-              <p className="text-[12.5px] text-muted">{CASES[c.case_number]?.period} rate application</p>
-              <div className="mt-3 flex gap-5 border-t border-dashed border-line pt-3 text-[12.5px]">
-                <span>
-                  <span className="font-medium tabular-nums">{fmt.format(c.documents)}</span> <span className="text-muted">filings</span>
-                </span>
-                <span>
-                  <span className="font-medium tabular-nums">{fmt.format(c.pages)}</span> <span className="text-muted">pages</span>
-                </span>
-              </div>
-              <button onClick={() => onBrowse(c.case_number)} className="mt-3 text-[12.5px] font-medium text-accent hover:underline">
-                Browse filings →
-              </button>
-            </div>
-          ))}
-          {totals && (
-            <p className="px-1 text-[11.5px] leading-relaxed text-faint">
-              {fmt.format(totals.docs)} PDFs, {fmt.format(totals.pages)} pages, from rds.oeb.ca and the utilities&apos; own sites.
-            </p>
-          )}
-        </aside>
+        <HowItWorks pipeline={pipeline} onNavigate={onNavigate} />
       </div>
     );
 
   return (
     <div className="flex min-h-full flex-col">
-      <div className="mx-auto w-full max-w-[780px] flex-1 px-4 pb-8 pt-10 sm:px-8">
-        <div className="space-y-14">
+      <div className="mx-auto w-full max-w-[820px] flex-1 px-5 pb-10 pt-10 sm:px-8">
+        <div className="space-y-16">
           {turns.map((t) => (
-            <section key={t.id}>
-              <p className="eyebrow">
-                {t.scope ? `${CASES[t.scope]?.utility} · ${t.scope}` : "Both cases"}
-                {" · "}
-                {new Date(t.startedAt).toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit" })}
-                {t.durationMs ? ` · ${Math.round(t.durationMs / 1000)} s` : ""}
+            <section key={t.id} aria-label={t.question}>
+              <h2 className="text-[22px] font-semibold leading-snug tracking-[-0.01em]">{t.question}</h2>
+              <p className="mt-1.5 text-[12.5px] text-faint">
+                {t.scope ? `${CASES[t.scope]?.utility} (${t.scope})` : "Both cases"}
+                {t.durationMs ? `, answered in ${Math.round(t.durationMs / 1000)} s` : ""}
               </p>
-              <h2 className="mt-2 font-serif text-[24px] font-semibold leading-snug tracking-tight">{t.question}</h2>
-              <div className="mt-4 border-t border-line pt-4">
-                <Steps steps={t.steps} running={t.status === "running"} />
+              <div className="mt-5">
+                <Trace steps={t.steps} running={t.status === "running"} />
                 {t.answer && <Answer text={t.answer} citations={t.citations} streaming={t.status === "running"} active={active} onOpen={onOpen} />}
-                {t.status === "stopped" && <p className="mt-2 text-[13px] text-muted">Stopped.</p>}
+                {t.status === "stopped" && <p className="mt-2 text-[13px] text-muted">Stopped. Ask again to restart.</p>}
                 {t.error && (
-                  <div className="mt-3 flex gap-2 rounded-lg border border-warn/30 bg-warn-bg px-3 py-2 text-[13px] text-warn">
-                    <Icon name="alert" className="mt-0.5 size-4 shrink-0" />
+                  <div role="alert" className="mt-3 flex gap-2 rounded-lg border border-serious/40 bg-serious/10 px-3 py-2 text-[13px]">
+                    <Icon name="alert" className="mt-0.5 size-4 shrink-0 text-serious" />
                     <span className="break-words">{t.error}</span>
                   </div>
                 )}
                 {t.status === "done" && t.answer && (
-                  <div className="mt-3 flex items-center gap-0.5">
+                  <div className="mt-3">
                     <CopyButton text={t.answer} />
                   </div>
                 )}
@@ -284,8 +297,8 @@ export function AskView({
         </div>
         <div ref={bottom} />
       </div>
-      <div className="sticky bottom-0 border-t border-line bg-canvas/95 px-4 py-3 backdrop-blur sm:px-8">
-        <div className="mx-auto max-w-[780px]">
+      <div className="sticky bottom-0 border-t border-line bg-ground/90 px-5 py-3 backdrop-blur sm:px-8">
+        <div className="mx-auto max-w-[820px]">
           <Composer
             value={draft}
             onChange={setDraft}
@@ -294,7 +307,7 @@ export function AskView({
             busy={busy}
             scope={scope}
             onScope={onScope}
-            placeholder="Ask another question (each one is answered from the filings on its own)…"
+            placeholder="Ask another question. Each one is answered from the filings on its own."
             compact
           />
         </div>

@@ -6,6 +6,8 @@
     GET  /api/page/{doc_id}/{page}                               (extracted page text + document metadata)
     GET  /api/corpus                                             (per-case document and page counts)
     GET  /api/documents?case=...                                 (ingested filings)
+    GET  /api/pipeline                                           (ingestion stats: sources, statuses, stage times)
+    GET  /api/evals                                              (committed eval results, for the Evaluation view)
 """
 
 import json
@@ -18,7 +20,7 @@ from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel
 
 from oeb.agent import agent
-from oeb.config import DATA_RAW
+from oeb.config import DATA_RAW, ROOT
 from oeb.db import connect
 from oeb.search import Filters, fts, hybrid, vector
 
@@ -43,6 +45,43 @@ def corpus() -> list[dict]:
                    coalesce(sum(d.n_pages) FILTER (WHERE d.status = 'embedded'), 0) AS pages,
                    min(d.date_received) AS first_filed, max(d.date_received) AS last_filed
             FROM documents d GROUP BY d.case_number ORDER BY d.case_number""").fetchall()
+
+
+RESULTS = ROOT / "evals" / "results"
+
+
+def _load(name: str) -> dict:
+    path = RESULTS / name
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
+@app.get("/api/pipeline")
+def pipeline() -> dict:
+    with connect() as conn:
+        statuses = conn.execute("""SELECT status, count(*) AS n FROM documents
+                                   GROUP BY status ORDER BY n DESC""").fetchall()
+        sources = conn.execute("""SELECT source, count(*) AS n FROM documents WHERE status = 'embedded'
+                                  GROUP BY source ORDER BY n DESC""").fetchall()
+        totals = conn.execute("""SELECT (SELECT count(*) FROM pages) AS pages, (SELECT count(*) FROM chunks) AS chunks,
+                                        (SELECT count(*) FROM extracted_tables) AS tables""").fetchone()
+    return {"statuses": statuses, "sources": sources, "totals": totals, "corpus": _load("corpus.json")}
+
+
+@app.get("/api/evals")
+def evals() -> dict:
+    agent_summary = _load("agent.json")
+    section_hit = {q["ir_id"]: q["citation_unit_hit"] for q in agent_summary.get("per_question", [])}
+    runs = []
+    for f in sorted((RESULTS / "agent_runs").glob("*.json")):
+        r = json.loads(f.read_text())
+        judge = r.get("judge") or {}
+        runs.append({"ir_id": r.get("ir_id"), "query": r.get("query"), "gold_exhibits": r.get("gold_exhibits"),
+                     "cited_exhibits": r.get("cited_exhibits"), "citation_hit": r.get("citation_hit"),
+                     "section_hit": section_hit.get(r.get("ir_id")),
+                     "verdict": judge.get("verdict"), "rationale": judge.get("rationale"),
+                     "n_unverified": r.get("n_unverified"), "seconds": r.get("seconds")})
+    return {"retrieval": _load("retrieval.json"), "agent": agent_summary,
+            "hand_checks": _load("hand_checks.json"), "runs": runs}
 
 
 @app.get("/api/documents")

@@ -3,34 +3,55 @@
 import { useEffect, useState } from "react";
 import { AskView } from "./components/AskView";
 import { type Scope } from "./components/Composer";
+import { EvalView } from "./components/EvalView";
 import { FilingsView } from "./components/FilingsView";
 import { Icon, Mark } from "./components/Icon";
 import { SearchView } from "./components/SearchView";
 import { SourcePanel } from "./components/SourcePanel";
-import { type CaseStats, type SourceRef } from "./lib";
+import { type Pipeline, type SourceRef } from "./lib";
 
-type View = "ask" | "search" | "filings";
+type View = "ask" | "search" | "evals" | "data";
 
-const NAV: { view: View; label: string }[] = [
-  { view: "ask", label: "Ask" },
-  { view: "search", label: "Search passages" },
-  { view: "filings", label: "Filings" },
+// Each view has its own URL hash, so a view can be linked to and the back button works.
+const NAV: { view: View; label: string; hash: string }[] = [
+  { view: "ask", label: "Ask", hash: "" },
+  { view: "search", label: "Search", hash: "#search" },
+  { view: "evals", label: "Evaluation", hash: "#evaluation" },
+  { view: "data", label: "Data", hash: "#data" },
 ];
 
 const REPO = "https://github.com/AarnavNoble/oeb-rate-case-agent";
 
+function viewFromHash(): View {
+  if (typeof window === "undefined") return "ask";
+  return NAV.find((n) => n.hash && n.hash === window.location.hash)?.view ?? "ask";
+}
+
 export default function Home() {
-  const [view, setView] = useState<View>("ask");
+  const [view, setViewState] = useState<View>("ask");
   const [source, setSource] = useState<SourceRef | null>(null);
   const [scope, setScope] = useState<Scope>(null);
-  const [corpus, setCorpus] = useState<CaseStats[] | null>(null);
+  const [pipeline, setPipeline] = useState<Pipeline | null>(null);
   const [reset, setReset] = useState(0);
 
+  function setView(v: View) {
+    const hash = NAV.find((n) => n.view === v)!.hash;
+    history.pushState(null, "", hash || window.location.pathname);
+    setViewState(v);
+  }
+
   useEffect(() => {
-    fetch("/api/corpus")
+    const sync = () => setViewState(viewFromHash());
+    sync();
+    window.addEventListener("popstate", sync);
+    return () => window.removeEventListener("popstate", sync);
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/pipeline")
       .then((r) => (r.ok ? r.json() : null))
-      .then(setCorpus)
-      .catch(() => setCorpus(null));
+      .then(setPipeline)
+      .catch(() => setPipeline(null));
   }, []);
 
   useEffect(() => {
@@ -40,7 +61,7 @@ export default function Home() {
   }, []);
 
   function toggleTheme() {
-    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem("theme", next);
@@ -49,47 +70,43 @@ export default function Home() {
 
   return (
     <div className="flex h-screen flex-col">
-      <header className="z-20 shrink-0 border-b border-line bg-panel">
-        <div className="flex h-14 items-center gap-4 px-4 sm:px-6">
+      <header className="z-20 shrink-0 border-b border-line bg-ground">
+        <div className="flex h-14 items-center gap-2 px-4 sm:gap-6 sm:px-6">
           <button
             onClick={() => {
               setView("ask");
               setSource(null);
               setReset((n) => n + 1);
             }}
-            className="flex items-center gap-2.5"
-            title="New question"
+            className="flex shrink-0 items-center gap-2 rounded-md"
+            aria-label="Rate Case Research, start a new question"
           >
-            <Mark className="size-8 text-[17px]" />
-            <span className="hidden font-serif text-[18px] font-semibold tracking-tight sm:inline">Rate Case Research</span>
+            <Mark className="size-6" />
+            <span className="hidden text-[14.5px] font-semibold md:inline">Rate Case Research</span>
           </button>
-          <nav className="ml-2 flex h-full items-stretch gap-1 overflow-x-auto sm:ml-6">
+          <nav aria-label="Main" className="flex h-full min-w-0 items-stretch gap-0.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {NAV.map((n) => (
               <button
                 key={n.view}
                 onClick={() => setView(n.view)}
                 aria-current={view === n.view ? "page" : undefined}
-                className={`relative shrink-0 px-2.5 text-[13.5px] transition-colors ${
+                className={`relative shrink-0 px-3 text-[13.5px] transition-colors ${
                   view === n.view
-                    ? "font-medium text-ink after:absolute after:inset-x-2.5 after:bottom-0 after:h-[2px] after:rounded-full after:bg-accent"
-                    : "text-muted hover:text-ink"
+                    ? "font-medium text-text after:absolute after:inset-x-3 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-amber"
+                    : "text-muted hover:text-text"
                 }`}
               >
                 {n.label}
               </button>
             ))}
           </nav>
-          <div className="ml-auto flex items-center gap-1 text-muted">
-            <span className="mr-2 hidden items-center gap-1.5 text-[12px] lg:flex">
-              <Icon name="shield" className="size-3.5 text-ok" />
-              Citations checked against the pages the agent retrieved
-            </span>
-            <a href={REPO} target="_blank" rel="noreferrer" className="flex items-center gap-1 rounded-md px-2 py-1.5 text-[12.5px] hover:bg-sunken hover:text-ink">
-              Code & evals <Icon name="external" className="size-3" />
+          <div className="ml-auto flex shrink-0 items-center gap-1 text-muted">
+            <a href={REPO} target="_blank" rel="noreferrer" className="hidden items-center gap-1 rounded-md px-2 py-1.5 text-[13px] hover:bg-surface hover:text-text sm:flex">
+              Source code <Icon name="external" className="size-3.5" />
             </a>
-            <button onClick={toggleTheme} aria-label="Toggle dark theme" className="rounded-md p-2 hover:bg-sunken hover:text-ink">
-              <Icon name="moon" className="size-4 dark:hidden" />
-              <Icon name="sun" className="hidden size-4 dark:block" />
+            <button onClick={toggleTheme} aria-label="Switch between dark and light theme" className="rounded-md p-2 hover:bg-surface hover:text-text">
+              <Icon name="sun" className="size-4 light:hidden" />
+              <Icon name="moon" className="hidden size-4 light:block" />
             </button>
           </div>
         </div>
@@ -99,20 +116,18 @@ export default function Home() {
         <main className="min-w-0 flex-1 overflow-y-auto">
           <div className={view === "ask" ? "h-full" : "hidden"}>
             <AskView
-              corpus={corpus}
+              pipeline={pipeline}
               active={source}
               onOpen={setSource}
               scope={scope}
               onScope={setScope}
               resetSignal={reset}
-              onBrowse={(s) => {
-                setScope(s);
-                setView("filings");
-              }}
+              onNavigate={(v) => setView(v)}
             />
           </div>
           {view === "search" && <SearchView active={source} onOpen={setSource} scope={scope} onScope={setScope} />}
-          {view === "filings" && <FilingsView corpus={corpus} active={source} onOpen={setSource} scope={scope} onScope={setScope} />}
+          {view === "evals" && <EvalView />}
+          {view === "data" && <FilingsView pipeline={pipeline} active={source} onOpen={setSource} scope={scope} onScope={setScope} />}
         </main>
         {source && (
           <SourcePanel
