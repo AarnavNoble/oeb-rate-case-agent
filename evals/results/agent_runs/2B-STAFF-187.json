@@ -4,8 +4,8 @@
     "2B"
   ],
   "query": "Toronto Hydro states: \u201cToronto Hydro does not propose any net expenditure under this Program\nfor the years 2025 to 2029. If during the course of the project, Toronto Hydro does not use all of\nthe fees collected from the customer to facilitate the DER connection, Toronto Hydro will refund\nthe difference back to the customer.\u201d\na) Please identify all capital expenditures planned for 2025-2029 intended to enable the\nToronto Hydro system to host new DERs connecting solely within the 2025-2029 test\nperiod.\nb) Please identify all capital expenditures planned for 2025-2029 intended to enable the\nToronto Hydro system to host new DERs connecting beyond the test period.",
-  "answer": "**Short answer:** The filings available to me don't split capital between DERs that connect within 2025\u20132029 and DERs that connect after 2029. No program is labelled that way. The only DER-hosting capital I found is in two programs. Toronto Hydro describes both as serving DER growth forecast through 2029, and says nothing about connections after 2029.\n\n**Context for the quoted statement.** The \"no net expenditure\" sentence applies only to the Generation Connection segment. Customer capital contributions recover the project costs of connecting DERs [cite:rds-823164:117]. The hosting-capacity investments below sit in separate programs and are funded by the utility.\n\n**a) Capital for DERs connecting within 2025\u20132029**\n\n- **Generation Protection, Monitoring and Control (GPMC) program, $35.0M over 2025\u20132029** [cite:rds-823164:212]. It is customer-driven, and the investment is sized to the 2023\u20132029 DER connection forecast. That forecast reaches about 516.7 MW by 2029 [cite:rds-823164:198].\n  - **Monitoring and control systems (MCS), about $14.5M.** These are installed at renewable DER sites as connections occur, at about $25,000 per site [cite:rds-823164:213].\n  - **Bus-tie reactors, $20.4M.** They mitigate short-circuit limits at six Hydro One-owned transformer stations, with one installed per year from 2025 [cite:rds-823164:212]:\n\n| Year | Station |\n|---|---|\n| 2025 | Richview |\n| 2026 | Runnymede |\n| 2027 | Cecil |\n| 2028 | Esplanade |\n| 2029 | Leslie and Woodbridge |\n\n  The bus-tie reactors address eight stations that Toronto Hydro expects to exceed short-circuit capacity by 2029 [cite:rds-823164:201]. Annual program costs run $5.9M, $6.1M, $6.3M, $6.5M and $10.3M for 2025\u20132029 [cite:rds-823164:212].\n\n- **Renewable-enabling energy storage systems (Non-Wires Solutions program), $22.5M.** Toronto Hydro plans nine systems totalling 10.2 MW on nine feeders. The feeders were chosen because of forecast generation-to-minimum-load ratios over 2025\u20132029 [cite:rds-823163:687] [cite:rds-832681:380].\n\n**b) Capital for DERs connecting beyond the test period**\n\nThe filings don't identify any capital intended specifically for post-2029 connections. These are the nearest items:\n\n- Toronto Hydro says MCS data will feed hosting-capacity analysis and \"lay the foundation\" for longer-term DER management. It also says this has \"long-term value\" for planning future DER connections [cite:rds-823164:207] [cite:rds-823164:198]. The spending is still part of the GPMC program above.\n- Toronto Hydro notes that the Future Energy Scenarios high case (Net Zero by 2040) could reach 1,249 MW by 2029 and \"could require significant investment in hosting capacity expansion, grid modernization, and innovation.\" No funding is requested for that scenario in this passage [cite:rds-823164:198].\n- Toronto Hydro says it won't build station expansions solely for DER connections. DER capacity is treated as a secondary benefit of expansions needed for load, such as Sheppard TS [cite:rds-823164:201].\n\n**Related items that are not hosting-capacity capital** (these are in the Grid Modernization Strategy, with costs as listed there):\n- Hosting capacity map: $1M, in IT/OT systems [cite:rds-823163:686].\n- GIS DER asset tracking: $1.5M, in IT/OT systems [cite:rds-823163:686].\n- Flexibility Services: $5.7M OPEX [cite:rds-823163:688].\n- Energy Centre enhancement: $150K OPEX [cite:rds-823163:688].\n\nI did not find interrogatory responses in these filings. The formal answer to this question may be in one, so you may want to check for it.",
-  "answer_rendered": "**Short answer:** The filings available to me don't split capital between DERs that connect within 2025\u20132029 and DERs that connect after 2029. No program is labelled that way. The only DER-hosting capital I found is in two programs. Toronto Hydro describes both as serving DER growth forecast through 2029, and says nothing about connections after 2029.\n\n**Context for the quoted statement.** The \"no net expenditure\" sentence applies only to the Generation Connection segment. Customer capital contributions recover the project costs of connecting DERs [EB-2023-0195 / Exhibit 2B / p.117]. The hosting-capacity investments below sit in separate programs and are funded by the utility.\n\n**a) Capital for DERs connecting within 2025\u20132029**\n\n- **Generation Protection, Monitoring and Control (GPMC) program, $35.0M over 2025\u20132029** [EB-2023-0195 / Exhibit 2B / p.212]. It is customer-driven, and the investment is sized to the 2023\u20132029 DER connection forecast. That forecast reaches about 516.7 MW by 2029 [EB-2023-0195 / Exhibit 2B / p.198].\n  - **Monitoring and control systems (MCS), about $14.5M.** These are installed at renewable DER sites as connections occur, at about $25,000 per site [EB-2023-0195 / Exhibit 2B / p.213].\n  - **Bus-tie reactors, $20.4M.** They mitigate short-circuit limits at six Hydro One-owned transformer stations, with one installed per year from 2025 [EB-2023-0195 / Exhibit 2B / p.212]:\n\n| Year | Station |\n|---|---|\n| 2025 | Richview |\n| 2026 | Runnymede |\n| 2027 | Cecil |\n| 2028 | Esplanade |\n| 2029 | Leslie and Woodbridge |\n\n  The bus-tie reactors address eight stations that Toronto Hydro expects to exceed short-circuit capacity by 2029 [EB-2023-0195 / Exhibit 2B / p.201]. Annual program costs run $5.9M, $6.1M, $6.3M, $6.5M and $10.3M for 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.212].\n\n- **Renewable-enabling energy storage systems (Non-Wires Solutions program), $22.5M.** Toronto Hydro plans nine systems totalling 10.2 MW on nine feeders. The feeders were chosen because of forecast generation-to-minimum-load ratios over 2025\u20132029 [EB-2023-0195 / Exhibit 2B / p.687] [EB-2023-0195 / Exhibit 2A / p.380].\n\n**b) Capital for DERs connecting beyond the test period**\n\nThe filings don't identify any capital intended specifically for post-2029 connections. These are the nearest items:\n\n- Toronto Hydro says MCS data will feed hosting-capacity analysis and \"lay the foundation\" for longer-term DER management. It also says this has \"long-term value\" for planning future DER connections [EB-2023-0195 / Exhibit 2B / p.207] [EB-2023-0195 / Exhibit 2B / p.198]. The spending is still part of the GPMC program above.\n- Toronto Hydro notes that the Future Energy Scenarios high case (Net Zero by 2040) could reach 1,249 MW by 2029 and \"could require significant investment in hosting capacity expansion, grid modernization, and innovation.\" No funding is requested for that scenario in this passage [EB-2023-0195 / Exhibit 2B / p.198].\n- Toronto Hydro says it won't build station expansions solely for DER connections. DER capacity is treated as a secondary benefit of expansions needed for load, such as Sheppard TS [EB-2023-0195 / Exhibit 2B / p.201].\n\n**Related items that are not hosting-capacity capital** (these are in the Grid Modernization Strategy, with costs as listed there):\n- Hosting capacity map: $1M, in IT/OT systems [EB-2023-0195 / Exhibit 2B / p.686].\n- GIS DER asset tracking: $1.5M, in IT/OT systems [EB-2023-0195 / Exhibit 2B / p.686].\n- Flexibility Services: $5.7M OPEX [EB-2023-0195 / Exhibit 2B / p.688].\n- Energy Centre enhancement: $150K OPEX [EB-2023-0195 / Exhibit 2B / p.688].\n\nI did not find interrogatory responses in these filings. The formal answer to this question may be in one, so you may want to check for it.",
+  "answer": "The filings I can access don't split planned capital into DERs that connect only within 2025-2029 and DERs that connect after 2029. Toronto Hydro doesn't label any project that way. I can identify the capital it describes as enabling DER hosting, and I note below which items have a visible beyond-2029 element. I have not located dollar figures for the storage program or the Sheppard TS expansion.\n\n**Context for the quote.** The quoted \"no net expenditure\" statement covers only the customer-funded Generation Connection program. Toronto Hydro recovers project costs for those connections from the customer through capital contributions [cite:rds-823164:117]. The utility-funded hosting-capacity work sits in other programs.\n\n**a) Capital for DERs connecting within 2025-2029**\n\n1. **Generation Protection, Monitoring and Control (GPMC) program.** It totals $35.0M for 2025-2029, with annual spend of $5.9M, $6.1M, $6.3M, $6.5M and $10.3M [cite:rds-823164:195] [cite:rds-823164:209]. It has two parts:\n   - **Monitoring and control systems.** These are for renewable DER sites over 50 kW. The plan is 315 systems at about $25,000 each, roughly $14.5M. The timing is driven by customer connection requests, and the cost is based on forecast connections [cite:rds-823164:213]. The annual cost is $2.6M to $3.2M [cite:rds-823164:212].\n   - **Bus-tie reactors.** The plan is six reactors, at Richview, Runnymede, Cecil, Esplanade, Leslie and Woodbridge TS. Together they cost $20.4M and are scheduled from 2025 through 2029 [cite:rds-823164:212]. They relieve short-circuit limits that Toronto Hydro says already exist at some of these buses. Three station buses have already reached their limits [cite:rds-823164:201].\n\n2. **Renewable-enabling energy storage.** The plan is nine storage systems totalling 10.2 MW on nine feeders forecast to have high generator-to-minimum-load ratios during 2025-2029 [cite:rds-834051:40]. I did not find the program cost.\n\n3. **Sheppard TS expansion.** This adds a new bus with an estimated 126 MVA of short-circuit capacity \"to enable DER growth\". The station's EZ bus is already at \u221257.3 MVA [cite:rds-834051:40]. The expansion is driven mainly by load growth, and DER hosting is a secondary benefit [cite:rds-823164:201]. I did not find its cost.\n\n**b) Capital for DERs connecting beyond 2029**\n\nToronto Hydro does not identify any capital as being only for post-2029 connections. Several items do look beyond the test period:\n\n- **Forecast basis.** The sizing uses a 2029 forecast of 516.7 MW. By 2029, eight station buses are forecast to exceed short-circuit capacity [cite:rds-823164:201]. Some reactors may therefore serve constraints that only emerge late in the period. The $7.1M for 2029 is the largest year of reactor spend.\n- **Longer-run scenarios.** The Future Energy Scenarios modelling shows much higher DER levels to 2050. Toronto Hydro says hosting that much DER \"could require significant investment in hosting capacity expansion, grid modernization, and innovation\" [cite:rds-823164:198]. It also describes the grid readiness work as preparing the grid for DER growth \"by 2030\" [cite:rds-823163:680]. None of these amounts are broken out as post-2029 spending.\n- **Sheppard TS.** Toronto Hydro says the expansion may be the lowest-cost option in the long term. Its comparison with load transfers extends to 2033-2039 [cite:rds-823164:659].\n- **Monitoring data.** The monitoring and control data will feed hosting-capacity analysis and flexible connections. Toronto Hydro describes this as having \"long-term value\" for planning future DER connections [cite:rds-823164:207].\n- **Grid modernization items.** The 2025-2029 plan also includes the following. Their purposes are partly operational (monitoring, flexibility, data) rather than physical hosting, and they are not tied to a connection date:\n  - AMI 2.0 meters, described as supporting DER monitoring [cite:rds-823163:689].\n  - Energy Centre (DERMS) enhancements [cite:rds-823163:689].\n  - GIS DER asset tracking [cite:rds-823163:723].\n\nToronto Hydro also states that it is not economical to expand a station solely to connect DERs [cite:rds-823164:201]. To get an actual split between the two periods, you would need to ask Toronto Hydro for one through an interrogatory.",
+  "answer_rendered": "The filings I can access don't split planned capital into DERs that connect only within 2025-2029 and DERs that connect after 2029. Toronto Hydro doesn't label any project that way. I can identify the capital it describes as enabling DER hosting, and I note below which items have a visible beyond-2029 element. I have not located dollar figures for the storage program or the Sheppard TS expansion.\n\n**Context for the quote.** The quoted \"no net expenditure\" statement covers only the customer-funded Generation Connection program. Toronto Hydro recovers project costs for those connections from the customer through capital contributions [EB-2023-0195 / Exhibit 2B / p.117]. The utility-funded hosting-capacity work sits in other programs.\n\n**a) Capital for DERs connecting within 2025-2029**\n\n1. **Generation Protection, Monitoring and Control (GPMC) program.** It totals $35.0M for 2025-2029, with annual spend of $5.9M, $6.1M, $6.3M, $6.5M and $10.3M [EB-2023-0195 / Exhibit 2B / p.195] [EB-2023-0195 / Exhibit 2B / p.209]. It has two parts:\n   - **Monitoring and control systems.** These are for renewable DER sites over 50 kW. The plan is 315 systems at about $25,000 each, roughly $14.5M. The timing is driven by customer connection requests, and the cost is based on forecast connections [EB-2023-0195 / Exhibit 2B / p.213]. The annual cost is $2.6M to $3.2M [EB-2023-0195 / Exhibit 2B / p.212].\n   - **Bus-tie reactors.** The plan is six reactors, at Richview, Runnymede, Cecil, Esplanade, Leslie and Woodbridge TS. Together they cost $20.4M and are scheduled from 2025 through 2029 [EB-2023-0195 / Exhibit 2B / p.212]. They relieve short-circuit limits that Toronto Hydro says already exist at some of these buses. Three station buses have already reached their limits [EB-2023-0195 / Exhibit 2B / p.201].\n\n2. **Renewable-enabling energy storage.** The plan is nine storage systems totalling 10.2 MW on nine feeders forecast to have high generator-to-minimum-load ratios during 2025-2029 [EB-2023-0195 / Exhibit 2A / p.40]. I did not find the program cost.\n\n3. **Sheppard TS expansion.** This adds a new bus with an estimated 126 MVA of short-circuit capacity \"to enable DER growth\". The station's EZ bus is already at \u221257.3 MVA [EB-2023-0195 / Exhibit 2A / p.40]. The expansion is driven mainly by load growth, and DER hosting is a secondary benefit [EB-2023-0195 / Exhibit 2B / p.201]. I did not find its cost.\n\n**b) Capital for DERs connecting beyond 2029**\n\nToronto Hydro does not identify any capital as being only for post-2029 connections. Several items do look beyond the test period:\n\n- **Forecast basis.** The sizing uses a 2029 forecast of 516.7 MW. By 2029, eight station buses are forecast to exceed short-circuit capacity [EB-2023-0195 / Exhibit 2B / p.201]. Some reactors may therefore serve constraints that only emerge late in the period. The $7.1M for 2029 is the largest year of reactor spend.\n- **Longer-run scenarios.** The Future Energy Scenarios modelling shows much higher DER levels to 2050. Toronto Hydro says hosting that much DER \"could require significant investment in hosting capacity expansion, grid modernization, and innovation\" [EB-2023-0195 / Exhibit 2B / p.198]. It also describes the grid readiness work as preparing the grid for DER growth \"by 2030\" [EB-2023-0195 / Exhibit 2B / p.680]. None of these amounts are broken out as post-2029 spending.\n- **Sheppard TS.** Toronto Hydro says the expansion may be the lowest-cost option in the long term. Its comparison with load transfers extends to 2033-2039 [EB-2023-0195 / Exhibit 2B / p.659].\n- **Monitoring data.** The monitoring and control data will feed hosting-capacity analysis and flexible connections. Toronto Hydro describes this as having \"long-term value\" for planning future DER connections [EB-2023-0195 / Exhibit 2B / p.207].\n- **Grid modernization items.** The 2025-2029 plan also includes the following. Their purposes are partly operational (monitoring, flexibility, data) rather than physical hosting, and they are not tied to a connection date:\n  - AMI 2.0 meters, described as supporting DER monitoring [EB-2023-0195 / Exhibit 2B / p.689].\n  - Energy Centre (DERMS) enhancements [EB-2023-0195 / Exhibit 2B / p.689].\n  - GIS DER asset tracking [EB-2023-0195 / Exhibit 2B / p.723].\n\nToronto Hydro also states that it is not economical to expand a station solely to connect DERs [EB-2023-0195 / Exhibit 2B / p.201]. To get an actual split between the two periods, you would need to ask Toronto Hydro for one through an interrogatory.",
   "citations": [
     {
       "doc_id": "rds-823164",
@@ -17,7 +17,7 @@
     },
     {
       "doc_id": "rds-823164",
-      "page": 212,
+      "page": 195,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
@@ -25,7 +25,7 @@
     },
     {
       "doc_id": "rds-823164",
-      "page": 198,
+      "page": 209,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
@@ -41,6 +41,14 @@
     },
     {
       "doc_id": "rds-823164",
+      "page": 212,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
       "page": 201,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
@@ -48,19 +56,35 @@
       "seen": true
     },
     {
+      "doc_id": "rds-834051",
+      "page": 40,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2A",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 198,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
       "doc_id": "rds-823163",
-      "page": 687,
+      "page": 680,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
       "seen": true
     },
     {
-      "doc_id": "rds-832681",
-      "page": 380,
+      "doc_id": "rds-823164",
+      "page": 659,
       "case_number": "EB-2023-0195",
-      "exhibit": "2A",
-      "title": "THESL_Exhibit 2A_Rate Base_20240124",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
       "seen": true
     },
     {
@@ -73,7 +97,7 @@
     },
     {
       "doc_id": "rds-823163",
-      "page": 686,
+      "page": 689,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
@@ -81,7 +105,7 @@
     },
     {
       "doc_id": "rds-823163",
-      "page": 688,
+      "page": 723,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
@@ -94,15 +118,15 @@
   ],
   "citation_hit": true,
   "n_unverified": 0,
-  "tool_calls": 8,
-  "num_turns": 9,
-  "seconds": 32.5,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 29.0,
   "agent_error": null,
-  "agent_cost_usd_equivalent": 0.22067179999999997,
+  "agent_cost_usd_equivalent": 0.21023519999999996,
   "judge": {
-    "verdict": "partially_correct",
-    "rationale": "The candidate correctly identifies GPMC and Non-Wires Solutions as DER-hosting capital and covers the grid modernization investments. However, it says DER-hosting capital is limited to two programs and treats Sheppard TS only as a side benefit of a load-driven expansion, so it misses the reference's third program (Station Expansion \u2013 Sheppard TS). Its answer to part (b) also differs from the reference, which says some of these expenditures may enable hosting capacity beyond the test period.",
+    "verdict": "correct",
+    "rationale": "The candidate names the same programs as the reference: Generation Protection, Monitoring and Control; the Sheppard TS expansion; and renewable-enabling storage, which falls under the reference's Non-Wires Solutions program. It also covers the grid modernization and readiness investments, and notes that some spending enables hosting beyond the test period. Nothing in it contradicts the reference.",
     "model": "claude-opus-5-5",
-    "cost_usd_equivalent": 0.0400196
+    "cost_usd_equivalent": 0.0338316
   }
 }

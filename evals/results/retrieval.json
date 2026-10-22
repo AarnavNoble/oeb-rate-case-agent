@@ -1,106 +1,106 @@
 {
-  "n_rows": 472,
+  "n_rows": 470,
   "n_unit_rows": 449,
   "k": 10,
   "retrievers": {
     "fts": {
       "response_gold": {
-        "n": 472,
-        "recall@1": 0.547,
-        "recall@5": 0.816,
-        "recall@10": 0.892,
-        "mrr@10": 0.66
+        "n": 470,
+        "recall@1": 0.57,
+        "recall@5": 0.83,
+        "recall@10": 0.906,
+        "mrr@10": 0.682
       },
       "unit_gold": {
         "n": 449,
-        "recall@1": 0.287,
-        "recall@5": 0.503,
-        "recall@10": 0.604,
-        "mrr@10": 0.379
+        "recall@1": 0.312,
+        "recall@5": 0.535,
+        "recall@10": 0.644,
+        "mrr@10": 0.405
       },
       "question_ref_gold": {
-        "n": 472,
-        "recall@1": 0.534,
-        "recall@5": 0.811,
-        "recall@10": 0.888,
-        "mrr@10": 0.649
+        "n": 470,
+        "recall@1": 0.538,
+        "recall@5": 0.828,
+        "recall@10": 0.896,
+        "mrr@10": 0.658
       },
-      "median_latency_ms": 133
+      "median_latency_ms": 234
     },
     "vector": {
       "response_gold": {
-        "n": 472,
-        "recall@1": 0.646,
-        "recall@5": 0.854,
-        "recall@10": 0.913,
-        "mrr@10": 0.733
+        "n": 470,
+        "recall@1": 0.679,
+        "recall@5": 0.879,
+        "recall@10": 0.917,
+        "mrr@10": 0.76
       },
       "unit_gold": {
         "n": 449,
-        "recall@1": 0.425,
-        "recall@5": 0.628,
-        "recall@10": 0.719,
-        "mrr@10": 0.514
+        "recall@1": 0.463,
+        "recall@5": 0.677,
+        "recall@10": 0.748,
+        "mrr@10": 0.551
       },
       "question_ref_gold": {
-        "n": 472,
-        "recall@1": 0.657,
-        "recall@5": 0.858,
-        "recall@10": 0.915,
-        "mrr@10": 0.745
+        "n": 470,
+        "recall@1": 0.704,
+        "recall@5": 0.887,
+        "recall@10": 0.928,
+        "mrr@10": 0.78
       },
-      "median_latency_ms": 48
+      "median_latency_ms": 53
     },
     "hybrid": {
       "response_gold": {
-        "n": 472,
-        "recall@1": 0.648,
-        "recall@5": 0.858,
-        "recall@10": 0.9,
-        "mrr@10": 0.733
+        "n": 470,
+        "recall@1": 0.687,
+        "recall@5": 0.879,
+        "recall@10": 0.921,
+        "mrr@10": 0.769
       },
       "unit_gold": {
         "n": 449,
-        "recall@1": 0.401,
-        "recall@5": 0.619,
-        "recall@10": 0.695,
-        "mrr@10": 0.492
+        "recall@1": 0.445,
+        "recall@5": 0.664,
+        "recall@10": 0.733,
+        "mrr@10": 0.536
       },
       "question_ref_gold": {
-        "n": 472,
-        "recall@1": 0.665,
-        "recall@5": 0.871,
-        "recall@10": 0.924,
-        "mrr@10": 0.75
+        "n": 470,
+        "recall@1": 0.689,
+        "recall@5": 0.894,
+        "recall@10": 0.938,
+        "mrr@10": 0.778
       },
-      "median_latency_ms": 247
+      "median_latency_ms": 344
     }
   },
   "baselines": {
     "random_chunks": {
       "exhibit": {
-        "n": 472,
-        "recall@1": 0.339,
-        "recall@5": 0.748,
-        "recall@10": 0.845,
-        "mrr@10": 0.508
+        "n": 470,
+        "recall@1": 0.34,
+        "recall@5": 0.746,
+        "recall@10": 0.844,
+        "mrr@10": 0.507
       },
       "unit": {
         "n": 449,
-        "recall@1": 0.038,
-        "recall@5": 0.161,
-        "recall@10": 0.289,
-        "mrr@10": 0.096
+        "recall@1": 0.041,
+        "recall@5": 0.164,
+        "recall@10": 0.284,
+        "mrr@10": 0.097
       },
       "seeds": 20
     },
     "exhibit_label_prior": {
       "exhibit": {
-        "n": 472,
-        "recall@1": 0.604,
-        "recall@5": 0.941,
+        "n": 470,
+        "recall@1": 0.602,
+        "recall@5": 0.94,
         "recall@10": 1.0,
-        "mrr@10": 0.741
+        "mrr@10": 0.74
       },
       "order": [
         "2B",
@@ -113,6 +113,6 @@
   },
   "leakage_ablation": {
     "description": "hybrid top-5 over ALL documents (no leakage control): share of queries for which a non-evidence hit is largely the utility's own response text (>=30% of its word 5-grams; unrelated chunks score <0.15)",
-    "share": 0.604
+    "share": 0.657
   }
 }

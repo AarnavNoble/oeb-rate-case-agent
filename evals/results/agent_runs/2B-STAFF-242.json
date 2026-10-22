@@ -1,0 +1,140 @@
+{
+  "ir_id": "2B-STAFF-242",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "The proposed Contingency Enhancement investment represents a $113M (568%) increase in\nsegment spending.\na) Please confirm that this increase is necessary to maintain rather than improve system\nreliability.\ni.\nIf confirmed, please explain how Toronto Hydro has been able to significantly\nreduce its outage durations over the historical period despite a much slower pace\nof spending in this segment.\nii. If not confirmed, please reconcile Toronto Hydro\u2019s strategic decision to increase\nspending in this segment by 568%, given its residential customers\u2019 preference to\nmaintain reliability and control costs.\nb) Toronto Hydro indicates elsewhere in the Application that Toronto Hydro has already\nimplemented majority of its contingency enhancement plans. Has Toronto Hydro\nundertaken a benefit-cost analysis demonstrating that the proposed accelerated spending\nto rapidly complete this plan provides offsetting benefits of equal or greater value to\ncustomers?\ni.\nIf yes, please provide the benefit-cost analysis documentation.\nii. If no, please explain why not.",
+  "answer": "**Short answer:** The filings available to me do not support confirming the premise in (a). I also found no benefit-cost analysis for the Contingency Enhancement segment, so the answer to (b) is closer to \"no\" than \"yes\". I did not find Toronto Hydro's actual interrogatory responses, so the points below come from the application's own evidence.\n\n**The numbers**\n- Contingency Enhancement spending was $19.9M in 2020\u20132024. That is $5.0M, $0.8M, $4.9M, $3.7M and $5.5M by year. [cite:rds-823164:547]\n- The 2025\u20132029 forecast is $132.9M. [cite:rds-823164:524]\n- The difference is about $113M, or 568%, which matches your figures.\n\n**(a) Is the increase only to maintain reliability?**\n- Toronto Hydro does not describe it that way. It presents the segment as improving reliability and as a grid-modernization step.\n- It expects an average 12.6% reliability improvement on 94 Horseshoe feeders. It puts the potential SAIDI gain at about 0.022 minutes per feeder per year. [cite:rds-823164:530]\n- It expects about 16.3% on 40 Downtown overhead feeders. It puts the potential SAIDI gain there at about 0.03 minutes per feeder per year. [cite:rds-823164:536]\n- Reclosers are a further addition, with potential SAIDI improvement of up to 0.108 minutes per feeder per year. [cite:rds-823164:532]\n- A second purpose is distribution-automation readiness. The goal is for over 90% of Horseshoe feeders to meet the criteria, ahead of a self-healing grid starting in 2030. [cite:rds-823164:535] [cite:rds-823236:228]\n- Toronto Hydro says the overall plan includes \"accelerating investments in the Modernization category to modestly improve performance\". It says the Sustainment and Stewardship category holds the minimum needed to maintain recent performance. [cite:rds-823236:194]\n\n**(a)(ii) Reconciling the increase with customer preferences**\n- I did not find an explicit reconciliation with residential customers' preference to maintain reliability and control costs.\n- The application's rationale is that the status-quo option is \"not recommended\". At roughly $20M, it would deliver only 111 switches on 37 feeders and 17.8 km of egress cable. [cite:rds-823164:552]\n- The selected option is about 300 switches, 220 reclosers and 69 km of egress cable. [cite:rds-823164:552] [cite:rds-823164:553]\n- For Downtown, the application cites \"general support\" among customers for investments in new technology to improve the system. [cite:rds-823164:536]\n\n**(a)(i) Past outage-duration reductions despite slow spending**\n- The application does not clearly support \"significantly reduce\". Toronto Hydro says reliability improved from the mid-2000s but \"plateaued\" more recently, with a slight deterioration from 2020 to 2022. [cite:rds-823164:22]\n- Adjusted SAIDI was 0.78, 0.68, 0.90, 0.95 and 0.70 for 2018\u20132022. [cite:rds-823168:342]\n- Toronto Hydro credits SCADA switch deployment, funded through both System Renewal and Contingency Enhancement, as a contributor to the longer-term improvement. [cite:rds-823236:228]\n- The SCADA switch installation chart (2005\u20132022) covers all SCADA installs, not just this segment. [cite:rds-823163:676] So the historical gains cannot be attributed to this segment's low spending alone.\n\n**(b) Benefit-cost analysis**\n- I found no quantified benefit-cost analysis for the segment. The evidence is a qualitative two-option comparison, with a status-quo pace and the selected option. [cite:rds-823164:552] [cite:rds-823164:553]\n- The only quantified benefits are the per-feeder CMO and SAIDI estimates above.\n- I could not locate the statement that most of the contingency enhancement plan is already implemented.\n- The closest evidence is that, as of end-2022, 230 of 293 Horseshoe feeders were \"automation ready\". [cite:rds-823164:533]\n- Toronto Hydro plans to complete SCADA work on at least 34 of the remaining 63 feeders. [cite:rds-823164:535] That is a different measure from spending completed.\n- The \"accelerated spending\" framing is therefore not tested by any benefit-cost analysis I could find. Toronto Hydro would need to confirm whether one exists.",
+  "answer_rendered": "**Short answer:** The filings available to me do not support confirming the premise in (a). I also found no benefit-cost analysis for the Contingency Enhancement segment, so the answer to (b) is closer to \"no\" than \"yes\". I did not find Toronto Hydro's actual interrogatory responses, so the points below come from the application's own evidence.\n\n**The numbers**\n- Contingency Enhancement spending was $19.9M in 2020\u20132024. That is $5.0M, $0.8M, $4.9M, $3.7M and $5.5M by year. [EB-2023-0195 / Exhibit 2B / p.547]\n- The 2025\u20132029 forecast is $132.9M. [EB-2023-0195 / Exhibit 2B / p.524]\n- The difference is about $113M, or 568%, which matches your figures.\n\n**(a) Is the increase only to maintain reliability?**\n- Toronto Hydro does not describe it that way. It presents the segment as improving reliability and as a grid-modernization step.\n- It expects an average 12.6% reliability improvement on 94 Horseshoe feeders. It puts the potential SAIDI gain at about 0.022 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.530]\n- It expects about 16.3% on 40 Downtown overhead feeders. It puts the potential SAIDI gain there at about 0.03 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.536]\n- Reclosers are a further addition, with potential SAIDI improvement of up to 0.108 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.532]\n- A second purpose is distribution-automation readiness. The goal is for over 90% of Horseshoe feeders to meet the criteria, ahead of a self-healing grid starting in 2030. [EB-2023-0195 / Exhibit 2B / p.535] [EB-2023-0195 / Exhibit 1B / p.228]\n- Toronto Hydro says the overall plan includes \"accelerating investments in the Modernization category to modestly improve performance\". It says the Sustainment and Stewardship category holds the minimum needed to maintain recent performance. [EB-2023-0195 / Exhibit 1B / p.194]\n\n**(a)(ii) Reconciling the increase with customer preferences**\n- I did not find an explicit reconciliation with residential customers' preference to maintain reliability and control costs.\n- The application's rationale is that the status-quo option is \"not recommended\". At roughly $20M, it would deliver only 111 switches on 37 feeders and 17.8 km of egress cable. [EB-2023-0195 / Exhibit 2B / p.552]\n- The selected option is about 300 switches, 220 reclosers and 69 km of egress cable. [EB-2023-0195 / Exhibit 2B / p.552] [EB-2023-0195 / Exhibit 2B / p.553]\n- For Downtown, the application cites \"general support\" among customers for investments in new technology to improve the system. [EB-2023-0195 / Exhibit 2B / p.536]\n\n**(a)(i) Past outage-duration reductions despite slow spending**\n- The application does not clearly support \"significantly reduce\". Toronto Hydro says reliability improved from the mid-2000s but \"plateaued\" more recently, with a slight deterioration from 2020 to 2022. [EB-2023-0195 / Exhibit 2B / p.22]\n- Adjusted SAIDI was 0.78, 0.68, 0.90, 0.95 and 0.70 for 2018\u20132022. [EB-2023-0195 / Exhibit 2B / p.342]\n- Toronto Hydro credits SCADA switch deployment, funded through both System Renewal and Contingency Enhancement, as a contributor to the longer-term improvement. [EB-2023-0195 / Exhibit 1B / p.228]\n- The SCADA switch installation chart (2005\u20132022) covers all SCADA installs, not just this segment. [EB-2023-0195 / Exhibit 2B / p.676] So the historical gains cannot be attributed to this segment's low spending alone.\n\n**(b) Benefit-cost analysis**\n- I found no quantified benefit-cost analysis for the segment. The evidence is a qualitative two-option comparison, with a status-quo pace and the selected option. [EB-2023-0195 / Exhibit 2B / p.552] [EB-2023-0195 / Exhibit 2B / p.553]\n- The only quantified benefits are the per-feeder CMO and SAIDI estimates above.\n- I could not locate the statement that most of the contingency enhancement plan is already implemented.\n- The closest evidence is that, as of end-2022, 230 of 293 Horseshoe feeders were \"automation ready\". [EB-2023-0195 / Exhibit 2B / p.533]\n- Toronto Hydro plans to complete SCADA work on at least 34 of the remaining 63 feeders. [EB-2023-0195 / Exhibit 2B / p.535] That is a different measure from spending completed.\n- The \"accelerated spending\" framing is therefore not tested by any benefit-cost analysis I could find. Toronto Hydro would need to confirm whether one exists.",
+  "citations": [
+    {
+      "doc_id": "rds-823164",
+      "page": 547,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 524,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 530,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 536,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 532,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 535,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 228,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 194,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 552,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 553,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 22,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823168",
+      "page": 342,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Overview and Upfront DSP_Part1of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 676,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 533,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 28.7,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.1917627,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate matches the reference in two places. It notes that reliability has plateaued rather than improved significantly, and it does not accept that most of the plan is already implemented. It misses the reference's framing that the segment serves two goals: maintaining reliability over 2025\u20132029 while improving reliability and resiliency over the longer term. Its conclusion that the answer on benefit-cost analysis is \"closer to no\" also cannot be confirmed, because the reference points to 2B-Staff-170 for that discussion.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0381876
+  }
+}

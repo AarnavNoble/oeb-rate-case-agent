@@ -2,12 +2,13 @@
 
 Seeded sample (seed 20261022) of 20 judge verdicts. For each, read the utility's response and the agent's answer, decide the verdict yourself, and mark `agree: yes` or `agree: no (<your verdict>)`.
 
-**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-21, at the user's request.
-The judge is also a Claude model, so this agreement is weaker evidence than a human check.
+**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-22, at the user's
+request, for the agent run on the rebuilt eval set. The reviewer and the judge are both Claude models, so
+this is weaker evidence than a human check. The previous run's review is in `evals/results/v1/judge_review.md`.
 
-## 1. 2B-SEC-69: judge says **abstained**
+## 1. 2B-SEC-69: judge says **partially_correct**
 
-> The candidate says the evidence has no 2023 data and that it cannot update the figures. It gives only 2018–2022 context and no 2023 values. The reference supplies the updated figures with 2023 data.
+> The candidate's 2022 and 2029 (without investment) wood pole figures for Table 4 match the reference. However, it leaves out the 2017 ACA values, the switch condition tables, the 2023 figure updates, the Resiliency replacement volumes (1,235 poles, 333 transformers, etc.) and the cost breakdown by asset class, all of which the reference provides. It also repeats filed transformer pacing and 2020–2024 volumes that the reference corrects as administrative errors.
 
 **Question**
 
@@ -15,6 +16,18 @@ The judge is also a Claude model, so this agreement is weaker evidence than a hu
 With respect to Overhead System Renewal:
 
 a) Please update Figures 3,4, 7, 8, 13, 14, 21, 22, 26 and 27 with 2023 information.
+b) [p.9] Please provide a revised version of Table 4 that includes 2017 ACA information, as
+well as 2029 ACA information based on the proposed investments included in the DSP.
+Please provide in Excel format.
+c) [p.25-26] Please provide a version of the information included in each of Figures 24 and 25
+in tabular format, that also includes 2017 ACA information, as well as the 2029 ACA
+information based on the proposed investments included in the DSP. Please provide in
+Excel format. e. [p.34] Please provide a breakdown of annual costs included in Table 7
+based on the asset class included in Table 8.
+d) [p.37] Please provide a similar table as Table 9 that shows the volume of assets replaced
+each year as part of the Overhead Infrastructure Resilience segment.
+e) [p.34] Please provide a breakdown of annual costs included in Table 7 based on the asset
+class included in Table 8.
 ```
 
 **Utility's response (reference)**
@@ -205,10 +218,6 @@ Customer Minutes Out
 2022
 2023
 Figure 10: Updated Figure 27 Total Customer Minutes Out – Trunk Versus Lateral
-QUESTION (B):
-b) [p.9] Please provide a revised version of Table 4 that includes 2017 ACA information, as
-well as 2029 ACA information based on the proposed investments included in the DSP.
-Please provide in Excel format.
 
 Please see the revised version of the requested table below including 2017 ACA information.
 Table 1: Condition Data for Wood Pole
@@ -237,190 +246,153 @@ HI5 – End-of-serviceable Life
 504
 7,655
 For a comprehensive discussion of expected changes in asset demographics over the 2029 period,
-please see Toronto Hydro’s resp
+please see Toronto Hydro’s response to 2B-SEC-44.
+
+Please see the tables below of based on Figures 24 and 25 including 2017 ACA information.
+Table 2: Condition Data for Overhead Gang Operated Load Break Switches
+Asset Condition Index
+2017
+2022
+2029 (Wit
 ```
 
 **Agent answer**
 
 ```
-**The filings available to me do not contain 2023 data for these figures, so I can't update them.** The Overhead System Renewal evidence (Exhibit 2B, Section E6.5, filed 17 Nov 2023) stops at 2022 actuals. Its tables show 2023 only as a bridge-year cost forecast. I searched for an interrogatory response or any updated version of these figures and found none.
+The filings don't let me produce most of what you asked for. I could fully answer only part (d). The rest are requests for new analysis or an Excel file, and I can't create files or run Toronto Hydro's models. Below is what the filings do contain for each item. All page references are to Exhibit 2B, Section E6.5 (the Distribution System Plan chapter), unless I say otherwise.
 
-The figure numbers in your request match the Section E6.5 numbering in Exhibit 2B, Part 3 of 3 (rds-823164). I could not locate Figures 3, 4, 7, 8 or 26 directly, so those matches are inferred. Here is what I found for each figure, all of it ending at 2022:
+**a) Figures 3, 4, 7, 8, 13, 14, 21, 22, 26 and 27 updated with 2023 data**
+- These figures plot data to 2022 (for example, Figures 21 and 22 cover customers interrupted and customer hours interrupted for overhead switches, 2018–2022) [EB-2023-0195 / Exhibit 2B / p.387].
+- The filings I can access don't contain 2023 versions of these figures. The figures are charts, and I did not find their underlying data in the text I retrieved. I can't update them.
+- The ACA update report covers year-end 2017, year-end 2022 and projections to 2029 [EB-2023-0195 / Exhibit 2B / p.384]. It does not include 2023 results.
 
-- **Figures 13 and 14** show customers interrupted (CI) and customer hours interrupted (CHI) for poles and pole accessories, 2018–2022 [EB-2023-0195 / Exhibit 2B / p.379]. The text gives only five-year averages of 6,627 CI and 4,700 CHI for poles alone. With accessories, the averages are 30,740 CI and 18,018 CHI.
-- **Figures 21 and 22** in Section E6.5 show CI and CHI for overhead switches, 2018–2022 [EB-2023-0195 / Exhibit 2B / p.387]. The filing gives 37,070 CI and about 20,264 CHI per year on average [EB-2023-0195 / Exhibit 2B / p.385].
-- **Figures 3, 4, 7, 8, 26 and 27** are in the same section. I did not retrieve them, and they would also need 2023 data from Toronto Hydro. Other figures in the section, such as Figure 19 (wood pole health, 2018–2022), use the same period [EB-2023-0195 / Exhibit 2B / p.383].
+**b) Table 4 (wood pole condition) with 2017 and 2029-with-investment columns**
+The filed Table 4 gives pole counts by Health Index (HI) band for 2022 and for 2029 without investment [EB-2023-0195 / Exhibit 2B / p.373]:
 
-Section E6.5's only 2023 value is the segment cost: Overhead System Renewal for 2023 is $32.5M, shown as a bridge-year forecast [EB-2023-0195 / Exhibit 2B / p.397]. It is not a 2023 actual, and it is not the CI, CHI, or condition data these figures plot.
+| Band | 2022 | 2029 (no investment) |
+|---|---|---|
+| HI1 | 68,193 | 60,253 |
+| HI2 | 7,536 | 8,310 |
+| HI3 | 21,015 | 5,544 |
+| HI4 | 8,918 | 24,404 |
+| HI5 | 504 | 7,655 |
 
-Updating these figures would require Toronto Hydro's 2023 outage records and asset condition data. Those would have to come from the utility, for example through an interrogatory response, and they are not in the documents I can access. I can read the page text for the other figures if you want me to check them individually.
+- The ACA update report says it produces 2017 year-end results "for convenience" [EB-2023-0195 / Exhibit 2B / p.384]. I did not find the 2017 band counts in the text I retrieved.
+- I did not find a 2029 projection that includes the planned DSP investments. The filing states only that about 30% of wood poles are forecast to show material deterioration by 2029 without intervention [EB-2023-0195 / Exhibit 2B / p.366].
+- I can't build the Excel file.
+
+**c) Tabular versions of Figures 24 and 25 (gang-operated and SCADA-Mate switch condition)**
+- These two figures are bar charts of HI1–HI5 switch counts for 2022 and 2029 without investment [EB-2023-0195 / Exhibit 2B / p.389].
+- The retrieved text has axis labels only, not the underlying values. I also did not find 2017 or 2029-with-investment values.
+- I can't produce the tables or the Excel file.
+
+**d) A Table 9-style table for Overhead Infrastructure Resiliency volumes**
+- The filings do not provide this table. Table 9 covers only the Overhead System Renewal segment. Its forecast volumes are in the table below [EB-2023-0195 / Exhibit 2B / p.399].
+- For the Resiliency segment, the filing says "the total number and timing of the areas targeted will depend on the specific locations and required scope... (which have not yet been determined)" [EB-2023-0195 / Exhibit 2B / p.400].
+- The filing gives only forecast costs for the segment: $11.4M in 2026, $24.1M in 2027, $24.8M in 2028 and $25.6M in 2029, with nothing in 2025 [cite:rds-823164:397, cite:rds-823164:400]. It also gives one example from a past project, Carlingview Drive [EB-2023-0195 / E
 ```
 
 agree: yes
 
-## 2. 4-VECC-71: judge says **abstained**
+## 2. 5-EP-34: judge says **partially_correct**
 
-> The candidate says it can't identify the segment or find the FTE, compensation or customer data, and asks the user to clarify. It doesn't give the Customer Relationship Management FTE or compensation figures that are in the reference. The only figures it mentions are unrelated context, not an answer to the question.
+> For (a), the candidate correctly says 60:40 is the standard split for distributors. For (b) through (d), it leans toward Toronto Hydro's actual position (it can't confirm a risk reduction and infers no change to the split is warranted) but never states it. It also leaves out the reference's main reasons: the roughly $81M earnings risk under the performance incentive mechanism, the future prudence review that keeps the variance account from reducing risk, and the point that Custom IR and cost-of-capital policy are separate constructs.
 
 **Question**
 
 ```
-a) For each year 2020 to 2025 (forecast) please provide a table showing the
-number of FTEs in this segment, the total compensation and, separately, the number of
-residential, GS<50, GS>50 customers in each year (year average).
+“Toronto Hydro’s sets its capital structure for ratemaking purposes in accordance with the OEB’s
+Cost of Capital guidelines issued in EB-2009-0084, Report of the Board on the Cost of Capital for
+Ontario’s Regulated Utilities (December 11, 2009) (“Report of the Board”). For Toronto Hydro, the
+debt to equity split for the test years is set at 60:40. The debt component in each year includes a
+deemed 4 percent short-term debt component”.
+
+a) Is Toronto Hydro’s debt to equity split of 60:40 the same as that of other electricity
+distributors regulated by the OEB?
+b) Please confirm that the proposed Custom IR lowers the business risk of Toronto Hydro. If
+the answer is no, please explain why not?
+c) Please confirm that the recent OEB decision in EB-2023-0143 Getting Ontario Connected
+Act Variance account lowers the regulatory risk of Toronto Hydro.
+d) If the OEB approves Toronto Hydro’s Custom IR, should it adjust the debt to equity split
+commensurate with the reduction in the business risk and regulatory risk? Please explain
+your answer.
 ```
 
 **Utility's response (reference)**
 
 ```
-This response should be considered in conjunction with Exhibit 4, Tab 2, Schedule 14, Pages 34-46,
-which detail a number of functions within this segment where staffing is not directly related to the
-changes in the utility’s customer count over the period.
-Cost in $ millions
-Segment
-Actual
-Bridge
-Forecast
-Expense Type
-2020
-2021
-2022
-2023
-2024
-2025
-Compensation
-5.5
-5.2
-5.6
-6.4
-7.8
-8.6
-Customer Relationship
-Management
-# of FTEs
-Segment
-Actual
-Bridge
-Forecast
-2020
-2021
-2022
-2023
-2024
-2025
-Total
-37.3
-35.2
-36.8
-41.5
-48
-50.5
-Customer Relationship
-Management
-For customer numbers by rate class, please refer to Table 2 in Exhibit 3, Tab 1, Schedule 1, at Page
-3.
-QUESTION (B):
-b) What is the assumed customer growth (residential + GS<>50) for the years 2026 through
-2029.
+To the best of Toronto Hydro’s knowledge, and in keeping with the OEB Decision in its generic cost
+of capital proceeding (EB-2009-0084), the OEB has consistently applied the 60:40 debt-to-equity split
+to all electricity distributors in the province.
 
-Please refer to Table 2 in Exhibit 3, Tab 1, Schedule 1, at Page 3.
-Year
-Residential
-Large
-Use
-Total
-Absolute
-Growth
-General
-Service
-<50 kW
-%
-Growth
-Rate
-Competitive
-Sector
-Multi-Unit
-Residential
-General
-Service
-50-999
-kW
-General
-Service
-1,000-
-4,999
-kW
-2026
-Forecast
-618,292
-100,404
-73,632
-9,712
-462
-48
-802,551
-2,969
-0.37%
-2027
-Forecast
-618,985
-102,150
-73,857
-9,725
-460
-47
-805,224
-2,674
-0.33%
-2028
-Forecast
-619,849
-103,674
-74,165
-9,740
-463
-46
-807,938
-2,713
-0.34%
-2029
-Forecast
-620,742
-104,994
-74,455
-9,754
-461
-46
-810,452
-2,515
-0.31%
-Note: This table is excluding Streetlighting and Unmetered load customer numbers.
-RESPONSES TO VULNERABLE ENERGY CONSUMERS COALITION
-INTERROGATORIES
+No. Toronto Hydro’s Custom Rate Framework as outlined in Exhibit 1B, Tab 2, Schedule 1,
+appropriately allocates risk between the utility and the ratepayers with respect to the execution of
+the proposed 2025-2029 Investment Plan, the ability to recover prudent and necessary costs to
+deliver the plan, and the achievement of productivity and performance outcomes that provide
+demonstrable value to customers.
+Custom IR is a performance-based rate-setting (“PBR”) approach that carries multi-year business risk
+for utilities. The proposed framework focuses on outcomes: further shifting considerable business
+performance and earnings risk onto the utility to the benefit of customers. As noted in the response
+to 1B-EP-12(f) and demonstrated in the response to 1B-Staff-12(a), the utility faces a significant
+revenue deficiency (earnings risk) of approximately $81 million under the proposed rate framework,
+which can only be mitigated through the attainment of productivity and performance objectives that
+provide demonstrable benefits to customers in the next rate period and beyond. Please see the
+response to 1B-SEC-13 for an analysis of the financial risk that the utility carries in the proposed
+Custom Rate Framework relative to minimum direct customer benefits that the Performance
+Incentive Mechanism delivers.
+Please see the response to 5-Staff-315 for a discussion of the enterprise risks that Toronto Hydro
+faces.
+
+The variance account does not reduce regulatory risk, since the recovery of the costs tracked in this
+variance account remain subject to a future, OEB prudence review, as affirmed in the OEB’s
+Decision and Order (October 31, 2023).
+
+Respectfully, the question confuses two entirely separate constructs: (i) the Custom IR framework
+and (ii) the OEB’s cost of capital parameters.
+With respect to (i) the OEB established the Custom Incentive Rate-setting (CIR) option through the
+Renewed Regulatory Framework in October 2012. Neither the purpose, nor the effect, of CIR was to
+alter business or regulatory risk for utilities. The public interest purpose and effect were to establish
+a means of escalating utility investments required to meet rapidly growing grid and customer needs
+more effectively and efficiently than other forms of OEB Performance-Based Rate-setting (PBR). As
+noted in the response to (b) above, business and financial risk has not been reduced under the
+proposed Custom Rate Framework. Through the PIM, the proposed framework places a significant
+incremental business performance and earnings risk on the utility to the benefit of ratepayers.
+With respect to (ii) the OEB established the cost of capital policy in EB-2009-0084, and determined
+that the current deemed capital structure of 60% debt, 40% equi
 ```
 
 **Agent answer**
 
 ```
-I can't build this table yet. Your question refers to "this segment", and I don't know which segment you mean. I also haven't found the segment-level data it asks for.
+These questions are interrogatories, and the filings I can search don't include Toronto Hydro's responses to them. I found the evidence that bears on each part, but nothing that states Toronto Hydro's position. Where I go beyond the record below, I say so.
 
-- **Segment-level FTEs and compensation:** The Toronto Hydro Exhibit 4 segment write-ups, such as Billing, Remittance and Meter Data Management, give only annual segment costs in $ millions for 2020–2029. Billing, for example, runs from 19.4 in 2020 to 23.7 in 2025 [EB-2023-0195 / Exhibit 4 / p.426]. Those figures cover all costs, not FTEs or total compensation. I haven't found a segment-by-segment FTE or compensation breakdown.
-- **Utility-wide FTEs and compensation:** Toronto Hydro's Appendix 2-K (Exhibit 4, Tab 4, Schedule 2) reports FTEs and total compensation for the whole utility, not by segment. The evidence says staffing hit a low of 1,203 FTEs in 2021 [EB-2023-0195 / Exhibit 4 / p.90]. I haven't retrieved the year-by-year numbers.
-- **Average customers by class:** I haven't located a table of year-average customer counts for Residential, GS<50 and GS>50 across 2020–2025. The Exhibit 3 load forecast uses customer counts as regression variables [EB-2023-0195 / Exhibit 3 / p.17]. The searches mostly returned the DER and EV forecast tables instead.
-- **Hydro One:** I haven't searched the Hydro One application (EB-2026-0164) for this.
+**a) Is 60:40 the same as other distributors?**
+Probably yes, though the filings don't say so directly.
+- Toronto Hydro states that its 60:40 split follows the OEB's 2009 Cost of Capital Report (EB-2009-0084), and that the 60% debt includes a deemed 4% short-term component [EB-2023-0195 / Exhibit 5 / p.1].
+- In the filing, a DBRS Morningstar rating report says the OEB's deemed equity of 40% for Toronto Hydro "is consistent with other electricity distribution companies in Ontario" [EB-2023-0195 / Exhibit 1C / p.506].
+- From my own knowledge (not from the filings): the OEB's standard deemed structure is 56% long-term debt, 4% short-term debt and 40% equity, so 60:40 is the usual structure for distributors.
 
-Could you tell me one of these?
-1. Which segment you mean, and whether it's Toronto Hydro or Hydro One. It may be the Billing, Remittance and Meter Data Management segment or another one.
-2. Whether utility-wide Appendix 2-K FTEs and compensation would do instead, with the customer counts shown next to them.
+**b) Does the Custom IR lower Toronto Hydro's business risk?**
+The filings don't contain a confirmation from Toronto Hydro. What I found:
+- DBRS describes Custom IR as pre-approving the capital program for five years, with recovery through distribution rates. It also notes that residential customers have paid a fully fixed monthly distribution charge since 2020, which significantly reduces volume risk [EB-2023-0195 / Exhibit 1C / p.506].
+- Toronto Hydro already operates under Custom IR. The proposal is described as an evolution of the existing approach, not a new one [EB-2023-0195 / Exhibit 1B / p.64].
+- Risk-sharing features remain. These include an earnings-sharing mechanism for returns more than 100 basis points above the allowed ROE, and a regulatory review if actual ROE differs from the allowed ROE by 300 basis points [EB-2023-0195 / Exhibit 1C / p.504].
+- Toronto Hydro proposes to discontinue some protections, including the Externally Driven Capital Variance Account and the Capital Related Revenue Requirement Variance Account. It says it has shown it can deliver its capital programs within small variances [EB-2023-0195 / Exhibit 1B / p.64] [EB-2023-0195 / Exhibit 9 / p.29].
+- Toronto Hydro also says a standard price-cap framework, with ICM/ACM funding, would leave a funding gap. About $66M of the gap is non-capital costs that those mechanisms can't fund [EB-2023-0195 / Exhibit 4 / p.437].
 
-With either answer I can pull the Appendix 2-K and customer-count tables and set them out year by year.
+On this evidence, I can't confirm that business risk falls. The Custom IR keeps a continuing framework, and some variance protections are being removed.
+
+**c) Does the Getting Ontario Connected Act (GOCA) variance account lower regulatory risk?**
+I can't confirm this from the filings.
+- The OEB created the GOCA variance account on October 31, 2023 (EB-2023-0143). It is a generic, industry-wide account that records incremental locate costs from Bill 93, effective April 1, 2023 [EB-2023-0195 / Exhibit 9 / p.26].
+- Toronto Hydro asks to continue the account because the cost of complying with the locates 
 ```
 
 agree: yes
 
 ## 3. 2B-EP-25: judge says **partially_correct**
 
-> The candidate matches the reference on historical data: it says DER locations are projected from past patterns, by mapping the forecast onto station buses along existing load connection patterns. But the reference says the location forecast also uses generation types and pipeline information to model how likely DER connections are in specific station areas. The candidate leaves out generation types and says the overall forecast (pipeline included) is not location-specific, which undercuts that point.
+> For (a), the candidate matches the reference: the forecast is built from historical patterns and the project pipeline, then mapped by station area. For (b) and (d), it names GPMC-type tools such as bus-tie reactors and monitoring and control, but says no protocol exists. It also misses the reference's annual review of DER connection capability, the option of connecting customers in areas that have capacity, and Toronto Hydro's need for flexibility to adapt its investment plans to local needs.
 
 **Question**
 
@@ -457,15 +429,6 @@ Toronto Hydro uses historical data to forecast the likelihood of customer DER co
 The forecast incorporates generation types and pipeline information to model the probability of
 DER connections in specific station areas. Please refer to Exhibit 2B, Section E3 for more details on
 the DER forecast.
-QUESTION (B) - (D):
-b) Please describe how Toronto Hydro would act in the event that more customers want to
-connect DERs than Toronto Hydro expects in a particular area.
-c) How will Toronto Hydro ensure that it is not picking certain neighborhoods, such as only
-those that have previously shown demand to connect DERs, at the expense of other
-neighbourhoods for being able to benefit from connecting DERs?
-d) If a neighbourhood ends up having greater demand for connecting DERs in the future than
-Toronto Hydro has planned for, please describe the approach Toronto Hydro would take to
-service those customers?
 
 On an annual basis, Toronto Hydro evaluates DER connection capabilities. This process utilizes the
 most up to date information to help aid in the planning process to address DER hosting capacity
@@ -480,26 +443,32 @@ necessary flexibility to adapt and align its investment plans to specific and lo
 **Agent answer**
 
 ```
-Toronto Hydro doesn't pick DER locations by detailed siting. It assumes DERs will connect where load has historically connected.
+**Short answer:** The filings available to me don't describe a process for choosing neighbourhoods to promote DER connections. Toronto Hydro says it forecasts where DERs will connect by extending existing patterns. It also says it must connect DERs on a non-discriminatory basis and that it studies each application individually. I found no passage that directly answers parts (b) and (d), so those answers are inferred from the related material below.
 
-**Method.** To project where DER capacity will land, Toronto Hydro takes its overall 2029 DER capacity forecast and maps it onto station buses. It assumes that "the geospatial distribution of DERs will continue to follow existing load connection patterns" [EB-2023-0195 / Exhibit 2B / p.201]. This mapping produces the projected short-circuit constraints in Table 4. Those constraints are the basis for expecting that eight station buses will exceed short-circuit capacity by 2029, up from three today [EB-2023-0195 / Exhibit 2B / p.201]. The areas where it expects more DER connections are therefore the buses and feeders that carry the most existing load connections. Grid Protection, Monitoring and Control then addresses short-circuit constraints in those areas.
+**a) How Toronto Hydro determines where it expects more DERs**
+- The forecast combines historical trends, the project pipeline, the economic environment and current energy policy (the passage you quoted).
+- To locate DERs, Toronto Hydro mapped its overall 2029 DER capacity forecast onto station buses. It assumed that "the geospatial distribution of DERs will continue to follow existing load connection patterns" [EB-2023-0195 / Exhibit 2B / p.201].
+- The constraint analysis is station-bus based. Short circuit capacity at stations is the primary constraint on DER connections. Toronto Hydro uses fault and power flow simulation models to estimate it [EB-2023-0195 / Exhibit 2B / p.50].
+- Table 4 shows three buses already negative on available short circuit capacity in 2023. It shows eight buses negative by 2029: Cecil, Ellesmere, Esplanade, Leslie, Richview, Runnymede, Sheppard and Woodbridge [EB-2023-0195 / Exhibit 2B / p.201].
 
-**Overall forecast.** The overall DER forecast that gets mapped is not location-specific. It rests on historical trends, the project pipeline, the economic environment and current energy policy. That is the basis for the 67% increase you quoted, from 304.9 MW at the end of 2022 to about 516.7 MW at the end of 2029. I did not find that passage in my searches, so it comes from your quote, not a cited page.
-
-**Supporting analysis.**
-- Toronto Hydro uses fault and power-flow simulation models to determine short-circuit capacity at stations and other points on the system. These models predict how much fault current will flow to a location from generators across the system. It also runs a study for each new DER application [EB-2023-0195 / Exhibit 2B / p.532].
-- The Hydro One and IESO regional planning outlook says it is difficult to predict where future DERs will be located. It therefore makes no further assumptions about future DER growth in its demand outlook [EB-2023-0195 / Exhibit 2B / p.225].
-- Toronto Hydro plans to develop a Hosting and Load Capacity Map. It would show estimated available DER capacity at different locations, based on automated analysis [EB-2023-0195 / Exhibit 2B / p.681].
-- Monitoring and control data from connected DERs would feed hosting capacity analyses. Currently, connection potential is assessed using conservative estimated thermal loading, which assumes DERs generate at 100% of rated capacity [EB-2023-0195 / Exhibit 2B / p.207].
-
-**Limitation.** The location forecast is an assumption that the future will resemble the past. It is not based on site-specific customer siting data.
+**b) and d) If more customers want to connect than forecast**
+- I found no statement of a specific protocol for this scenario.
+- Toronto Hydro is obligated to connect DER customers. It cites the Electricity Act (ss. 25.36, 25.37 and 26), the Distribution System Code (s. 6.2) and its licence (s. 6.1) [EB-2023-0195 / Exhibit 2B / p.103][EB-2023-0195 / Exhibit 2B / p.214].
+- It must balance this against keeping the system safe and reliable for existing customers [EB-2023-0195 / Exhibit 2B / p.103].
+- The forecast does not cap connections. Toronto Hydro "completes a study for each new DER application" to check available short circuit capacity [EB-2023-0195 / Exhibit 2B / p.50].
+- It must also meet timelines. A Connection Impact Assessment is due within 60 days, or 90 days if the DER is large or needs reinforcement or expansion [EB-2023-0195 / Exhibit 2B / p.103].
+- Where a bus is already constrained, the tools identified are:
+  - Six bus-tie reactors, installed 2025–2029. A 0.5-ohm reactor could allow about 15 MW of additional DER capacity [EB-2023-0195 / Exhibit 2B / p.202].
+  - A temporary increase in the fault level at 27.6 kV stations [EB-2023-0195 / Exhibit 2B / p.202].
+  - Station expansions. DER capacity is treated as a secondary benefit of expansions needed for load, for example Sheppard TS [EB-2023-0195 / Exhibit 2B / p.201].
+- Monitoring and control, and Flexible Connections, are intended to extend hosting capacity. Today's assessment assumes DERs run at 100% of rated output, which is conservative. Actual performance data should allow more connections [EB-2023-0195 / Exhibit
 ```
 
 agree: yes
 
-## 4. 1B-STAFF-62: judge says **correct**
+## 4. 1B-STAFF-62: judge says **partially_correct**
 
-> Like the reference, the candidate traces the rising SAIDI benchmark to the rising CAIDI benchmark, driven by the increasing congested-urban variable. It also cites that variable's high statistical significance in the CAIDI model (t-stat 8.63), which is the empirical evidence the reference relies on. It presents the link as an inference and says it found no physical evidence, but it does not contradict the reference.
+> For (a), the candidate correctly finds that the rising SAIDI benchmark comes from CAIDI, driven by the increasing and highly significant congested urban variable, which matches the reference. For (b), it gives no IRM-scenario forecast values. It also misses the reference's explanation that scheduled-outage improvements offset the worse unplanned outages under IRM, and its proposed-plan figures differ slightly from the reference's updated tables (e.g., CAIDI average 51.70 vs 51.74, SAIDI 2029 60.2 vs 60.0).
 
 **Question**
 
@@ -509,6 +478,9 @@ Clearspring provides benchmarking values for SAIFI, SAIDI and CAIDI.
 a. Why is there the expectation that the SAIDI benchmark value increase with time? What
 is the physical justification for this versus theoretical modelling? Please provide empirical
 quantitative evidence and not qualitative correlation explanation.
+b) How does the proposed benchmark and forecasted SAIFI, CAIDI and SAIDI values differ in
+consideration of Toronto Hydro’s proposed IRM as compared to the IRM scenario in
+Reference 2?
 ```
 
 **Utility's response (reference)**
@@ -518,10 +490,6 @@ This stems primarily from the CAIDI benchmark increasing due to the congested ur
 increasing for Toronto Hydro over time. As congestion increases, the time required to respond
 increases. The empirical quantitative evidence is the highly statistically significant congested urban
 variable present in the CAIDI model.
-QUESTIONS (B)
-b) How does the proposed benchmark and forecasted SAIFI, CAIDI and SAIDI values differ in
-consideration of Toronto Hydro’s proposed IRM as compared to the IRM scenario in
-Reference 2?
 
 Reference 2: IRM Scenario
 Table 1 Year-by-Year Reliability Benchmarks vs. Actual
@@ -894,43 +862,77 @@ Difference)
 0.95
 0.46
 72.8%
-
+84.13
+113.75
+-30.2%
+2010
+0.98
+0.46
+75.5%
+77.30
+115.32
+-40.0%
+2011
+1.05
+0.45
+83.9%
+80.13
+117.26
+-38.1%
+2012
+0.88
+0.45
+67.4%
+68.06
+118.66
+-55.6%
+2013
+0.95
+0.45
+75.8%
+70.61
+120.35
+-53.3%
+2014
+0.92
+0.45
 ```
 
 **Agent answer**
 
 ```
-The filings I can access don't give the empirical, physical justification you're asking for. They show that the rising SAIDI benchmark is a mechanical output of the model. I found no outage-physics evidence, and no separate test showing that benchmark SAIDI should rise.
+**Short answer:** The filings I can access don't give the empirical, physical justification you ask for in (a). They also don't show a separate Clearspring benchmark run on the IRM scenario, which is what (b) asks about. I also can't identify "Reference 2" from the filings, so I've read it as the IRM scenario in Toronto Hydro's reliability projections. Please confirm that reading. Below is what the record does show.
 
-**What the filing shows**
+## a. Why the SAIDI benchmark rises
 
-- Clearspring's SAIDI benchmark for Toronto Hydro rises from 50.7 in 2005 to 60.3 in 2022. It then rises to 71.1 by 2029, which is 64.3 in 2025 and 71.1 in 2029 within the Custom IR period [EB-2023-0195 / Exhibit 1B / p.365].
-- SAIDI is not modelled directly. It is the product of the SAIFI and CAIDI benchmarks, because SAIDI = SAIFI × CAIDI [EB-2023-0195 / Exhibit 1B / p.359]. The study estimates only SAIFI and CAIDI models [EB-2023-0195 / Exhibit 1B / p.359].
-- The SAIFI benchmark is roughly flat to slightly falling, from 0.46 in 2005 to 0.43 in 2022 [EB-2023-0195 / Exhibit 1B / p.339].
-- The CAIDI benchmark is what rises, from 110.0 in 2005 to 138.95 in 2022 [EB-2023-0195 / Exhibit 1B / p.339]. So the upward SAIDI benchmark comes from the CAIDI side.
+**What the study does.** Clearspring does not model SAIDI directly. It estimates separate SAIFI and CAIDI models and multiplies the two to get a SAIDI benchmark ([EB-2023-0195 / Exhibit 1B / p.359]). Toronto Hydro's benchmarks for future years use the same estimated parameters, combined with projected values of the explanatory variables ([EB-2023-0195 / Exhibit 1B / p.347]).
 
-**What drives the CAIDI benchmark**
+**What the numbers show.**
+- The SAIFI benchmark is essentially flat at about 0.43 to 0.46 ([EB-2023-0195 / Exhibit 1B / p.364]).
+- The CAIDI benchmark rises steadily, from 110.00 in 2005 to 138.95 in 2022 and 163.82 in 2029 ([EB-2023-0195 / Exhibit 1B / p.364]).
+- The SAIDI benchmark therefore rises from 50.7 in 2005 to 60.3 in 2022 and 71.1 in 2029 ([EB-2023-0195 / Exhibit 1B / p.365]).
+- So the rising SAIDI benchmark comes almost entirely from CAIDI.
 
-- The CAIDI model's variables are customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban. The congested-urban coefficient is 20.199 with a t-statistic of 8.63 [EB-2023-0195 / Exhibit 1B / p.363].
-- Only some of these inputs change over time for Toronto Hydro. The congested-urban variable is the one the filing explicitly makes time-varying in the cost study. I did not confirm that the same time-varying variable feeds the reliability models.
-- In the cost study, Clearspring scales the variable using high-rise (100 m+) building counts from the Council on Tall Buildings and Urban Habitat (CTBUH). A 1% change in the number of high-rises is estimated to change the congested-urban variable by 0.63% [EB-2023-0195 / Exhibit 1B / p.345] [EB-2023-0195 / Exhibit 1B / p.346].
-- Toronto's high-rise count grew at an average of 7.1% a year from 2012 to 2022. Future years are projected using that 10-year growth rate [EB-2023-0195 / Exhibit 1B / p.346].
-- I infer, but the filing doesn't say outright, that this projected growth is the likely driver of the rising CAIDI and SAIDI benchmarks. I did not find a decomposition that confirms it.
+**What drives the CAIDI benchmark.**
+- The CAIDI model uses these variables: number of customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban ([EB-2023-0195 / Exhibit 1B / p.363]).
+- The congested urban coefficient is large and significant, at 20.199 with a t-statistic of 8.63 ([EB-2023-0195 / Exhibit 1B / p.363]).
+- The report does not say which variable moves the CAIDI benchmark over time.
+- The one variable the report shows changing with time is the congested urban variable. Clearspring made it time-varying by tying it to Toronto's high-rise count.
+- It estimated that a 1% change in skyscraper count equates to a 0.63% change in the congested urban variable. Toronto's high-rises grew 7.1% a year from 2012 to 2022, and the projection uses the last ten-year average growth rate ([EB-2023-0195 / Exhibit 1B / p.346]).
+- Clearspring says the congested urban challenge "will be much larger in 2029 than its historical values" ([EB-2023-0195 / Exhibit 1B / p.345]).
+- This is my inference. The filings don't decompose the CAIDI benchmark by variable, so I can't quantify each driver's contribution.
 
-**What I did not find**
-
-- I found no empirical outage data, such as restoration-time studies for underground or congested networks, that tests the claim that benchmark SAIDI should rise.
-- I found no out-of-sample test of the projected benchmark values.
-- The sample is 80 U.S. distributors plus Toronto Hydro. The U.S. reliability data comes from EIA Form 861, which starts in 2013. The model estimates exclude Toronto Hydro itself [EB-2023-0195 / Exhibit 1B / p.359] [EB-2023-0195 / Exhibit 1B / p.360]. The benchmarks before 2013 and after 2021 therefore rest on extrapolated variable values. They do not rest on observed U.S. outcomes in those years.
-
-Your question reads like an interrogatory, so the answer m
+**What is missing.**
+- The pages I reviewed contain no empirical test, such as a back-test or event study, of why longer restoration times follow from congestion. They give no physical or engineering measurement either.
+- Support in the report is statistical: the sample is 80 U.S. distributors plus Toronto Hydro, with 687 observations. The model excludes Toronto Hydro itself, and coefficients are signed to theory and significant at 90% ([EB-2023-0195 / Exhibit 1B / p.360], [EB-2023-0195 / Exhibit 1B / p.361]).
+- The congested urban variable was 
 ```
 
 agree: yes
 
-## 5. 1A-PP-2: judge says **abstained**
+## 5. 1A-PP-2: judge says **partially_correct**
 
-> The reference says THESL's CDM results achieved by 2024 are set out in the LRAMVA evidence (Exhibit 9, Tab 2, Schedule 3) and in 9-Staff-354. The candidate says the filings don't give these results and points instead to the load-forecast appendices. It adds methodology and provincial background but gives no Toronto Hydro achieved-results figures, so it is effectively an abstention.
+> On (c), the candidate matches the reference: DER impacts are built into the load forecast through a separate integration model. On (a) and (b), it gives no substantive answer and misses the reference's main points. Those are the pointer to Exhibit 9 and the LRAMVA results, and the position that no LDC-led CDM savings are forecast for 2025–2029 because the provincial framework is not finalized. Instead it describes the IESO continuing "status quo" CDM, without stating that position.
 
 **Question**
 
@@ -941,6 +943,12 @@ the revenue forecast that underpins to 2025-2029 rates”
 
 a) Please provide what CDM results THESL will have achieved by end of the 2024 rate term
 against the total achievable CDM results and what potential remains, by sector if possible
+b) Please indicate what CDM results (total and incremental to those forecasted to the end of
+the current rate plan) are forecasted to be achieved by year of the 2025-2029 rate plan.
+Please indicate what portion of the total potential achievable CDM results that will
+represent.
+c) Please explain why only CDM is included in the above noted item and not the broader
+scope of DER.
 ```
 
 **Utility's response (reference)**
@@ -948,18 +956,10 @@ against the total achievable CDM results and what potential remains, by sector i
 ```
 Please refer to Exhibit 9, Tab 2, Schedule 3 and 9-Staff-354 which indicates CDM results THESL has
 achieved as part of LRAMVA by 2024.
-QUESTION (B):
-b) Please indicate what CDM results (total and incremental to those forecasted to the end of
-the current rate plan) are forecasted to be achieved by year of the 2025-2029 rate plan.
-Please indicate what portion of the total potential achievable CDM results that will
-represent.
 
 The Province’s CDM Framework for 2025-2029 is not yet finalized. Since 2019, the role for LDCs in
 CDM has reduced significantly relative to prior periods. Accordingly, in this Application, Toronto
 Hydro is not forecasting LDC-led savings as part of CDM Framework during the 2025-2029 period.
-QUESTION (C):
-c) Please explain why only CDM is included in the above noted item and not the broader
-scope of DER.
 
 The reference to “electrification drivers” includes DERs. Toronto Hydro includes DER impacts in its
 load forecast. Please refer to Exhibit 3, Tab 1, Schedule 1, Appendix J for a description of the
@@ -969,35 +969,34 @@ integration of DER impacts into the load forecast.
 **Agent answer**
 
 ```
-I'm wrapping up the search. The filings don't seem to hold a Toronto Hydro-specific answer, so I'm writing up what they do contain.
+The filings I can search don't give the numbers for (a) and (b). They state no CDM results achieved by the end of 2024, no total achievable CDM potential, no remaining potential, and no year-by-year 2025–2029 CDM figures. Part (c) is only partly answered, because the record does not address the premise directly.
 
-**Short answer:** The filings available to me don't state what CDM results Toronto Hydro (THESL) will have achieved by the end of 2024. They also don't give a "total achievable" CDM figure, a remaining-potential figure, or a split of either by sector. I found no achievable-potential study for its service territory.
+**a) CDM achieved by end of 2024 against achievable potential**
 
-**Why the numbers aren't there**
-- The IESO no longer provides CDM savings forecasts or program results for distributors' service territories. Since the Conservation First Framework ended in 2019, CDM delivery has been provincially centralized under the IESO [EB-2023-0195 / Exhibit 3 / p.10].
-- Toronto Hydro now enters CDM as a variable in its load-forecast regression. It does not track CDM against a target. It builds the variable from cumulative savings for 2006–2029, split into residential savings (used in the Residential class model) and business savings (used in the General Service models) [EB-2023-0195 / Exhibit 3 / p.12].
-- The variable has four components [EB-2023-0195 / Exhibit 3 / p.12]:
-  - Verified IESO results for 2006–2017.
-  - Unverified post-CFF savings for 2015–2022.
-  - 2021–2024 savings extrapolated from the IESO's provincial plan.
-  - 2025–2029 savings, assumed to continue at "status quo" delivery.
-- The 2021–2024 portion is a scaled-down share of the provincial plan, based on Toronto Hydro's 2015–2017 ratio of its savings to provincial savings [EB-2023-0195 / Exhibit 3 / p.13][EB-2023-0195 / Exhibit 3 / p.14]. The year-by-year Toronto Hydro numbers are in Exhibit 3, Tab 1, Schedule 1, Appendices C, D and E. Those appendices did not come up in my searches or table queries.
-- The April 2024 evidence update says Appendices C, D and E were revised to include 2021–2022 actuals under the 2021–2024 framework [EB-2023-0195 / THESL_2025-2029 Rate Application_Evidence Update_20240402 / p.5]. So even the 2021–2022 portion is partly actuals, and 2023–2024 remain forecasts.
+- I found no figure for total achievable CDM potential or remaining potential, and no sector split of either. Toronto Hydro says the IESO no longer provides CDM savings forecasts or program results for distributors' service territories. [EB-2023-0195 / Exhibit 3 / p.10]
+- The 2024 position is built from components, not measured results. Verified savings run from 2006 to 2017, and unverified post-Conservation First Framework (CFF) savings run from 2015 to 2022. The 2021–2024 CDM Framework savings (2021 to 2024) are a forecast, extrapolated from the IESO's provincial plan to Toronto Hydro's area. The extrapolation uses Toronto Hydro's 2015–2017 share of provincial savings. [EB-2023-0195 / Exhibit 3 / p.12] [EB-2023-0195 / Exhibit 3 / p.13]
+- Savings are tracked only as residential versus business. [EB-2023-0195 / Exhibit 3 / p.12]
+- The numbers sit in Excel appendices to Exhibit 3, Tab 1, Schedule 1 (Appendices C, D, E and G), and I could not read them. The 2024 update revised them to include 2021–2022 actuals. [EB-2023-0195 / THESL_2025-2029 Rate Application_Evidence Update_20240402 / p.5]
 
-**Provincial context (not Toronto Hydro-specific)**
-- The IESO's 2021–2024 CDM Framework plan targets about 725 MW of peak demand savings and 3.8 TWh of energy savings by 2026. The budget is up to $1.034 billion [EB-2023-0195 / Exhibit 3 / p.54][EB-2023-0195 / Exhibit 3 / p.56].
-- The plan's annual provincial energy savings rise from about 357 GWh in 2021 to about 1,575 GWh in 2024. The table is only partly legible, so I'm reading these as running totals [EB-2023-0195 / Exhibit 3 / p.56].
-- The plan breaks savings out by program, such as Retrofit, Small Business and Energy Affordability, not by residential versus business sector. I can't turn this into a Toronto Hydro share or a remaining-potential number without inventing one.
-- The 2019–2020 Interim Framework hit 106% of its energy target provincially (1,516.9 GWh against 1,429.4 GWh) [EB-2023-0195 / Exhibit 3 / p.51]. That is a past result and says nothing about 2024.
+**b) CDM for 2025–2029 by year, and share of potential**
 
-**Wh
+- I found no annual 2025–2029 figures, no split between total and incremental savings, and no percentage of potential.
+- Toronto Hydro assumes the IESO continues CDM delivery at "status quo" objectives after 2024. It calls this the best estimate available given the lack of conservation planning detail for that period. [EB-2023-0195 / Exhibit 3 / p.13]
+- CDM enters the forecast as cumulative 2006–2029 residential and business variables in the regression. They were statistically significant for the Residential, GS <50 kW, GS 50–999 kW, GS 1000–4999 kW and Large Use classes. The variable captures conservation from both programs and natural effects, and metered loads are no longer adjusted for CDM. [EB-2023-0195 / Exhibit 3 / p.10] [EB-2023-0195 / Exhibit 3 / p.12]
+- Toronto Hydro does not plan a Lost Revenue Adjustment Variance Account (LRAMVA) threshold for 2025–2029. [EB-2023-0195 / Exhibit 3 / p.10]
+- These figures should be requested from Toronto Hydro, or taken from Appendix C or E.
+
+**c) Why CDM and not the broader DER scope**
+
+- I found no passage that explains the choice directly. The filing does show that DERs are handled separately from CDM.
+- CDM is a regression variable inside the base forecast. EVs and DERs are not in that base forecast. They are modelled in a separate Clearspring integration model and added on top, because they are expected to exceed historical adoption levels and the base forecast "does not account for"
 ```
 
 agree: yes
 
-## 6. 2B-STAFF-187: judge says **partially_correct**
+## 6. 2B-STAFF-187: judge says **correct**
 
-> The candidate correctly identifies GPMC and Non-Wires Solutions as DER-hosting capital and covers the grid modernization investments. However, it says DER-hosting capital is limited to two programs and treats Sheppard TS only as a side benefit of a load-driven expansion, so it misses the reference's third program (Station Expansion – Sheppard TS). Its answer to part (b) also differs from the reference, which says some of these expenditures may enable hosting capacity beyond the test period.
+> The candidate names the same programs as the reference: Generation Protection, Monitoring and Control; the Sheppard TS expansion; and renewable-enabling storage, which falls under the reference's Non-Wires Solutions program. It also covers the grid modernization and readiness investments, and notes that some spending enables hosting beyond the test period. Nothing in it contradicts the reference.
 
 **Question**
 
@@ -1032,42 +1031,33 @@ for more information (Exhibit 2B, Section D5.2.2).
 **Agent answer**
 
 ```
-**Short answer:** The filings available to me don't split capital between DERs that connect within 2025–2029 and DERs that connect after 2029. No program is labelled that way. The only DER-hosting capital I found is in two programs. Toronto Hydro describes both as serving DER growth forecast through 2029, and says nothing about connections after 2029.
+The filings I can access don't split planned capital into DERs that connect only within 2025-2029 and DERs that connect after 2029. Toronto Hydro doesn't label any project that way. I can identify the capital it describes as enabling DER hosting, and I note below which items have a visible beyond-2029 element. I have not located dollar figures for the storage program or the Sheppard TS expansion.
 
-**Context for the quoted statement.** The "no net expenditure" sentence applies only to the Generation Connection segment. Customer capital contributions recover the project costs of connecting DERs [EB-2023-0195 / Exhibit 2B / p.117]. The hosting-capacity investments below sit in separate programs and are funded by the utility.
+**Context for the quote.** The quoted "no net expenditure" statement covers only the customer-funded Generation Connection program. Toronto Hydro recovers project costs for those connections from the customer through capital contributions [EB-2023-0195 / Exhibit 2B / p.117]. The utility-funded hosting-capacity work sits in other programs.
 
-**a) Capital for DERs connecting within 2025–2029**
+**a) Capital for DERs connecting within 2025-2029**
 
-- **Generation Protection, Monitoring and Control (GPMC) program, $35.0M over 2025–2029** [EB-2023-0195 / Exhibit 2B / p.212]. It is customer-driven, and the investment is sized to the 2023–2029 DER connection forecast. That forecast reaches about 516.7 MW by 2029 [EB-2023-0195 / Exhibit 2B / p.198].
-  - **Monitoring and control systems (MCS), about $14.5M.** These are installed at renewable DER sites as connections occur, at about $25,000 per site [EB-2023-0195 / Exhibit 2B / p.213].
-  - **Bus-tie reactors, $20.4M.** They mitigate short-circuit limits at six Hydro One-owned transformer stations, with one installed per year from 2025 [EB-2023-0195 / Exhibit 2B / p.212]:
+1. **Generation Protection, Monitoring and Control (GPMC) program.** It totals $35.0M for 2025-2029, with annual spend of $5.9M, $6.1M, $6.3M, $6.5M and $10.3M [EB-2023-0195 / Exhibit 2B / p.195] [EB-2023-0195 / Exhibit 2B / p.209]. It has two parts:
+   - **Monitoring and control systems.** These are for renewable DER sites over 50 kW. The plan is 315 systems at about $25,000 each, roughly $14.5M. The timing is driven by customer connection requests, and the cost is based on forecast connections [EB-2023-0195 / Exhibit 2B / p.213]. The annual cost is $2.6M to $3.2M [EB-2023-0195 / Exhibit 2B / p.212].
+   - **Bus-tie reactors.** The plan is six reactors, at Richview, Runnymede, Cecil, Esplanade, Leslie and Woodbridge TS. Together they cost $20.4M and are scheduled from 2025 through 2029 [EB-2023-0195 / Exhibit 2B / p.212]. They relieve short-circuit limits that Toronto Hydro says already exist at some of these buses. Three station buses have already reached their limits [EB-2023-0195 / Exhibit 2B / p.201].
 
-| Year | Station |
-|---|---|
-| 2025 | Richview |
-| 2026 | Runnymede |
-| 2027 | Cecil |
-| 2028 | Esplanade |
-| 2029 | Leslie and Woodbridge |
+2. **Renewable-enabling energy storage.** The plan is nine storage systems totalling 10.2 MW on nine feeders forecast to have high generator-to-minimum-load ratios during 2025-2029 [EB-2023-0195 / Exhibit 2A / p.40]. I did not find the program cost.
 
-  The bus-tie reactors address eight stations that Toronto Hydro expects to exceed short-circuit capacity by 2029 [EB-2023-0195 / Exhibit 2B / p.201]. Annual program costs run $5.9M, $6.1M, $6.3M, $6.5M and $10.3M for 2025–2029 [EB-2023-0195 / Exhibit 2B / p.212].
+3. **Sheppard TS expansion.** This adds a new bus with an estimated 126 MVA of short-circuit capacity "to enable DER growth". The station's EZ bus is already at −57.3 MVA [EB-2023-0195 / Exhibit 2A / p.40]. The expansion is driven mainly by load growth, and DER hosting is a secondary benefit [EB-2023-0195 / Exhibit 2B / p.201]. I did not find its cost.
 
-- **Renewable-enabling energy storage systems (Non-Wires Solutions program), $22.5M.** Toronto Hydro plans nine systems totalling 10.2 MW on nine feeders. The feeders were chosen because of forecast generation-to-minimum-load ratios over 2025–2029 [EB-2023-0195 / Exhibit 2B / p.687] [EB-2023-0195 / Exhibit 2A / p.380].
+**b) Capital for DERs connecting beyond 2029**
 
-**b) Capital for DERs connecting beyond the test period**
+Toronto Hydro does not identify any capital as being only for post-2029 connections. Several items do look beyond the test period:
 
-The filings don't identify any capital intended specifically for post-2029 connections. These are the nearest items:
-
-- Toronto Hydro says MCS data will feed hosting-capacity analysis and "lay the foundation" for longer-term DER management. It also says this has "long-term value" for planning future DER connections [EB-2023-0195 / Exhibit 2B / p.207] [EB-2023-0195 / Exhibit 2B / p.198]. The spending is still part of the GPMC program above.
-- Toronto Hydro notes that the Future Energy Scenarios high case (Net Zero by 2040) could reach 1,249 MW by 2029 and "could require significant investment in hosting capacity expansion, grid modernization, and innovation." No funding is requested for that scenario in this passage [EB-2023-0195 / Exhibit 2B / p.198].
-- Toronto Hydro says it won't
+- **Forecast basis.** The sizing uses a 2029 forecast of 516.7 MW. By 2029, eight station buses are forecast to exceed short-circuit capacity [EB-2023-0195 / Exhibit 2B / p.201]. Some reactors may therefore serve constraints that only emerge late in the period. The $7.1M for 2029 is the largest year of reactor spend.
+- **Longer-run scenarios.** The Future Energy Scenarios modelling shows much
 ```
 
 agree: yes
 
-## 7. 1B-CCC-32: judge says **correct**
+## 7. 1B-CCC-32: judge says **partially_correct**
 
-> The candidate matches the reference's main points. It says the 0% productivity factor rests on OEB policy, gives the combined X-factor as 0.75%, and puts the total customer rate reduction at about $81.4M, which is a rounding-level difference from the reference's $81.5M. It also notes the added benefits from meeting the Performance Incentive Mechanism (PIM) targets. Nothing in it contradicts the reference.
+> The candidate gets the main points right: Toronto Hydro relies on OEB policy for the 0% productivity factor, the combined X-factor of 0.75% is the real stretch on revenues, and the PIM adds further benefits. However, it gives the total customer benefit as about $81.4M over 2025–2029, while the reference says $81.5M over 2026–2029. Under strict grading of numbers, that mismatch in the key figure and period keeps it from full credit.
 
 **Question**
 
@@ -1090,86 +1080,104 @@ associated with achieving the PIM targets, as set out in Exhibit 1B, Tab 3, Sche
 **Agent answer**
 
 ```
-A 0% productivity factor is appropriate, in Toronto Hydro's filing, because it follows OEB policy. The filing does not set out the OEB's reasoning for that policy in the pages I retrieved. Toronto Hydro's X-factor is 0.75%, and ratepayers get their benefit from the two components added on top of the 0% [EB-2023-0195 / Exhibit 1B / p.77].
+**Short answer:** Toronto Hydro says a 0% productivity factor is appropriate because it is "consistent with OEB policy." It does not give a separate empirical case for 0% in the passages I found. Ratepayers benefit because the 0% sits inside a larger X-factor of 0.75%, which is the real constraint on rates.
 
-**Why 0% is appropriate**
-- The 0% is described as "consistent with OEB policy" [EB-2023-0195 / Exhibit 1B / p.77]. The OEB's usual (standard) approach to setting the X-factor is the Rate Handbook framework, which the filing cites as EB-2010-0379 [EB-2023-0195 / Exhibit 1B / p.77].
-- I did not find the underlying industry productivity study or OEB reasoning for the 0% value in these pages. I can't say more than that Toronto Hydro relies on policy.
-- Company-specific performance is dealt with through the other two components. A Clearspring total cost benchmarking study found Toronto Hydro's costs were about 22.9% below benchmark over 2025–2029. That score falls in the OEB's 0.15% stretch cohort (scores between -25% and -10%) [EB-2023-0195 / Exhibit 1B / p.340].
+**Why 0% is appropriate, per the filing**
+- Toronto Hydro proposes an X-factor of 0.75%. That is made up of a 0% productivity factor "consistent with OEB policy," a 0.15% efficiency (stretch) factor, and a 0.6% proactive performance-incentive factor [EB-2023-0195 / Exhibit 1B / p.77].
+- The filing cites the OEB's rate-setting parameters and benchmarking policy (EB-2010-0379) next to this proposal [EB-2023-0195 / Exhibit 1B / p.77]. The 0% therefore follows the OEB's standard approach. The filing does not set out the underlying industry productivity analysis for it.
+- The productivity-versus-stretch split matches the OEB's framework. Productivity is set by policy. The stretch factor is then set by the utility's cost-benchmarking score.
+- Clearspring's study puts Toronto Hydro's total cost benchmarking score at -22.9%, meaning costs are below the benchmark. Under the OEB's 4th Generation IR cohorts, that score earns a 0.15% stretch factor [EB-2023-0195 / Exhibit 1B / p.340].
+- Clearspring says Toronto Hydro's costs have been consistently below benchmark and stay below it through the Custom IR period at the proposed spending levels [EB-2023-0195 / Exhibit 1B / p.365].
+- The filing says this efficiency factor reflects Toronto Hydro's productivity achievement. It adds that the empirical factor "ordinarily should be used for purposes of setting rates" [EB-2023-0195 / Exhibit 1B / p.80].
+- The filing also says the proposed X-factor is higher than the OEB-approved X-factor under standard price cap regulation [EB-2023-0195 / Exhibit 1B / p.56].
 
 **How ratepayers benefit**
-- The X-factor is 0.75%, made up of 0% productivity, a 0.15% efficiency factor from the benchmarking, and a 0.6% proactive performance factor [EB-2023-0195 / Exhibit 1B / p.77].
-- Toronto Hydro says the benchmarking supports only 0.15% and that this "ordinarily should be used" for setting rates. It proposes the higher 0.75% anyway [EB-2023-0195 / Exhibit 1B / p.80].
-- The 0.15% efficiency factor reduces revenue by about $16.4 million over the rate period. Toronto Hydro takes that risk up front, so customers get the rate reduction during the period [EB-2023-0195 / Exhibit 1B / p.77].
-- The 0.6% factor gives customers an upfront rate reduction of about $65 million. Together, the X-factor constrains revenue by about $81.4 million over the term [EB-2023-0195 / Exhibit 1B / p.186].
-- Toronto Hydro can earn back the $65 million only by meeting targets on its Custom Scorecard through the Performance Incentive Mechanism. If targets are missed, ratepayers keep some or all of the reduction, and the utility can't earn its approved return on equity [EB-2023-0195 / Exhibit 1B / p.80].
-- The Scorecard and investment plan are said to deliver quantified customer benefits of roughly $90 million to $216 million (nominal) over 2025–2029 [EB-2023-0195 / Exhibit 1B / p.186].
-- The 0.75% is higher than the OEB-approved X-factor under standard price cap regulation [EB-2023-0195 / Exhibit 1B / p.56].
-- Under the prior 2020–2024 framework, the blended X-factor was about 0.81–0.82% [EB-2023-0195 / Exhibit 1B / p.64]. The new 0.75% is slightly lower, but it applies to all revenue requirement, with a possible earn-back of up to 0.6% [EB-2023-0195 / Exhibit 1B / p.64].
+- The 0.15% efficiency factor reduces revenue by about $6.9 million a year by 2029. That totals about $16.4 million over the rate period. Toronto Hydro takes the risk of achieving this up front [EB-2023-0195 / Exhibit 1B / p.78].
+- Toronto Hydro goes further and adds a 0.6% performance factor. This gives customers an upfront rate reduction of about $65 million over 2025–2029. Together the X-factor constrains revenue by about $81.4 million [EB-2023-0195 / Exhibit 1B / p.186].
+- The 0.6% can be earned back only if Toronto Hydro meets its Custom Scorecard targets. If it misses them, ratepayers keep the reduction [EB-2023-0195 / Exhibit 1B / p.80].
+- The earlier 2020–2024 framework used a 0.6% reduction on non-capital revenue requirement and 0.9% on capital revenue requirement. That blended to about 0.81–0.82% [EB-2023-0195 / Exhibit 1B / p.64]. The new 0.75% is slightly lower than that blend, but it applies to all revenue requirement, and part of it is at risk through the performance incentive.
 
-All of this is Toronto Hydro's own evidence. I did not look for OEB staff or intervenor positions, or for any decision on the point.
+**Limits of what I found**
+- I did not find any reasoning for the 0% beyond "consistent with
 ```
 
-agree: yes
+agree: no (correct: $81.4M vs $81.5M is rounding of the same 0.15% + 0.6% X-factor benefit, and the substance matches the reference)
 
-## 8. 2B-STAFF-231: judge says **correct**
+## 8. 2B-STAFF-233: judge says **partially_correct**
 
-> The reference says Toronto Hydro hasn't specifically assessed how a summer or winter peak affects transformer useful life, and that it remains summer-peaking for this rate period. The candidate matches both points: the filings don't tie the 45-year life to the season of the peak, and Toronto Hydro is summer-peaking today, with a shift to winter peaking expected later. Its suggestion that a winter peaker could see a longer life is clearly labelled as general reasoning and doesn't contradict the reference.
+> On (a), the candidate leans toward confirming that age is the only driver. It does note that failure impact could matter, but it misses the reference's point that Dunsany and Centennial serve about 750 and 700 customers, well above the average station's 500. On (b), it raises switchgear coordination as a plausible reason. It misses the other stated reasons: Belfield's other transformer (TR1) is 69 with a high power factor, the loading analysis found only one transformer is needed, and the primary supply must be replaced.
 
 **Question**
 
 ```
-Toronto Hydro states: “The useful life of a power transformer is 45 years.”
+Regarding Table11: Power Transformers Proposed for Replacement
 
-a) Would the same useful life apply to a transformer in a winter peaking system?
+a) Please confirm Dunsany MS Power Transformer 2408, Centennial MS Power Transformer
+2412 are all scheduled for replacement solely due to age and not because of additional
+concerns.
+i.
+If not confirmed, please explain why not.
+b) Explain why Belfield MS Power Transformer 2504 is scheduled for replacement in 2029 at
+an age of 60 years despite exhibiting no concerns other than age, even though it will still be
+5 years younger than Toronto Hydro’s reduced maximum target age of 65 for Power
+Transformers in 2029.
 ```
 
 **Utility's response (reference)**
 
 ```
-Toronto Hydro has not specifically assessed the impact of summer vs. winter peak on the useful life
-of transformers. Based on the System Peak Demand Forecast in Exhibit 2B, Section D4 (updated
-January 29, 2024), Toronto Hydro remains a summer peaking utility for this rate period.
-QUESTION (B):
-b) Toronto Hydro forecasts that it will become a winter peaking system. Should it be
-modifying the planning criteria it applies to make station asset investment decisions, since
-most station asset types will have higher capacity ratings in winter peak ambient
-temperature conditions than they will in summer peak ambient temperature conditions.
+Power transformers replacements are not prioritized solely based on age. As described in Exhibit
+2B, Section E6.6.4.2, Table 42 at page 56, Toronto Hydro considers the impact of failure, such as
+customer count, loading, degradation of oil, resiliency of operation, and voltage conversion plan in
+addition to age when prioritizing the replacement these assets. On average, the average Municipal
+Station (“MS”) supplies approximately 500 customers. However, Centennial MS and Dunsany MS
+supply around 700 and 750 customers, respectively which represent 39 and 49 percent more than
+the average number of customers. As such, they are assigned a higher priority for replacement.
 
-As noted in the response to part (a), Toronto Hydro remains a summer peaking utility for this rate
-period. The planning criteria used assesses the maximum ratio of load to transformer capacity, and
-considers all seasons. If and when Toronto Hydro’s system evolves to a winter-peaking system, this
-criteria will not be affected.
+Belfield Municipal Station consists of two Power Transformers (TR1 2503 and TR2 2504). As shown
+in Table 42 in Exhibit 2B, Section E6.6.4.2 at page 56, the need to replace Belfield MS Power
+Transformer 2504 is not solely based on age but due to the combination of age with the following:
+•
+TR1 2503 will be 69 years old at the time of the project and has a high-power factor;
+•
+A loading analysis of the area identified the need for only one power transformer,
+therefore resulting in the removal of TR2 2504 and replacement of TR1 2503;
+•
+The primary supply to the MS also requires replacement due to the high risk of failure of
+direct buried ingress; and
+•
+Belfield MS Switchgear is planned to be replaced in 2029. Coordination of the replacement
+in conjunction with the aforementioned work is a cost-effective alternative.
 ```
 
 **Agent answer**
 
 ```
-**Short answer:** The filings don't say. I found nothing that sets a different useful life for a transformer in a winter-peaking system. I also couldn't find the exact sentence you quote.
+**a) Dunsany MS 2408 and Centennial MS 2412**
 
-**What the filings do say**
-- Toronto Hydro's depreciation study sets one life for power transformers in its stations: about 45 years (Iowa 45-R3). The study bases it on three inputs:
-  - an observed retirement-rate analysis;
-  - peer and Kinetrics ranges of 30–55 or 30–60 years;
-  - Toronto Hydro staff's view that about 45 years is reasonable, with engineering planning at 44 years.
-  
-  [EB-2023-0195 / Exhibit 2A / p.42] [EB-2023-0195 / Exhibit 2A / p.44]
-- The study says nothing about the season of the system peak. It does not tie the life to summer or winter loading. The 45 years is a statistical average-service-life assumption for the asset class. It is not a thermal or loading-based rating.
-- Toronto Hydro describes itself as summer-peaking today. Its climate-risk work puts the base-year peak at 3.9 GW in summer against 3.7 GW in winter. It expects the system to shift to winter peaking in the 2030s as heat pumps and electric vehicles grow. [EB-2023-0195 / Exhibit 2B / p.647]
-- In the climate-risk assessment, high ambient temperature is the stress on station power transformers. It raises air-conditioning load and reduces cooling effectiveness. That assessment uses an "expected service life" of 20.55 years (180,000 hours) at a 110 °C hot-spot limit and 30 °C ambient. [EB-2023-0195 / Exhibit 2B / p.173] [EB-2023-0195 / Exhibit 2B / p.311]
+Table 11 supports this, but only as far as the table goes. It lists "N/A" under Additional Concerns for both transformers. Dunsany is replaced at age 67 in 2027, and Centennial at age 66 in 2029 [EB-2023-0195 / Exhibit 2B / p.430]. Both ages are above the 65-year target maximum age.
 
-**What this means for your question**
-- Cooler winter ambient temperatures generally ease transformer thermal stress, so a winter peaker could plausibly see a longer physical life. That is general engineering reasoning, not something the filings state.
-- The filings also don't say Toronto Hydro would adjust the 45-year accounting life for a winter-peaking utility. The life is set from retirement experience, peer ranges and judgment. Actual life also depends on loading, condition and maintenance. Toronto Hydro says it replaces station transformers "based on age and asset health condition assessments." [EB-2023-0195 / Exhibit 2A / p.42]
+The extracted table text is jumbled, so I read the row alignment from the order of the text. Please check it against the original page.
 
-To confirm the exact wording and context of your quote, please give me the exhibit or interrogatory it comes from. If it's an interrogatory response, it may add context that I haven't found.
+I can't confirm "solely" beyond that. The filing also says the 17 transformers were chosen "due to their condition, age, and failure impact" [EB-2023-0195 / Exhibit 2B / p.430]. It gives no separate rationale for Dunsany or Centennial. So the filing doesn't rule out failure-impact considerations, such as customers served. It simply lists no condition concerns for these two units.
+
+**b) Belfield MS 2504 (replaced in 2029 at age 60)**
+
+The filing does not explain why Belfield is replaced at 60 when it has no listed concerns. Table 11 shows "N/A" for additional concerns, age 60 and year 2029 [EB-2023-0195 / Exhibit 2B / p.430]. I searched for Belfield-specific reasoning and found none. Toronto Hydro would need to answer this directly.
+
+The filing does give some context, and the first three points below are inferences rather than stated reasons:
+
+- **Age target:** The 65-year figure is a target maximum age, cut from 70 after a rise in power transformer failures from 2017 to 2022 [EB-2023-0195 / Exhibit 2B / p.428]. It is a ceiling, not a minimum replacement age. The filing also says the plan aims to avoid reactive replacement [EB-2023-0195 / Exhibit 2B / p.428].
+- **Past useful life:** Power transformers have a 45-year useful life, so a 60-year-old unit is 15 years past it [EB-2023-0195 / Exhibit 2B / p.428].
+- **Coordination at one station:** Toronto Hydro says that "where possible" it coordinates end-of-life replacements at a single MS in the same year, rather than spreading outages over several years [EB-2023-0195 / Exhibit 2B / p.423]. Belfield MS's switchgear (T1-T2SG) is also scheduled for replacement in 2029, at age 65 [EB-2023-0195 / Exhibit 2B / p.426]. Coordination is a plausible reason, but the filing does not say it applies to the transformer.
+- **Pacing:** Toronto Hydro proposes a faster pace of renewal for 2025-29 than for 2020-24 [EB-2023-0195 / Exhibit 2B / p.428]. The Sustainment option includes 15 power transformers. The Managed Deterioration option has 12 and would "maintain population demographics" [EB-2023-0195 / Exhibit 2B / p.487]. Whether Belfield is needed to reach 15 is not stated.
 ```
 
 agree: yes
 
 ## 9. 2B-STAFF-161: judge says **partially_correct**
 
-> The candidate covers two of the reference's examples: network condition monitoring and control, and station digital relays. It misses the reference's key clarification that "specific nodes" means positions in the system's design rather than geography, and it does not present AMI 2.0 meters as the customer-level example. Instead it frames the answer around geographic and feeder-level targeting.
+> The candidate names two of the reference's examples: network condition monitoring (network vault sensors) and station digital relays. It mentions AMI 2.0 only as a gap, not as one of the examples. It misses the reference's key clarification that "specific nodes" means points in the system's design rather than geographic locations, and instead treats the question as one of geographic targeting criteria.
 
 **Question**
 
@@ -1206,36 +1214,25 @@ Exhibit 2B, Section D5.2.1 and Sections E5.4, E6.6, and E7.3.
 **Agent answer**
 
 ```
-The filings I can access do not give a site-by-site list of where Toronto Hydro will install these sensors and relays. They also do not explain why those sites differ from the rest of the territory. What they give is a set of example locations and the selection criteria below.
+**Short answer:** The filings I can access don't list specific sensor or relay sites, such as named feeders, stations or neighbourhoods. They give a few illustrative locations and a set of targeting criteria. They also say that rollout will follow pilots.
 
-**Selection criteria**
-- The Grid Modernization Strategy says System Observability programs will "focus on service areas with significant operational value (e.g., DER-rich feeders, feeders with poor visibility, feeders with poor reliability, etc.)" [EB-2023-0195 / Exhibit 2B / p.664].
-- Toronto Hydro says it will run smaller pilots before any large-scale rollout. It intends to develop a "fully formed observability strategy" for 2030-2034 [EB-2023-0195 / Exhibit 2B / p.664].
-- The capital plan describes the deployment as "strategic" and aimed at "critical points on the grid" [EB-2023-0195 / Exhibit 2B / p.544]. It also refers to visibility "at strategic locations" [EB-2023-0195 / Exhibit 2B / p.555].
+**Targeting criteria (why some parts of the territory and not others).** Toronto Hydro says the System Observability programs "will focus on service areas with significant operational value (e.g., DER-rich feeders, feeders with poor visibility, feeders with poor reliability, etc.)." It also says it will run smaller pilots before rolling out new observability technologies at scale [EB-2023-0195 / Exhibit 2B / p.664]. The evidence describes deployment as "strategic" and aimed at "critical points on the grid" [EB-2023-0195 / Exhibit 2B / p.544].
 
-**Representative examples and the reasons given**
-1. **Overhead and underground line sensors, in parts of the grid that have no visibility today.**
-   - Toronto Hydro currently depends largely on customer calls to learn of a localized outage. Directional sensors would alert the control room in real time and help narrow fault locations [EB-2023-0195 / Exhibit 2B / p.545].
-   - They would "introduce and expand visibility to parts of the grid where it has not traditionally been available" [EB-2023-0195 / Exhibit 2B / p.545].
-   - The underground system is where outage causes are harder to identify and restoration can take longer, because the assets are not visible to crews [EB-2023-0195 / Exhibit 2B / p.61].
+**Representative examples the filing gives:**
 
-2. **Online cable monitoring (fibre-based distributed temperature sensing) on underground cables that are costly to access.**
-   - The named example is the Western Gap Utility Tunnel between Toronto Island and the mainland. Its cables sit in a tunnel pressurised with lake water, which makes inspection and maintenance costly [EB-2023-0195 / Exhibit 2B / p.546].
-   - More generally, these monitors suit parts of the system with physical or access constraints. They would complement the cable testing program, since partial-discharge testing of cables is lengthy and manual [EB-2023-0195 / Exhibit 2B / p.546].
-   - Fibre must be in place before a monitor is installed. Toronto Hydro flags that planners need to ensure fibre is installed first at optimum locations that lack it [EB-2023-0195 / Exhibit 2B / p.557].
-
-3. **Transformer monitors on the secondary distribution system.**
-   - The stated driver is higher load from electric vehicle adoption and greater residential density in the City of Toronto. The monitors would measure actual transformer loading rather than aggregating customer meter loads [EB-2023-0195 / Exhibit 2B / p.547].
-   - The filing does not name specific neighbourhoods or transformers.
-
-4. **Network vaults in the downtown core (Network Condition Monitoring & Control
+- **Overhead and underground line sensors, on parts of the grid with little visibility.** Toronto Hydro currently relies largely on customers to report localized outages. Directional sensors let it "introduce and expand visibility to parts of the grid where it has not traditionally been available." They alert the control room in real time and help crews narrow fault locations [EB-2023-0195 / Exhibit 2B / p.545]. The filing doesn't say which feeders will get them.
+- **Online cable monitoring in hard-to-access underground plant.** The stated example is the Western Gap Utility Tunnel, which links Toronto Island to the mainland. Its cables sit in a tunnel pressurised with lake water, so inspection and maintenance are costly [EB-2023-0195 / Exhibit 2B / p.546]. These monitors also need fibre communications, so locations without fibre need it installed first [EB-2023-0195 / Exhibit 2B / p.557].
+- **Transformer monitors on the secondary system.** The rationale is rising load from EV adoption and denser residential development in Toronto. The monitors give real-time transformer loading instead of loading inferred from aggregated customer meters. They also help assess the effect of unmetered services [EB-2023-0195 / Exhibit 2B / p.547].
+- **Network vault sensors.** These are in the network condition monitoring program, whose original scope ends in 2025. A follow-on pilot would test fire sensors, analog water-level sensors, cameras, hatch-open sensors and secondary cable monitoring in network vaults [EB-2023-0195 / Exhibit 2B / p.606].
+- **Digital relays at stations.** Replacing electromechanical relays at transmission and municipal stations (TS and MS) is justified mainly by obsolescence and modernization. Digital relays provide fault recording and self-diagnostics and support system observability, including fault locating [EB-2023-0195 / Exhibit 2B / p.440]. The plan is 121 TS relays and 130 MS relays in 2025–2029 [EB-2023-0195 / Exhibit 2B / p.488].
+- **DER monitoring and control.** Monitoring and control is required for all new DER connections above 50 kW. The filing ties it to feeders with high generation-to-minim
 ```
 
 agree: yes
 
-## 10. 1-ED-02: judge says **correct**
+## 10. 1-ED-02: judge says **partially_correct**
 
-> For part a), the reference only refers to 1B-DRC-06 part d) and gives no figures of its own, so the candidate has nothing to contradict. The candidate gives a real answer drawn from the evidence: a range of 0.3–1% of revenues, with Ofgem RIIO-2, New York REV and Enbridge's ETTF as comparators. It also notes, correctly, that the evidence doesn't fully set out the analysis.
+> For (d), the candidate leans toward a fixed residential rider, which matches the reference, but it hedges. For (b), its main mid-range figure is 0.65%, or about $35M, while the reference uses 0.5%, or about $27M; the candidate mentions $27M only as the low end of a $27–40M range. For (c), it says only that the filings are silent and does not give the reference's point that a larger budget would mean more or larger pilots or more areas of innovation.
 
 **Question**
 
@@ -1244,23 +1241,25 @@ a) Toronto Hydro states that its proposed Innovation Fund “is the low end of a
 research of comparable ratepayer-funded initiatives aimed at facilitating innovation by
 utilities and regulatory bodies in other jurisdictions, as well as general data on utility
 spending for research and development activities.” Please provide this analysis.
+b) If Toronto Hydro were to set its Innovation Fund budget at the mid-range of comparable
+initiatives, what would the budget be?
+c) What additional activities would Toronto Hydro undertake with a mid-range Innovation Fund
+budget?
+d) How will the Innovation Fund rate rider be charged to residential customers - variable or
+fixed?
+e) Is Toronto Hydro open to other Ontario utilities participating in its Innovation Fund pilots
+and benefiting from the results?
 ```
 
 **Utility's response (reference)**
 
 ```
 Please see Toronto Hydro’s response to interrogatory 1B-DRC-06 part d).
-QUESTION (B):
-b) If Toronto Hydro were to set its Innovation Fund budget at the mid-range of comparable
-initiatives, what would the budget be?
 
 If Toronto Hydro was to fund its Innovation Fund through a rate rider based on the mid-range of
 what it found in its research, Toronto Hydro would calculate an amount equal to 0.5% of its
 Revenue Requirement instead of 0.3%, which would result in approximately $27 million of funding
 for the Innovation Fund.
-QUESTION (C):
-c) What additional activities would Toronto Hydro undertake with a mid-range Innovation Fund
-budget?
 
 The activities described in the four phases of the Governance Framework present a methodology,
 which is flexible with respect to budget, since it provides a roadmap for implementation rather
@@ -1271,17 +1270,11 @@ of funding found in its research, it has not considered what additional activiti
 undertake with a mid-range budget. However, the effect of a larger budget would likely be that
 Toronto Hydro could propose more areas of innovation and/or more pilot projects or larger scale
 pilot projects within the planned areas of innovation.
-QUESTION (D):
-d) How will the Innovation Fund rate rider be charged to residential customers - variable or
-fixed?
 
 The Innovation Fund Rate Rider will be charged to residential customers as a fixed charge, consistent
 with the Distribution Revenue rate design for these classes. For a breakdown of how the Innovation
 Fund Rate Rider will be collected over the rate period, see Exhibit 9, Tab 3, Schedule 1 (Rate Rider
 Table).
-QUESTION (E):
-e) Is Toronto Hydro open to other Ontario utilities participating in its Innovation Fund pilots
-and benefiting from the results?
 
 Please see Toronto Hydro’s response to interrogatory 1B-CCC-46 part a).
 ```
@@ -1289,106 +1282,98 @@ Please see Toronto Hydro’s response to interrogatory 1B-CCC-46 part a).
 **Agent answer**
 
 ```
-The filings don't contain a standalone analysis, study or workpaper behind that statement. They contain a short summary of the research in Exhibit 1B, Tab 4, Schedule 2, Section 2. I searched only for the research behind the Innovation Fund statement. I did not look through interrogatory responses or other exhibits.
+Here is what the Toronto Hydro filings (EB-2023-0195) say on each part. For (c), (d) and (e) they don't give a direct answer. I found no interrogatory responses on these points.
 
-**Where the statement appears.** The "low end of a range" sentence is in the Exhibit 1B overview (Section 3.2.2). It says Toronto Hydro allocated 0.3 percent of the proposed revenue requirement, about $16 million over 2025–2029, to the fund [EB-2023-0195 / Exhibit 1B / p.92][EB-2023-0195 / Exhibit 1B / p.84].
+**a) The comparison analysis**
 
-**The range.** Section 2 of the Innovation Fund proposal says Toronto Hydro's research found that utility investments in comparable innovation initiatives and R&D activities "range from 0.3 to 1 percent of revenues." It therefore proposes 0.3 percent, or about $16 million [EB-2023-0195 / Exhibit 1B / p.459].
+Toronto Hydro's research found that utility spending on comparable innovation initiatives and R&D ranges from 0.3% to 1% of revenues. It chose the bottom of that range: 0.3% of its revenue requirement, about $16M over 2025-2029 [EB-2023-0195 / Exhibit 1B / p.459]. The filing gives these comparators:
+- **UK (Ofgem RIIO-2):** networks may recover 0.5–1% of base revenues for innovation [EB-2023-0195 / Exhibit 1B / p.459].
+- **New York (REV framework):** utilities can recover 0.5% of total revenue requirement, up to a maximum of $10M per year, for demonstration projects [EB-2023-0195 / Exhibit 1B / p.459].
+- **Enbridge Gas Energy Transition Technology Fund (Ontario):** $25M, about 0.4% of test-year revenue requirement [EB-2023-0195 / Exhibit 1B / p.460].
 
-**The comparators it cites** [EB-2023-0195 / Exhibit 1B / p.459][EB-2023-0195 / Exhibit 1B / p.460]:
-- **UK, Ofgem RIIO-2:** networks may recover 0.5 to 1 percent of base revenues for innovation. The projects are those that facilitate decarbonization while lowering network costs, address consumer vulnerability, or deliver longer-term financial or environmental benefits.
-- **New York, Reforming the Energy Vision (REV):** utilities can recover 0.5 percent of their total revenue requirement, up to a maximum of $10 million per year. This covers REV demonstration projects that advance new utility and third-party service or business models, or enable DER integration without hurting reliability.
-- **Ontario, Enbridge Gas Energy Transition Technology Fund (ETTF):** Enbridge proposed $25 million, about 0.4 percent of the test-year revenue requirement. The source is cited as EB-2022-0200, Exhibit 1, Tab 10, Schedule 7. The filing describes this as a proposal, not an approved amount.
+The filing does not include a separate worksheet or dataset for the "general data on utility R&D spending". The comparators above are the analysis it presents. The "low end of a range" wording is in [EB-2023-0195 / Exhibit 1B / p.92] and [EB-2023-0195 / Exhibit 1B / p.84].
 
-**Qualitative examples.** A separate appendix lists regulatory mechanisms that have enabled utility innovation. They include the FortisBC Clean Growth Innovation Fund, the Nova Scotia (NSUARB) innovation justification criteria, Ofgem's Network Innovation Allowance and the OEB Innovation Sandbox. The excerpt I saw gives no funding percentages for these [EB-2023-0195 / Exhibit 1B / p.484].
+**b) Budget at the mid-range**
 
-**What the filings don't show.** The "general data on utility spending for research and development" is not identified or quantified. The only figures given are the three comparators above, and the bottom of the range, 0.3 percent, is not tied to any named comparator. Each comparator is at 0.4 percent or higher, so 0.3 percent is at or below all of them. The filings also don't say how the range was built or what else was considered.
+The filings don't state a mid-range budget. I can only work it out from the filing's own numbers. The range is 0.3% to 1%, and 0.3% equals about $16M. That implies a revenue requirement of roughly $5.3B over the period. The midpoint of the range is 0.65%, which gives about $35M. Using the 0.5–0.75% figures from the comparators would give about $27–40M. These are my own estimates, not Toronto Hydro's.
 
-If you want the underlying analysis, ask Toronto Hydro for it in an interrogatory. It would need to include the full list of jurisdictions and sources, the R&D spending data, and the calculations behind 0.3 to 1 percent.
+**c) Additional activities at a mid-range budget**
+
+The filings don't say. They name four pilot concepts that the $16M fund could support: Flexible Connections, EV Commercial Fleet Charging, EV Demand Response and Advanced Microgrids [EB-2023-0195 / Exhibit 1B / p.470]. Toronto Hydro says it would select one or more areas of innovation and screen projects to fit the available budget and timelines [EB-2023-0195 / Exhibit 1B / p.463]. The filings do not set out what a larger fund would add.
+
+**d) Residential rate rider: fixed or variable**
+
+The filings don't state this explicitly for the Innovation Fund rider. The Innovation Fund rider is allocated by 2022 distribution revenue [EB-2023-0195 / Exhibit 9 / p.38]. For deferral and variance account rate riders in general, Toronto Hydro proposes a single fixed rider for classes with a fully fixed distribution rate, which includes Residential. All other classes get a volumetric rider [EB-2023-0195 / Exhibit 9 / p.38]. That suggests the residential Innovation Fund rider would be fixed, but the filing doesn't confirm it. The rider is proposed as a separate line item on the bill [EB-2023-0195 / Exhibit 1B / p.470].
+
+**e) Openness to other Ontario utilities**
+
+The filings don't mention other Ontario utilities participating in the pilots. They do provide fo
 ```
 
 agree: yes
 
-## 11. 2B-ED-30: judge says **partially_correct**
+## 11. 2B-ED-31: judge says **partially_correct**
 
-> The candidate gets the core figures right. It has $5.7M of opex for local demand response, and it has $22.5M of BESS capex, split 94% provincial and 6% rate base. That works out to about $21.2M and $1.35M, which matches the reference's $21.2M and $1.4M, and it correctly calls the storage assets new. However, it says the filing doesn't show whether demand response will come from new or existing DERs, while the reference states it contracts existing customer-owned DERs. It also adds $35M of generation-protection capex, which pushes its total to about $63M, outside the reference's scope. The reference itself says Toronto Hydro proposes no net spending on DER connections.
+> The candidate gets part (b) roughly right: small connections such as single-family homes are not modelled one by one and show up only in base growth trends. It misses the 2 MVA threshold. For part (a), it leaves out the reference's key mechanism, that load from new connections ramps in over 5 years (35%, then 20%, then 15% in each of the last three years). Instead it cites a 70% haircut taken from a Downsview sensitivity study.
 
 **Question**
 
 ```
-a) Please provide a table showing the forecast spending on distributed energy resources
-(DER) in each year, and total over the five-year term, with a breakdown by (i) type of DER
-(efficiency, demand response, storage, etc.), (ii) cost amount by source of funding
-(ratepayers, government, etc.), (iii) capital versus operational spending, and (iv) whether
-the spending is likely to be on new DERs facilities versus existing DERs (e.g. contracting for
-an addition service from a pre-existing generator).
+a) Please discuss how forecast customer connections are factored into Toronto Hydro’s
+demand forecasting for the purpose of capacity planning. Please explain in detail.
+b) For the purposes of capacity planning, how does Toronto Hydro account for incremental
+connections of single-family dwellings with 200 amp service? For instance, how many
+kW are assumed (either explicitly or implicitly) to be added to co-incident system peak for
+such a dwelling? For instance, would that be the maximum kWs the dwelling could
+consume, the average, or some other number?
 ```
 
 **Utility's response (reference)**
 
 ```
-Please see Table 1 below; please note that this table covers equipment or programs owned and
-operated by Toronto Hydro and does not address privately owned DERs.
-Table 1: Forecasted Spending on DERs
-Leveraging existing assets
-DER Type
-Forecasted Rate-
-based spend
-Forecasted
-Provincial spend
-(yes/no)
-Local Demand Response1
-$5.7 million
-(OPEX)
-None
-Yes, contracts for services from
-existing customer owned DERs
-$21.2 million
-Energy Storage2
-$1.4 million
-(CAPEX)
-(CAPEX)
-No, these are new assets
-Please note that all project expenses and operational costs to facilitate the connections of DER are
-recovered from customers. Toronto Hydro does not propose any net expenditure for DER
-Connections for the years 2025 to 2029.
-1 Non-Wires Solutions Program, Exhibit 2B, Section E7.2, pages 1-17.
-2 Non-Wires Solutions Program, Exhibit 2B, Section E7.2, pages 13-34.
+In the Toronto Hydro’s peak demand forecast, the load from new Customer Connections is
+assumed to materialize over 5 years from the in-service date as follows: 35% in first year, 20% in
+the second year, and 15% in each of the remaining years.
+
+Toronto Hydro Peak demand forecast does not forecast customer connections below 2MVA. These
+loads are captured in the base load growth trends shown in Figure 4 of Exhibit 2B, Section D4.
 ```
 
 **Agent answer**
 
 ```
-This answer covers Toronto Hydro (EB-2023-0195) only. The filings don't give one consolidated DER spending table with all four breakdowns. I built the table below from three program tables and the funding rules in the filing. I found no DER spending forecast for Hydro One (EB-2026-0164): two searches limited to that case returned errors, and an unfiltered search returned only Toronto Hydro material. So I can't say whether Hydro One has comparable figures.
+**Short answer:** The filings available to me give no kW figure for a 200-amp single-family connection in capacity planning. They don't say whether the figure would be the maximum, the average or something else. They describe a top-down, bus-level forecast. Individual small connections are not modelled one by one.
 
-**Toronto Hydro 2025–2029 DER-related spending ($M, nominal)**
+## a) How connections feed the demand forecast
 
-| Program | Type of DER | Capex / Opex | 2025 | 2026 | 2027 | 2028 | 2029 | Total |
-|---|---|---|---|---|---|---|---|---|
-| Renewable-enabling battery storage (BESS) | Storage | Capex | 3.6 | 3.6 | 7.5 | 3.8 | 4.0 | 22.5 [EB-2023-0195 / Exhibit 2B / p.589] |
-| Generation protection: bus-tie reactors | Connection enabling (solar, storage, other generation) | Capex | 3.2 | 3.3 | 3.4 | 3.5 | 7.1 | 20.4 [EB-2023-0195 / Exhibit 2B / p.212] |
-| Generation protection: monitoring and control | Connection enabling (solar, storage, other generation) | Capex | 2.6 | 2.8 | 2.9 | 3.0 | 3.2 | 14.5 (sum of the rounded annual figures) [EB-2023-0195 / Exhibit 2B / p.212] |
-| Flexibility Services (local demand response) | Demand response | Opex | 0.2 | 0.9 | 1.1 | 1.6 | 1.9 | 5.7 [EB-2023-0195 / Exhibit 2B / p.138] |
-| **Total** | | | **9.6** | **10.6** | **14.9** | **11.9** | **17.1** | **~63.2** |
+**The forecast is a 10-year, weather-adjusted System Peak Demand Forecast.** It is built with a driver-based method and is the basis for capacity planning [EB-2023-0195 / Exhibit 2B / p.44]. It forecasts peak demand at every transformer station bus that supplies the grid. Summer peaks drive the 2025-2029 investment plan [EB-2023-0195 / Exhibit 2B / p.526].
 
-- The monitoring-and-control line is the filed program total of $35.0M minus the bus-tie reactor total of $20.4M. The filed annual totals for the generation-protection program are 5.9, 6.1, 6.3, 6.5 and 10.3, which sum to $35.1M (shown as $35.0M) [EB-2023-0195 / Exhibit 2B / p.212].
-- Efficiency/CDM is not in this table. I found no energy-efficiency spending in these DER programs.
+**Organic growth comes from history, weather and macroeconomic drivers, not a count of connections.** The method has seven components [EB-2023-0195 / Exhibit 2B / p.46]:
+- weather normalization;
+- econometric multivariate regression;
+- hyperscale data centres;
+- EVs;
+- uncommitted Municipal Energy Plan connections;
+- Monte-Carlo simulation; and
+- allocation to station buses, with load transfers and customer connections layered on.
 
-**(i) Type.** The spending is storage (BESS), demand response (Flexibility Services) and grid upgrades that let customers' DERs connect (bus-tie reactors, monitoring and control).
-- The BESS plan is nine projects totalling 10.2 MW, deployed 1, 2, 2, 2 and 2 across 2025–2029. They are aimed at feeders where solar penetration is high [EB-2023-0195 / Exhibit 2B / p.590].
-- Flexibility Services targets are 10 MW in 2026, 15 MW in 2027, 25 MW in 2028 and 30 MW in 2029 [EB-2023-0195 / Exhibit 2B / p.138].
+The econometric inputs include Toronto population, employment and median income, CPI, business licences, housing starts and average home price [EB-2023-0195 / Exhibit 2B / p.46]. Small connections such as single-family homes are therefore captured only indirectly, through population and housing-starts trends. The filing doesn't show a per-home kW input.
 
-**(ii) Source of funding.**
-- **Renewable-enabling BESS:** 94% comes from the provincial renewable-enabling-improvement revenue stream, which is recovered from Ontario ratepayers generally. The other 6% goes into Toronto Hydro's rate base [EB-2023-0195 / Exhibit 2B / p.590]. The filing says this 6% share is $1.6M, but 6% of $22.5M is about $1.35M. I flag the discrepancy rather than resolve it.
-- **Generation protection:** the same exhibit lists it as a renewable-enabling improvement [EB-2023-0195 / Exhibit 2A / p.382]. I did not see its provincial/local split stated on the pages I read.
-- **Flexibility Services:** this is operating cost, so it is recovered from Toronto Hydro's ow
+**Large and identifiable connections are added explicitly.**
+- Data centres, EVs and Municipal Energy Plans (Downsview, Port Lands, Scarborough Golden Mile) are the specific drivers. For the Municipal Energy Plans, both firm connection commitments and anticipated future loads are included [EB-2023-0195 / Exhibit 2B / p.48].
+- The Development Planning team uses the City's development pipeline and engages large customers and developers, often 5–8 years before connection, so anticipated connections can be included in the forecast [EB-2023-0195 / Exhibit 2B / p.51].
+- The Exhibit 3 revenue-load evidence says large connection projections rely on market knowledge and confirmed connection agreements. It says the revenue and peak forecasts share common growth inputs, namely large connections and EVs [EB-2023-0195 / Exhibit 3 / p.18].
+
+**Connections are layered on at the end.** Demand from each driver is allocated to station buses. Permanent load transfers from the Load Demand program are then layered on to give the bus-level and system forecast [EB-2023-0195 / Exhibit 2B / p.49].
+
+**One related haircut appears in a Downsview sensitivity study.** It says "THESL's standard bus load forecasting methodology adjusts new customer load to 70% of the requested load in order to forecast bus load impacts" [EB-2023-0195 / Exhibit 2B / p.214]. This is the closest thing to a connection-level coincidence or diversity factor that I found. It is described for new customer load gene
 ```
 
 agree: yes
 
-## 12. 1B-AMPCO-12: judge says **abstained**
+## 12. 1B-AMPCO-12: judge says **partially_correct**
 
-> The candidate says outright that the evidence doesn't explain why the two categories were dropped. The reference gives two reasons: overhead switches vary too much across utilities in how they are selected, installed and accounted for, and switchgear replacements were too few and sporadic to compare. It also mentions alignment with the Activity Based Performance Benchmarking asset classes. The candidate covers the study's scope and only floats thin peer data as something to ask Toronto Hydro about, so it gives no substantive answer.
+> The candidate gives no answer for (a), (c), (d) and (g), which leaves out the reference's reasons for excluding switches and switchgear, the cost drivers (inflation, supply chain, COVID), the reasons for adding cable chambers, and the labour-share table. For (f) it supplies the conversion-only table, whose medians differ from the reference's fully normalized table, though it flags that difference. It overlaps with the reference only partly on (e), where utilities declined to participate, and on (b), where no unit costs exist.
 
 **Question**
 
@@ -1398,6 +1383,23 @@ Toronto Hydro filed an updated UMS Unit Costs Benchmarking Study dated October 2
 
 a) Please explain why unit costs for OH Switch Replacement and Switchgear Replacement
 were included in the EB-2018-0165 study but not included in the October 2023 UMS Study.
+b) Please provide the unit costs for OH Switch Replacement and Switchgear Replacement if
+calculated as part of UMS’ work for the October 2023 study but not included in the report.
+c) Please provide the drivers for the increase in unit costs in the October 2023 UMS study
+compared to the EB-2018-0165 UMS Study for the following asset categories: UG Cable,
+Pole Top Transformers, Padmount/UG Transformer, Network Transformer Replacement
+and Breaker.
+d) Please explain the basis for adding Cable Chambers to the asset category in the October
+2023 UMS Study.
+e) There were 17 electric utilities in the Peer Group Panel in the EB-2018-0165 study and only
+12 electric utilities in the October 2023 UMS study. Please explain and discuss any impact
+on the results.
+f) On page 8 of the UMS report in EB-2018-0165, UMS provides Table II-1 that shows the Fully
+Normalized Benchmark Comparisons. Please provide the same table using the data in the
+October 2023 UMS Study.
+g) On page 29 of the UMS report in EB-2018-0165, UMS provides Table C-2 which shows the
+% of Labour and Non-Labour costs. Please provide the same table using the data in the
+October 2023 UMS Study.
 ```
 
 **Utility's response (reference)**
@@ -1422,17 +1424,9 @@ replacement approaches while managing reliability concerns through rebuilds. In 
 asset classes to benchmark, Toronto Hydro also attempted to align to the Activity Based
 Performance Benchmarking (“APB”) asset classes where appropriate, which was another driver for
 not including OH Switch Replacement within the benchmarking study.
-QUESTION (B):
-b) Please provide the unit costs for OH Switch Replacement and Switchgear Replacement if
-calculated as part of UMS’ work for the October 2023 study but not included in the report.
 
 The OH Switch Replacement and Switchgear Replacement was excluded from the October 2023
 study, and thus there was no calculation for unit cost.
-QUESTION (C):
-c) Please provide the drivers for the increase in unit costs in the October 2023 UMS study
-compared to the EB-2018-0165 UMS Study for the following asset categories: UG Cable,
-Pole Top Transformers, Padmount/UG Transformer, Network Transformer Replacement
-and Breaker.
 
 We have noted a general increase in costs across the industry over the past three years, driven
 largely by inflation (including its effect on commodity prices), supply chain challenges (limited
@@ -1443,29 +1437,52 @@ the industry is only recently beginning to relax COVID-related restrictions, but
 chain issues have remained an issue.
 
 For Toronto Hydro, the increases can be attributed to various factors, including but not limited to
-inflation and supply chain i
+inflation and supply chain impacts discussed in Exhibit 1B, Tab 3, Schedule 3, and asset-specific
+variability such as seen with stations assets discussed in Exhibit 2B, Exhibit 2B, Section E6.6.4.1.
+
+Cable Chambers were added with the intention of providing a more diverse and representative
+sample set of THESL’s work, particularly given the amount of civil work being performed. Of the
+asset classes to be considered, cable chambers represented one that would be most conducive to
+conducting industry co
 ```
 
 **Agent answer**
 
 ```
-The filings available to me don't say why OH Switch Replacement and Switchgear Replacement unit costs were in the earlier study but not in the October 2023 UMS study. I found no interrogatory response or other passage explaining the difference. I also couldn't locate Reference #1 (the earlier study), so I can't confirm what it contained. The explanation would have to come from Toronto Hydro's own answer to this question.
+**Summary:** The filings available to me contain only the October 2023 UMS study. They do not contain the earlier UMS study (Reference #1), and they do not contain Toronto Hydro's interrogatory response. So I can't answer (a) through (e) from the record. I can partly answer (f). I can't answer (g) as framed, because the October 2023 study has no labour/non-labour table.
 
-What the October 2023 study does show:
+**What the October 2023 study covers.** It benchmarks seven asset categories: Wood Poles, UG Cable, Pole Top Transformers, Padmount/UG Transformers, Network Transformers/Protectors, Breakers and Cable Chambers/Manholes. It also covers five maintenance programs [EB-2023-0195 / Exhibit 1B / p.381]. OH Switch Replacement and Switchgear Replacement are not among them. I searched for them in the filings and found only capital-plan discussion of those programs, not unit-cost benchmarks.
 
-- **Scope:** UMS benchmarked seven asset categories: Wood Poles, UG Cable, Pole Top Transformers, Pad mount/UG Transformers, Network Transformer/Protectors, Breakers, and Cable Chambers/Manholes. It also benchmarked five maintenance programs: Vegetation Management, Pole Test and Treat, Overhead Line Patrol, Substation Maintenance, and Building Vault Inspections [EB-2023-0195 / Exhibit 1B / p.381]. Neither overhead switch replacement nor switchgear replacement appears in either list.
-- **Selection:** The study describes the categories as "pre-selected" by Toronto Hydro. UMS says they were chosen as a valid proxy for Toronto Hydro's unit-cost performance [EB-2023-0195 / Exhibit 1B / p.397]. The seven asset categories represent about 52% of planned 2020–2022 capital, and the five programs about 57% of preventative and predictive maintenance spending [EB-2023-0195 / Exhibit 1B / p.388].
-- **Data adjustments:** UMS made "a few adjustments to the original asset categories / maintenance programs to facilitate Peer Group comparisons" [EB-2023-0195 / Exhibit 1B / p.397]. This suggests the category list changed during the work. The text doesn't say which categories were adjusted or dropped, so I can't tie it to the two items you asked about.
-- **Nearby assets:** The study includes "Breakers" [EB-2023-0195 / Exhibit 1B / p.381]. The DSP discusses MS switchgear replacement (unit cost per feeder) and overhead switch replacement separately [EB-2023-0195 / Exhibit 2B / p.463]. I found no link between those items and the benchmarking scope.
+**a) and b) Why the two switch and switchgear unit costs were dropped, and what they were.** The record does not say. It has no explanation of why they were omitted, and no unit costs for them calculated by UMS.
 
-I'd suggest asking Toronto Hydro to produce the earlier version of the study, or to confirm whether peer data for those two categories was too thin or too hard to compare to include.
+**c) Drivers of the unit-cost increases.** I can't answer this because the earlier study's figures aren't in the record. The October study's own figures, for reference, are these 2020–2022 three-year averages [EB-2023-0195 / Exhibit 1B / p.410]:
+
+| Asset category | THESL unit cost (C$) |
+|---|---|
+| UG Cable (per metre) | 131 |
+| Pole Top Transformer | 18,691 |
+| Padmount Transformer | 37,373 |
+| Network Transformer | 127,649 |
+| Breaker | 37,983 |
+
+**d) Why Cable Chambers/Manholes were added.** The record gives no stated reason. The October study lists them as the seventh asset category [EB-2023-0195 / Exhibit 1B / p.381]. It also gives a THESL benchmark of $136,409 per chamber, 0.6% above the median [EB-2023-0195 / Exhibit 1B / p.388].
+
+**e) Peer group of 17 versus 12.** The record doesn't discuss the earlier 17-utility panel or what the change did to the results. It does explain how the 12-utility panel was formed:
+- Four Ontario utilities were invited. Only Elexicon Energy and London Hydro participated [EB-2023-0195 / Exhibit 1B / p.390].
+- UMS approached the utilities from the 2017–2018 study. Eight of those participated, and the other nine declined [EB-2023-0195 / Exhibit 1B / p.390].
+- Two utilities that declined last time accepted this time: Avista, and an anonymous Canadian utility [EB-2023-0195 / Exhibit 1B / p.390].
+- That gives 12 in total, with 11 named plus the anonymous utility [EB-2023-0195 / Exhibit 1B / p.390].
+
+This suggests the 17 refers to the 2017–2018 panel. I can't confirm that from the filings. UMS says no peer group is a perfect fit [EB-2023-0195 / Exhibit 1B / p.394].
+
+**f) Table II-1 (fully normalized comparisons), October 2023 data.** The October study's Table II-1 is titled "Applying Conversion and Accounting Adjustments Only", so it is not a fully normalized table. UMS did not normalize for customer density or regional labour cost. It treated them qualitatively b
 ```
 
-agree: yes
+agree: yes (borderline; closer to abstained, since only (e) and (f) are partly answered)
 
-## 13. 2B-EP-28: judge says **correct**
+## 13. 2B-EP-28: judge says **partially_correct**
 
-> The reference answers part (a) with a simple "Yes": the Future Energy Scenarios model includes electrified heating (Exhibit 2B, Section D4, Appendices A and B). The candidate also says yes, points to the same modelling, and adds supporting detail about the shift to a winter peak and the stress test. That detail fits the rest of the reference and contradicts none of it.
+> The candidate gets (a) right: the Future Energy Scenarios modelling covers electrified heating. Its long-term view in (b) also matches the reference: heat pumps become material, the peak shifts to winter, and timing is uncertain. On (d) it correctly names the stress test, the Load Demand program and non-wires solutions. However, on (c) it misses the reference's position that normal planning, such as installing or upgrading transformers, will keep service reliable. Instead it suggests reliability risks from deferred work. It also leaves out the "wait and see" approach to capacity investment and the sensing and observability investments.
 
 **Question**
 
@@ -1479,6 +1496,12 @@ and is expected to stay in place for seven years.”
 a) Has Toronto Hydro performed any analysis of the impacts on peak electricity demand in
 winter months for a sizable portion of residential customers converting their home heating
 to heat pumps? If not, why not?
+b) Does Toronto Hydro presently expect the transition to heat pumps for home heating to
+have a material effect on peak electricity demand? If not, why not?
+c) If significantly more residential customers install heat pumps in a particular area than
+Toronto Hydro has presently anticipated, how will this impact service reliability?
+d) Does Toronto Hydro have a plan in the event that significantly more customers install heat
+pumps in a particular area than anticipated?
 ```
 
 **Utility's response (reference)**
@@ -1486,9 +1509,6 @@ to heat pumps? If not, why not?
 ```
 Yes. The Future Energy Scenarios model includes electrified heating. Please see Exhibit 2B, Section
 D4, Appendix A and B for more information.
-QUESTION (B):
-b) Does Toronto Hydro presently expect the transition to heat pumps for home heating to
-have a material effect on peak electricity demand? If not, why not?
 
 In the long-term, Toronto Hydro’s view is that successful decarbonization of the energy system is
 very likely dependent upon the widescale adoption of heat pumps. This will ultimately have a
@@ -1496,9 +1516,6 @@ material impact on peak electricity demand, including very likely the shift to a
 However, as illustrated by the Future Energy Scenarios, the extent and timing of the impact of heat
 pump adoption on peak electricity demand is highly uncertain, and dependent on many factors
 outside of Toronto Hydro’s control.
-QUESTION (C):
-c) If significantly more residential customers install heat pumps in a particular area than
-Toronto Hydro has presently anticipated, how will this impact service reliability?
 
 Toronto Hydro planning process is designed to support the maintenance and operation of a safe,
 stable and reliable grid. Toronto Hydro undergoes an annual update to its Peak Demand Forecast
@@ -1517,134 +1534,180 @@ D5.2.1.
 If significantly more residential customers install heat pumps in a particular area, Toronto Hydro,
 through its normal planning process, will support the need by installing new transformers or
 upgrading existing transformers and other relevant infrastructure to ensure service reliability.
-QUESTION (D):
-d) Does Toronto Hydro have a plan in the event that significantly more customers install heat
-pumps in a particular area than anticipated?
 
 Toronto Hydro used the Future Energy Scenarios to stress-test whether the utility’s capacity plan
 can accommodate energy transition needs (e.g. building heating electrification) in the early part of
 the next decade. In an effort to adopt a proactive approach to managing forecasted local
-constraints, Toronto
+constraints, Toronto Hydro has outlined plans reflected in its Load Demand and Non-Wires
+Alternatives portfolio, to provide flexibility to adequately respond to local drivers that may result in
+capacity constraints. For more information on Toronto Hydro’s Load Demand and Non-Wires
+Alternatives plans, please refer to Exhibit 2B Section 5.3 and 7.2 respectively.
+While Future Energy Scenarios reveal that the impact of building electrification in the next two
+decades could be significant, there are notable differences (driven by p
 ```
 
 **Agent answer**
 
 ```
-**Yes.** Toronto Hydro has analyzed how heat pump and other heating electrification would affect winter peak demand. It did this at the system level, not as a study of a "sizable portion of residential customers" converting. The filing does not show a separate feeder-level or customer-class study.
+**Short answer:** Toronto Hydro has done some analysis, but not a bottom-up study of heat-pump conversions by residential customers. It does not expect heat pumps to be a material driver of peak demand in 2025–2029. For unexpected local clustering, it admits it could face local capacity constraints. Its stated responses are capacity programs and a proposed variance account. The filings I found do not say how reliability would be affected. All figures below come from EB-2023-0195 only.
 
-**Future Energy Scenarios (FES) modelling.** The utility's Exhibit 2B includes a Future Energy Scenarios report that models heat pump and other heating technology uptake for domestic and industrial/commercial buildings. It uses four scenario "worlds" and two low-efficiency sensitivities [EB-2023-0195 / Exhibit 2B / p.550]. The uptake assumptions include the Greener Homes Grant, which is expected to last at least 7 years from December 2020. The scenarios vary its end date, from 2027 in the Low case to 2030 and 2035 in the higher cases [EB-2023-0195 / Exhibit 2B / p.601] [EB-2023-0195 / Exhibit 2B / p.607] [EB-2023-0195 / Exhibit 2B / p.610].
+**a) Analysis performed?** Yes, in two forms.
+- Toronto Hydro commissioned Future Energy Scenarios (FES) modelling. It models heating technologies (air-source, ground-source and hybrid heat pumps, among others) as a separate segment from core demand. It runs winter and summer system peaks under several scenarios [EB-2023-0195 / Exhibit 2B / p.550] [EB-2023-0195 / Exhibit 2B / p.647].
+- It also ran a sensitivity test of whether its plan could handle a growing winter peak from building electrification in 2025–2029. The test used the Consumer Transformation scenario and its low-efficiency variant as bounds [EB-2023-0195 / Exhibit 2B / p.536].
 
-**Results.** Summer peak exceeds winter peak through the 2020s. In the base year, summer peak is 3.9 GW and winter peak is 3.7 GW. The 2030s see the network peak shift to winter, driven by heat pump and EV uptake [EB-2023-0195 / Exhibit 2B / p.647]. Toronto Hydro also reports that heat pumps and EVs are expected to be primary drivers of peak growth and of the summer-to-winter shift in the 2030s [EB-2023-0195 / Exhibit 2B / p.39].
+The FES is system-wide, not a study of residential conversions specifically. I did not find an analysis that isolates a sizable share of residential customers converting. The filings also do not give a "why not" answer to that framing.
 
-**2025–2029 stress test.** Toronto Hydro concluded that building electrification is "not yet a significant driver of growth" in the 2025–2029 period. Its System Peak Demand Forecast therefore remains summer-peaking [EB-2023-0195 / Exhibit 2B / p.536]. It still tested whether it could accommodate a growing winter peak. It used the Consumer Transformation scenario and its low-efficiency equivalent as the lower and upper bounds. It chose them because they showed the most variability in building heat and the most material system-peak impact [EB-2023-0195 / Exhibit 2B / p.537].
+**b) Material effect expected?** Not in the 2025–2029 period.
+- Toronto Hydro determined that building electrification "is not yet a significant driver of growth in the 2025-2029 rate period." Its forecast therefore stays summer-peaking [EB-2023-0195 / Exhibit 2B / p.536].
+- Its System Peak Demand Forecast is generally aligned with the Consumer Transformation scenario. It concluded that the capacity plan can meet higher heating loads if they arrive faster than expected [EB-2023-0195 / Exhibit 2B / p.537].
+- Over the longer term, the FES expects heat pumps and EVs to be primary drivers of peak demand growth. It expects the network peak to shift from summer to winter in the 2030s [EB-2023-0195 / Exhibit 2B / p.39] [EB-2023-0195 / Exhibit 2B / p.647]. The base year peaks are 3.9 GW in summer and 3.7 GW in winter [EB-2023-0195 / Exhibit 2B / p.647].
+- The seven-year Greener Homes Grant is an input to the modelling. It is assumed to last at least seven years but may be extended [EB-2023-0195 / Exhibit 2B / p.601].
 
-Its conclusion was that its forecast is generally aligned with the Consumer Transformation scenario. It also concluded that the planned capacity investments can meet higher building heating loads if electrification arrives faster than expected [EB-2023-0195 / Exhibit 2B / p.537].
+**c) Reliability impact if local uptake is higher than anticipated?** The filings do not quantify this. They acknowledge that Toronto Hydro "could be faced with incremental capacity constraints at a localized level as a result of accelerated transportation and building electrification demand" [EB-2023-0195 / Exhibit 2B / p.537] [EB-2023-0195 / Exhibit 2B / p.538].
 
-**Limits.** The same page cautions that the utility could still face incremental capacity constraints at a localized level [EB-2023-0195 / Exhibit 2B / p.537]. The pages I read do not give a percentage of homes converting or a quantified winter-peak result for a given conversion share. I did not find a separate residential-only study, and I did not search for interrogatory responses.
+Toronto Hydro also says that when external drivers add investment needs, it must typically defer work in System Renewal, System Service and General Plant. That could leave "significant reliability, safety or environmental risks" 
 ```
 
 agree: yes
 
-## 14. 2B-STAFF-241: judge says **correct**
+## 14. 2B-STAFF-242: judge says **partially_correct**
 
-> The candidate confirms that the program mainly reduces the consequence of failures. Like the reference, it rejects part (i)'s premise by pointing to System Observability, which helps reduce failure risk through asset diagnostics, and it covers the other benefits (fault location and better decision-making). Its hedge ("largely confirmed") does not contradict the reference.
+> The candidate matches the reference in two places. It notes that reliability has plateaued rather than improved significantly, and it does not accept that most of the plan is already implemented. It misses the reference's framing that the segment serves two goals: maintaining reliability over 2025–2029 while improving reliability and resiliency over the longer term. Its conclusion that the answer on benefit-cost analysis is "closer to no" also cannot be confirmed, because the reference points to 2B-Staff-170 for that discussion.
 
 **Question**
 
 ```
-a) Confirm that the System Enhancements program will reduce the consequence of individual
-asset failures in many or most cases.
+The proposed Contingency Enhancement investment represents a $113M (568%) increase in
+segment spending.
+
+a) Please confirm that this increase is necessary to maintain rather than improve system
+reliability.
 i.
-If not confirmed, explain the purpose of the program, since it will not reduce the
-probability of asset failures.
+If confirmed, please explain how Toronto Hydro has been able to significantly
+reduce its outage durations over the historical period despite a much slower pace
+of spending in this segment.
+ii. If not confirmed, please reconcile Toronto Hydro’s strategic decision to increase
+spending in this segment by 568%, given its residential customers’ preference to
+maintain reliability and control costs.
+b) Toronto Hydro indicates elsewhere in the Application that Toronto Hydro has already
+implemented majority of its contingency enhancement plans. Has Toronto Hydro
+undertaken a benefit-cost analysis demonstrating that the proposed accelerated spending
+to rapidly complete this plan provides offsetting benefits of equal or greater value to
+customers?
+i.
+If yes, please provide the benefit-cost analysis documentation.
+ii. If no, please explain why not.
 ```
 
 **Utility's response (reference)**
 
 ```
-Confirmed. Please refer to Exhibit 2B, Section E7.1, Page 5 for specific information on this topic.
-Note that Toronto Hydro respectfully disagrees with the premise of part (i) of OEB Staff’s question.
-The System Enhancements program contains a variety of field technology investments which will
-deliver benefits beyond reducing consequences of failure. The proposed System Observability
-segment of the program includes adding more sensors, relays and monitoring technology at
-specific nodes across the distribution grid. Gradually, these technologies will help the utility
-advance three core capabilities:
-1. Enhanced Fault Location: Locating faults and other system disturbances faster and more
-efficiently in order to improve reliability and operate the grid more cost-effectively.
-2. Enhanced Decision-making and Grid Optimization: Providing greater insight into real-time
-feeder and asset loading, condition, and other relevant operating characteristics. This
-assists the utility in managing short- and long-term uncertainty as well as driving optimal
-real-time operational decisions and longer-term investment planning decisions.
-3. Enhanced Asset Diagnostics: Greater visibility into high-risk and previously hard-to-
-monitor assets will improve asset diagnostics, mitigating the risk of asset failure and
-impacts to personnel safety and environmental damage.
-For more information on the multi-faceted benefits of Toronto Hydro’s System Enhancements
-program, please refer to Exhibit 2B, Section E7, and the Intelligent Grid Section of Toronto Hydro’s
-Grid Modernization Strategy (Exhibit 2B, Section D5.2.1).
+As mentioned in Exhibit 2B, Section E2, "Although Toronto Hydro’s renewal and modernization
+efforts over the last decade have led to improvements in reliability performance that began in the
+mid-2000s, more recently this performance has plateaued." The investments in the Contingency
+Enhancement segment support Toronto Hydro’s complimentary goals of maintaining reliability
+during the 2025-2029 period while improving reliability and resiliency for the longer-term. For
+more information, please refer to 2B-Staff-175.
+
+Toronto Hydro has not indicated that the majority of its contingency enhancement plans have been
+implemented. For a discussion regarding benefit-cost analysis related to modernization initiatives,
+including Contingency Enhancement, please refer to 2B-Staff-170. Pleaser also refer to 2B-Staff-162
+for information on the expected long-term benefits of Fault Location Isolation and Service
+Restoration (‘FLISR’) implementation.
 ```
 
 **Agent answer**
 
 ```
-**Largely confirmed, with a qualification.** The filings don't use the "many or most cases" wording, and I found no statement quantifying how many failures the program would affect. But Toronto Hydro describes the program as mainly reducing the consequence of failures (fewer customers interrupted, shorter outages). It does not describe it as a program that mainly lowers failure probability. Part (i) therefore only partly applies. The program does not claim to cut failure rates for most assets, but one segment is expected to reduce failure likelihood in some cases.
+**Short answer:** The filings available to me do not support confirming the premise in (a). I also found no benefit-cost analysis for the Contingency Enhancement segment, so the answer to (b) is closer to "no" than "yes". I did not find Toronto Hydro's actual interrogatory responses, so the points below come from the application's own evidence.
 
-**Consequence reduction (Contingency Enhancement and Downtown Contingency)**
-- Contingency Enhancement adds remotely operable feeder tie and sectionalizing points and upgrades undersized lateral-loop conductors and trunk egress cables. The stated aim is to "optimize the grid and efficiently restore power to customers" [EB-2023-0195 / Exhibit 2B / p.524].
-- Switching and restoration capability limits how many customers lose power and for how long once an asset fails. The filing doesn't claim it prevents the failure.
-- Downtown Contingency targets station-level events. Toronto Hydro estimates that being able to pick up load from another station within one hour could cut Customer Minutes of Interruption from such incidents by about 80 percent over the 2003–2022 pattern [EB-2023-0195 / Exhibit 2B / p.541].
-- The 2025–2029 spend is $151.2M, of which $132.9M is Contingency Enhancement. Table 6 puts Downtown Contingency at about $13.6M ($1.7M, $2.9M, $2.9M, $3.0M and $3.1M over the five years) and System Observability at about $4.7M [EB-2023-0195 / Exhibit 2B / p.524] [EB-2023-0195 / Exhibit 2B / p.547].
+**The numbers**
+- Contingency Enhancement spending was $19.9M in 2020–2024. That is $5.0M, $0.8M, $4.9M, $3.7M and $5.5M by year. [EB-2023-0195 / Exhibit 2B / p.547]
+- The 2025–2029 forecast is $132.9M. [EB-2023-0195 / Exhibit 2B / p.524]
+- The difference is about $113M, or 568%, which matches your figures.
 
-**Where the program does touch failure probability (System Observability)**
-- This segment installs cable and transformer monitors and line sensors. Toronto Hydro says that without them, "the current system waits for cables to fail and then Toronto Hydro reacts" [EB-2023-0195 / Exhibit 2B / p.555].
-- Observability is expected to provide "reduced outage times, extended asset life and improved planning in many cases" [EB-2023-0195 / Exhibit 2B / p.555].
-- The grid modernization strategy says better asset diagnostics will mitigate "the risk of asset failure" [EB-2023-0195 / Exhibit 2B / p.663].
-- This segment is small, so it is a minor part of the program.
+**(a) Is the increase only to maintain reliability?**
+- Toronto Hydro does not describe it that way. It presents the segment as improving reliability and as a grid-modernization step.
+- It expects an average 12.6% reliability improvement on 94 Horseshoe feeders. It puts the potential SAIDI gain at about 0.022 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.530]
+- It expects about 16.3% on 40 Downtown overhead feeders. It puts the potential SAIDI gain there at about 0.03 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.536]
+- Reclosers are a further addition, with potential SAIDI improvement of up to 0.108 minutes per feeder per year. [EB-2023-0195 / Exhibit 2B / p.532]
+- A second purpose is distribution-automation readiness. The goal is for over 90% of Horseshoe feeders to meet the criteria, ahead of a self-healing grid starting in 2030. [EB-2023-0195 / Exhibit 2B / p.535] [EB-2023-0195 / Exhibit 1B / p.228]
+- Toronto Hydro says the overall plan includes "accelerating investments in the Modernization category to modestly improve performance". It says the Sustainment and Stewardship category holds the minimum needed to maintain recent performance. [EB-2023-0195 / Exhibit 1B / p.194]
 
-**Purpose of the program (the substance of part i)**
-- The program aims to give the physical grid, by 2030, the foundational technologies to run efficiently and deliver customer value. It responds to three drivers: electrification, growth in distributed energy resources, and climate-related reliability risks [EB-2023-0195 / Exhibit 2B / p.524].
-- It is a component of Toronto Hydro's "Intelligent Grid" vision [EB-2023-0195 / Exhibit 2B / p.547].
-- Reducing the probability of failure is handled elsewhere, by the System Renewal programs, which replace assets before they fail. Those programs say timely replacement "will mitigate the frequency an
+**(a)(ii) Reconciling the increase with customer preferences**
+- I did not find an explicit reconciliation with residential customers' preference to maintain reliability and control costs.
+- The application's rationale is that the status-quo option is "not recommended". At roughly $20M, it would deliver only 111 switches on 37 feeders and 17.8 km of egress cable. [EB-2023-0195 / Exhibit 2B / p.552]
+- The selected option is about 300 switches, 220 reclosers and 69 km of egress cable. [EB-2023-0195 / Exhibit 2B / p.552] [EB-2023-0195 / Exhibit 2B / p.553]
+- For Downtown, the application cites "general support" among customers for investments in new technology to improve the system. [EB-2023-0195 / Exhibit 2B / p.536]
+
+**(a)(i) Past outage-duration reductions despite slow spending**
+- The application does not clearly support "significantly reduce". Toronto Hydro says reliability improved from the mid-2000s but "plateaued" more recently, with a slight deterioration from 2020 to 2022. [EB-2023-0195 / Exhibit 2B / p.22]
+- Adjusted SAIDI was 0.78, 0.68, 0.90, 0.95 and 0.70 for 2018–2022. [EB-2023-0195 / Exh
 ```
 
 agree: yes
 
-## 15. 2B-AMPCO-30: judge says **partially_correct**
+## 15. 2B-AMPCO-35: judge says **partially_correct**
 
-> The reference says Toronto Hydro tracks accomplishments at the segment/program level and can add them up to higher levels if needed. The candidate gets program-level tracking and the roll-up to portfolios right. However, its headline answer is "both" rather than primarily program level. It also says it found no segment-level tracking, which conflicts with the reference treating segment and program as the same level.
+> On (a), the candidate leans the same way as the reference: the filed figures already appear to exclude deficiencies corrected on site. But it hedges and says the filings don't state this outright, while the reference says it plainly. On (b), the reference describes the data source and calculation for every indicator in Table 1, including oil, interruptions, condition, PCBs, age and legacy assets. The candidate covers only priority deficiencies (its P1/P2/P3 reconciliation) and gives none of those other data sources or calculations.
 
 **Question**
 
 ```
-a) Please discuss if Toronto Hydro tracks Program Accomplishments at the segment/program
-level or portfolio level, or both.
+With respect to Table 1:
+
+a) Please provide the data in the Priority Deficiencies (Number assigned) column excluding
+deficiencies corrected on site.
+b) Please provide the underlying data and calculations in Table 1, including assumptions.
 ```
 
 **Utility's response (reference)**
 
 ```
-Toronto Hydro tracks program accomplishments at the segment/program level, and these can be
-aggregated to higher levels of reporting if needed.
-QUESTION (B):
-b) Please discuss if each program has a specific and unique outcome measure that is formally
-tracked. If yes, please provide the Program Accomplishments for each segment in E5 to E8.
+The priority deficiencies provided in Table 1 of Exhibit 2B, Section D2 exclude deficiencies corrected
+on-site.
 
-Toronto Hydro’s use of the term “program accomplishments” refers to volumetric
-accomplishments of work and project-based milestones, whereas “outcome measures” refers to
-performance outcomes. Where appropriate (e.g., compliance-driven programs), Toronto Hydro
-may treat program accomplishments as the performance outcomes for the program (e.g., box-
-framed poles eliminated). Program accomplishments and outcome measures allow Toronto Hydro
-to monitor the performance of its investment program, and to determine to what extent projects
-have contributed to expected outcomes, including risk reduction.
-Each program has a unique set of accomplishments to be tracked (e.g., pole replacements) along
-with one or more outcome measures that may be unique to the program (e.g., benefits achieved
-from Network Condition Monitoring & Control investments)1 or shared with other programs (e.g.,
-SAIDI/SAIFI).
-Toronto Hydro has included program accomplishment and outcome measures throughout its
-evidence, including within the detailed program evidence found in Exhibit 2B (Sections E5-E7).
-Outcome measures that are influenced by multiple programs are discussed in Sections D2, C, and
-E2 of Exhibit 2B and in Exhibit 1B, Tab 3, Schedule 2 (e.g., overall asset condition demographics by
-asset class; SAIDI/SAIFI results, oil spills, etc.).
-1 Exhibit 2B, Section E7.3
+Each of the asset management performance indicators in Table 1 of Exhibit 2B, Section D2 were
+calculated as described in Table 1 below.
+Table 1: Calculation of Asset Management Performance Indicators
+AM Performance
+Indicators
+Underlying Data and Calculation
+Oil Deficiencies
+• Data: Inspection Records
+• The number of assets with an oil leak identified during
+inspections are aggregated by sub-system
+Priority Deficiencies
+• Data: Inspection Records and Work Request Data
+• Priority Deficiencies are determined by aggregated the
+deficiencies, for which work requests were issued and priorities
+assigned (such as P1, P2, P3), by sub-system.
+Customer Hours of
+Interruption
+• Data: ITIS Data
+• Defective Equipment outage incidents and corresponding total
+number of customer hours interrupted are aggregated by sub-
+system.
+Customer Interruptions
+• Data: ITIS Data
+• Defective Equipment outage incidents and corresponding total
+number of customers interrupted are aggregated by sub-system.
+Condition
+• Data: Asset Registry and Inspection Records
+• The number of assets in HI4 or HI5 are divided by the total
+population of the assets with health scores by sub-system.
+Oil Containing PCBs
+• Data: Asset Registry and Inspection Records
+• The number of assets containing or at-risk of containing PCBs
+were aggregated by sub-system.
+Age
+• Data: Asset Registry
+• The number of assets that are at or past Useful Life by sub-
+system.
+Legacy Assets
+• Data: Asset Registry
+• The remaining inventory of the asset or configuration type in the
+distribution system.
 RESPONSES TO ASSOCIATION OF MAJOR POWER CONSUMERS IN ONTARIO
 INTERROGATORIES
 ```
@@ -1652,114 +1715,130 @@ INTERROGATORIES
 **Agent answer**
 
 ```
-**Answer: both.** The filings show Toronto Hydro tracking at several levels: individual project, program, and portfolio. I found no filing that uses "Program Accomplishments" as a defined term or reporting category. The evidence below is therefore about how Toronto Hydro monitors and reports its work, not a formal "Program Accomplishments" metric.
+**Short answer:** The filings available to me don't give the Priority Deficiencies column in Table 1 with deficiencies corrected on site excluded. They also don't give the workpapers behind Table 1. I can only give you the published figures, the P1/P2/P3 breakdowns that reconcile to them, and what the filings say about the basis.
 
-**Project and program level**
-- Program Management staff "track the status of projects in the work program and the roll-up of the projects into programs and portfolios" [EB-2023-0195 / Exhibit 4 / p.329].
-- The Scope Issuance and Tracking function tracks all issued scopes to completion. It captures cancellations and unassigned scopes [EB-2023-0195 / Exhibit 4 / p.329].
-- Projects are tracked from detailed design through construction. Toronto Hydro monitors changes through monthly executive performance reporting, key program status reporting, change requests and project variance analysis [EB-2023-0195 / Exhibit 2B / p.26].
+I'm assuming "Table 1" is Table 1 in Toronto Hydro's Exhibit 2B, Section D2, "Asset Management Performance Indicators by System Type" (EB-2023-0195). If you meant another table, please tell me.
 
-**Portfolio level**
-- Under the annual Investment Planning and Portfolio Reporting (IPPR) process, Toronto Hydro "monitors and assesses the progress of its system capital and maintenance programs against annual and longer-term budget, execution, and performance objectives" [EB-2023-0195 / Exhibit 2B / p.5].
-- Portfolio Reporting covers "program level expenditures, project-specific execution status and project expenditures." Toronto Hydro also watches system-level outcomes, such as average reliability. It tracks the effect of specific programs on specific outcomes, such as the reduction in poles at end of serviceable life [EB-2023-0195 / Exhibit 2B / p.20].
+**a) Priority Deficiencies (Number assigned), as filed**
 
-**Program-level accomplishments used in planning**
-- Toronto Hydro analyzed "actual project accomplishments and costs in each program" to set the project- and volume-based assumptions for its 2025–2029 program cost estimates [EB-2023-0195 / Exhibit 2B / p.56].
-- That is a program-level use of accomplishments data. The wording is "project accomplishments," not "Program Accomplishments."
+These are 2022 year-end actuals [EB-2023-0195 / Exhibit 2B / p.51].
 
-**Utility-wide measures**
-- A performance outcomes framework reports 41 measures annually. These include 29 OEB service quality measures and 12 custom metrics [EB-2023-0195 / Exhibit 1B / p.33].
-- Those measures sit above the program level.
+| System | Priority deficiencies (share of total) |
+|---|---|
+| Overhead | 3,074 (24%) |
+| Underground | 8,955 (71%) |
+| Network | 0 (0%) |
+| Stations | 560 (4%) |
+| Total | 12,589 (100%) |
 
-**Segment level**
-- I did not find segment-level tracking of accomplishments. In the operating expense evidence, "segment" is the unit for cost forecasts and year-over-year variance analysis, as in the Program Management and Support segment [EB-2023-0195 / Exhibit 4 / p.333].
-- If you meant a specific table or interrogatory titled "Program Accomplishments," please point me to it. I could then search for it directly.
+The extracted table has a layout quirk. The Oil Deficiencies figures (11, 298, 21, 8) are in the first value column, and the Priority Deficiencies figures are in the second [EB-2023-0195 / Exhibit 2B / p.51].
+
+I could not find a version of this column that excludes deficiencies corrected on site. The evidence suggests the published figures already exclude them, but the filings don't say so outright:
+- Priority deficiencies are defined as deficiencies that "require intervention on a reactive or corrective basis" and are assigned P1, P2 or P3. Deficiencies corrected on site are described separately, as part of the larger total of about 45,000 identified each year [EB-2023-0195 / Exhibit 2B / p.52].
+- "Find it and fix it" practices repair minor deficiencies on site. This "eliminates the need to create a separate work request" [EB-2023-0195 / Exhibit 4 / p.191]. Priority deficiencies are assigned for repair, so on-site fixes would not appear to be in this column.
+- The only quantified on-site-corrected figure I found is about 3,600 per year, and it applies to below-grade equipment only. That footnote also says "2020-2025", which looks like a typo [EB-2023-0195 / Exhibit 4 / p.109]. It can't be used to adjust Table 1.
+
+If the column does include on-site corrections, the filings give no way to strip them out. That would need an interrogatory.
+
+**b) Underlying data, calculations and assumptions**
+
+The filings give a P1/P2/P3 split for 2022 for two of the systems. Each sums exactly to the Table 1 figure:
+- **Overhead:** 218 P1 + 724 P2 + 2,132 P3 = 3,074 [EB-2023-0195 / Exhibit 2B / p.56].
+- **Underground:** 496 P1 + 1,677 P2 + 6,782 P3 = 8,955 [EB-2023-0195 / Exhibit 2B / p.63].
+- **Network:** 0. Network deficiencies "are generally tracked with all other underground deficiencies" [EB-2023-0195 / Exhibit 2B / p.71].
+- **Stations:** 560. I found no P1/P2/P3 split for stations.
+- **Total:** 3,074 + 8,955 + 0 + 560 = 12,589, which matches the table. The shares are each system's figure divided by 12,589: 3,074/12,589 ≈ 24%, 8,955/12,589 ≈ 71%, 560/12,589 ≈ 4%. The shares are my arithmetic, and they agree with the table.
+
+**Assum
 ```
 
-agree: no (correct: the agent's program-level tracking rolled up into portfolios does not contradict the reference's 'segment/program level, aggregated to higher levels if needed')
+agree: yes
 
-## 16. 2B-VECC-13: judge says **incorrect**
+## 16. 2B-VECC-18: judge says **partially_correct**
 
-> The reference gives yearly tables for 2020–2029. The candidate gives no year-by-year new-installation figures. Its reverification counts don't match the reference: for 2025, for example, it gives 10,464 against the reference's 9,782. Its aggregate of about 50,000 new meters for 2020–2024 contradicts the reference, whose figures for those years add up to roughly 164,000.
+> On (a), the candidate's reasons for the exclusion match the reference: the filing gives a rationale, and all-in metrics including scheduled outages are still tracked. On (b), it names other measures (CAIDI, emergency response, FESI) but leaves out the reference's main points: defective-equipment SAIFI/SAIDI, cause-code tracking, the accuracy of estimated restoration times, and weekly reviews of large outages. On (c), it says it found no guideline or process, but the reference describes one: outage requests with start and finish times, a switching order from the Control Centre, Field Managers monitoring the work, and advance notice to customers.
 
 **Question**
 
 ```
-a) Please provide a table showing the number of new meters installed and, separately, the
-number of meters reverified/resealed for the residential and GS<50 rate classes
+a) Presumably customers are concerned with the duration of outages irrespective of their
+reason and especially if the outage is a matter within THESL’s ability to address. The PIM
+measure for Outage Duration excludes Scheduled Outages. Why?
+b) Are there any other measures used by THESL to gauge the response capability/efficiency of
+outage recovery?
+c) With respect to scheduled outages are planned projects provided guidelines or
+expectations for maximum outage time? If so, please provide or explain the process that is
+used to ensure that a given project meets the expected outage time.
 ```
 
 **Utility's response (reference)**
 
 ```
-Please see Tables 1 and 2 below.
-Table 1: New Meter Installation for Residential and GS<50, Suite Meters
-2020
-2021
-2022
-2023
-2024
-2025
-2026
-2027
-2028
-2029
-New
-Meter
-Installation
-18,922
-14,242
-11,667
-13,270
-106,370 159,946 175,514 181,285
-70,354
-1,177
-Residential
-and GS <
-50, Suite
-Meters
-Table 2: Meter Reverification/Resealing for Residential, GS<50, Suite Meters
-Reverified/
-Resealed
-2020
-2021
-2022
-2023
-2024
-2025
-2026
-2027
-2028
-2029
-16,162
-6,745
-16,095
-9,207
-11,066
-9,782
-12,195 13,816 14,994 12,023
-Residential
-and GS <
-50, Suite
-Meters
-QUESTION (B):
-b) THESL notes that most smart meters were installed between 2006 and 2008 (E5.4.3.3).
-What strategy is the Utility employing in order to avoid a repeat of the “bunching up” of
-expired meters as has occurred due to concentrating meter replacements within a short
-time frame?
+Please refer to Exhibit 1B, Tab 3, Schedule 1, pages 8-9 for an explanation of the rationale behind
+the PIM measures. Independent of the PIM measure, Toronto Hydro measures and monitors “all-
+in” reliability metrics (including scheduled outages) on an ongoing basis, and has an established
+process for managing the impacts of scheduled outages on customers.
+Toronto Hydro agrees that customers are concerned about outages irrespective of their reason.
+However, Toronto Hydro disagrees with the implication that scheduled outages are equivalent to
+unplanned outages when it comes to the customer experience. Toronto Hydro offers the following
+high-level comparison of scheduled and unplanned outages for further consideration.
+Aspect
+Scheduled Outages
+Unplanned Outages
+Predictability
+Planned in advance,
+scheduled time known
+Occur without warning,
+unpredictable
+Duration and Impact
+Typically short, a few hours,
+and contained
+Variable, can last from
+minutes to days, and can
+impact thousands of
+customers
+Aspect
+Scheduled Outages
+Unplanned Outages
+No advance notice
+Communication
+Toronto Hydro communicates
+schedule in advance
+Impact on Customers
+Predictable, can plan around
+outage
+Disruptive, can cause
+inconvenience and losses
+Mitigation Options
+Customers can prepare, use
+backup power
+Limited options, may not be
+able to mitigate
+Frequency
+Regular, scheduled based on
+capital and maintenance plan
+Occasional, based on system
+reliability
+Preventive Purpose
+Preventive maintenance,
+system improvements
+Reactionary response to
+failures
 
-As noted in Exhibit 2B, Section E5.4,1 Toronto Hydro’s historical smart meter deployment strategy
-was in support of provincial policy objectives concerning the rollout of smart meters and time-of-
-use billing in Ontario. Building on the strategy approved in the 2020 Rate Application,2 Toronto
-Hydro intends to replace meters surpassing their expected lifespan over a five-year period. Mass
-deployment of meters over a period greater than five years results in future risks to billing and
-customer experience, while delaying the benefits of AMI 2.0 that can only be realized once a
-majority of next generation meters have been installed, as shown in Toronto Hydro’s response to
-interrogatory 2B-Staff-194. Toronto Hydro will assess the timing and pace of future metering
-programs closer to the implementation of those programs based on the risk of failure, ability to
-reseal, and benefits of any replacement meters at that time.
-1 At page 9, lines 9-10.
-2 EB-2018-0165, Exhibit 2B, Section E5.4; see especially lines 16-27 at page 16.
+Toronto Hydro routinely measures and monitors “all-in” SAIFI and SAIDI, “defective equipment”
+SAIFI and SAIDI, volume/impact of outages by specific cause codes and availability/accuracy of
+outage Estimated Time of Restoration. Large outages are reviewed on a weekly basis for lessons
+learned and improvement opportunities.
+
+Crews undertaking scheduled outages are expected to plan outages in a manner that minimizes
+customer impact (duration and scope) to the extent possible. Outage requests are submitted to the
+Control Centre with start and finish times. Controllers will review the request and create a switching
+order to enable work to be completed safely while minimizing the number of customers impacts.
+Field Managers oversee the work and monitor progress to ensure that work is completed within the
+allotted time.
+Additionally, in the planning phase, proactive engagement with customers is facilitated through
+community relations teams (as detailed in Exhibit 4, Tab 2, Schedule 18). Notices regarding power
+interruptions, along with advance information about the expected outage duration, are provided.
 RESPONSES TO VULNERABLE ENERGY CONSUMERS COALITION
 INTERROGATORIES
 ```
@@ -1767,88 +1846,149 @@ INTERROGATORIES
 **Agent answer**
 
 ```
-The filings I can access don't give a table that splits new meters installed and meters reverified/resealed by rate class, either for the Residential class or for GS<50 kW. They give combined totals, so I can't fill in the table you asked for without guessing. I searched the Toronto Hydro application (EB-2023-0195). The Hydro One application (EB-2026-0164) did not surface in any of the metering searches.
+**Short answer:** THESL's filings give two reasons for excluding Scheduled Outages from the Outage Duration measure. They also describe other measures of restoration capability. I found no stated project-level maximum outage time for planned work, or a process to enforce one.
 
-**Reverified/resealed (sampling and re-verification units)**
+**a) Why Scheduled Outages are excluded**
 
-These are forecast totals for all meter classes, not Residential and GS<50 only. They are the "Sampling/Re-verification units" under the seal-expiry testing program [EB-2023-0195 / Exhibit 4 / p.93].
+THESL measures Outage Duration as the 5-year rolling average of SAIDI, excluding Major Event Days, Loss of Supply and Scheduled Outages. It proposes removing the Scheduled Outages cause code from the 2025-2029 measure for two stated reasons:
+- **Forecasting uncertainty.** The ongoing implementation of Oracle Utility Analytics makes forecasting difficult.
+- **Expected growth.** THESL expects scheduled outages to increase because of a larger work program.
 
-| Year | Seal-expiring meters | Sampling/re-verification units |
-|---|---|---|
-| 2025 | 196,127 | 10,464 |
-| 2026 | 155,463 | 13,201 |
-| 2027 | 70,968 | 14,783 |
-| 2028 | 68,151 | 15,396 |
-| 2029 | 28,242 | 11,311 |
-| Total | 518,951 | 65,155 |
+THESL also says the exclusion gives "more transparency and visibility" into reliability for unforeseen interruptions [EB-2023-0195 / Exhibit 1B / p.192]. The Outage Duration target is 46.2 minutes by 2029 [EB-2023-0195 / Exhibit 1B / p.193].
 
-If a sampled group passes testing, the seals for all meters in that group are extended, by eight years for smart meters with a ten-year initial seal [EB-2023-0195 / Exhibit 4 / p.93]. So the number of meters resealed is larger than the number of units tested.
+The Distribution System Plan gives a related rationale. Scheduled outages are needed to do work such as replacing end-of-life or deteriorated assets to prevent a future outage. THESL says including them "would not provide a true reflection of underlying distribution system performance" [EB-2023-0195 / Exhibit 2B / p.342].
 
-The filing says the bulk of Residential and small commercial meters have seals expiring in 2024–2026 [EB-2023-0195 / Exhibit 2B / p.177].
+The Outage Duration measure is the part of the filing most relevant to your point. It says customers other than Key Accounts prioritize reducing the overall length of outages [EB-2023-0195 / Exhibit 1B / p.192]. THESL still reports SAIDI and SAIFI including scheduled outages. It tracks five scenarios, and only the last excludes scheduled outages [EB-2023-0195 / Exhibit 2B / p.335]. The filings I found do not explain why the PIM itself leaves out scheduled-outage duration.
 
-**New meters installed**
+**b) Other measures of response and recovery capability**
 
-The filing gives only aggregate counts for Residential and small commercial & industrial (GS<50) meters combined:
-- About 50,000 meters are planned for replacement in 2020–2024 as part of the AMI 2.0 project [EB-2023-0195 / Exhibit 2B / p.187].
-- About 630,000 meters are planned for replacement in 2025–2029 [EB-2023-0195 / Exhibit 2B / p.187].
-- Elsewhere the filing states approximately 680,000 meters for 2023–2028 [EB-2023-0195 / Exhibit 2B / p.182].
-
-The filing does not say how these replacements divide between Residential and GS<50, or by year. These are also replacements, not new-connection installs.
-
-**Other classes (not the ones you asked about)**
-- Suite meters (a separate class from Residential and GS<50): about 2,000 new units a year on average in 2025–2029 [EB-2023-0195 / Exhibit 2B / p.178].
-- Large-user ION meters: shown only in a chart [EB-2023-0195 / Exhibit 2B / p.178].
-
-A response to an interrogatory (a written information request) may contain the class-level split, but I did not find one. You could ask Toronto Hydro directly for the new installs and reverified/resealed counts by class and year.
+- **CAIDI.** THESL's filing says CAIDI measures average restoration time per outage. It "indirectly measures the Company's response time and preparedness for outage restoration" [EB-2023-0195 / Exhibit 1B / p.359].
+- **Emergency response standard.** THESL must get a crew to emergency events within 60 minutes, 80 percent of the time, under section 7.9 of the Distribution System Code [EB-2023-0195 / Exhibit 4 / p.196]. The Emergency Response program also lists SAIFI, SAIDI and FESI-7 as reliability objectives it supports. It cites "minimizing outage restoration times" as a goal [EB-2023-0195 / Exhibit 4 / p.196].
+- **Feeder-level measures.** FESI-7 counts feeders with seven or more sustained interruptions in 12 months. FESI-6 Large Customers tracks key-account feeders at six or more [EB-2023-0195 / Exhibit 1B / p.279] [EB-2023-0195 / Exhibit 1B / p.281]. THESL also tracks CEMSMI-10 for key-account customers [EB-2023-0195 / Exhibit 2B / p.495]. These measure frequency rather than recovery time.
+- **Storm restoration.** For major events, THESL reports restoration timelines, such as "within 2 days" for 
 ```
 
 agree: yes
 
-## 17. 2B-ED-28: judge says **correct**
+## 17. 2B-ED-29: judge says **partially_correct**
 
-> The reference says Toronto has about 1.1 million passenger vehicles. The candidate gives the same figure, about 1.1 million light-duty vehicles in Toronto, though it frames it as a 2030 projection and suggests the current fleet is slightly smaller. That hedge doesn't really contradict the reference's approximate number, and the candidate's other context is consistent with it.
+> The candidate matches the reference on several points: V2G has future potential, any pilots would go through the Innovation Fund, the evidence gives no charger models or prices, and Toronto Hydro has no installation guide. It also correctly notes that the utility's own fleet chargers come with its fleet electrification. However, it misses key positions in the reference. Toronto Hydro has looked at bi-directional charging for its own fleet and found the technology not ready (part c). It would use bi-directional chargers as demand response once aggregated volumes provide grid value. On customer support, the reference cites its website guidance and help through the connections process.
 
 **Question**
 
 ```
-a) Approximately how many vehicles are owned by Toronto Hydro customers?
+a) Please comment on the potential for car batteries to be used to reduce building loads with
+bi-directional chargers at the time of distribution peaks and thus reduce the need for
+distribution infrastructure.
+b) Please describe all steps Toronto Hydro is taking to (a) assist its customers in installing or
+purchasing electric vehicle chargers and (b) install electric vehicle chargers for its own use.
+c) With respect to Toronto Hydro’s efforts to install electric vehicle chargers, what proportion
+will be bi-directional chargers?
+d) Nova Scotia Power is undertaking a bi-directional charger pilot project involving 20 bi-
+directional chargers of 4 different types. David Landrigan, vice-president of commercial for
+Nova Scotia Power stated as follows: “I think we can call it a game-changing resource”.
+Would Toronto Hydro consider a similar pilot? Would this require additional regulatory
+approvals if it were to occur prior to 2029?
+1 https://www.torontohydro.com/documents/20143/193303016/climate-action-plan-2023-status-report.pdf
+e) The following utilities are piloting bi-directional chargers:
+•
+San Diego Gas & Electric in California (10 V2G busses, 25 kW/bus, 250 kW)
+•
+Con Edison in New York (5 V2G busses, 10 kW/bus, 50 kW)
+•
+EDF Energy in the UK (Customer-facing V2G program based on ABB equipment)
+•
+National Grid in Rhode Island (Fermata V2G bidirectional pilot, 15-20 kW)
+•
+Roanoke Electric Cooperative in N. Carolina (Fermata V2G system, 15-20 kW)
+•
+Green Mountain Power in Vermont (Fermata V2G bidirectional pilot, 15-20 kW)
+•
+Austin Energy in Texas (V2G/V2B pilot)
+•
+Snohomish County Public Utility District in Washington State (V2G pilot)
+Is Toronto Hydro considering similar pilots? If not, why not. Would this require additional
+regulatory approvals if it were to occur prior to 2029? Please explain.
+f) Please provide 6 examples of bi-directional charges available in North America (3 AC and 3
+DC) and list their charge/discharge rate (kW) and approximate price. This could i
 ```
 
 **Utility's response (reference)**
 
 ```
-There are approximately 1,100,000 passenger vehicles in the City of Toronto.
-QUESTION (B):
-b) If approximately 20% of all cars in Toronto were connected to bi-directional chargers with a
-10 kW export capability, what would their collective capacity be?
+Toronto Hydro is willing to consider the use of bi-directional chargers as demand response once
+volumes of controllable, dispatchable installations reach levels that can be aggregated to provide
+grid value. The utility is open to working with third-parties (e.g. aggregators) to leverage this
+capacity when and if it is available and if it can provide cost-effective value to the distribution
+system as a whole. The current use-case of non-wires solutions is outlined in Exhibit 2B Section
+E7.2.
 
-The premise of this question is based on untested assumption that each vehicle could export 10 kW
-to the grid, and that this capacity can be aggregated in a targeted manner to provide grid-value,
-when and where it is needed. For demand response to provide value, it must be dispatchable and
-available reliably in areas of need. Please see the evidence in Exhibit 2B, Section E7.2 and the
-response to 1B-ED-11 for more information about Toronto Hydro’s experience with demand
-response and openness to working with third-parties (e.g. aggregators) to leverage this capacity if
-and when it is available and can provide cost-effective value to the distribution system as a whole.
+Through its website, Toronto Hydro provides customers with the process required to install an EV
+charger, which includes recommendations to work with licensed electrical contractors. However, in
+the event that a service upgrade is required at a customer’s service address, Toronto Hydro works
+with the customer and their contractor through the connections process.
+Through non-rate regulated business activities, which do not form part of this application, Toronto
+Hydro is also playing a proactive role in supporting the realization of the City’s Net Zero Strategy by
+facilitating and stimulating the growth of emerging local cleantech markets. For more information,
+please see the latest Climate Action Plan status report.1
+For its own use, the utility installs electric vehicle chargers in tandem with its investments to
+replace internal combustion engine fleet vehicles with electric and hybrid vehicles (see Exhibit 2B,
+Section E8.3 for more details).
+
+Toronto Hydro supports, facilitates and enables the installation of electric vehicle chargers as
+requested by customers. The utility does not require customers to install specific charges models or
+types, outside of compliance with codes and standards. Toronto Hydro has explored bi-directional
+charging capabilities for its own fleet vehicles and has determined the technology is not ready for
+deployment at this time. As charging technologies develop, Toronto Hydro will investigate
+opportunities to implement bi-directional charging.
+
+Toronto Hydro believes bi-directional charging has the potential to provide grid benefits in the
+future. Future pilots would be proposed and selected through the Innovation fund summarized in
+section 2.5.3 and detailed in Exhibit 1B, Tab 4, Schedule 2 and Appendix A.
+
+Toronto Hydro does not collect commercial information with respect to products that would be
+purchased, installed, owned and operated by third-parties.
+
+Please see 2B-ED-24 parts (a) to (c).
+
+Please see response to part (e).
+
+Toronto Hydro does not have an EV charger technical installation guide. Due to the continuous
+evolution of the industry, and the variety of established EV charger vendors, specific EV charger
+installation guides are well documented by the respective manufacturers. Aside from specific
+manufacturer specifications, Toronto Hydro approaches installation of EV chargers similar to other
+electrical appliances and provides information on its website to assist customers in making
+informed decisions about purchasing 
 ```
 
 **Agent answer**
 
 ```
-The filings I can access don't give a single "vehicles owned by Toronto Hydro customers" figure. The closest number is about 1.1 million light-duty vehicles registered in Toronto.
+**Short answer:** The Toronto Hydro filing (EB-2023-0195) only partly answers these questions. It supports a general discussion of V2G, the existing EV pilots, the proposed Innovation Fund, and the utility's own fleet. It says nothing on bi-directional charger models or prices, the share of its own chargers that are bi-directional, the specific non-wires concepts in (h)–(j), or a Hydro Quebec-style installation guide. I haven't drawn on the Hydro One filing, because the questions are addressed to Toronto Hydro. I also haven't used outside knowledge for charger specs or prices. Those answers would need to come from Toronto Hydro itself or from vendor sources.
 
-- **Basis:** Toronto Hydro's electric-vehicle forecast says its methodology "estimates 1.1M LDVs registered in Toronto by 2030," growing about 1% a year [EB-2023-0195 / Exhibit 3 / p.21]. That is a 2030 projection, not a current count. It is also a count for the City of Toronto, which I'm using as a proxy for Toronto Hydro's service territory.
-- **Scale check:** The same page says 220,000 light-duty EVs would be 20% of the light-duty fleet. That target comes from the City of Toronto's EV Strategy [EB-2023-0195 / Exhibit 3 / p.21]. With a 1% annual growth rate, the current fleet would be a bit under 1.1 million, so "roughly 1 million" is a fair approximation.
-- **Medium and heavy vehicles:** These are extra. Toronto Hydro's Table 10 forecasts about 6,462 medium-duty and 6,305 heavy-duty electric vehicles in Toronto by 2029, but that covers electric vehicles only [EB-2023-0195 / Exhibit 3 / p.75]. Other statements say Toronto accounts for about 20% of Ontario's medium- and heavy-duty vehicle population [EB-2023-0195 / Exhibit 3 / p.21].
-- **Not customer-owned:** Toronto Hydro's own fleet is separate. It owns 13 electric and 20 hybrid light-duty vehicles [EB-2023-0195 / Exhibit 2B / p.748]. The TTC's roughly 2,357 buses are operated by the TTC, not by Toronto Hydro customers [EB-2023-0195 / Exhibit 2B / p.614].
+**a) Potential of car batteries to reduce peaks**
+- Toronto Hydro's modelling treats smart charging and V2G as flexibility options. They move demand away from peak, and V2G lets cars "discharge to the network at times of high demand, effectively acting as grid storage units" [EB-2023-0195 / Exhibit 2B / p.560].
+- The utility says EVs, especially in high concentrations, can overload secondary transformers and stress overhead conductors and underground cables. It says managing EV load, and potentially discharge, could serve as a non-wires solution in place of grid expansion [EB-2023-0195 / Exhibit 1B / p.476].
+- Its V2G uptake scenarios are described as "conservative due to high costs of bi-directional chargers and current limitations around the business case". The Low scenario has no V2G. In the High scenario, V2G uptake starts immediately and all EVs charge flexibly from 2030 [EB-2023-0195 / Exhibit 2B / p.631] [EB-2023-0195 / Exhibit 2B / p.632].
+- The filing does not quantify the avoided infrastructure.
 
-I did not find a stated current-year total vehicle count in the filings. If you need one, the Future Energy Scenarios report (Exhibit 2B, Section D4, Appendix B) builds a 2021 base-year vehicle stock, but the pages I saw didn't show the number.
+**b) Steps to help customers install EV chargers, and to install chargers for its own use**
+- **Customers:**
+  - I found no customer charger purchase or installation incentive program.
+  - The filing describes an EV Smart Charging Pilot with Plug'n Drive and Elocity. It studies charging patterns and supports tools for EV owners to monitor, schedule and control charging [EB-2023-0195 / Exhibit 2B / p.692].
+  - Phase 1 tested adding internet-connected on/off devices to simple chargers [EB-2023-0195 / Exhibit 2B / p.736].
+  - Toronto Hydro is also budgeting more contact-centre staff to handle EV inquiries about service upgrades, installing or troubleshooting charging stations, pricing plans, and on-street charging [EB-2023-0195 / Exhibit 4 / p.415].
+  - It identifies EV charging for public streets, City and TTC fleets, Toronto Parking Authority lots, and homes as growth areas it serves [EB-2023-0195 / Exhibit 1B / p.90].
+- **Own use:**
+  - Toronto Hydro owns 13 electric and 20 hybrid light-duty vehicles. It plans to keep buying electric or hybrid light-duty vehicles at a measured pace [EB-2023-0195 / Exhibit 2B / p.748].
+  - A faster fleet-electrification option was considered. It would replace all light-duty vehicles and 20 heavy-duty vehicles with electric or hybrid vehicles [EB-2023-0195 /
 ```
 
 agree: yes
 
 ## 18. 1B-STAFF-46: judge says **partially_correct**
 
-> The candidate matches the reference on parts (a) and (b): SAIFI and TRIF carry over, and SAIDI is redefined, with the customer priority on shorter outages as the reason. For part (c) it says it found no per-measure removal rationale, so it misses most of the reference's explanations, including ISO 55001 and ISO 14001 management, the efficiency measure replacing the cost measures, and the shift to outcome metrics. It also treats System Capacity as redefined around non-wires capacity, while the reference says it was replaced by a timely-connections measure.
+> The candidate correctly picks out TRIF and SAIFI as carried-over measures. It also gets the SAIDI redefinition right (now excluding MEDs, Loss of Supply and scheduled outages) and gives the customer-priority rationale for it. However, it gives no per-measure removal rationale, so it misses the reference's reasons: eBills target exceeded, the Network Units program winding down, cost measures replaced by Efficiency Achievements, and environmental measures managed under ISO14001. Its suggestion that Local Demand Response depends on the incentive also sits uneasily with the reference, which says the incentive mechanism does not drive any specific initiatives.
 
 **Question**
 
@@ -1863,6 +2003,9 @@ b) Please list and explain the rationale supporting all measures that have the s
 name, but Toronto Hydro proposes a different definition of the measure for 2025-2029.
 c) For each applicable measure, please explain the rationale supporting the removal of a
 2020-2024 scorecard measure from the 2025-2029 scorecard.
+For each measure and target on the proposed custom scorecard, please identify which initiatives
+would not be pursued in the absence of a performance incentive related to the initiative. For each
+such measure, please explain why not.
 ```
 
 **Utility's response (reference)**
@@ -1924,225 +2067,146 @@ As noted in the pre-filed
 **Agent answer**
 
 ```
-Two 2020-2024 measures carry over unchanged. The filings I can access give no measure-by-measure reason for dropping the rest.
+**Short answer.** The filings I can access do not contain Toronto Hydro's response to this question set. I found no statement that maps the 12 proposed measures one-for-one against the 2020-2024 measures. I found no measure-by-measure rationale for dropping old measures. I found no statement of which initiatives would not be pursued without a performance incentive. What follows is my own comparison of the evidence, and I flag where it is inference.
 
-**Caveats on your premise and my sources.** Toronto Hydro's own table of the 2020-2024 custom measures, which cites the OEB decision at pp. 44-45, lists 16 measures, not 15 [EB-2023-0195 / Exhibit 1B / p.274]. A footnote in that table also refers to "15" proposed 2025-2029 measures, but Table 1 of Exhibit 1B, Tab 3, Schedule 1 shows 12 [EB-2023-0195 / Exhibit 1B / p.274] [EB-2023-0195 / Exhibit 1B / p.191]. I could not access the OEB Decision itself. I relied on Toronto Hydro's description of it.
+One discrepancy first. The 2020-2024 results table lists 16 custom measures, not 15 [EB-2023-0195 / Exhibit 1B / p.274]. A footnote there also says Toronto Hydro "proposed 15 Custom Performance Measures" for 2025-2029, while the scorecard itself has 12 [EB-2023-0195 / Exhibit 1B / p.274] [EB-2023-0195 / Exhibit 1B / p.191]. I could not reconcile these counts, and the Decision's 15 is not in the documents I read.
 
-The 16 measures in the 2020-2024 list are:
-- Customers on eBills
-- Total Recordable Injury Frequency (TRIF)
-- Network Units Modernization
-- SAIDI – Defective Equipment
-- SAIFI – Defective Equipment
-- FESI-7
-- FESI-6 (Large Customers)
-- MAIFI
-- System Capacity (# of stations)
-- System Health – Wood Poles
-- Direct Buried Cable Replacement
-- In-Service Additions
-- Average Wood Pole Replacement Cost
-- Vegetation Management Cost per km
-- Oil Spills Containing PCBs
-- Waste Diversion Rate [EB-2023-0195 / Exhibit 1B / p.274]
+**The two scorecards**
+
+- **Proposed 2025-2029 (12 measures).** These are Outage Duration (SAIDI), Outage Frequency (SAIFI-Defective Equipment), System Security Enhancements, New Services Connected on Time, Customer Satisfaction, Customer Escalations Resolution, TRIF, Emissions Reductions, ISO Compliance and Certification, Efficiency Achievements, Grid Automation Readiness and System Capacity (Non-Wires) [EB-2023-0195 / Exhibit 1B / p.191].
+- **2020-2024 (16 listed).** These are Customers on eBills, TRIF, Network Units Modernization, SAIDI-Defective Equipment, SAIFI-Defective Equipment, FESI-7, FESI-6 Large Customers, MAIFI, System Capacity (# of stations), Wood Poles asset condition, Direct Buried Cable Replacement, In-Service Additions, Average Wood Pole Replacement Cost, Vegetation Management Cost per km, Oil Spills Containing PCBs and Waste Diversion Rate [EB-2023-0195 / Exhibit 1B / p.274].
 
 **a) Same measure, ignoring the target**
 
-1. **Outage Frequency is the same as SAIFI – Defective Equipment.** Toronto Hydro says it "intends to continue reporting on this metric" [EB-2023-0195 / Exhibit 1B / p.279]. The 2025-2029 version is defined as SAIFI – Defective Equipment [EB-2023-0195 / Exhibit 1B / p.191].
-2. **TRIF is the same measure.** It is defined as recordable injuries per 200,000 exposure hours, and Toronto Hydro says it "intends to continue reporting TRIF as a custom measure" [EB-2023-0195 / Exhibit 1B / p.276]. The 2025-2029 wording is "injuries per 100 employees (or 200,000 hours worked)" [EB-2023-0195 / Exhibit 1B / p.191].
+- **TRIF** appears to be the only essentially unchanged measure. Toronto Hydro says it "intends to continue reporting TRIF as a custom measure" [EB-2023-0195 / Exhibit 1B / p.276]. The 2020-2024 definition is recordable injuries per 200,000 exposure hours [EB-2023-0195 / Exhibit 1B / p.275]. The new one is injuries per 100 employees (or 200,000 hours) per year [EB-2023-0195 / Exhibit 1B / p.191]. These look equivalent, but the filing does not say so.
+- **SAIFI-Defective Equipment** is also the same measure by name and cause-code scope. Toronto Hydro states it "intends to continue reporting on this metric" [EB-2023-0195 / Exhibit 1B / p.279]. The new version is a five-year rolling average with a target range [EB-2023-0195 / Exhibit 1B / p.200]. Whether that counts as a definitional change is a judgment call.
 
-**b) Same or similar name, different definition**
+**b) Similar names, different definitions**
 
-- **Outage Duration (SAIDI).**
-  - The 2020-2024 measure was SAIDI – Defective Equipment, which counts only interruptions caused by equipment failure [EB-2023-0195 / Exhibit 1B / p.279].
-  - The 2025-2029 measure is SAIDI excluding Major Event Days, Loss of Supply and Scheduled Outages [EB-2023-0195 / Exhibit 1B / p.191].
-  - Toronto Hydro's stated reasons concern excluding Scheduled Outages. There is major forecasting uncertainty from the Oracle Utility Analytics (OUA) outage-data system rollout. Scheduled outages are also expected to rise with a larger work program. Excluding them gives more visibility into unforeseen interruptions [EB-2023-0195 / Exhibit 1B / p.192] [EB-2023-0195 / Exhibit 1B / p.193].
-  - The target is a five-year rolling average, "consistent with OEB's approach" on the Electricity Distributor Scorecard (EDS) [EB-2023-0195 / Exhibit 1B / p.193].
-  - Customer research showed customers (except Key Accounts) prioritize shorter outages over fewer outages [EB-2023-0195 / Exhibit 1B / p.193].
-  - I found no explicit reason for moving from defective-equipment-only to a broader cause base.
-- **Customer Satisfac
+- **Outage Duration versus SAIDI-Defective Equipment.**
+  - The old measure covered defective-equipment outages only [EB-2023-0195 / Exhibit 1B / p.279].
+  - The new measure is total SAIDI excluding Major Event Days (MEDs), Loss of Supply (LoS) and Scheduled Outages. It is stated in minutes on a five-year avera
 ```
 
 agree: yes
 
-## 19. 9-STAFF-342: judge says **partially_correct**
+## 19. 9-STAFF-350: judge says **abstained**
 
-> The candidate gets the basic design right: a rate rider of about $16M collected only in 2029, plus the IFVA, which tracks rider revenue against actual pilot costs and earns carrying charges. It misses the reference's key mechanics: the account sits in a debit position from 2025 to 2028, 2029 collections credit it, and the balance is reconciled at the end of the term and disposed of in the 2030+ rebasing application. It also leaves out Toronto Hydro's stated reason for symmetry (flexibility and no hard cap, given funding at the low end of the range) and offers only its own inference instead.
+> The candidate says outright it can't answer parts (a) and (b) and never takes a position on eligibility. It misses the reference's key points: other Group 2 balances were transferred into sub-account 1595 (2021), and the last rider ends in December 2024, so the two-year requirement isn't met. Its remaining content is background and a conditional to-do list, not a substantive answer.
 
 **Question**
 
 ```
-Toronto Hydro proposes to establish an Innovation Fund to support the design and execution of
-innovative pilot projects over the 2025-2029 rate period. The pilot projects undertaken through the
-Innovation Fund would be focused on testing new technologies, advanced capabilities and
-alternative strategies that enable electrification grid readiness and are responsive to the OEB’s
-expectations with respect to facilitating DER integration, as expressed in the Framework for Energy
-Innovation (FEI) report.
-Toronto Hydro proposes to collect an amount of $16M through a rate rider rather than through
-base rates to provide transparency to ratepayers on the bill and flexibility to the utility to
-determine how the funds should be allocated across capital and operational expenditures on the
-basis of the selected pilot projects. Toronto Hydro proposes to establish a new symmetrical
-variance account to record variances between the amounts collected by the rate rider and the
-actual costs incurred to execute the selected pilot projects as part of the Innovation Fund.
-Toronto Hydro expects to collect the $16M during 2029.
+Toronto Hydro stated that it is not proposing to dispose any residual balances in Account 1595.
+Toronto Hydro stated that it does not have any sub-accounts that have not already been approved
+for disposition and no sub-account will meet the two-year requirement for 2025 disposition.
+However, OEB staff notes that DVA balances were cleared in Toronto Hydro’s 2021 Custom IR
+Update decision and Account 1595 (2021) would be eligible for disposition in the current
+proceeding, consistent with the OEB’s filing requirements. Toronto Hydro’s rate riders were to be
+in effect over a one-year period from January 1 to December 31, 2021, relating to its 2021 Custom
+IR Update decision.
+The OEB’s filing requirements state that distributors become eligible to seek disposition of residual
+balances two years after the expiry of the rate rider.
+Consistent with the filing requirements, if the 2021 rate riders expired on December 31, 2021, the
+balance of sub-account 1595 (2021) is eligible to be disposed after the account balance as at
+December 31, 2023 has been audited. Therefore, sub-account 1595 (2021) would be eligible for
+disposition in the 2025 rate year, as the respective balance has been audited.
 
-a) Please elaborate on the rate mechanism of Toronto Hydro’s collection of the $16M fund in
-2029 and how it plans to track the variance, given that the funding will be collected in
-2029.
-i. Please discuss why it is appropriate for the IFDA to be symmetrical.
+a) Please update all evidence that relates to the disposition of Account 1595 (2021).
+b) If there is a material residual balance being proposed for disposition, please provide a
+detailed explanation, including quantifying any significant drivers of the residual balance.
 ```
 
 **Utility's response (reference)**
 
 ```
-The rate mechanism of Toronto Hydro’s collection for the Innovation Fund consists of a rate rider
-(IFRR) and variance account (IFVA). The rate rider will recover an amount equivalent to 0.3% of the
-total revenue requirement approved by the OEB for 2025-2029. Assuming that the full revenue
-requirement that is being asked for gets approved, the rate rider will recover approximately $16
-million. The Innovation Fund Variance Account (IFVA) will track variances between the revenues
-collected through the Innovation Fund Rate Rider and the actual costs incurred (i.e. revenue
-requirement) by the Innovation Fund pilot projects by the end of the rate period.
-As depicted in the Rate Rider table in Exhibit 9, Tab 3, Schedule 1, there are no revenues being
-collected through the Innovation Rate Rider in years 2025-2028, meaning that the balance in this
-account will be in a debit position during this period of time. In 2029 when the rate rider revenues
-are being collected from customers, they will be applied as a credit to reduce the balance in the
-account. At the end of the rate term, the delta between the total revenue requirement booked in
-this account over the 2025-2029 rate term (inclusive of carrying charges) and the total revenues
-collected through the Innovation Fund Rate Rider, will be reconciled. The account will be brought
-forward for disposition in the 2030+ rebasing application.
-Toronto Hydro considers it appropriate for the IFVA to be symmetrical because it is consistent with
-the intent of the Innovation Fund, which is to provide the flexibility needed to undertake innovative
-pilot projects by overcoming barriers s discussed at page 4 of the Innovation Fund evidence.This,
-coupled with the fact that Toronto Hydro is proposing a level funding that is at the lower end of the
-range identified through its research, leads Toronto Hydro to view symmetrical treatment of the
-variance account as providing Toronto Hydro with the necessary flexibility to pursue promising
-opportunities without being constrained by a “hard cap”. That said, Toronto Hydro faces significant
-regulatory oversight risk for overspending, and as such does not intend to stray far outside of its
-boundaries, unless there is a strong value proposition for doing so.
-QUESTION (B):
-b) Please elaborate how external stakeholders will be involved in the execution and
-evaluation phases of the pilot projects selected.
-i. Please confirm whether the steering committee members mentioned in reference 3 will
-involve external stakeholders, and the proposed composition of the committee of external
-to internal stakeholders.
+This subaccount does not meet the 2-year requirement for 2025 disposition as there are other
+approved balances related to Group 2 accounts transferred to sub-account 1595 (2021). The last
+rate rider will end in December 2024. Please see Exhibit 9, Tab 1, Schedule 1 (updated on
+December 15, 2023) at page 2, Table 1 for sub-account 1595 (2021) and Toronto Hydro’s Draft Rate
+Update in the 2020-2024 Custom Incentive Rate-setting Application (EB-2018-165) dated February
+12, 2020 at page 13.1
+1 https://www.rds.oeb.ca/CMWebDrawer/Record/667697/File/document
 
-Please see Toronto Hydro’s responses to interrogatories 1B-CCC-46 part (a) and 1B-DRC-06 part (i).
-QUESTION (C) :
-c) Please discuss any quantifiable goals and outcomes Toronto Hydro can establish for the
-pilot projects.
-
-As stated in the Innovation Fund evidence, “a key component of the design phase is to maximize
-Toronto Hydro’s ability to learn and develop new distribution capabilit
+Please refer to section a) above.
 ```
 
 **Agent answer**
 
 ```
-The filings available to me don't answer either part directly. They give the basic design of the rate rider and the variance account, but not how a 2029-only collection is tracked, and not a separate reason for the account being symmetrical. The filings call the account the Innovation Fund Variance Account (IFVA), not "IFDA". I'm treating them as the same account.
+I can't answer parts (a) and (b) from the filings available to me. They don't contain Toronto Hydro's response to this question or a separate 2021 sub-account figure for Account 1595. So I can't give you updated evidence or a quantified residual-balance explanation. I'd be inventing numbers if I did.
 
-**a) Rate mechanism and tracking**
+**What the filings show**
 
-- **Rate rider:** Toronto Hydro proposes to recover about $16M through an Innovation Fund rate rider, not base rates. It gives three reasons: the rider appears as a separate line on the bill, it gives the utility funding certainty, and it keeps the fund outside the base revenue requirement. That last point lets the utility decide whether each project's spending is capital or operating [EB-2023-0195 / Exhibit 1B / p.470].
-- **Timing:** The rate rider table shows the Innovation Fund rider with a one-year recovery period, starting and ending in 2029. It is allocated to rate classes on 2022 distribution revenue [EB-2023-0195 / Exhibit 1B / p.50]. The rider is a single fixed or volumetric charge, depending on the class, like the other rate riders [EB-2023-0195 / Exhibit 9 / p.38]. The $16M is therefore not collected evenly across 2025–2029. It is collected in one year, while the pilots run over the whole period.
-- **Tracking:** The IFVA records variances between the amounts collected by the rider and the actual costs of the selected pilot projects [EB-2023-0195 / Exhibit 1B / p.470]. The draft accounting order sets it up as a sub-account of Account 1508, Other Regulatory Assets. It records the difference between the Innovation Fund amount in the rider and the actual revenue requirement over the CIR period, and the entry runs through 4080 Distribution Services Revenue. A separate carrying-charges sub-account records interest at the OEB-approved rate for deferral and variance accounts, and Toronto Hydro would apply later to clear the balance [EB-2023-0195 / Exhibit 9 / p.52].
-- **What the filings don't say:** They don't explain how costs incurred in 2025–2028 are tracked before the 2029 collection, or whether interest accrues on that spending. They also don't give the exact mechanics of the 2029 true-up or the date of the clearance application. The draft order's wording ("actual revenue requirement") might imply a revenue-requirement basis, but I can't confirm that from what I read.
+- **Original position.** The November 2023 filing says Toronto Hydro "will not be proposing to dispose any residual balances in Account 1595." Its reason is that any sub-accounts not already approved for disposition "will not meet the 2-year requirement for 2025 disposition" [EB-2023-0195 / Exhibit 9 / p.28]. The December 2023 version of Exhibit 9 repeats this [EB-2023-0195 / Exhibit 9 / p.28].
+- **Evidence update (April 2, 2024).** Account 1595 (RARA) is still shown as "No" for proposed disposition and "Yes" for continuation. The balance is $(37.0)M principal and $(14.2)M carrying charges, for $(51.1)M in total at Dec 31, 2023. The table shows only the total account, not a 2021 sub-account [EB-2023-0195 / Exhibit 1B / p.44].
+- **Earlier snapshot.** At Dec 31, 2022, the account was $(7.3)M principal and $(2.0)M carrying charges, for $(9.4)M in total, also marked "No" for disposition [EB-2023-0195 / Exhibit 9 / p.1].
+- **Description of the account.** Toronto Hydro describes 1595 as holding "residual amounts related to clearance of DVAs previously approved by the OEB for recovery through rate riders" [EB-2023-0195 / Exhibit 9 / p.3].
+- **Rate-rider schedule.** The proposed rate-rider table (Table 16) has no Account 1595 rider [EB-2023-0195 / Exhibit 1B / p.50].
 
-**i) Why the account is symmetrical**
+**Gaps**
 
-The filings describe the IFVA as "symmetrical" [EB-2023-0195 / Exhibit 9 / p.40], but I found no passage that argues why that is appropriate. The text that comes closest is the justification for the account as a whole:
+- **2021 sub-account balance.** I found no amount for the 1595 (2021) sub-account. This includes the audited balance at Dec 31, 2023, and any split between principal and carrying charges. Much of the $(51.1)M total may relate to other sub-accounts. I can't tell how much is 2021 without the continuity schedule, which I didn't locate.
+- **Drivers of the residual.** I found no analysis of the 2021 rate riders' recovery against the amounts approved. That would include billed volumes versus forecast, and the timing of the riders.
+- **Rate-year status.** The evidence update doesn't say whether the 2021 riders expired on December 31, 2021, or whether the balance is eligible for 2025 disposition.
 
-- **Causation:** The pilot costs sit outside the base revenue requirement [EB-2023-0195 / Exhibit 1B / p.470].
-- **Materiality:** The recorded amounts depend on actual pilot spending, which is set under the governance framework [EB-2023-0195 / Exhibit 1B / p.470].
-- **Prudence:** The $16M is based on comparable ratepayer-fu
+**What the response would need to cover**
+
+1. Concede, or rebut, the two-year eligibility point. That point is that the 2021 riders ended on Dec 31, 2021, and the account was audited at Dec 31, 2023.
+2. Update the continuity schedule, the rate-rider calculations, the allocators and the recovery period, and the bill impacts. It should also update Exhibit 9 Tab 1's Table 1 and the Exhibit 1B summary tables. The 1595 line would change from "No" to "Yes" for disposition, and the total proposed for disposition would change with it.
+3. Quantify the 1595 (2021) principal and carrying charges. If the balance is material, break it into volume variance, rate-rider timing and any bi
 ```
 
 agree: yes
 
-## 20. 2B-STAFF-247: judge says **partially_correct**
+## 20. 2B-STAFF-248: judge says **correct**
 
-> The reference says Toronto Hydro can't provide the data because it doesn't procure energy (kWh) from DERs. It procures only dispatchable demand response capacity. The candidate agrees that the alignment with peak hours isn't quantified, and adds modelled profiles and installed-capacity figures from the evidence. But it misses the reason the reference gives, and it doesn't mention that Toronto Hydro relies on procured dispatchable demand response.
+> The reference has almost no substance of its own. It only points to Exhibit 2B Section E7.2 and other interrogatory responses on Toronto Hydro's non-wires plans. The candidate's examples (the Cecil TS and Manby/Horner TS demand response projects, with costs and avoided capital) come from that same pre-filed non-wires evidence, and nothing it says contradicts the reference.
 
 **Question**
 
 ```
-Toronto Hydro states: “The NWS strategy for the 2025-2029 period is focused on being flexible and
-adaptable to help system planners respond to load growth while navigating the underlying
-uncertainty that stems from changing demand patterns and increased reliance on electrification.
-This strategy builds on Toronto Hydro’s experience utilizing DERs to reduce peak demand, helping
-to defer grid expansions or, in most cases, avoid grid expansions should demand not materialize as
-expected (e.g., lower than expected demand, fluctuating demand).”
+Toronto Hydro states: “NWSs are viewed as additive to conventional utility expansion strategies,
+enabling Toronto Hydro to expand its planning toolbox to include additional strategies for keeping
+up with load growth.”
 
-a) Please quantify by technology type the alignment of energy production by the DERs
-presently installed in Toronto Hydro’s service area with the summer and winter peak
-demand hours on Toronto Hydro’s distribution system.
+Please provide examples of DERs or other Non-Wires Solutions presently existing on
+Toronto Hydro’s system that enabled it to avoid more costly wires solutions to address
+system constraints.
+i. Please quantify the cost savings for each of the examples.
 ```
 
 **Utility's response (reference)**
 
 ```
-As outlined in Exhibit 2B Section E7.2, Toronto Hydro plans for and procures third-party capacity in
-the form of dispatchable demand response to complement standard system planning approaches.
-The utility is unable to provide the requested data as Toronto Hydro does not procure energy
-(kWh) from DERs.
-QUESTION (B):
-b) Given the response to the prior question, please describe the effectiveness of Toronto
-Hydro’s existing DER portfolio in mitigating capacity constraints encountered by Toronto
-Hydro during summer and winter peak demand periods.
-
-Toronto Hydro does not control third-party owned, non-dispatchable DERs and thus cannot rely
-upon these assets to meet system needs (capacity needs or otherwise) on demand. Until a DER
-owner enters into a binding agreement with Toronto Hydro (via LDR procurement) to provide a
-specific service to the grid, Toronto Hydro will not consider this DER as a reliable system tool. As
-part of its Local Demand Response program, Toronto Hydro procured 8 MW of dispatchable
-demand response capacity between 2018-2020, 4 MW between 2022-2023, and 6 MW in 2024.
-The non-wires solutions considered for the 2025-2029 rate period are described in Exhibit 2B
-Section E7.2. Toronto Hydro’s use of NWSs is targeted and focuses on credible capital deferral
-opportunities, and thus, the application of these solutions is limited to instances where such
-deferral opportunities can be identified and measured. The use case identified at this time is
-limited to bus-level load transfer deferral or avoidance. This can be achieved through the
-procurement of dispatchable demand response from aggregators or customers. Toronto Hydro is
-agnostic to the technology (type of DER) or approach (load curtailment) utilized by aggregators or
-customers to deliver this demand response capacity. Participants are compensated based on
-measured and verified performance, utilizing the methodology outlined in IESO’s Market Manual
-12 – Issue 16.
+The non-wires solutions considered for the 2025-2029 rate period have been outlined in detail in
+Exhibit 2B Section E7.2. Please refer to Toronto Hydro’s responses to 1B-Staff-88 and 1B-Staff-89 for
+more information about the utility’s non-wires strategy, investments and proposed incentives.
+Please also see Toronto Hydro’s responses to other Staff interrogatories asking similar questions
+about the use of non-wires in planning: 2B-Staff-154, 2B-Staff-169, 2B-Staff-173, 2B-Staff-253, 2B-
+Staff-255.
 ```
 
 **Agent answer**
 
 ```
-The filings I can access don't quantify DER output at the actual summer and winter system peak hours. Toronto Hydro gives hourly capacity-factor profiles by technology, but I found no statement of the system peak hours and no calculation of output at those hours. I also can't say whether Toronto Hydro answered this question in an interrogatory response, because I didn't find one. The closest evidence is below.
+Toronto Hydro points to two existing examples, both Local Demand Response (LDR) projects. It gives a dollar figure for one of them (Manby/Horner TS) and none for the other (Cecil TS). I looked only for LDR and energy storage examples. I didn't find a storage example that was quantified as an avoided wires cost.
 
-**Hourly profile assumed for installed DERs (kWh per kW of nameplate, average day)**
+**1. Cecil TS LDR pilot (downtown core, 2015–2019 period)**
+- Toronto Hydro expected capacity constraints on two busses at Cecil TS in 2020. It contracted 8 MW of demand response from commercial and institutional customers and cut summer peak demand by 8 MW in 2018 and 2019. [EB-2023-0195 / Exhibit 2B / p.127]
+- The anticipated capital investment was first deferred to 2025–2026. It was then avoided entirely, because the load profile at Cecil TS changed over 2020–2022 and station expansion was no longer needed. [EB-2023-0195 / Exhibit 2B / p.127]
+- **Savings:** The pages I reviewed give no dollar figure for the avoided Cecil TS investment or for the net saving. I can't quantify this one.
 
-The profiles are in the load-forecast integration model. Toronto Hydro supplied the capacity factors to its consultant, Clearspring [EB-2023-0195 / Exhibit 1B / p.115].
+**2. Manby TS / Horner TS LDR (2020–2024 period)**
+- Toronto Hydro contracted 4 MW for summer 2023 and 6 MW for summer 2024. Manby TS has been at capacity on two busses for several years, and Horner TS overloading was forecast. [EB-2023-0195 / Exhibit 1B / p.232]
+- Further load transfers were difficult. LDR let Toronto Hydro avoid some transfers from Manby and Horner TS until load could be permanently moved from Manby to Horner TS in 2025, after the Horner expansion. [EB-2023-0195 / Exhibit 1B / p.232]
+- **Savings:** Toronto Hydro estimated that 10 MW of load transfers from Manby or Horner TS would cost about $4 million in capital. [EB-2023-0195 / Exhibit 2B / p.570]
+  - LDR was initially projected to cost $4 million but is expected to cost closer to $2 million over the current rate period. That is $1.4 million in capacity payments plus $0.6 million in administration. [EB-2023-0195 / Exhibit 2B / p.570]
+  - Comparing the two, the gross difference is roughly $2 million. That is my own arithmetic, not a figure Toronto Hydro states. The filing does not give an NPV saving for this example.
+  - This is a deferral or avoidance of transfers while the Horner expansion proceeds. It is not a permanent avoidance of the expansion itself.
 
-| Technology | Summer | Winter |
-|---|---|---|
-| Solar (the model treats all renewables as solar) | 0 before 07:00. Output is 0.28–0.35 from 10:00 to 17:00 and peaks at 0.35 in the 13:00 hour. It falls to 0.09 at 19:00 and 0 from 20:00. | Much lower. The maximum is 0.07 at 13:00, and output is 0 from 20:00. |
-| Non-renewable (for example CHP) | Flat all day at about 0.65–0.68 | Same as summer |
-| Energy storage | 0 in every hour | 0 in every hour |
-
-The solar profile sums to about 3.22 kWh per kW per summer day and about 0.60 kWh per kW per winter day [EB-2023-0195 / Exhibit 3 / p.83].
-
-- **Energy storage:** It is set to zero because "there is not yet evidence" on whether storage will be used to avoid billing demand or other peaks, or only for resiliency [EB-2023-0195 / Exhibit 1B / p.115]. Storage is also assumed not to be actively charged and discharged [EB-2023-0195 / Exhibit 1B / p.112]. So no peak alignment is modelled for storage.
-- **Non-renewables:** The model applies no seasonal adjustment to them [EB-2023-0195 / Exhibit 1B / p.112]. Their output is flat across the day, so it should overlap with any peak hour.
-- **Basis:** These are modelled average-day assumptions from a revenue and billing-demand model. They are not metered output at coincident system peak.
-
-**Installed capacity by type (end of 2022)**
-
-- Toronto Hydro had 2,424 DER connections totalling over 304.9 MW. Of that, renewables were 116.2 MW [EB-2023-0195 / Exhibit 1B / p.449].
-- Non-renewables were the largest category by capacity, at 56% of installed capacity for 2022 [EB-2023-0195 / Exhibit 2B / p.61].
-- Energy storage was 28 projects totalling 18.7 MW, mostly commercial and industrial. Many of them are used to reduce global adjustment charges [EB-2023-0195 / Exhibit 2B / p.61].
-- The model's renewable nameplate for 2022 is 100,366 kW [EB-2023-0195 / Exhibit 3 / p.82].
-
-**Measured CHP output in a summer peak window**
-
-Exhibit 9 reports M&V results for individual CHP projects against a summer peak period defined as June 1 to August 31, Monday to Friday, 1:00–7:00 pm. Four examples:
-
-- 111 kW summer peak generation against 104 kW average [EB-2023-0195 / Exhibit 9 / p.248].
-- 101 kW peak savings against 90 kW average [EB-2023-0195 / Exhibit 9 / p.291].
-- 115 kW against 114 kW [EB-2023-0195 / Exhibit 9 / p.393].
-- 109
+**Forward-looking figures (not existing examples)**
+For 2025–2029, Toronto Hydro plans up to 30 MW of LDR in the Horseshoe North area. It puts the cost at about $5.7 million of operating spending, against roughly $10 million of load-transfer capital avoided or deferred. [EB-2023-0195 / Exhibit 2B / p.137] Its benefit-cost analysis gives total NPV benefits of $3.32 million. That is about $0.06 million from deferral and $3.27 million from avoidance. [EB-2023-0195 / Exhibit 1B / p.235] These are projections, so they don't answer your question about systems already in place.
 ```
 
 agree: yes

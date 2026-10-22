@@ -41,7 +41,7 @@ def build(case: str) -> dict:
         for d in docs:
             pages = [(r["page_no"], r["text"]) for r in conn.execute(
                 "SELECT page_no, text FROM pages WHERE doc_id = %s ORDER BY page_no", (d["doc_id"],))]
-            for row in split_irs(d["doc_id"], pages, valid):
+            for row in split_irs(d["doc_id"], pages, valid, case):
                 # undated (torontohydro.com consolidated file) sorts oldest, so a dated RDS
                 # filing of the same IR, including updates, wins
                 all_rows.append((row, str(d["date_received"] or "0000-00-00")))
@@ -90,7 +90,9 @@ def write_review_sample(rows: list[IRRow], n: int = 20) -> None:
              "A row is **correct** if (1) the question is the intervenor's question, complete and not mixed",
              "with another IR, (2) the response is Toronto Hydro's response to it, and (3) every gold exhibit",
              "is cited in the response as a place where the answer/evidence is found.", "",
-             "Mark each `verdict:` as `correct` or `wrong (<reason>)`.", ""]
+             "Mark each `verdict:` as `correct` or `wrong (<reason>)`. `label-for-query:` records the looser question",
+             "that matters for the retrieval eval: do the gold exhibits locate the answer to the part of the question",
+             "that is actually in the query? Then run `uv run python -m evals.record_hand_checks`.", ""]
     for i, r in enumerate(sample, 1):
         lines += [f"## {i}. {r.ir_id}  (doc `{r.doc_id}`, pp. {r.page_start}-{r.page_end})", "",
                   f"- gold (response) exhibits: **{', '.join(r.response_exhibits)}**",
@@ -99,7 +101,7 @@ def write_review_sample(rows: list[IRRow], n: int = 20) -> None:
                   "**Question (as filed)**", "", "```", r.question[:2500], "```", "",
                   "**Query used for retrieval (locations stripped)**", "", "```", r.query[:1500], "```", "",
                   "**Response**", "", "```", r.response[:3000], "```", "",
-                  "verdict: ", ""]
+                  "verdict: ", "label-for-query: ", ""]
     (Path(__file__).parent / "ir_sample_review.md").write_text("\n".join(lines))
 
 

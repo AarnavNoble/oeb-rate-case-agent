@@ -1,0 +1,67 @@
+{
+  "ir_id": "2B-EP-25",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "\u201cBy the end of the decade, Toronto Hydro expects to have over 4,400 DER connection projects\nrepresenting a total installed capacity of approximately 517 MW, an increase of approximately 67\npercent compared to 2022\u201d\n\u201cBased on the capacity planning process outlined above, Toronto Hydro proposes investments in\nvarious programs to meet the utility\u2019s fundamental obligation to connect new and expanded\nservices to the grid in this decade and beyond. These programs include expansion to increase grid\ncapacity and enhancements to better utilize existing equipment. Through programs such as Load\nDemand, Stations Expansion, and Horseshoe and Downtown Renewal, Toronto Hydro is renewing\nand enhancing stations, buses, feeders, and other equipment that will facilitate load growth at the\nappropriate locations. In areas where Toronto Hydro expects customers to connect more DERs,\nprograms such as Grid Protection, Monitoring and Control alleviate short-circuit capacity\nconstraints.\u201d\n\u201cToronto Hydro\u2019s 2023-2029 DER connection and capacity forecast considers a combination of\nhistorical trends, project pipeline, economic environment, and the current energy policies at the\ntime of the forecast. Total DER projects are expected to contribute a total increase of 67 percent to\ntotal installations, reaching nearly 4,500 connections by the end of 2029, as shown in Figure 2. This\nrepresents a total DER installed capacity of approximately 516.7 MW by the end of 2029 in\ncomparison to the 304.9 MW installed as of the end of December 2022, depicted in Figure 3.\u201d\n\u201cCurrently, three station buses have reached short circuit capacity limits and are not able to\nconnect additional DERs. Toronto Hydro anticipates that a total of eight station busses will exceed\nshort circuit capacity by 2029. To arrive at the projected constraints in Table 4, Toronto Hydro\nmapped its overall forecast of 2029 DER capacity onto station busses by assuming that the\ngeospatial distribution of DERs will continue to follow existing load connection patterns.\u201d\na) How does Toronto Hydro determine where to expect customers to connect more DERs?",
+  "answer": "Toronto Hydro doesn't pick DER locations by detailed siting. It assumes DERs will connect where load has historically connected.\n\n**Method.** To project where DER capacity will land, Toronto Hydro takes its overall 2029 DER capacity forecast and maps it onto station buses. It assumes that \"the geospatial distribution of DERs will continue to follow existing load connection patterns\" [cite:rds-823164:201]. This mapping produces the projected short-circuit constraints in Table 4. Those constraints are the basis for expecting that eight station buses will exceed short-circuit capacity by 2029, up from three today [cite:rds-823164:201]. The areas where it expects more DER connections are therefore the buses and feeders that carry the most existing load connections. Grid Protection, Monitoring and Control then addresses short-circuit constraints in those areas.\n\n**Overall forecast.** The overall DER forecast that gets mapped is not location-specific. It rests on historical trends, the project pipeline, the economic environment and current energy policy. That is the basis for the 67% increase you quoted, from 304.9 MW at the end of 2022 to about 516.7 MW at the end of 2029. I did not find that passage in my searches, so it comes from your quote, not a cited page.\n\n**Supporting analysis.**\n- Toronto Hydro uses fault and power-flow simulation models to determine short-circuit capacity at stations and other points on the system. These models predict how much fault current will flow to a location from generators across the system. It also runs a study for each new DER application [cite:rds-823163:532].\n- The Hydro One and IESO regional planning outlook says it is difficult to predict where future DERs will be located. It therefore makes no further assumptions about future DER growth in its demand outlook [cite:rds-823168:225].\n- Toronto Hydro plans to develop a Hosting and Load Capacity Map. It would show estimated available DER capacity at different locations, based on automated analysis [cite:rds-823163:681].\n- Monitoring and control data from connected DERs would feed hosting capacity analyses. Currently, connection potential is assessed using conservative estimated thermal loading, which assumes DERs generate at 100% of rated capacity [cite:rds-823164:207].\n\n**Limitation.** The location forecast is an assumption that the future will resemble the past. It is not based on site-specific customer siting data.",
+  "answer_rendered": "Toronto Hydro doesn't pick DER locations by detailed siting. It assumes DERs will connect where load has historically connected.\n\n**Method.** To project where DER capacity will land, Toronto Hydro takes its overall 2029 DER capacity forecast and maps it onto station buses. It assumes that \"the geospatial distribution of DERs will continue to follow existing load connection patterns\" [EB-2023-0195 / Exhibit 2B / p.201]. This mapping produces the projected short-circuit constraints in Table 4. Those constraints are the basis for expecting that eight station buses will exceed short-circuit capacity by 2029, up from three today [EB-2023-0195 / Exhibit 2B / p.201]. The areas where it expects more DER connections are therefore the buses and feeders that carry the most existing load connections. Grid Protection, Monitoring and Control then addresses short-circuit constraints in those areas.\n\n**Overall forecast.** The overall DER forecast that gets mapped is not location-specific. It rests on historical trends, the project pipeline, the economic environment and current energy policy. That is the basis for the 67% increase you quoted, from 304.9 MW at the end of 2022 to about 516.7 MW at the end of 2029. I did not find that passage in my searches, so it comes from your quote, not a cited page.\n\n**Supporting analysis.**\n- Toronto Hydro uses fault and power-flow simulation models to determine short-circuit capacity at stations and other points on the system. These models predict how much fault current will flow to a location from generators across the system. It also runs a study for each new DER application [EB-2023-0195 / Exhibit 2B / p.532].\n- The Hydro One and IESO regional planning outlook says it is difficult to predict where future DERs will be located. It therefore makes no further assumptions about future DER growth in its demand outlook [EB-2023-0195 / Exhibit 2B / p.225].\n- Toronto Hydro plans to develop a Hosting and Load Capacity Map. It would show estimated available DER capacity at different locations, based on automated analysis [EB-2023-0195 / Exhibit 2B / p.681].\n- Monitoring and control data from connected DERs would feed hosting capacity analyses. Currently, connection potential is assessed using conservative estimated thermal loading, which assumes DERs generate at 100% of rated capacity [EB-2023-0195 / Exhibit 2B / p.207].\n\n**Limitation.** The location forecast is an assumption that the future will resemble the past. It is not based on site-specific customer siting data.",
+  "citations": [
+    {
+      "doc_id": "rds-823164",
+      "page": 201,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 532,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823168",
+      "page": 225,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Overview and Upfront DSP_Part1of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 681,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 207,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 2,
+  "num_turns": 3,
+  "seconds": 16.9,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.08385419999999999,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate matches the reference on historical data: it says DER locations are projected from past patterns, by mapping the forecast onto station buses along existing load connection patterns. But the reference says the location forecast also uses generation types and pipeline information to model how likely DER connections are in specific station areas. The candidate leaves out generation types and says the overall forecast (pipeline included) is not location-specific, which undercuts that point.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0318476
+  }
+}

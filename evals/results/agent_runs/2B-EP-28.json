@@ -3,9 +3,9 @@
   "gold_exhibits": [
     "2B"
   ],
-  "query": "\u201cGovernment at all levels are implementing decarbonization policies, including GHG emission\ntargets and incentives to encourage consumers to electrify their transportation and heating needs.\nKey policies and incentives include: Canada Greener Homes Grant provides up to $5,000 for\nelectrified heating technologies such as heat pumps. This grant was introduced in December 2020\nand is expected to stay in place for seven years.\u201d\na) Has Toronto Hydro performed any analysis of the impacts on peak electricity demand in\nwinter months for a sizable portion of residential customers converting their home heating\nto heat pumps? If not, why not?",
-  "answer": "**Yes.** Toronto Hydro has analyzed how heat pump and other heating electrification would affect winter peak demand. It did this at the system level, not as a study of a \"sizable portion of residential customers\" converting. The filing does not show a separate feeder-level or customer-class study.\n\n**Future Energy Scenarios (FES) modelling.** The utility's Exhibit 2B includes a Future Energy Scenarios report that models heat pump and other heating technology uptake for domestic and industrial/commercial buildings. It uses four scenario \"worlds\" and two low-efficiency sensitivities [cite:rds-823163:550]. The uptake assumptions include the Greener Homes Grant, which is expected to last at least 7 years from December 2020. The scenarios vary its end date, from 2027 in the Low case to 2030 and 2035 in the higher cases [cite:rds-823163:601] [cite:rds-823163:607] [cite:rds-823163:610].\n\n**Results.** Summer peak exceeds winter peak through the 2020s. In the base year, summer peak is 3.9 GW and winter peak is 3.7 GW. The 2030s see the network peak shift to winter, driven by heat pump and EV uptake [cite:rds-823163:647]. Toronto Hydro also reports that heat pumps and EVs are expected to be primary drivers of peak growth and of the summer-to-winter shift in the 2030s [cite:rds-823163:39].\n\n**2025\u20132029 stress test.** Toronto Hydro concluded that building electrification is \"not yet a significant driver of growth\" in the 2025\u20132029 period. Its System Peak Demand Forecast therefore remains summer-peaking [cite:rds-823163:536]. It still tested whether it could accommodate a growing winter peak. It used the Consumer Transformation scenario and its low-efficiency equivalent as the lower and upper bounds. It chose them because they showed the most variability in building heat and the most material system-peak impact [cite:rds-823163:537].\n\nIts conclusion was that its forecast is generally aligned with the Consumer Transformation scenario. It also concluded that the planned capacity investments can meet higher building heating loads if electrification arrives faster than expected [cite:rds-823163:537].\n\n**Limits.** The same page cautions that the utility could still face incremental capacity constraints at a localized level [cite:rds-823163:537]. The pages I read do not give a percentage of homes converting or a quantified winter-peak result for a given conversion share. I did not find a separate residential-only study, and I did not search for interrogatory responses.",
-  "answer_rendered": "**Yes.** Toronto Hydro has analyzed how heat pump and other heating electrification would affect winter peak demand. It did this at the system level, not as a study of a \"sizable portion of residential customers\" converting. The filing does not show a separate feeder-level or customer-class study.\n\n**Future Energy Scenarios (FES) modelling.** The utility's Exhibit 2B includes a Future Energy Scenarios report that models heat pump and other heating technology uptake for domestic and industrial/commercial buildings. It uses four scenario \"worlds\" and two low-efficiency sensitivities [EB-2023-0195 / Exhibit 2B / p.550]. The uptake assumptions include the Greener Homes Grant, which is expected to last at least 7 years from December 2020. The scenarios vary its end date, from 2027 in the Low case to 2030 and 2035 in the higher cases [EB-2023-0195 / Exhibit 2B / p.601] [EB-2023-0195 / Exhibit 2B / p.607] [EB-2023-0195 / Exhibit 2B / p.610].\n\n**Results.** Summer peak exceeds winter peak through the 2020s. In the base year, summer peak is 3.9 GW and winter peak is 3.7 GW. The 2030s see the network peak shift to winter, driven by heat pump and EV uptake [EB-2023-0195 / Exhibit 2B / p.647]. Toronto Hydro also reports that heat pumps and EVs are expected to be primary drivers of peak growth and of the summer-to-winter shift in the 2030s [EB-2023-0195 / Exhibit 2B / p.39].\n\n**2025\u20132029 stress test.** Toronto Hydro concluded that building electrification is \"not yet a significant driver of growth\" in the 2025\u20132029 period. Its System Peak Demand Forecast therefore remains summer-peaking [EB-2023-0195 / Exhibit 2B / p.536]. It still tested whether it could accommodate a growing winter peak. It used the Consumer Transformation scenario and its low-efficiency equivalent as the lower and upper bounds. It chose them because they showed the most variability in building heat and the most material system-peak impact [EB-2023-0195 / Exhibit 2B / p.537].\n\nIts conclusion was that its forecast is generally aligned with the Consumer Transformation scenario. It also concluded that the planned capacity investments can meet higher building heating loads if electrification arrives faster than expected [EB-2023-0195 / Exhibit 2B / p.537].\n\n**Limits.** The same page cautions that the utility could still face incremental capacity constraints at a localized level [EB-2023-0195 / Exhibit 2B / p.537]. The pages I read do not give a percentage of homes converting or a quantified winter-peak result for a given conversion share. I did not find a separate residential-only study, and I did not search for interrogatory responses.",
+  "query": "\u201cGovernment at all levels are implementing decarbonization policies, including GHG emission\ntargets and incentives to encourage consumers to electrify their transportation and heating needs.\nKey policies and incentives include: Canada Greener Homes Grant provides up to $5,000 for\nelectrified heating technologies such as heat pumps. This grant was introduced in December 2020\nand is expected to stay in place for seven years.\u201d\na) Has Toronto Hydro performed any analysis of the impacts on peak electricity demand in\nwinter months for a sizable portion of residential customers converting their home heating\nto heat pumps? If not, why not?\nb) Does Toronto Hydro presently expect the transition to heat pumps for home heating to\nhave a material effect on peak electricity demand? If not, why not?\nc) If significantly more residential customers install heat pumps in a particular area than\nToronto Hydro has presently anticipated, how will this impact service reliability?\nd) Does Toronto Hydro have a plan in the event that significantly more customers install heat\npumps in a particular area than anticipated?",
+  "answer": "**Short answer:** Toronto Hydro has done some analysis, but not a bottom-up study of heat-pump conversions by residential customers. It does not expect heat pumps to be a material driver of peak demand in 2025\u20132029. For unexpected local clustering, it admits it could face local capacity constraints. Its stated responses are capacity programs and a proposed variance account. The filings I found do not say how reliability would be affected. All figures below come from EB-2023-0195 only.\n\n**a) Analysis performed?** Yes, in two forms.\n- Toronto Hydro commissioned Future Energy Scenarios (FES) modelling. It models heating technologies (air-source, ground-source and hybrid heat pumps, among others) as a separate segment from core demand. It runs winter and summer system peaks under several scenarios [cite:rds-823163:550] [cite:rds-823163:647].\n- It also ran a sensitivity test of whether its plan could handle a growing winter peak from building electrification in 2025\u20132029. The test used the Consumer Transformation scenario and its low-efficiency variant as bounds [cite:rds-823163:536].\n\nThe FES is system-wide, not a study of residential conversions specifically. I did not find an analysis that isolates a sizable share of residential customers converting. The filings also do not give a \"why not\" answer to that framing.\n\n**b) Material effect expected?** Not in the 2025\u20132029 period.\n- Toronto Hydro determined that building electrification \"is not yet a significant driver of growth in the 2025-2029 rate period.\" Its forecast therefore stays summer-peaking [cite:rds-823163:536].\n- Its System Peak Demand Forecast is generally aligned with the Consumer Transformation scenario. It concluded that the capacity plan can meet higher heating loads if they arrive faster than expected [cite:rds-823163:537].\n- Over the longer term, the FES expects heat pumps and EVs to be primary drivers of peak demand growth. It expects the network peak to shift from summer to winter in the 2030s [cite:rds-823163:39] [cite:rds-823163:647]. The base year peaks are 3.9 GW in summer and 3.7 GW in winter [cite:rds-823163:647].\n- The seven-year Greener Homes Grant is an input to the modelling. It is assumed to last at least seven years but may be extended [cite:rds-823163:601].\n\n**c) Reliability impact if local uptake is higher than anticipated?** The filings do not quantify this. They acknowledge that Toronto Hydro \"could be faced with incremental capacity constraints at a localized level as a result of accelerated transportation and building electrification demand\" [cite:rds-823163:537] [cite:rds-823163:538].\n\nToronto Hydro also says that when external drivers add investment needs, it must typically defer work in System Renewal, System Service and General Plant. That could leave \"significant reliability, safety or environmental risks\" unmitigated [cite:rds-847604:90]. This is a general statement about demand-related investment, not heat-pump-specific. I did not find a specific reliability metric or outage projection tied to heat-pump clustering.\n\n**d) Plan for unexpectedly high local uptake?** Partly. Toronto Hydro points to the following:\n- **Variance account:** a proposed Demand Related Variance Account (the later update calls it an Expenditure Variance Subaccount). It would track actual versus forecast spending on demand-related programs, so it can respond without deferring other priority work [cite:rds-823163:538] [cite:rds-847604:90].\n- **Capacity programs:** Load Demand, Stations Expansion, and Horseshoe and Downtown Renewal [cite:rds-823163:538].\n- **Non-Wires Solutions:** where feasible and cost-effective, it would procure market-based flexibility services to avoid or defer capital investment [cite:rds-823163:538].\n\nThe filings I found do not describe a dedicated, area-specific contingency plan for heat-pump clustering. That includes any trigger-based monitoring of heat-pump installations.",
+  "answer_rendered": "**Short answer:** Toronto Hydro has done some analysis, but not a bottom-up study of heat-pump conversions by residential customers. It does not expect heat pumps to be a material driver of peak demand in 2025\u20132029. For unexpected local clustering, it admits it could face local capacity constraints. Its stated responses are capacity programs and a proposed variance account. The filings I found do not say how reliability would be affected. All figures below come from EB-2023-0195 only.\n\n**a) Analysis performed?** Yes, in two forms.\n- Toronto Hydro commissioned Future Energy Scenarios (FES) modelling. It models heating technologies (air-source, ground-source and hybrid heat pumps, among others) as a separate segment from core demand. It runs winter and summer system peaks under several scenarios [EB-2023-0195 / Exhibit 2B / p.550] [EB-2023-0195 / Exhibit 2B / p.647].\n- It also ran a sensitivity test of whether its plan could handle a growing winter peak from building electrification in 2025\u20132029. The test used the Consumer Transformation scenario and its low-efficiency variant as bounds [EB-2023-0195 / Exhibit 2B / p.536].\n\nThe FES is system-wide, not a study of residential conversions specifically. I did not find an analysis that isolates a sizable share of residential customers converting. The filings also do not give a \"why not\" answer to that framing.\n\n**b) Material effect expected?** Not in the 2025\u20132029 period.\n- Toronto Hydro determined that building electrification \"is not yet a significant driver of growth in the 2025-2029 rate period.\" Its forecast therefore stays summer-peaking [EB-2023-0195 / Exhibit 2B / p.536].\n- Its System Peak Demand Forecast is generally aligned with the Consumer Transformation scenario. It concluded that the capacity plan can meet higher heating loads if they arrive faster than expected [EB-2023-0195 / Exhibit 2B / p.537].\n- Over the longer term, the FES expects heat pumps and EVs to be primary drivers of peak demand growth. It expects the network peak to shift from summer to winter in the 2030s [EB-2023-0195 / Exhibit 2B / p.39] [EB-2023-0195 / Exhibit 2B / p.647]. The base year peaks are 3.9 GW in summer and 3.7 GW in winter [EB-2023-0195 / Exhibit 2B / p.647].\n- The seven-year Greener Homes Grant is an input to the modelling. It is assumed to last at least seven years but may be extended [EB-2023-0195 / Exhibit 2B / p.601].\n\n**c) Reliability impact if local uptake is higher than anticipated?** The filings do not quantify this. They acknowledge that Toronto Hydro \"could be faced with incremental capacity constraints at a localized level as a result of accelerated transportation and building electrification demand\" [EB-2023-0195 / Exhibit 2B / p.537] [EB-2023-0195 / Exhibit 2B / p.538].\n\nToronto Hydro also says that when external drivers add investment needs, it must typically defer work in System Renewal, System Service and General Plant. That could leave \"significant reliability, safety or environmental risks\" unmitigated [EB-2023-0195 / Exhibit 1B / p.90]. This is a general statement about demand-related investment, not heat-pump-specific. I did not find a specific reliability metric or outage projection tied to heat-pump clustering.\n\n**d) Plan for unexpectedly high local uptake?** Partly. Toronto Hydro points to the following:\n- **Variance account:** a proposed Demand Related Variance Account (the later update calls it an Expenditure Variance Subaccount). It would track actual versus forecast spending on demand-related programs, so it can respond without deferring other priority work [EB-2023-0195 / Exhibit 2B / p.538] [EB-2023-0195 / Exhibit 1B / p.90].\n- **Capacity programs:** Load Demand, Stations Expansion, and Horseshoe and Downtown Renewal [EB-2023-0195 / Exhibit 2B / p.538].\n- **Non-Wires Solutions:** where feasible and cost-effective, it would procure market-based flexibility services to avoid or defer capital investment [EB-2023-0195 / Exhibit 2B / p.538].\n\nThe filings I found do not describe a dedicated, area-specific contingency plan for heat-pump clustering. That includes any trigger-based monitoring of heat-pump installations.",
   "citations": [
     {
       "doc_id": "rds-823163",
@@ -17,39 +17,7 @@
     },
     {
       "doc_id": "rds-823163",
-      "page": 601,
-      "case_number": "EB-2023-0195",
-      "exhibit": "2B",
-      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
-      "seen": true
-    },
-    {
-      "doc_id": "rds-823163",
-      "page": 607,
-      "case_number": "EB-2023-0195",
-      "exhibit": "2B",
-      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
-      "seen": true
-    },
-    {
-      "doc_id": "rds-823163",
-      "page": 610,
-      "case_number": "EB-2023-0195",
-      "exhibit": "2B",
-      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
-      "seen": true
-    },
-    {
-      "doc_id": "rds-823163",
       "page": 647,
-      "case_number": "EB-2023-0195",
-      "exhibit": "2B",
-      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
-      "seen": true
-    },
-    {
-      "doc_id": "rds-823163",
-      "page": 39,
       "case_number": "EB-2023-0195",
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
@@ -70,22 +38,55 @@
       "exhibit": "2B",
       "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
       "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 39,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 601,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 538,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 90,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
     }
   ],
   "cited_exhibits": [
+    "1B",
     "2B"
   ],
   "citation_hit": true,
   "n_unverified": 0,
-  "tool_calls": 4,
-  "num_turns": 5,
-  "seconds": 20.1,
+  "tool_calls": 6,
+  "num_turns": 7,
+  "seconds": 30.6,
   "agent_error": null,
-  "agent_cost_usd_equivalent": 0.1080465,
+  "agent_cost_usd_equivalent": 0.1624811,
   "judge": {
-    "verdict": "correct",
-    "rationale": "The reference answers part (a) with a simple \"Yes\": the Future Energy Scenarios model includes electrified heating (Exhibit 2B, Section D4, Appendices A and B). The candidate also says yes, points to the same modelling, and adds supporting detail about the shift to a winter peak and the stress test. That detail fits the rest of the reference and contradicts none of it.",
+    "verdict": "partially_correct",
+    "rationale": "The candidate gets (a) right: the Future Energy Scenarios modelling covers electrified heating. Its long-term view in (b) also matches the reference: heat pumps become material, the peak shifts to winter, and timing is uncertain. On (d) it correctly names the stress test, the Load Demand program and non-wires solutions. However, on (c) it misses the reference's position that normal planning, such as installing or upgrading transformers, will keep service reliable. Instead it suggests reliability risks from deferred work. It also leaves out the \"wait and see\" approach to capacity investment and the sensing and observability investments.",
     "model": "claude-opus-5-5",
-    "cost_usd_equivalent": 0.0321316
+    "cost_usd_equivalent": 0.041039599999999996
   }
 }

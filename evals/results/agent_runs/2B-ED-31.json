@@ -1,0 +1,109 @@
+{
+  "ir_id": "2B-ED-31",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "a) Please discuss how forecast customer connections are factored into Toronto Hydro\u2019s\ndemand forecasting for the purpose of capacity planning. Please explain in detail.\nb) For the purposes of capacity planning, how does Toronto Hydro account for incremental\nconnections of single-family dwellings with 200 amp service? For instance, how many\nkW are assumed (either explicitly or implicitly) to be added to co-incident system peak for\nsuch a dwelling? For instance, would that be the maximum kWs the dwelling could\nconsume, the average, or some other number?",
+  "answer": "**Short answer:** The filings available to me give no kW figure for a 200-amp single-family connection in capacity planning. They don't say whether the figure would be the maximum, the average or something else. They describe a top-down, bus-level forecast. Individual small connections are not modelled one by one.\n\n## a) How connections feed the demand forecast\n\n**The forecast is a 10-year, weather-adjusted System Peak Demand Forecast.** It is built with a driver-based method and is the basis for capacity planning [cite:rds-834051:44]. It forecasts peak demand at every transformer station bus that supplies the grid. Summer peaks drive the 2025-2029 investment plan [cite:rds-823163:526].\n\n**Organic growth comes from history, weather and macroeconomic drivers, not a count of connections.** The method has seven components [cite:rds-834051:46]:\n- weather normalization;\n- econometric multivariate regression;\n- hyperscale data centres;\n- EVs;\n- uncommitted Municipal Energy Plan connections;\n- Monte-Carlo simulation; and\n- allocation to station buses, with load transfers and customer connections layered on.\n\nThe econometric inputs include Toronto population, employment and median income, CPI, business licences, housing starts and average home price [cite:rds-834051:46]. Small connections such as single-family homes are therefore captured only indirectly, through population and housing-starts trends. The filing doesn't show a per-home kW input.\n\n**Large and identifiable connections are added explicitly.**\n- Data centres, EVs and Municipal Energy Plans (Downsview, Port Lands, Scarborough Golden Mile) are the specific drivers. For the Municipal Energy Plans, both firm connection commitments and anticipated future loads are included [cite:rds-834051:48].\n- The Development Planning team uses the City's development pipeline and engages large customers and developers, often 5\u20138 years before connection, so anticipated connections can be included in the forecast [cite:rds-823168:51].\n- The Exhibit 3 revenue-load evidence says large connection projections rely on market knowledge and confirmed connection agreements. It says the revenue and peak forecasts share common growth inputs, namely large connections and EVs [cite:rds-823165:18].\n\n**Connections are layered on at the end.** Demand from each driver is allocated to station buses. Permanent load transfers from the Load Demand program are then layered on to give the bus-level and system forecast [cite:rds-834051:49].\n\n**One related haircut appears in a Downsview sensitivity study.** It says \"THESL's standard bus load forecasting methodology adjusts new customer load to 70% of the requested load in order to forecast bus load impacts\" [cite:rds-834051:214]. This is the closest thing to a connection-level coincidence or diversity factor that I found. It is described for new customer load generally, not for residential homes.\n\n**The revenue load forecast is separate.** It counts customers by rate class using regression on population, employment and lagged customer numbers. Larger classes (GS 1000-4999 kW, Large Use, CSMUR, Street Lighting) are forecast from construction knowledge and judgement [cite:rds-823165:4]. That forecast is for billing, not station capacity.\n\n## b) 200-amp single-family connections\n\nThe filings available to me do not state a kW assumption per 200-amp dwelling. I searched on 200-amp service, kW per home, diversity and coincident peak, and found no figure.\n\n- The only 200-amp reference is the OEB staff bulletin, quoted in Toronto Hydro's application: \"it is good practice for distributors to provide new residential customers with capacity (both transformation and conductor) to accommodate a 200-amp service under their Basic Connection policy\" [cite:rds-847604:90]. This concerns connection and cost-responsibility policy. It is not a forecasting input.\n- Residential load enters the peak forecast through the top-down regression and the EV driver. The 70% factor above is the only explicit scaling I found, and it is not tied to residential service size.\n\nOn your \"maximum, average or something else\" question: nothing in the filings says the full 200 A rating (about 48 kW at 240 V) is added to the coincident peak. The forecast is regression-based on observed bus peaks, so any per-home diversity is implicit. I can't confirm a number. The answer is probably in an interrogatory response or in Toronto Hydro's internal planning or design standards, which I couldn't find. You could ask Toronto Hydro directly for its design demand or diversity factor per residential service.",
+  "answer_rendered": "**Short answer:** The filings available to me give no kW figure for a 200-amp single-family connection in capacity planning. They don't say whether the figure would be the maximum, the average or something else. They describe a top-down, bus-level forecast. Individual small connections are not modelled one by one.\n\n## a) How connections feed the demand forecast\n\n**The forecast is a 10-year, weather-adjusted System Peak Demand Forecast.** It is built with a driver-based method and is the basis for capacity planning [EB-2023-0195 / Exhibit 2B / p.44]. It forecasts peak demand at every transformer station bus that supplies the grid. Summer peaks drive the 2025-2029 investment plan [EB-2023-0195 / Exhibit 2B / p.526].\n\n**Organic growth comes from history, weather and macroeconomic drivers, not a count of connections.** The method has seven components [EB-2023-0195 / Exhibit 2B / p.46]:\n- weather normalization;\n- econometric multivariate regression;\n- hyperscale data centres;\n- EVs;\n- uncommitted Municipal Energy Plan connections;\n- Monte-Carlo simulation; and\n- allocation to station buses, with load transfers and customer connections layered on.\n\nThe econometric inputs include Toronto population, employment and median income, CPI, business licences, housing starts and average home price [EB-2023-0195 / Exhibit 2B / p.46]. Small connections such as single-family homes are therefore captured only indirectly, through population and housing-starts trends. The filing doesn't show a per-home kW input.\n\n**Large and identifiable connections are added explicitly.**\n- Data centres, EVs and Municipal Energy Plans (Downsview, Port Lands, Scarborough Golden Mile) are the specific drivers. For the Municipal Energy Plans, both firm connection commitments and anticipated future loads are included [EB-2023-0195 / Exhibit 2B / p.48].\n- The Development Planning team uses the City's development pipeline and engages large customers and developers, often 5\u20138 years before connection, so anticipated connections can be included in the forecast [EB-2023-0195 / Exhibit 2B / p.51].\n- The Exhibit 3 revenue-load evidence says large connection projections rely on market knowledge and confirmed connection agreements. It says the revenue and peak forecasts share common growth inputs, namely large connections and EVs [EB-2023-0195 / Exhibit 3 / p.18].\n\n**Connections are layered on at the end.** Demand from each driver is allocated to station buses. Permanent load transfers from the Load Demand program are then layered on to give the bus-level and system forecast [EB-2023-0195 / Exhibit 2B / p.49].\n\n**One related haircut appears in a Downsview sensitivity study.** It says \"THESL's standard bus load forecasting methodology adjusts new customer load to 70% of the requested load in order to forecast bus load impacts\" [EB-2023-0195 / Exhibit 2B / p.214]. This is the closest thing to a connection-level coincidence or diversity factor that I found. It is described for new customer load generally, not for residential homes.\n\n**The revenue load forecast is separate.** It counts customers by rate class using regression on population, employment and lagged customer numbers. Larger classes (GS 1000-4999 kW, Large Use, CSMUR, Street Lighting) are forecast from construction knowledge and judgement [EB-2023-0195 / Exhibit 3 / p.4]. That forecast is for billing, not station capacity.\n\n## b) 200-amp single-family connections\n\nThe filings available to me do not state a kW assumption per 200-amp dwelling. I searched on 200-amp service, kW per home, diversity and coincident peak, and found no figure.\n\n- The only 200-amp reference is the OEB staff bulletin, quoted in Toronto Hydro's application: \"it is good practice for distributors to provide new residential customers with capacity (both transformation and conductor) to accommodate a 200-amp service under their Basic Connection policy\" [EB-2023-0195 / Exhibit 1B / p.90]. This concerns connection and cost-responsibility policy. It is not a forecasting input.\n- Residential load enters the peak forecast through the top-down regression and the EV driver. The 70% factor above is the only explicit scaling I found, and it is not tied to residential service size.\n\nOn your \"maximum, average or something else\" question: nothing in the filings says the full 200 A rating (about 48 kW at 240 V) is added to the coincident peak. The forecast is regression-based on observed bus peaks, so any per-home diversity is implicit. I can't confirm a number. The answer is probably in an interrogatory response or in Toronto Hydro's internal planning or design standards, which I couldn't find. You could ask Toronto Hydro directly for its design demand or diversity factor per residential service.",
+  "citations": [
+    {
+      "doc_id": "rds-834051",
+      "page": 44,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 526,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 46,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 48,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823168",
+      "page": 51,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Overview and Upfront DSP_Part1of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 18,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 49,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 214,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 4,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 90,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B",
+    "3"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 7,
+  "num_turns": 8,
+  "seconds": 37.1,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.20412370000000002,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate gets part (b) roughly right: small connections such as single-family homes are not modelled one by one and show up only in base growth trends. It misses the 2 MVA threshold. For part (a), it leaves out the reference's key mechanism, that load from new connections ramps in over 5 years (35%, then 20%, then 15% in each of the last three years). Instead it cites a 70% haircut taken from a Downsview sensitivity study.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0298676
+  }
+}

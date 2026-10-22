@@ -49,7 +49,9 @@ def _unit_hit(row: dict, citations: list[dict], pages) -> bool | None:
 def _run_one(row: dict) -> dict:
     path = RUNS / f"{row['ir_id']}.json"
     if path.exists():
-        return json.loads(path.read_text())
+        cached = json.loads(path.read_text())
+        if cached["query"] == row["query"]:  # a rebuilt eval set can change the question
+            return cached
     t0 = time.time()
     res = agent.run(row["query"], doc_kinds=["evidence"], cases=[row["case_number"]])
     cited_exhibits = sorted({c.exhibit for c in res.citations if c.exhibit})

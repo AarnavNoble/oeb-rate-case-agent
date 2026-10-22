@@ -5,211 +5,250 @@ A row is **correct** if (1) the question is the intervenor's question, complete 
 with another IR, (2) the response is Toronto Hydro's response to it, and (3) every gold exhibit
 is cited in the response as a place where the answer/evidence is found.
 
-Mark each `verdict:` as `correct` or `wrong (<reason>)`. `label-for-query:` records the looser question that
-matters for the retrieval eval: do the gold exhibits locate the answer to the part of the question that is
-actually in the query?
+Mark each `verdict:` as `correct` or `wrong (<reason>)`. `label-for-query:` records the looser question
+that matters for the retrieval eval: do the gold exhibits locate the answer to the part of the question
+that is actually in the query? Then run `uv run python -m evals.record_hand_checks`.
 
-**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-21, at the user's
-request. Each row was checked against the full response text, split by sub-question.
+**Reviewed by Claude (claude-opus-5-5 in Claude Code), not a human**, on 2026-10-22, at the user's
+request, after the multi-part and other-proceeding parser fixes. Each row was checked against the full
+response text. The review of the previous eval set is kept in `evals/results/v1/ir_sample_review.md`.
 
-## 1. 2B-VECC-13  (doc `rds-851961`, pp. 335-337)
+## 1. 2B-VECC-18  (doc `rds-851961`, pp. 470-473)
 
-- gold (response) exhibits: **2B**
+- gold (response) exhibits: **1B, 4**
 - reference-line exhibits: 2B
-- PDF: http://localhost:3077/api/pdf/rds-851961#page=335
+- PDF: http://localhost:3077/api/pdf/rds-851961#page=470
 
 **Question (as filed)**
 
 ```
-a) Please provide a table showing the number of new meters installed and, separately, the
-number of meters reverified/resealed for the residential and GS<50 rate classes
+a) Presumably customers are concerned with the duration of outages irrespective of their
+reason and especially if the outage is a matter within THESL’s ability to address. The PIM
+measure for Outage Duration excludes Scheduled Outages. Why?
+b) Are there any other measures used by THESL to gauge the response capability/efficiency of
+outage recovery?
+c) With respect to scheduled outages are planned projects provided guidelines or
+expectations for maximum outage time? If so, please provide or explain the process that is
+used to ensure that a given project meets the expected outage time.
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-a) Please provide a table showing the number of new meters installed and, separately, the
-number of meters reverified/resealed for the residential and GS<50 rate classes
+a) Presumably customers are concerned with the duration of outages irrespective of their
+reason and especially if the outage is a matter within THESL’s ability to address. The PIM
+measure for Outage Duration excludes Scheduled Outages. Why?
+b) Are there any other measures used by THESL to gauge the response capability/efficiency of
+outage recovery?
+c) With respect to scheduled outages are planned projects provided guidelines or
+expectations for maximum outage time? If so, please provide or explain the process that is
+used to ensure that a given project meets the expected outage time.
 ```
 
 **Response**
 
 ```
-Please see Tables 1 and 2 below.
-Table 1: New Meter Installation for Residential and GS<50, Suite Meters
-2020
-2021
-2022
-2023
-2024
-2025
-2026
-2027
-2028
-2029
-New
-Meter
-Installation
-18,922
-14,242
-11,667
-13,270
-106,370 159,946 175,514 181,285
-70,354
-1,177
-Residential
-and GS <
-50, Suite
-Meters
-Table 2: Meter Reverification/Resealing for Residential, GS<50, Suite Meters
-Reverified/
-Resealed
-2020
-2021
-2022
-2023
-2024
-2025
-2026
-2027
-2028
-2029
-16,162
-6,745
-16,095
-9,207
-11,066
-9,782
-12,195 13,816 14,994 12,023
-Residential
-and GS <
-50, Suite
-Meters
-QUESTION (B):
-b) THESL notes that most smart meters were installed between 2006 and 2008 (E5.4.3.3).
-What strategy is the Utility employing in order to avoid a repeat of the “bunching up” of
-expired meters as has occurred due to concentrating meter replacements within a short
-time frame?
+Please refer to Exhibit 1B, Tab 3, Schedule 1, pages 8-9 for an explanation of the rationale behind
+the PIM measures. Independent of the PIM measure, Toronto Hydro measures and monitors “all-
+in” reliability metrics (including scheduled outages) on an ongoing basis, and has an established
+process for managing the impacts of scheduled outages on customers.
+Toronto Hydro agrees that customers are concerned about outages irrespective of their reason.
+However, Toronto Hydro disagrees with the implication that scheduled outages are equivalent to
+unplanned outages when it comes to the customer experience. Toronto Hydro offers the following
+high-level comparison of scheduled and unplanned outages for further consideration.
+Aspect
+Scheduled Outages
+Unplanned Outages
+Predictability
+Planned in advance,
+scheduled time known
+Occur without warning,
+unpredictable
+Duration and Impact
+Typically short, a few hours,
+and contained
+Variable, can last from
+minutes to days, and can
+impact thousands of
+customers
+Aspect
+Scheduled Outages
+Unplanned Outages
+No advance notice
+Communication
+Toronto Hydro communicates
+schedule in advance
+Impact on Customers
+Predictable, can plan around
+outage
+Disruptive, can cause
+inconvenience and losses
+Mitigation Options
+Customers can prepare, use
+backup power
+Limited options, may not be
+able to mitigate
+Frequency
+Regular, scheduled based on
+capital and maintenance plan
+Occasional, based on system
+reliability
+Preventive Purpose
+Preventive maintenance,
+system improvements
+Reactionary response to
+failures
 
-As noted in Exhibit 2B, Section E5.4,1 Toronto Hydro’s historical smart meter deployment strategy
-was in support of provincial policy objectives concerning the rollout of smart meters and time-of-
-use billing in Ontario. Building on the strategy approved in the 2020 Rate Application,2 Toronto
-Hydro intends to replace meters surpassing their expected lifespan over a five-year period. Mass
-deployment of meters over a period greater than five years results in future risks to billing and
-customer experience, while delaying the benefits of AMI 2.0 that can only be realized once a
-majority of next generation meters have been installed, as shown in Toronto Hydro’s response to
-interrogatory 2B-Staff-194. Toronto Hydro will assess the timing and pace of future metering
-programs closer to the implementation of those programs based on the risk of failure, ability to
-reseal, and benefits of any replacement meters at that time.
-1 At page 9, lines 9-10.
-2 EB-2018-0165, Exhibit 2B, Section E5.4; see especially lines 16-27 at page 16.
+Toronto Hydro routinely measures and monitors “all-in” SAIFI and SAIDI, “defective equipment”
+SAIFI and SAIDI, volume/impact of outages by specific cause codes and availability/accuracy of
+outage Estimated Time of Restoration. Large outages are reviewed on a weekly basis for lessons
+learned and improvement opportunities.
+
+Crews undertaking scheduled outages are expected to plan outages in a manner that minimizes
+customer impact (duration and scope) to the extent possible. Outage requests are submitted to the
+Control Centre with start and finish times. Controllers will review the request and create a switching
+order to enable work to be completed safely while minimizing the number of customers impacts.
+Field Managers oversee the work and monitor progress to ensure that work is completed within the
+allotted time.
+Additionally, in the planning phase, proactive engagement with customers is facilitated through
+community relations teams (as detailed in Exhibit 4, Tab 2, Schedule 18). Notices regarding power
+interruptions, along with advance information about the expected outage duration, are provided.
 RESPONSES TO VULNERABLE ENERGY CONSUMERS COALITION
 INTERROGATORIES
 ```
 
-verdict: wrong (question holds only part (a); part (b) and its answer are in the response field)
-label-for-query: no (gold 2B is cited only in the answer to part (b), which is not in the query)
+verdict: correct
+label-for-query: yes
 
-## 2. 2B-DRC-10  (doc `th-consolidated-interrogatory-responses`, pp. 2227-2230)
+## 2. 2B-DRC-11  (doc `rds-843534`, pp. 162-170)
 
-- gold (response) exhibits: **2B**
+- gold (response) exhibits: **2B, 1B**
 - reference-line exhibits: 2B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=2227
+- PDF: http://localhost:3077/api/pdf/rds-843534#page=162
 
 **Question (as filed)**
 
 ```
-THESL states that customers are showing a continued interest in participating in the electricity
-system as both consumers and producers of power and that DER connections have grown in recent
-years as result of government policies and declining costs of technologies such as solar panels.
+THESL engaged Element Energy (“EE”) to develop the Future Energy Scenarios model report (the
+“FES Report”) to offer a range of plausible trajectories on the path toward decarbonization.
 
-a) Please elaborate on customer interest related to solar power since the last rebasing period.
-b) Please provide any other common constraints to DER installation and comment on (i) any
-improvements THESL has implemented over the past five years to address these
-constraints and (ii) whether there are areas within THESL’s larger system that are worse for
-these constraints than others.
+a) Please place the TransformTO Net Zero Strategy materials on the record in this proceeding.
+b) Please explain why THESL and/or EE chose the TransformTO scenarios and any advantages
+or disadvantages in terms of the reliability of these scenarios for THESL over the next five
+years.
+c) Please discuss the implications of the four central scenarios in the FES Report specifically
+for DERs, EVs, storage.
+d) Please explain what the drivers are for EV transition in the steady progression scenario and
+whether it’s a gradual or concentrated transition.
+e) Please explain how THESL’s assumed EV adoption is aligned with TransformTO and why
+that is the standard that TH adopted. As part of your response, please also discuss whether
+any other metrics were considered by THESL and whether there are any disadvantages to
+relying on a plan that was developed in 2020.
+f) Please explain what the drivers are for solar power adoption in the steady progression
+scenario and whether it’s a gradual or concentrated transition.
+g) Please elaborate on the moderate increase anticipated in the System Transformation
+scenario for distributed renewable generation.
+h) Please discuss what would be involved in assessing the probability of any specific outcome
+taking place.
+i)
+Please elaborate on drivers behind what THESL considers falling technology costs relevant
+to the distributed renewable generation that was identified as a possibility in the FES
+Report.
+j)
+Please explain how the scenarios capture “the impact of flexibility options such as energy
+storage, smart charging and vehicle to grid options for electric vehicles”.
+k) Please provide the full list of attributes used in the EE’s “Electric Car Consumer model” and
+indicate which attributes THESL considers to be the most significant and describe how it
+affects EV uptake.
+l)
+Please indicate whether THESL accepts that consumer preferences and related consumer
+behaviour is changing and discuss how this and any such changing attitudes are
+incorporated into the analysis performed in the FES Report?
+m) Did EE consider any other comparable jurisdictions (USA, Europe)? If, yes please indicate
+which jurisdictions and discuss how this was included in the analysis. If no, please discuss
+why no other comparable jurisdictions were included in the analysis.
+n) Please in
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-THESL states that customers are showing a continued interest in participating in the electricity
-system as both consumers and producers of power and that DER connections have grown in recent
-years as result of government policies and declining costs of technologies such as solar panels.
-a) Please elaborate on customer interest related to solar power since the last rebasing period.
-b) Please provide any other common constraints to DER installation and comment on (i) any
-improvements THESL has implemented over the past five years to address these
-constraints and (ii) whether there are areas within THESL’s larger system that are worse for
-these constraints than others.
+THESL engaged Element Energy (“EE”) to develop the Future Energy Scenarios model report (the
+“FES Report”) to offer a range of plausible trajectories on the path toward decarbonization.
+a) Please place the TransformTO Net Zero Strategy materials on the record in this proceeding.
+b) Please explain why THESL and/or EE chose the TransformTO scenarios and any advantages
+or disadvantages in terms of the reliability of these scenarios for THESL over the next five
+years.
+c) Please discuss the implications of the four central scenarios in the FES Report specifically
+for DERs, EVs, storage.
+d) Please explain what the drivers are for EV transition in the steady progression scenario and
+whether it’s a gradual or concentrated transition.
+e) Please explain how THESL’s assumed EV adoption is aligned with TransformTO and why
+that is the standard that TH adopted. As part of your response, please also discuss whether
+any other metrics were considered by THESL and whether there are any disadvantages to
+relying on a plan that was developed in 2020.
+f) Please explain what the drivers are for solar power adoption in the steady progression
+scenario and whether it’s a gradual or concentrated transition.
+g) Please elaborate on the moderate increase anticipated in the System Transformation
+scenario for distributed renewable generation.
+h) Please discuss what would be involved in assessing the probability of any specific outcome
+taking place.
+i)
+Please elaborate on drivers behind what THESL considers 
 ```
 
 **Response**
 
 ```
-Please refer to Exhibit 2B, Section E3, for information regarding Toronto Hydro’s ability to
-accommodate renewable energy generation and other distributed energy resource (“DER”). This
-includes renewable DER applications (such as solar), overall DER connection projections, the
-distribution system’s ability to connect, as well as known constraints on the distribution system.
-For information regarding investments made over the 2020-2024 period, please refer to the
-Generation Protection Monitoring and Control program in Exhibit 2B, Section E5.5.
-QUESTION (C):
-c) Please indicate where there are expected areas of DER growth in THESL’s service territory.
+Please refer to the TransformTO Net Zero Strategy:
+https://www.toronto.ca/legdocs/mmis/2021/ie/bgrd/backgroundfile-173758.pdf
 
-DER connection location probability greatly varies and is determined by customer demand. The
-DER forecast is based on growth trends using historical data. DER growth forecasted in specific
-station areas is determined based on generation types and pipeline information. For further
-details, please refer to Exhibit 2B, Section E3.
-QUESTION (D) :
-d) Please indicate the areas of THESL’s service territory that THESL has been unable to meet
-DER installation demand and indicate whether there are any other areas where installation
-demand will not be met over the rebasing period and beyond.
+As noted on page 3 of Section 2 of the FES report, the TransformTO scenarios were used as a
+“reference point to define the overall level of ambition modelled in the four scenario worlds.” The
+TransformTO inputs were complemented by numerous other inputs, including the scenario worlds
+framework used by National Grid in the U.K., which defines scenario worlds according to their level
+of societal change and speed of decarbonization. Ultimately, the final scenario worlds in the FES
+model and report were shaped by internal stakeholder discussion and consensus, and did not
+simply adopt the TransformTO scenarios without scrutiny. Toronto Hydro regards the modelled
+scenarios as being reasonable and fit for the purpose of the exercise, which was to illustrate the
+range of uncertainties in the low carbon energy transition.
 
-A restricted feeder list posted on Toronto Hydro’s website identifies the stations with no additional
-short circuit capacity, i.e. unable to connect generation facilities (DERs). This list is updated
-regularly and a snapshot is provided in Exhibit 2B, Section E3. Toronto Hydro’s DER forecast
-identified stations expected to have no available short circuit capacity in the next 5 years. Over the
-2025-2029 period, the utility proposes investments in the Generation Protection Monitoring and
-Control (Exhibit 2B, Section E5.5), Non-Wires Solutions (Section E7.2) and Stations Expansion
-(Section E7.4) programs to alleviate these constraints.
-QUESTION (E) :
-e) Please provide any comments and insights from THESL’s perspective on the adoption and
-integration of DERs at a more granular level, such as at the neighbourhood level (which
-neighbourhoods are seeing a significant increase in DER and EV adoption, which
-neighbourhoods are not seeing any or an increase in demand for DERs and EVs, etc.). If
-known, please discuss the characteristics of THESL’s customers that are adopting these
-technologies (age, income, location, residential type etc.).
+These scenarios reinforce the fact that the rates of uptake of DERs, EVs, and storage are highly
+uncertain and will depend on numerous economic and policy factors, which as a consequence,
+creates uncertainty for system planning.
 
-The table below is provides the number of DERs connected to each substation. As described in
-Exhibit E3, Toronto Hydro’s investments seek to alleviate constraints at the bus/feeder level. The
-utility does not track the requested information at that level of detail, however, from the data
-provided below, downtown locations appear to have lesser DER adoptions, which could indicate
-that space constraints may be a determining factor.
-Table 1: Number of DERs Connected to Each Substation
-Number of Connected DERS (as of 2022)
-East York
-96
-Leaside
-96
-Etobicoke
-371
-Horner
-88
-Manby
-117
-Rexdale
-63
-Richview
-95
+Please see Section 4.3 of the FES report for details regarding the electrification of transport.
+Regarding the Steady Progression scenario world, Table 17 outlines how each of the modeled
+parameters map to the scenario world. For example, the details and graphs which outline or refer
+to the “Low” scenario in Section 4.3.2 detail the key inputs, methodology, and modeling that feed
+into the EV transition, for cars and light trucks, in the Steady Progression scenario world.
+
+Please see section 4.3.1 which outlines the modelling approach for EV adoption and states that
+“Element Energy’s “Electric Car Consumer model” (ECCo) was used to generate bottom-up
+technology uptake scenarios for cars and light trucks, which consist of a varying mixture of full
+electric, hybrid and alternative-fuels based transport options.” As noted in the same section,
+TransformTO data was used to derive an annual growth factor for the stock of cars and light trucks,
+which was applied to the base year stock to give an absolute number of cars and light trucks in the
+city each year; this feeds into the vehicle stock rather than the relative proportion or adoption of
+EVs as part of that stock. Detailed further in Section 4.3.2, it is reiterated that a bottom-up
+modelling approach was taken: “ECCo was used to model the development of the car stock from
+the common starting point derived as described in Section 4.3.1. By varying the assumptions
+related to policy, vehicles costs and infrastructure, three uptake scenarios for BEVs and PHEVs were
+developed representing a range of ambition levels.”
+
+Please see Section 4.4.2 of the FES report for the details regarding solar photovoltaics. Regarding
+the Steady Progression scenario world in particular, Table 26 outlines how each of the modeled
+parameters map to the scenario world
 ```
 
-verdict: wrong (question holds parts (a)-(b); parts (c)-(f) are in the response field)
+verdict: correct
 label-for-query: yes
 
-## 3. 2B-STAFF-186  (doc `th-consolidated-interrogatory-responses`, pp. 1796-1796)
+## 3. 2B-STAFF-186  (doc `rds-846609`, pp. 231-231)
 
 - gold (response) exhibits: **2B**
 - reference-line exhibits: 2B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=1796
+- PDF: http://localhost:3077/api/pdf/rds-846609#page=231
 
 **Question (as filed)**
 
@@ -342,47 +381,152 @@ Rounding variances may exist
 verdict: wrong (Exhibit 6 is cited as where updated figures are 'not yet available', not where the answer is)
 label-for-query: no (same reason)
 
-## 5. 4-VECC-75  (doc `th-consolidated-interrogatory-responses`, pp. 3271-3271)
+## 5. 5-STAFF-313  (doc `rds-851818`, pp. 156-159)
 
-- gold (response) exhibits: **4**
-- reference-line exhibits: 4
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=3271
+- gold (response) exhibits: **6**
+- reference-line exhibits: 5, 1C
+- PDF: http://localhost:3077/api/pdf/rds-851818#page=156
 
 **Question (as filed)**
 
 ```
-a) Please complete the above table for the one-time application costs that are to be
-amortized over the rate plan period.
+Toronto Hydro stated that is had an all-in coupon rate of 4.93% on Toronto Hydro Corporation’s
+(THC) 30-year issuance on August 28, 2023. However, OEB staff could not find this bond listed in
+Toronto Hydro’s Appendix OB Debt Instruments for the rate year 2025.
+In Appendix OB, Toronto Hydro indicated that on October 2, 2023, it had issued a debenture for
+$200,000,000 with a rate of 5.25%, however, no promissory note was filed in Toronto Hydro’s
+evidence in Exhibit 1C. Also, “Table 5: Forecasted Long-Term Debt Issues” on page 6 of Exhibit 5
+shows a forecasted rate of 5.00% and not 5.25% for the debt issued in October 2023.
+The deemed long-term debt rate of 4.58% for electricity distributors was issued by the OEB on
+October 31, 2023.
+Toronto Hydro has calculated a long-term debt rate of 3.95% in Appendix OB for the 2025 rate
+year. A long-term debt rate of 3.95% is also reflected in Toronto Hydro’s Excel revenue
+requirement workforms for the rate years 2025 through 2029.
+
+a) Please reconcile the debt that Toronto Hydro stated was issued on August 28, 2023 with
+the debt issuances shown in Appendix OB.
+b) Please provide the promissory note for the debenture issued October 2, 2023 for
+$200,000,000, explain whether the rate was 5.00% or 5.25%, and update the evidence as
+required.
+c) If any debt instruments have been issued since the preparation of the pre-filed evidence
+for the current proceeding, please update the relevant evidence (including Appendix OA
+and Appendix OB), and provide a copy of the relevant promissory note(s).
+d) For each promissory note shown on Appendix OB with rates greater than the current
+deemed long-term debt rate of 4.58%. please provide the following:
+i. The start date of the debt.
+ii. The deemed long-term debt rate in place at the time the debt was issued
+iii. The need for the debt and rationale supporting taking the debt at the rate offered
+e) Please provide rationale supporting the need for the forecasted debt issues shown in
+Appendix OB, including any specific capital project(s) that the debt funding is for.
+f) Please confirm that to determine the final revenue requirement for 2025 and the
+subsequent years (i.e., 2026-2029), Toronto Hydro intends to use a long-term rate of
+3.95%, or a different rate as updated through interrogatories. If this is not the case, please
+explain.
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-a) Please complete the above table for the one-time application costs that are to be
-amortized over the rate plan period.
+Toronto Hydro stated that is had an all-in coupon rate of 4.93% on Toronto Hydro Corporation’s
+(THC) 30-year issuance on August 28, 2023. However, OEB staff could not find this bond listed in
+Toronto Hydro’s Appendix OB Debt Instruments for the rate year 2025.
+In Appendix OB, Toronto Hydro indicated that on October 2, 2023, it had issued a debenture for
+$200,000,000 with a rate of 5.25%, however, no promissory note was filed in Toronto Hydro’s
+evidence in . Also, “Table 5: Forecasted Long-Term Debt Issues” on of
+shows a forecasted rate of 5.00% and not 5.25% for the debt issued in October 2023.
+The deemed long-term debt rate of 4.58% for electricity distributors was issued by the OEB on
+October 31, 2023.
+Toronto Hydro has calculated a long-term debt rate of 3.95% in Appendix OB for the 2025 rate
+year. A long-term debt rate of 3.95% is also reflected in Toronto Hydro’s Excel revenue
+requirement workforms for the rate years 2025 through 2029.
+a) Please reconcile the debt that Toronto Hydro stated was issued on August 28, 2023 with
+the debt issuances shown in Appendix OB.
+b) Please provide the promissory note for the debenture issued October 2, 2023 for
+$200,000,000, explain whether the rate was 5.00% or 5.25%, and update the evidence as
+required.
+c) If any debt instruments have been issued since the preparation of the pre-filed evidence
+for the current proceeding, please update the relevant evidence (including Appendix OA
+and Appendix OB), and provide a copy of the relevant pro
 ```
 
 **Response**
 
 ```
-Please see Toronto Hydro’s response to interrogatory 4-SEC-110. The one-time application costs
-incurred to date are listed in the 2022 and 2023 actuals columns of the updated OEB Appendix 2-M.
-QUESTION (B):
-b) Are the amortized costs of this application included in the presentation tables on OM&A
-(e.g. Appendix 2-JC etc.)?
+The all-in coupon rate of 4.93% for 30-year THC debt issuance as at August 28, 2023 was an
+indicative rate mentioned in the context of comparing credits spreads and absolute all-in-yields
+between 2022 and 2023. There was no actual issuance of THC debt on August 28, 2023.
 
-The amortized costs are not broken out in the noted appendices, but are included in the presentation
-of the Regulatory Affairs segment at Exhibit 4, Tab 2, Schedule 18.
+The promissory note issuances mentioned in Table 5 were forecasted long-term debt issuances.
+There was no THC promissory note issuance on October 2, 2023. Toronto Hydro issued $200M
+promissory note at an all-in coupon rate of 5.18% on October 12, 2023. Toronto Hydro has updated
+Appendix OA-OB to reflect the same, which is attached as Appendix A to this interrogatory
+response.
+
+Please see the attached Appendix A and B to this response.
+
+Toronto Hydro is assigned debt through promissory notes from its parent, Toronto Hydro
+Corporation. These promissory notes are written on the same market terms as the parent debt
+applicable to Toronto Hydro Corporation (plus an additional five basis points for an administration
+fee). Toronto Hydro has the following promissory notes with rates greater than 4.58 percent:
+Issuance -
+Deemed long-term
+debt rate at the time
+Description
+Amount ($)
+Rate (%)
+Start Date
+of the debt
+of issuance (%)
+Actual/
+Forecast
+2022 Series 19 300,000,000
+5.00%
+13-Oct-22
+3.49%
+Actual
+2023 Series 20 250,000,000
+4.66%
+14-Jun-23
+4.88%
+Actual
+2023 Series 21 200,000,000
+5.18%
+12-Oct-23
+4.88%
+Actual
+2024 Series 22 200,000,000
+5.85%
+01-Nov-24
+4.58%
+Forecast
+2025 Series 23 300,000,000
+5.45%
+07-Jul-25
+NA
+Forecast
+Toronto Hydro issues debt to fund its capital and operational requirements and to refinance its
+maturing debt. For actual issuances, the rate reflects market conditions at the time of issuance.
+The variance to the deemed long-term debt rate issued by OEB is mainly due to timing differences,
+as OEB issued rates are calculated based on bond yields during the month of September for the
+prior year.
+
+To determine the final revenue requirement for the 2025-2029 rate period, the utility intends to use
+a single long-term (“LT”) debt rate, which is currently 3.95% as supported by the evidence in Exhibit
+6, Tab 1, Schedules 2-6. If during the course of the proceeding there are any updates or material
+/C
+changes to the evidence supporting the deemed LT rate during the course of the proceeding, Toronto
+Hydro intends to update the rate accordingly and flow through the impact to the revenue
+requirement impacts at the time of the Draft Rate Order process.
 ```
 
-verdict: wrong (question holds only part (a); part (b) is in the response field)
-label-for-query: no (gold 4 is cited only in the answer to part (b))
+verdict: correct
+label-for-query: yes
 
-## 6. 1B-SEC-25  (doc `th-consolidated-interrogatory-responses`, pp. 1474-1474)
+## 6. 1B-SEC-25  (doc `rds-867626`, pp. 803-803)
 
 - gold (response) exhibits: **2B, 1B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=1474
+- PDF: http://localhost:3077/api/pdf/rds-867626#page=803
 
 **Question (as filed)**
 
@@ -422,11 +566,11 @@ current rate period, and the response to 1B-AMPCO-07 for more information about 
 verdict: correct
 label-for-query: yes
 
-## 7. 1B-CCC-27  (doc `th-consolidated-interrogatory-responses`, pp. 587-587)
+## 7. 1B-CCC-27  (doc `rds-843530`, pp. 350-350)
 
 - gold (response) exhibits: **1B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=587
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=350
 
 **Question (as filed)**
 
@@ -460,78 +604,122 @@ as appropriate, about each driver can be found.
 verdict: correct
 label-for-query: yes
 
-## 8. 4-STAFF-305  (doc `th-consolidated-interrogatory-responses`, pp. 3060-3062)
+## 8. 4-STAFF-308  (doc `rds-851962`, pp. 47-52)
 
-- gold (response) exhibits: **4, 2B**
+- gold (response) exhibits: **4**
 - reference-line exhibits: 4
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=3060
+- PDF: http://localhost:3077/api/pdf/rds-851962#page=47
 
 **Question (as filed)**
 
 ```
-a) Please provide a more detailed explanation for the 84% sustained cost increase in
-Regulatory Affairs from $3.8M in 2020 to $7.0M in 2025.
-i.
-Please outline any one-time costs that may have been included in Regulatory
-Affairs versus those contained in Regulatory Applications.
+In reference 1 Toronto Hydro states it “needs to expand its workforce by approximately 214
+resources starting in 2024 through 2029 to meet the imperatives and objectives of its 2025-2029
+investment plan”.
+Reference 3 is the Appendix 2-K submitted as part of the draft rate order in Toronto Hydro’s last
+CIR application. It contains the forecast information for 2020. OEB staff have compiled the
+information both versions of Appendix 2-K in the table below.
+
+a) Please review and either verify or correct the information in the preamble.
+b) Please confirm that and explain why, as shown in the preamble, almost half of the 214
+hires required for the 2024-2029 period would occur in 2024.
+c) Toronto states the non-management staff numbers decreased from the 2020 plan to 2021
+actual largely due to impacts of the COVID-19 pandemic. Please confirm that non-
+management numbers at the end of 2024 are forecast to be below the plan numbers for
+2020.
+d) Please explain the requirement for a 48% increase in management employees from 2020
+plan to 2024 forecast.
+e) Please explain the reason for the non-management staff to management staff ratio has
+decreased from the 2020 plan to the 2024 bridge year and through the 2025-2029 forecast
+period.
+f) How does Toronto Hydro intend to execute its significantly larger capital plan for the
+forecast period, compared to the historic period, with the proposed increase of non-
+management staff during the forecast period over 2020 levels?
+g) Please outline any projects THESL has, that Toronto Hydro is aware of, that will result in
+increased services from Toronto Hydro, such as LED conversion of streetlights.
+h) What would be the impact be to the 2 management positions and approximately 100 non-
+management positions to be hired during the forecast period if there were reductions to
+capital budget for 2025-2029 of 10, 20 or 30%?
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-a) Please provide a more detailed explanation for the 84% sustained cost increase in
-Regulatory Affairs from $3.8M in 2020 to $7.0M in 2025.
-i.
-Please outline any one-time costs that may have been included in Regulatory
-Affairs versus those contained in Regulatory Applications.
+In reference 1 Toronto Hydro states it “needs to expand its workforce by approximately 214
+resources starting in 2024 through 2029 to meet the imperatives and objectives of its 2025-2029
+investment plan”.
+Reference 3 is the submitted as part of the draft rate order in Toronto Hydro’s last
+CIR application. It contains the forecast information for 2020. OEB staff have compiled the
+information both versions of in the table below.
+a) Please review and either verify or correct the information in the preamble.
+b) Please confirm that and explain why, as shown in the preamble, almost half of the 214
+hires required for the 2024-2029 period would occur in 2024.
+c) Toronto states the non-management staff numbers decreased from the 2020 plan to 2021
+actual largely due to impacts of the COVID-19 pandemic. Please confirm that non-
+management numbers at the end of 2024 are forecast to be below the plan numbers for
+2020.
+d) Please explain the requirement for a 48% increase in management employees from 2020
+plan to 2024 forecast.
+e) Please explain the reason for the non-management staff to management staff ratio has
+decreased from the 2020 plan to the 2024 bridge year and through the 2025-2029 forecast
+period.
+f) How does Toronto Hydro intend to execute its significantly larger capital plan for the
+forecast period, compared to the historic period, with the proposed increase of non-
+management staff during the forecast period over 2020 levels?
+g) Please outline any projects THESL has, that Tor
 ```
 
 **Response**
 
 ```
-Consistent with Toronto Hydro’s principles of developing in-house talent for reasons of both business
-continuity and cost-efficiency (see 4-Staff-308), the increase in the Regulatory Affairs segment
-budget between 2020 and 2025 is primarily driven by Toronto Hydro investing in building internal
-capacity and capability in its regulatory activities, including ensuring the resources necessary to help
-increase regulatory acumen throughout the utility’s workforce and processes. This is consistent with
-Toronto Hydro’s maturation as a regulated entity, and the utility’s ability to keep pace and ensure
-quality standards are met with the increased volume of regulatory policy, compliance, and
-applications requirements.
-The specific increase in predominately due to the addition of 10 FTEs over this period, as shown in
-the response to interrogatory 4-VECC-74, and by market-based annual compensation increases (as
-set out in Exhibit 4, Tab 4) associated with attracting and retaining the necessary resource
-complement in this area of Toronto Hydro’s operations.
-From 2020 to 2022, Toronto Hydro increased the staffing compliment in this area by 6 FTE to address
-historical resourcing shortages in this portfolio, 1 and develop internal capacity for regulatory
-applications, regulatory compliance, regulatory analytics and reporting, and business support files.
-The decision to increase in-house regulatory and legal capacity to prepare the 2025 rate application,
-was supported by a decision to also reduce the external legal expenses budget compared to the last
-filing, as shown in the response 4-SEC-110.
-From 2022 to 2025, increases in payroll are driven by the addition of 4 FTEs (representing an 18%
-increase) which are necessary to handle higher volumes of work and complexity emanating from
-OEB-related business activities (e.g. regulatory and energy policy development, implementation and
-compliance activities). This increase is (i) aligned with the OEB’s expanded priorities articulated in
-recent Business Plans and the Letters of Direction,2 and (ii) commensurate with the OEB’s 18%
-increase in FTE (from 193 to 228 FTEs) from the 2021-22 budget to the 2023-24 budget.3
-Application-related costs that are included in the regulatory affairs budget (rather than Appendix 2-
-M) do not constitute one-time costs because they reflect the reprioritization of work in 2023 and
-2024 in order to prepare and adjudicate the rate application. After the application is completed,
-ongoing application-related work activities and priorities will resume including: (1) preparing, filing,
-defending and implementation of annual rate updates; (2) interpreting and implementing the OEB’s
-decision, directives and related continuous improvement initiatives; (3) supporting the execution
-and implementation of the 2025-2029 Investment Plan through monthly oversight processes as
-noted in 2B-AMPCO-29(d) and annual investment planning activities as described in Exhibit 2B,
-Section D1; (4) measuring and trackin
+Confirmed.
+
+As stated in Exhibit 4, Tab 1, Schedule 1 at pages 22-23:
+As Toronto Hydro prepares to enter its next rate period, staffing levels are forecasted to
+grow by 25 percent over the 2024 through 2029 period. Due to the necessity of long lead
+time investments in human capital (see below), this growth is higher in the beginning years
+[i.e 2024 and 2025] and more gradual over the rest of the period, focused on scaling teams
+that require additional resources and expanded skills to plan, design and execute capital
+and operations work programs.
+Just as it takes years to build new transformer station or convert an area of the city served
+by legacy infrastructure to modern standards, human capital investments require long lead
+times, with the average employee undergoing two years training and development before
+becoming a fully competent contributor due to the specialized nature of the skills and
+experience required to work in this sector. For certain trades, it takes anywhere from four
+and a half to six and a half years to train a new certified and skilled tradesperson, plus a
+minimum additional one to two years to develop a new frontline leader post
+apprenticeship.
+Toronto Hydro often hires capable, but relatively inexperienced employees, with the
+intention to develop them in-house through on-the-job training and mentoring by tenured
+staff who can ensure effective knowledge and skill transfer to the next generation of
+employees.
+In summary, hiring must be initiated in 2024 in order to have sufficient lead-time to recruit, onboard,
+train and develop employees into fully competent contributors capable of meeting customers’
+demands and delivering the 2025-2029 Investment Plan and its performance objectives. Without this
+hiring in 2024, Toronto Hydro may not have the staffing capacity and capabilities it needs in the outer
+years of the period. Please see Exhibit 4, Tab 4, Schedule 3, Table 1 at Pages 12 – 13 which speak to
+the workforce skill sets and capabilities required to support asset investment plans.
+
+Confirmed, however it is important to contextualize and understand why non-management numbers
+at the end of 2024 are below the plan numbers for 2020. In the last rate application when the plan
+line for 2020 was established, Toronto Hydro forecasted certain retirement projections and
+associated hiring plans to replenish the aging workforce. Specifically, Toronto Hydro projected the
+retirement of 278 employees by the end of 2021.1 Due to changing employee preferences arising
+out of the global COVID-19 pandemic, the actual retirements from 2018-2021 exceeded the
+projection by approximately 100 employees (see IR 4-AMPCO-83 for details). To put this in context,
+the utility experienced an increase of one-third more employees departing the organization earlier
+than planned, at a time during which it was also very challenging to hire and onboard new entrants
+due to (i) social distancing restrictions imposed by the pandemic and remote work considerations
 ```
 
 verdict: correct
-label-for-query: yes
+label-for-query: yes (the 'EB-2018-0165, Exhibit 4A' footnote is no longer counted)
 
-## 9. 1B-STAFF-8  (doc `th-consolidated-interrogatory-responses`, pp. 253-255)
+## 9. 1B-STAFF-8  (doc `rds-843530`, pp. 16-18)
 
 - gold (response) exhibits: **3, 1B, 2B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=253
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=16
 
 **Question (as filed)**
 
@@ -548,6 +736,10 @@ as compared to the growth rate of a population in the context of planning a dist
 system. Please confirm that in the context of Toronto Hydro’s distribution system planning,
 absolute growth is a more important consideration than the rate of growth. If not, please
 explain.
+b) Please reconcile the apparent discrepancy between the statement that the City of
+Toronto’s population is growing, in absolute terms, more than other cities with Toronto
+Hydro’s forecasts showing slowing system load growth rates and the Ontario Ministry of
+Finance’s projections that population growth is slowing for the City of Toronto.
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -564,6 +756,10 @@ as compared to the growth rate of a population in the context of planning a dist
 system. Please confirm that in the context of Toronto Hydro’s distribution system planning,
 absolute growth is a more important consideration than the rate of growth. If not, please
 explain.
+b) Please reconcile the apparent discrepancy between the statement that the City of
+Toronto’s population is growing, in absolute terms, more than other cities with Toronto
+Hydro’s forecasts showing slowing system load growth rates and the Ontario Ministry of
+Finance’s projections that population growth is slowing for the City of Toronto.
 ```
 
 **Response**
@@ -587,11 +783,6 @@ to be serviced by Toronto Hydro in the years to come.”
 As outlined throughout the evidence in Exhibit 2B, distribution system planning is complex and
 relies on a long list of varied inputs and planning considerations. There is no single metric of growth
 relied upon to inform system planning.
-QUESTION (B) :
-b) Please reconcile the apparent discrepancy between the statement that the City of
-Toronto’s population is growing, in absolute terms, more than other cities with Toronto
-Hydro’s forecasts showing slowing system load growth rates and the Ontario Ministry of
-Finance’s projections that population growth is slowing for the City of Toronto.
 
 Based on the response in part (a) above, Toronto Hydro submits there is no discrepancy, as
 absolute growth and growth rates are referenced for different purposes in different contexts.
@@ -604,14 +795,14 @@ to 4.20 million in 2046, which is the largest population gain among the census d
 rate growth of 37.7 percent is slightly slower than the provincial rate of growth of 43.6 percent.
 ```
 
-verdict: wrong (question holds only part (a); part (b) is in the response field)
+verdict: correct
 label-for-query: yes
 
-## 10. 1B-STAFF-52  (doc `th-consolidated-interrogatory-responses`, pp. 380-384)
+## 10. 1B-STAFF-52  (doc `rds-843530`, pp. 143-147)
 
 - gold (response) exhibits: **1B, 2B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=380
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=143
 
 **Question (as filed)**
 
@@ -632,6 +823,20 @@ A column which indicates the calculated value of customer benefits realized in t
 2025-2029 period (as identified in Table 21, p. 57, or elsewhere if applicable).
 iv.
 A column which indicates the ratio of iii) to ii) for each proposed PIM
+b) Please Discuss:
+i.
+The proportion and significance of the PIM and its weighting within the PIM
+framework, relative to the proportion and significance of identified key programs,
+as provided in part i) above, in the context of Toronto Hydro’s overall spending
+plan. Please evaluate how well the scope and value of its proposed PIMs
+correspond with the scope and value of Toronto Hydro’s key spending and
+investment areas within its plan.
+ii.
+The rationale and basis for the proportions of costs and benefits calculated in iv)
+above, including variations in the observed ranges.
+iii.
+For any value where iii) is less than or equal to i), please explain Toronto Hydro’s
+rationale for the particular PIM proposed, including its weight.
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -652,6 +857,20 @@ A column which indicates the calculated value of customer benefits realized in t
 2025-2029 period (as identified in Table 21, p. 57, or elsewhere if applicable).
 iv.
 A column which indicates the ratio of iii) to ii) for each proposed PIM
+b) Please Discuss:
+i.
+The proportion and significance of the PIM and its weighting within the PIM
+framework, relative to the proportion and significance of identified key programs,
+as provided in part i) above, in the context of Toronto Hydro’s overall spending
+plan. Please evaluate how well the scope and value of its proposed PIMs
+correspond with the scope and value of Toronto Hydro’s key spending and
+investment areas within its plan.
+ii.
+The rationale and basis for the proportions of costs and benefits calculated in iv)
+above, including variations in the observed ranges.
+iii.
+For any value where iii) is less than or equal to i), please explain Toronto Hydro’s
+rationale for the particular PIM proposed, including its weight.
 ```
 
 **Response**
@@ -674,21 +893,6 @@ to conclude that the proposed 2025 to 2029 investment plan is the appropriate pl
 needs of Toronto Hydro’s system and customers. The performance incentive is a complimentary
 proposal to improve the balance of risk between the utility and ratepayers in responsiveness to the
 OEB’s feedback in the last rate application.
-QUESTION (B):
-b) Please Discuss:
-i.
-The proportion and significance of the PIM and its weighting within the PIM
-framework, relative to the proportion and significance of identified key programs,
-as provided in part i) above, in the context of Toronto Hydro’s overall spending
-plan. Please evaluate how well the scope and value of its proposed PIMs
-correspond with the scope and value of Toronto Hydro’s key spending and
-investment areas within its plan.
-ii.
-The rationale and basis for the proportions of costs and benefits calculated in iv)
-above, including variations in the observed ranges.
-iii.
-For any value where iii) is less than or equal to i), please explain Toronto Hydro’s
-rationale for the particular PIM proposed, including its weight.
 
 Please see a) above with respect to the comparison of program costs and PIM incentives and
 benefits. With respect to the PIM incentive relative to quantified benefits, the benefits received by
@@ -706,17 +910,68 @@ Measures
 Five-Year
 Target
 Incentive
-Qu
+Quantified Benefits
+(2025-2029)
+(Lifetime)
+2025-29 Benefits
+Ratio: Incentive vs.
+Lifetime Benefits
+15%
+$9.8
+$32.5
+$605.2
+3.33
+62.02
+Outage Duration: System Average Interruption
+Duration Index (SAIDI) excluding Major Event
+Days (MEDs), Loss of Supply (LoS) and
+Scheduled Outages
+46.2
+minutes
+(five-year
+average)
+System
+Reliability &
+$6.5
+$6.5 - 21.6
+$182.5 - 413.4
+1.00 - 3.32
+28.05 - 63.55
+Resilience
+10%
+Outage Frequency: System Average
+Interruption Frequency Index (SAIFI) -
+Defective Equipment
+0.38 – 0.45
+(five-year
+average)
+5%
+100% by
+2029
+$3.3
+n/a
+n/a
+n/a
+n/a
+System Security Enhancements: Deliver
+initiatives that enhance Toronto Hydro’s
+physical and cyber security posture against the
+NIST framework
+10%
+$6.5
+$31.7 - 142.6
+$31.7 - 142.6
+4.87 -
 ```
 
-verdict: wrong (question holds only part (a); part (b) is in the response field)
+verdict: correct
 label-for-query: yes
 
-## 11. 1B-STAFF-63  (doc `th-consolidated-interrogatory-responses`, pp. 415-416)
+## 11. 1B-STAFF-63  (doc `rds-843530`, pp. 178-179)
 
-- gold (response) exhibits: **4, 9**
+- gold (response) exhibits: **4**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=415
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=178
 
 **Question (as filed)**
 
@@ -789,8 +1044,8 @@ reduced from approximately 4.5 FTEs in 2015 to 3.0 FTEs in 2020.
 1 EB-2018-0165, Exhibit 9, Tab 1, Schedule 1, Page 20 to 31
 ```
 
-verdict: wrong (gold 9 comes from 'EB-2018-0165, Exhibit 9', an exhibit of the previous rate case)
-label-for-query: no (same reason)
+verdict: correct
+label-for-query: yes (gold is now Exhibit 4; the previous rate case's Exhibit 9 is no longer counted)
 
 ## 12. 1A-CCC-2  (doc `rds-845747`, pp. 212-215)
 
@@ -807,6 +1062,16 @@ b) For each engagement please provide the nature of the work and the retainer an
 reference;
 c) Please provide the budgeted cost for the work for each engagement and the costs incurred to
 date. Please indicate how the costs are to be recovered;
+Please explain, in detail, how Toronto Hydro determined which areas of the Application should be
+reviewed and validated by external experts;
+1 Toronto Hydro notes that the cost noted here is only for the preparation of the report. For details on the
+model development and implementation costs, please see Exhibit 2B-Staff-156.
+Did Toronto Hydro develop an overall budget for this external work. If so, please indicate what
+that budget was and how it was developed. If not, why not?
+Please indicate whether each piece of work was subject to an RFP process. In those cases where
+there was no RFP please explain why.
+Did Toronto Hydro retain any external consultants and lawyers to undertake work related to the
+Application that has not been included with the Application and pre-filed evidence?
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -818,6 +1083,16 @@ b) For each engagement please provide the nature of the work and the retainer an
 reference;
 c) Please provide the budgeted cost for the work for each engagement and the costs incurred to
 date. Please indicate how the costs are to be recovered;
+Please explain, in detail, how Toronto Hydro determined which areas of the Application should be
+reviewed and validated by external experts;
+1 Toronto Hydro notes that the cost noted here is only for the preparation of the report. For details on the
+model development and implementation costs, please see -Staff-156.
+Did Toronto Hydro develop an overall budget for this external work. If so, please indicate what
+that budget was and how it was developed. If not, why not?
+Please indicate whether each piece of work was subject to an RFP process. In those cases where
+there was no RFP please explain why.
+Did Toronto Hydro retain any external consultants and lawyers to undertake work related to the
+Application that has not been included with the Application and pre-filed evidence?
 ```
 
 **Response**
@@ -926,170 +1201,244 @@ Benchmarking
 5
 Yes
 $79,999.75
-QUESTION (D) :
-Please explain, in detail, how Toronto Hydro determined which areas of the Application should be
-reviewed and validated by external experts;
-1 Toronto Hydro notes that the cost noted here is only for the preparation of the report. For details on the
-model development and implementation costs, please see Exhibit 2B-Staff-156.
 
 Toronto Hydro used experience and professional judgment to determine which areas of the
 application would benefit from review and/or validation from external consultants. Factors
 included: guidance provided by the OEB in the RRF, the Handbook for Utility Rate Applications and
 the Filing Requirements; what may be helpful to the OEB in understanding and assessing Toronto
-Hydro’s application; and precedent from prior proceedings. In
+Hydro’s application; and precedent from prior proceedings. In addition, some studies were
+undertaken in the normal course of business and not for rate application business such as the
+Climate Change Vulnerability Assessment.
+
+The current budget for this work is included in the updated Appendix 2-M (found at Appendix A to
+the response to Interrogatory 4-SEC-110). Please note that not all of the third-
 ```
 
-verdict: wrong (question holds parts (a)-(c); parts (d)-(g) are in the response field)
+verdict: wrong (a footnote from the response table, '1 Toronto Hydro notes that the cost noted here...', sits in the question field; the parts themselves are complete)
 label-for-query: yes (exhibits are cited as where each consultant's evidence is filed; borderline)
 
-## 13. 3-STAFF-274  (doc `rds-843536`, pp. 1-4)
+## 13. 3-STAFF-278  (doc `rds-843536`, pp. 11-13)
 
-- gold (response) exhibits: **3**
-- reference-line exhibits: 3
-- PDF: http://localhost:3077/api/pdf/rds-843536#page=1
+- gold (response) exhibits: **2B**
+- reference-line exhibits: -
+- PDF: http://localhost:3077/api/pdf/rds-843536#page=11
 
 **Question (as filed)**
 
 ```
-Toronto Hydro has included CDM as a multivariate regression variable as part of its proposed load
-forecast in an attempt to represent conservation that occurs through formal programming as well
-as naturally.
+Toronto Hydro used dummy variables RECLASS1, RECLASS2, and RECLASS3. OEB staff understands
+that these variables would be intended to capture the impact of reclassification in the GS < 50 kW
+and GS 50 - 999 kW rate classes.
+The RECLASS variables start in June 2020, and are used one at a time, in sequence, until the end of
+the forecast period.
+The residential customer connection forecast relied on population as the only external variable
+with a trend that varies over time. The same variable was used in the GS < 50 kW rate class. The GS
+50-999 kW rate class used a measure of employment instead.
 
-a) Please discuss how Toronto Hydro considered guidance from the OEB’s Regional Planning
-Process Advisory Group’s Load Forecast Guideline for Ontario, including how it considered how to
-adjust the gross demand forecast to reflect the forecast impact of non-wires alternative activities
-(including DERs, CDM and distributed generation).
+a) Please confirm OEB staff’s understanding of the purpose of these variables or explain.
+b) Is Toronto Hydro able to count the number of customers reclassified?
+i. If so, please provide the number of customers reclassified in/out each month.
+ii. If so, why weren’t known values used as a manual adjustment?
+c) What steps has Toronto Hydro taken to prevent trends or other causes of connection
+change from being captured in the RECLASS variables?
+d) Please explain the rationale for use of the population variable in the residential and GS <
+50 kW rate class, and employment in the GS 50 - 999 kW rate class. Were different
+variables attempted?
+e) To what extent were customer connections impacted by the COVID-19 pandemic?
+i. How is this reflected in the customer connection forecast?
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-Toronto Hydro has included CDM as a multivariate regression variable as part of its proposed load
-forecast in an attempt to represent conservation that occurs through formal programming as well
-as naturally.
-a) Please discuss how Toronto Hydro considered guidance from the OEB’s Regional Planning
-Process Advisory Group’s Load Forecast Guideline for Ontario, including how it considered how to
-adjust the gross demand forecast to reflect the forecast impact of non-wires alternative activities
-(including DERs, CDM and distributed generation).
+Toronto Hydro used dummy variables RECLASS1, RECLASS2, and RECLASS3. OEB staff understands
+that these variables would be intended to capture the impact of reclassification in the GS < 50 kW
+and GS 50 - 999 kW rate classes.
+The RECLASS variables start in June 2020, and are used one at a time, in sequence, until the end of
+the forecast period.
+The residential customer connection forecast relied on population as the only external variable
+with a trend that varies over time. The same variable was used in the GS < 50 kW rate class. The GS
+50-999 kW rate class used a measure of employment instead.
+a) Please confirm OEB staff’s understanding of the purpose of these variables or explain.
+b) Is Toronto Hydro able to count the number of customers reclassified?
+i. If so, please provide the number of customers reclassified in/out each month.
+ii. If so, why weren’t known values used as a manual adjustment?
+c) What steps has Toronto Hydro taken to prevent trends or other causes of connection
+change from being captured in the RECLASS variables?
+d) Please explain the rationale for use of the population variable in the residential and GS <
+50 kW rate class, and employment in the GS 50 - 999 kW rate class. Were different
+variables attempted?
+e) To what extent were customer connections impacted by the COVID-19 pandemic?
+i. How is this reflected in the customer connection forecast?
 ```
 
 **Response**
 
 ```
-Toronto Hydro reviewed but did not incorporate OEB’s Regional Planning Process Advisory Group’s
-Load Forecast Guideline for Ontario for its Revenue load forecast. It is Toronto Hydro’s
-understanding that the purpose of the OEB’s Regional Planning Process Advisory Group’s Load
-Forecast Guideline for Ontario, is to provide guidance to Ontario LDC’s in the preparation of Peak
-Demand Forecasts used for Regional Planning. Where the proposed revenue load forecast in the
-Exhibit 3 focuses on projecting distribution electricity consumption and billing demand at the
-customer level. Thus, Toronto Hydro’s view is that the guidance and underlying assumptions are
-not applicable for the use of the revenue load forecast.
-QUESTION (B):
-b) Toronto Hydro has based its annual forecasted CDM savings for the 2025 to 2029 period on the
-assumption that there will be a continuation of the current IESO CDM Framework. Please confirm
-that should there be any changes to IESO CDM program delivery, including expanded delivery to
-residential and business customers, that there will be no subsequent changes to Toronto
-Hydro’s proposed 2025-2029 CDM savings after the OEB has approved Toronto Hydro’s application.
+Toronto Hydro confirms OEB’s staff’s understanding of the variables.
 
-Toronto Hydro confirms that should there be any changes to IESO CDM program delivery there will
-be no subsequent changes to Toronto Hydro’s proposed 2025-2029 CDM savings embedded in the
-load forecast after the OEB has approved Toronto Hydro’s application.
-QUESTION (C):
-c) Please discuss the basis for Toronto Hydro’s forecasted 2025-2029 Gross Energy Efficiency and
-Demand Response savings. In particular, please discuss the basis for the increase in demand
-savings for the residential class.
+Toronto Hydro is able to count the number of customers reclassified on an annual basis, as per
+Customer Care processes.
+Please refer to Table 1 below for the annual number of customers reclassified between 2020 and
+2022 for the GS<50kW and GS 50-999 kW rate classes.
+Table 1: Annual number of customers reclassified for GS<50kW and GS 50-999 kW rate classes
+Year
+GS<50 kW
+GS 50-999 kW
+2020
+106
+-206
+2021
+270
+-294
+2022
+197
+-198
+i)
+Toronto Hydro anticipates further reclassification in the future, and believes that
+RECLASS indicator variable is the appropriate methodology to be used for GS<50 kW
+and GS 50-999 kW rate classes for the following reasons: it creates a balance of good
+model fit, appropriate causation and yield coefficient values that make practical and
+statistical sense as well as provide good predictive value.
 
-The 2025-2029 CDM savings mirror the final year of the IESO’s 2021-2024 CDM Framework for the
-province, with an extrapolation for Toronto Hydro’s portion. Residential demand savings are not
-used in the CDM variable, and are only shown for display purposes.
-QUESTION (D):
-d) Please discuss how Toronto Hydro has included any naturally occurring conservation during the
-2025 to 2029 period?
+Toronto Hydro established RECLASS variables based on the historical timing of customer
+reclassification, ensuring the suitability of explanatory variables in the model and minimizing the
+influence of other factors being captured, as confirmed by the good fit.
 
-Toronto Hydro has moved towards including CDM as a multivariate regression variable to
-represent conservation that occurs through CDM program delivery. Naturally occurring
-conservation may be captured through the CDM variable, as well as the time trend variables used.
-QUESTION (E):
-e) Please discuss how Toronto Hydro has incorporated information from the IESO’s Annual Planning
-Outlook to inform its CDM forecasts.
+Toronto Hydro tested several external variables to capture demographic and economic conditions,
+create a balance of good model fit, and result in coefficient values that make practical and
+statistical sense. The population and employment variables confirmed the best modeling results for
+their respective rate classes.
 
-Toronto Hydro reviewed but did not incorporate IESO’s Annual Planning Outlook to inform its CDM
-forecasts.
-QUESTION (F-H):
-f) On what basis has Toronto Hydro concluded that the impact of heat pumps on overall load and
-demand is not yet material. Please discuss how, if at all, Toronto Hydro has considered
-recommendations from the Electrification and Energy Transition Panel and/or OEB findings in
-Enbridge Gas Inc.’s recent rate proceeding (EB-2022-0200) related to the revenue horizon for new
-cu
-```
-
-verdict: wrong (question holds only part (a); parts (b)-(h) are in the response field)
-label-for-query: yes
-
-## 14. 4-STAFF-306  (doc `th-consolidated-interrogatory-responses`, pp. 3063-3064)
-
-- gold (response) exhibits: **4**
-- reference-line exhibits: 4
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=3063
-
-**Question (as filed)**
-
-```
-Please provide a more detailed explanation for the 83% cost increase in Communications and
-Public Affairs from $3.6M in 2020 to $6.6M in 2023.
-```
-
-**Query used for retrieval (locations stripped)**
-
-```
-Please provide a more detailed explanation for the 83% cost increase in Communications and
-Public Affairs from $3.6M in 2020 to $6.6M in 2023.
-```
-
-**Response**
-
-```
-Based on the quoted numbers, Toronto Hydro assumes that the question is asking about the increase
-in this segment from 2020 to 2025, rather than 2020-2023.
-The increase in the Communications and Public Affairs segment budget between 2020 and 2025 is
-driven by: (i) $1.9 million increase in external services costs related to a return to pre-pandemic levels
-of customer communications, and (ii) $1.1 million increase due to market-based annual wage
-increase of existing headcount (in accordance with the compensation philosophy in Exhibit 4, Tab 4)
-and the addition of 5 FTEs over this period, as shown in the response to interrogatory 4-VECC-74.
-Customer communications focus on crucially important topics such as rates, financial assistance,
-public safety, crew safety, fraud prevention, outages, emergency preparedness, online tools and
-services, and customer education generally, including about the energy transition and related topics.
-Increased costs in this area reflect a return to normal levels of communication following the COVID-
-19 pandemic, along with an increase that is prudent and necessary to meet growing customer
-expectations. This includes engaging with customer through an increasing number of
-communications channels (e.g. additional social media channels and online tools) and being
-responsive to customers’ expectations for more timely and frequent communications with Toronto
-Hydro as an essential service provider.
-External costs support the planning, development and execution of frequent communications with
-customers through a variety of channels, as outlined in Exhibit 4, Tab 2, Schedule 18 at Page 28. For
-example, Toronto Hydro recently planned and executed a multi-channel public safety campaign,
-including an email deployment to customers sharing important public safety information. The email
-had an open rate of 60% -- well above the average email open rate of around 40% -- reflecting a high
-level of customer engagement and interest in the subject matter.
-The increase is also attributable to the addition of 4 FTEs to support the day-to-day management of
-digital communications channels and increasing customer expectations with respect to engagement
-through these channels. Since 2020, there have been more than 45,000 online mentions of Toronto
-Hydro, and the utility has resolved 5,226 customer issues via social media. As of July 2023, Toronto
-Hydro has over 121,400 followers on X (formerly known as Twitter), approximately 40%-60% more
-followers than the other three large distributors in Ontario. Additionally, the resources are necessary
-to respond to an overall increase operational volume of work, associated with customer
-communications and engagement needs. For example, the volume of customers contacting Toronto
-Hydro regarding equipment placement has increased approximately 258 % since 2019.
+As set out in Exhibit 2B, Section E5.1 Customer Connections, during the COVID-19 pandemic
+Toronto Hydro’s historical trajectory of capital spend was maintained. This was also observed in
+other data indicators such as the number of new connections, and feeder requests.
 ```
 
 verdict: correct
 label-for-query: yes
 
-## 15. 2B-STAFF-161  (doc `th-consolidated-interrogatory-responses`, pp. 1740-1740)
+## 14. 4-STAFF-309  (doc `rds-851962`, pp. 53-57)
+
+- gold (response) exhibits: **2B, 4, 1B**
+- reference-line exhibits: 4
+- PDF: http://localhost:3077/api/pdf/rds-851962#page=53
+
+**Question (as filed)**
+
+```
+Toronto Hydro has proposed an increase to its workforce plan, particularly in the area of System
+Planning, in part to support work related to the energy transition and electrification of its system,
+including its grid modernization plan, flexibility services, including integration of DERs and Non-
+Wires solutions.
+
+a) Please provide a table that shows the staffing levels in the system planning group during
+the current rate period and the proposed 2025-2029 rate period.
+b) Please indicate the number of staff proposed to be dedicated to work related to the energy
+transition, the roles of the staff, a general description of their responsibilities, and salary
+levels for the roles.
+c) Please discuss the need and identify the specific projects/tasks that the proposed new staff
+related to the energy transition and electrification (including grid modernization, DER
+integration and non-wires solutions) will be assigned over the 2025-2029 period.
+d) Has Toronto Hydro retained staffing with the required knowledge to deliver local and/or
+Province-Wide CDM programs (currently offered through the IESO) should policy change
+and local distribution companies be provided a path for greater program activity? If yes,
+please discuss how these staff have been incorporated into other business functions, and
+the ease with which they could manage additional responsibilities should they be required.
+```
+
+**Query used for retrieval (locations stripped)**
+
+```
+Toronto Hydro has proposed an increase to its workforce plan, particularly in the area of System
+Planning, in part to support work related to the energy transition and electrification of its system,
+including its grid modernization plan, flexibility services, including integration of DERs and Non-
+Wires solutions.
+a) Please provide a table that shows the staffing levels in the system planning group during
+the current rate period and the proposed 2025-2029 rate period.
+b) Please indicate the number of staff proposed to be dedicated to work related to the energy
+transition, the roles of the staff, a general description of their responsibilities, and salary
+levels for the roles.
+c) Please discuss the need and identify the specific projects/tasks that the proposed new staff
+related to the energy transition and electrification (including grid modernization, DER
+integration and non-wires solutions) will be assigned over the 2025-2029 period.
+d) Has Toronto Hydro retained staffing with the required knowledge to deliver local and/or
+Province-Wide CDM programs (currently offered through the IESO) should policy change
+and local distribution companies be provided a path for greater program activity? If yes,
+please discuss how these staff have been incorporated into other business functions, and
+the ease with which they could manage additional responsibilities should they be required.
+```
+
+**Response**
+
+```
+Table 1 below describes FTE staffing levels in the system planning group during the current rate
+period and the proposed 2025-2029 rate period.
+Table 1: FTE Staffing Levels in System Planning – 2020 to 2029
+Segment Name
+Actuals
+Bridge
+Forecast
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+2029
+System Planning
+62
+70
+81
+82
+98
+105
+115
+119
+120
+120
+
+Toronto Hydro cannot provide the requested breakdown as the System Planning program does not
+have a dedicated pool of resources allocated to energy transition. Over the next rate period, Toronto
+Hydro’s system investment needs are growing and the challenges of system planning are becoming
+more complex due to energy transition and other interrelated drivers described in the evidence at
+Exhibit 2B. To deal effectively with these System Planning needs and challenges, Toronto Hydro must
+increase resourcing in this area by 38 FTEs over the next rate term, for the reasons that follow.
+Increasing Capital Work Volume: By far the most significant driver of this increase is the general
+increase in capital work across the Growth, Sustainment, and Modernization programs (detailed
+throughout Exhibit 2B, Section E), driven in part, but not exclusively by, the energy transition. With
+an 47% increase in capital investment across the various system investment programs, there is a
+correlating need to scale-up the available pool of engineering and analyst resources who are
+responsible for studying the system, identifying projects, developing those projects into detailed
+scopes of work, and advising on changes to the projects as they move through design and execution.
+Toronto Hydro will also need greater support in the Records Management area to keep pace with
+the higher volume of changes in asset information related to the completion of incremental capital
+work. While none of these incremental positions will be “dedicated” to the energy transition, they
+will all be contributing to ensuring that Toronto Hydro is able to facilitate customers’ increased and
+evolving use of electricity. They will be part of an expanded pool of resources dealing with a volume
+of work that is greater in part because of the demands of electrification, decarbonization, and
+Distributed Energy Resource (“DER”) proliferation. Figure 1 in Exhibit 4, Tab 2, Schedule 9 shows the
+expected increase in the value of scopes of work and demand program expenditures (primarily
+customer connections and generation connections) in 2025-2029.
+Grid Modernization and Continuous Improvement in Asset Management: The other driver of this
+increase is the need to adequately support the modernization efforts detailed throughout Toronto
+Hydro’s DSP. Toronto Hydro has outlined various plans to accelerate its efforts to apply technology,
+innovation, and best practices to enhance the value derived from its assets (“asset performance”)
+and its Asset Management System (“asset management capabilities”). These efforts are broadly
+outlined in Exhibit 2B, Section D1.2.1.1, and further 
+```
+
+verdict: correct
+label-for-query: yes
+
+## 15. 2B-STAFF-161  (doc `rds-846609`, pp. 175-175)
 
 - gold (response) exhibits: **2B**
 - reference-line exhibits: 2B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=1740
+- PDF: http://localhost:3077/api/pdf/rds-846609#page=175
 
 **Question (as filed)**
 
@@ -1139,11 +1488,11 @@ Exhibit 2B, Section D5.2.1 and Sections E5.4, E6.6, and E7.3.
 verdict: correct
 label-for-query: yes
 
-## 16. 1B-PP-12  (doc `th-consolidated-interrogatory-responses`, pp. 780-780)
+## 16. 1B-PP-12  (doc `rds-867626`, pp. 54-54)
 
 - gold (response) exhibits: **1B**
 - reference-line exhibits: -
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=780
+- PDF: http://localhost:3077/api/pdf/rds-867626#page=54
 
 **Question (as filed)**
 
@@ -1191,11 +1540,11 @@ such as microgrids technologies”.
 verdict: correct
 label-for-query: yes
 
-## 17. 1B-CCC-37  (doc `th-consolidated-interrogatory-responses`, pp. 598-602)
+## 17. 1B-CCC-37  (doc `rds-843530`, pp. 361-365)
 
 - gold (response) exhibits: **4, 2B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=598
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=361
 
 **Question (as filed)**
 
@@ -1212,6 +1561,15 @@ Stations Expansion, Load Demand, Non-Wires Solutions, Generation Protection Moni
 and Control and Externally-initiated Plant Relocations and Expansions. Also, please provide
 the forecast and actual revenue requirement that would have been dealt with through the
 DRVA Expenditure sub-account had one been in place for that period;
+b) For each year 2025-2029 please provide the proposed revenue requirement for each of the
+programs listed in a). In effect, what is the proposed revenue requirement that will be the
+subject of the DRVA Expenditure Variance sub-account?
+c) For the period 2020-2024 please provide the forecast and actual revenue that would
+have been dealt with through the DRVA Variance sub-account had one been in place for
+that period
+7 Rounding variances may exist
+d) For each year 2025-2029 please provide the forecast revenue that will be the subject of the
+DRVA Revenue Variance sub-account.
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -1228,6 +1586,15 @@ Stations Expansion, Load Demand, Non-Wires Solutions, Generation Protection Moni
 and Control and Externally-initiated Plant Relocations and Expansions. Also, please provide
 the forecast and actual revenue requirement that would have been dealt with through the
 DRVA Expenditure sub-account had one been in place for that period;
+b) For each year 2025-2029 please provide the proposed revenue requirement for each of the
+programs listed in a). In effect, what is the proposed revenue requirement that will be the
+subject of the DRVA Expenditure Variance sub-account?
+c) For the period 2020-2024 please provide the forecast and actual revenue that would
+have been dealt with through the DRVA Variance sub-account had one been in place for
+that period
+7 Rounding variances may exist
+d) For each year 2025-2029 please provide the forecast revenue that will be the subject of the
+DRVA Revenue Variance
 ```
 
 **Response**
@@ -1392,14 +1759,14 @@ OM&A Segments
 20
 ```
 
-verdict: wrong (exhibits appear as table row labels for segments, not as where the requested figures are; parts (b)-(d) in response)
+verdict: wrong (exhibits appear as table row labels for segments, not as where the requested figures are; a response footnote, '7 Rounding variances may exist', sits in the question field)
 label-for-query: no (same reason)
 
-## 18. 1B-STAFF-19  (doc `th-consolidated-interrogatory-responses`, pp. 287-290)
+## 18. 1B-STAFF-19  (doc `rds-843530`, pp. 50-53)
 
 - gold (response) exhibits: **1B**
 - reference-line exhibits: 1B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=287
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=50
 
 **Question (as filed)**
 
@@ -1446,6 +1813,9 @@ discontinued.
 5.There would, additionally be an Innovation Fund, a Getting Ontario
 Connected Act Variance Account, and PIM tied to customer service quality
 and various policy goals.
+b) Does Toronto Hydro mean that each of these changes is individually consistent with
+industry trends or instead that many of these changes are consistent with industry trends?
+c) Is Toronto Hydro stating that ratemaking in North America
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -1496,45 +1866,31 @@ ii.
 3) Confirm.
 4) Confirm.
 5) Confirm.
-QUESTION (B):
-b) Does Toronto Hydro mean that each of these changes is individually consistent with
-industry trends or instead that many of these changes are consistent with industry trends?
 
 ScottMadden did not evaluate industry trends. Instead, ScottMadden evaluated Toronto Hydro’s
 proposed custom IR plan for its relative consistency with other electric utility ratemaking
 frameworks and practices that support a clean energy transition. Please refer to the response to
 1B-EP-23, part (a).
-QUESTION (C):
-c) Is Toronto Hydro stating that ratemaking in North America is moving away from the use of
-price and productivity indexing to escalate OM&A revenue and towards its escalation
-based on forecasts? If so, please substantiate.
 
 ScottMadden did not evaluate industry trends. Instead, ScottMadden evaluated Toronto Hydro’s
 proposed custom IR plan for its relative consistency with other electric utility ratemaking
 frameworks and practices that support a clean energy transition. Please refer to the response to
 1B-EP-23, part (a).
-QUESTION (D):
-d) Is Toronto Hydro stating that that ratemaking in North America is moving towards variance
-account treatment of most costs of demand growth, including the traditional costs of
-customer connections, billing, and collection? If so, please substantiate.
 
 ScottMadden did not evaluate trends in variance account treatment. Please refer to the response
 to 1B-EP-23, part (a).
-QUESTION (E):
-e) Please list the approved multi-year rate plans that Toronto Hydro thinks are most similar to
-Toronto Hydro’s proposed CRCI plan and explain the similarities and differences.
 
 Please refer to Figure 1 in Exhibit 1B-2-1 Appendix A, (Review of Rate Framework), pp. 5-6.
 ```
 
-verdict: wrong (question holds only part (a); parts (b)-(e) are in the response field)
-label-for-query: no (gold 1B is cited only in the answer to part (e))
+verdict: correct
+label-for-query: yes
 
-## 19. 1B-STAFF-16  (doc `th-consolidated-interrogatory-responses`, pp. 274-278)
+## 19. 1B-STAFF-16  (doc `rds-843530`, pp. 37-41)
 
 - gold (response) exhibits: **2B, 4, 1B**
 - reference-line exhibits: -
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=274
+- PDF: http://localhost:3077/api/pdf/rds-843530#page=37
 
 **Question (as filed)**
 
@@ -1546,6 +1902,8 @@ improvement and cost control targets must be included in the application.”
 a) Please describe Toronto Hydro’s proposals for continuous improvement within the rate
 term, with specific reference to its preference for targets to be established on a five-year
 basis rather than annually, as noted at page 31 of Reference 2.
+b) What commitments, if any, does Toronto Hydro make to customers about improvements in
+cost and service performance to be achieved within the five-year term?
 ```
 
 **Query used for retrieval (locations stripped)**
@@ -1557,6 +1915,8 @@ improvement and cost control targets must be included in the application.”
 a) Please describe Toronto Hydro’s proposals for continuous improvement within the rate
 term, with specific reference to its preference for targets to be established on a five-year
 basis rather than annually, as noted at of Reference 2.
+b) What commitments, if any, does Toronto Hydro make to customers about improvements in
+cost and service performance to be achieved within the five-year term?
 ```
 
 **Response**
@@ -1615,74 +1975,54 @@ asset data and related data sources to support improved analytics & asset
 manageme
 ```
 
-verdict: wrong (question holds only part (a); part (b) is in the response field)
+verdict: correct
 label-for-query: yes
 
-## 20. 2B-AMPCO-27  (doc `th-consolidated-interrogatory-responses`, pp. 2094-2096)
+## 20. 2B-AMPCO-28  (doc `rds-843534`, pp. 27-29)
 
-- gold (response) exhibits: **2B**
+- gold (response) exhibits: **2B, 4**
 - reference-line exhibits: 2B
-- PDF: http://localhost:3077/api/pdf/th-consolidated-interrogatory-responses#page=2094
+- PDF: http://localhost:3077/api/pdf/rds-843534#page=27
 
 **Question (as filed)**
 
 ```
-As part of the IPPR process, Toronto Hydro monitors and reports on the progress of capital
-programs, which includes program level expenditures, project-specific execution status and project
-expenditures.
-Over the period 2020-2023, please provide the list of material projects/programs that performed
-poorly over 2020-2023, explain why and provide the key lessons learned for execution of the 2025-
-2029 portfolio.
+AMPCO seeks to further understand how Toronto Hydro prioritizes projects comparatively at the
+project and portfolio level. Is this a manual or automated process? How did Toronto Hydro
+optimize its project portfolio?
 ```
 
 **Query used for retrieval (locations stripped)**
 
 ```
-As part of the IPPR process, Toronto Hydro monitors and reports on the progress of capital
-programs, which includes program level expenditures, project-specific execution status and project
-expenditures.
-Over the period 2020-2023, please provide the list of material projects/programs that performed
-poorly over 2020-2023, explain why and provide the key lessons learned for execution of the 2025-
-2029 portfolio.
+AMPCO seeks to further understand how Toronto Hydro prioritizes projects comparatively at the
+project and portfolio level. Is this a manual or automated process? How did Toronto Hydro
+optimize its project portfolio?
 ```
 
 **Response**
 
 ```
-Toronto Hydro does not have a definition for “poor performing” programs/projects. Project costs
-and program completion rates may vary from initial estimates and plan lines due to myriad factors,
-including unforeseen challenges during execution.
-All projects are reviewed at a project level for adherence to plan. As mentioned in Exhibit 2B,
-Section D1.2.3, Toronto Hydro monitors changes to projects through a change management and
-governance process. This process includes the change request process, project variance analysis,
-and numerous metrics to drive process adherence and continuous improvement. For further
-details on the project variance analysis process refer to the response to interrogatory 2B-AMPCO-
-29 part (d).
-Toronto Hydro’s integrated, portfolio-based forecasting and planning processes focus on delivery
-over the five years of the utility’s Distribution System Plan period, allowing for adjustments to be
-made when the utility finds that long-term program execution is not on track. Additionally, part of
-the Investment Planning and Portfolio Reporting (“IPPR”) process is to review spend variances of
-10% and $1 million (over or under) from the previous year in order review common drivers,
-emerging issues, and process adherence, and to encourage continuous improvement at all stages
-of planning and execution. Portfolio targets may be adjusted based on new findings and emerging
-requirements as part of the IPPR process. As work is being executed, the work mix can be adjusted
-for multiple reasons such as resource availability, changes in priority, or emerging urgent work. All
-of these processes provide continuous feedback to the planning teams on lessons learned during
-execution that are then reviewed and considered as part of future work planning, and Toronto
-Hydro expects these improvements to benefit execution of the 2025-2029 portfolio.
-One recent process improvement included updating the checklist that planners use to ensure
-inclusion of all expected costs. This list is updated based on execution variances and challenges
-identified through the project variance analysis process. The utility has also introduced additional
-review steps to confirm inclusion of all expected costs in estimates during the hand-off from
-planning to program management. Another improvement based on recent experience is an
-ongoing review of the material management process and its alignment with the project execution
-process. This review has identified the need to start the procurement process earlier in the
-planning process, for key material with long lead times (>1 year), in advance of the formal design
-phase to reduce cycle time for project execution.
-Toronto Hydro also expects its implementation of an Engineering Asset Investment Planning
-(“EAIP”) tool will improve transparency and reporting with respect to project portfolios and create
-new opportunities to enhance program execution effectiveness in the 2025-2029 period. Please
-see Exhibit 2B, Section D1, page 14 fo
+Details on Toronto Hydro’s project prioritization are discussed in Exhibit 2B, Section D1.2.1.4, page
+23, and Exhibit 2B, Section D1.2.3, page 25. This process is currently manual and is managed as part
+of Toronto Hydro’s Program Management and Execution process, particularly the Execution Work
+Program (“EWP”) as discussed in Exhibit 4, Tab 2, Schedule 9, Section 8.
+The development of the EWP is iterative in nature and involves continuous coordination between
+program managers and system planners to ensure alignment with strategic objectives. Planning
+teams assign priority levels to their projects that are then considered along with factors such as
+project labour requirements, schedules and resources to determine the prioritized mix of projects
+to be executed in a given year. As part of the forecasting process high and medium priority projects
+are assigned for execution ahead of low priority projects. The EWP forecasting process includes a
+daily consolidation of inputs from all operations teams to provide visibility on the project selection
+alignment to the portfolio targets and inclusion of all high priority projects. This consolidation is
+reviewed throughout the EWP forecasting process with key stakeholders to adjust and align the
+forecast selection to the portfolio targets as closely as possible while still considering program
+execution constraints.
+Toronto Hydro’s process for project prioritization is anticipated to evolve once its new EAIP
+optimization tool has been embedded as part of its business planning process.
+Note that Toronto Hydro’s 2025-2029 investment plan is not based on project details.
+RESPONSES TO ASSOCIATION OF MAJOR POWER CONSUMERS IN ONTARIO
+INTERROGATORIES
 ```
 
 verdict: correct

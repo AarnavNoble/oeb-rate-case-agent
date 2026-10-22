@@ -1,0 +1,167 @@
+{
+  "ir_id": "2B-ED-29",
+  "gold_exhibits": [
+    "1B",
+    "2B"
+  ],
+  "query": "a) Please comment on the potential for car batteries to be used to reduce building loads with\nbi-directional chargers at the time of distribution peaks and thus reduce the need for\ndistribution infrastructure.\nb) Please describe all steps Toronto Hydro is taking to (a) assist its customers in installing or\npurchasing electric vehicle chargers and (b) install electric vehicle chargers for its own use.\nc) With respect to Toronto Hydro\u2019s efforts to install electric vehicle chargers, what proportion\nwill be bi-directional chargers?\nd) Nova Scotia Power is undertaking a bi-directional charger pilot project involving 20 bi-\ndirectional chargers of 4 different types. David Landrigan, vice-president of commercial for\nNova Scotia Power stated as follows: \u201cI think we can call it a game-changing resource\u201d.\nWould Toronto Hydro consider a similar pilot? Would this require additional regulatory\napprovals if it were to occur prior to 2029?\n1 https://www.torontohydro.com/documents/20143/193303016/climate-action-plan-2023-status-report.pdf\ne) The following utilities are piloting bi-directional chargers:\n\u2022\nSan Diego Gas & Electric in California (10 V2G busses, 25 kW/bus, 250 kW)\n\u2022\nCon Edison in New York (5 V2G busses, 10 kW/bus, 50 kW)\n\u2022\nEDF Energy in the UK (Customer-facing V2G program based on ABB equipment)\n\u2022\nNational Grid in Rhode Island (Fermata V2G bidirectional pilot, 15-20 kW)\n\u2022\nRoanoke Electric Cooperative in N. Carolina (Fermata V2G system, 15-20 kW)\n\u2022\nGreen Mountain Power in Vermont (Fermata V2G bidirectional pilot, 15-20 kW)\n\u2022\nAustin Energy in Texas (V2G/V2B pilot)\n\u2022\nSnohomish County Public Utility District in Washington State (V2G pilot)\nIs Toronto Hydro considering similar pilots? If not, why not. Would this require additional\nregulatory approvals if it were to occur prior to 2029? Please explain.\nf) Please provide 6 examples of bi-directional charges available in North America (3 AC and 3\nDC) and list their charge/discharge rate (kW) and approximate price. This could include\nchargers from wallbox, dcbel, ABB, Fermata, Siemens, etc.\ng) Please compare the price of bi-directional chargers to one-directional chargers. Is this price\ndifferential expected to decrease?\nh) Please comment on the following potential non-wires-alternative to traditional\ninfrastructure and whether Toronto Hydro would consider pursuing this if cost-effective:\n\u2022\nSchool bus companies incentivized to install V2G bi-directional chargers\n\u2022\nThe bus batteries can be used to serve the grid during distribution peaks\n\u2022\nBusses have big batteries\n\u2022\nCommercial DC chargers are very fast (e.g. 125 kW)\n\u2022\nSchool buses usually plugged in at peak times\n\u2022\nCan help pay for fleet electrification\n\u2022\n20,000+ school buses in Ontario\ni)\nPlease comment on the following potential non-wires-alternative to traditional\ninfrastructure and whether Toronto Hydro would consider pursuing this if cost-effective:\n\u2022\nIncentivize municipalities to use grid-connected bi-directional chargers when\nelectrifying on-street parking and city lots\n\u2022\nLow incremental cost because a new grid connection is likely required regardless\n\u2022\nGrid connection and protection simplified b/c the connection is not shared with\nother loads\n\u2022\nCan leverage existing connections between LDCs and municipalities\n\u2022\nCan be piloted and then implemented at scale\n\u2022\nCan help to support electrification of on-street parking and city lots\nj)\nPlease comment on the following potential non-wires-alternative to traditional\ninfrastructure and whether Toronto Hydro would consider pursuing this if cost-effective:\n\u2022\nKey design elements:\no Consumers offered a $X discount on a bi-directional charger\no Participants must opt-into an EV rate structure\no The strong TOU price signal increases the incentive to charge off-peak and\nto discharge to offset household demand on-peak o Equipment is pre-set\nwith optimal settings (e.g. discharge threshold levels, timing for\ncharging/discharging, etc.)\no Consumer has full control over equipment settings and when to\ncharge/discharge o Charger is vehicle-to-building (i.e. not exporting to the\ngrid)\n\u2022\nConsumer take-up driven by:\no Desire for back-up power\no Desire for high-speed charger (at a discount)\no Reduced household electricity charges from load shifting and load\noffsetting o Upfront incentive payment (i.e. discount on bidirectional\ncharger)\no Marketing and technical advice\no Ability to retain full control over vehicle charging/discharging times\n\u2022\nUtility considerations:\no Reduces distribution peaks and increases reliability\no Very low cost\no No need for expensive or complicated communication equipment, grid\nconnection, active control, or ongoing contractual arrangements/payments\no Demand reductions must be modelled in aggregate, similar to CDM\nprograms because the resource is not dispatchable\nk) Please comment on the following reasons why bi-directional chargers should be a priority\nand could be a lost opportunity if not pursued early:\n\u2022\nIt is cheaper to incentivize bi-directional charging sooner, before millions of\n\u201cdumb\u201d and \u201cone-directional\u201d chargers are purchased\n\u2022\nAbout 1 million customers will start charging EVs at home between now and 2030;\nmany commercial EV chargers will be purchased over that time\n\u2022\nThe opportunity to upgrade to bi-directional chargers is greatest before the initial\npurchase (i.e. the incremental cost is lowest)\n\u2022\nThe lead time for a vehicle-to-building/grid program is likely long (needs OEB policy\nchanges, LDC program development, program approval by OEB, etc.)\nl)\nDoes Toronto Hydro have an EV Charging Station Technical Installation Guide akin to this\none from Hydro Quebec: https://www.hydroquebec.com/data/electrification-\ntransport/pdf/technical-guide.pdf If not, why not? Is one under consideration?",
+  "answer": "**Short answer:** The Toronto Hydro filing (EB-2023-0195) only partly answers these questions. It supports a general discussion of V2G, the existing EV pilots, the proposed Innovation Fund, and the utility's own fleet. It says nothing on bi-directional charger models or prices, the share of its own chargers that are bi-directional, the specific non-wires concepts in (h)\u2013(j), or a Hydro Quebec-style installation guide. I haven't drawn on the Hydro One filing, because the questions are addressed to Toronto Hydro. I also haven't used outside knowledge for charger specs or prices. Those answers would need to come from Toronto Hydro itself or from vendor sources.\n\n**a) Potential of car batteries to reduce peaks**\n- Toronto Hydro's modelling treats smart charging and V2G as flexibility options. They move demand away from peak, and V2G lets cars \"discharge to the network at times of high demand, effectively acting as grid storage units\" [cite:rds-823163:560].\n- The utility says EVs, especially in high concentrations, can overload secondary transformers and stress overhead conductors and underground cables. It says managing EV load, and potentially discharge, could serve as a non-wires solution in place of grid expansion [cite:rds-823236:476].\n- Its V2G uptake scenarios are described as \"conservative due to high costs of bi-directional chargers and current limitations around the business case\". The Low scenario has no V2G. In the High scenario, V2G uptake starts immediately and all EVs charge flexibly from 2030 [cite:rds-823163:631] [cite:rds-823163:632].\n- The filing does not quantify the avoided infrastructure.\n\n**b) Steps to help customers install EV chargers, and to install chargers for its own use**\n- **Customers:**\n  - I found no customer charger purchase or installation incentive program.\n  - The filing describes an EV Smart Charging Pilot with Plug'n Drive and Elocity. It studies charging patterns and supports tools for EV owners to monitor, schedule and control charging [cite:rds-823163:692].\n  - Phase 1 tested adding internet-connected on/off devices to simple chargers [cite:rds-823163:736].\n  - Toronto Hydro is also budgeting more contact-centre staff to handle EV inquiries about service upgrades, installing or troubleshooting charging stations, pricing plans, and on-street charging [cite:rds-832675:415].\n  - It identifies EV charging for public streets, City and TTC fleets, Toronto Parking Authority lots, and homes as growth areas it serves [cite:rds-847604:90].\n- **Own use:**\n  - Toronto Hydro owns 13 electric and 20 hybrid light-duty vehicles. It plans to keep buying electric or hybrid light-duty vehicles at a measured pace [cite:rds-823163:748].\n  - A faster fleet-electrification option was considered. It would replace all light-duty vehicles and 20 heavy-duty vehicles with electric or hybrid vehicles [cite:rds-823164:786].\n  - I did not find a description of the chargers it will install for its own fleet.\n\n**c) Share of its own chargers that are bi-directional**\nThe filings I can access do not state this.\n\n**d) and e) Would Toronto Hydro pilot V2G or V2B? Would that need approvals before 2029?**\n- Toronto Hydro has proposed an Innovation Fund of about $16M (0.3% of revenue requirement) for 2025\u20132029. It would be collected through a rate rider and tracked in a new variance account [cite:rds-823236:455] [cite:rds-823236:470].\n- The fund's four pilot concepts include an EV Demand Response pilot and an EV Commercial Fleet pilot. The EV Demand Response pilot explicitly contemplates \"coordinated charging and potential discharging of EV batteries\", i.e. V2G [cite:rds-823236:476]. The fleet pilot lists V2G among the flexibility services it could test [cite:rds-823236:474].\n- The pilots are concepts, not committed projects. Specific pilots would be selected later through the fund's governance framework [cite:rds-823236:463].\n- On approvals, Toronto Hydro seeks OEB approval for the fund and its governance framework, not for individual pilots [cite:rds-823236:459]. Whether a V2G pilot would need further approval depends on the final OEB decision on the fund. I can't tell from the filings whether it would.\n- Nova Scotia Power appears only as running a utility-controlled smart charging pilot [cite:rds-823163:631]. Toronto Hydro does not mention the other utilities listed in (e), and the filing contains no commitment to replicate them.\n\n**f) and g) Six chargers with kW ratings and prices, and the price gap with one-directional chargers**\nThe filings contain no charger models, ratings or prices. They say only that bi-directional charger costs are high, which limits the V2G business case [cite:rds-823163:631]. I can't say whether the price gap is expected to narrow.\n\n**h), i) and j) Proposed non-wires alternatives (school buses, municipal chargers, V2B discount with an EV rate)**\n- None of these specific concepts appears in the filing.\n- The closest items are the EV Commercial Fleet pilot, which works with major fleet operators and could test V2G [cite:rds-823236:474], and the EV Demand Response pilot [cite:rds-823236:476].\n- The planned expansion of Local Demand Response into a broader Flexibility Services program is also relevant. It would procure up to 30 MW of demand response, including customer-owned DERs [cite:rds-823163:692].\n- Toronto Hydro's stated criteria for choosing pilots are business value, feasibility within the rate period, scalability, and leveraging external funding [cite:rds-823236:463]. A cost-effective concept could be considered on that basis, but the filing makes no commitment.\n- For (j), the filing notes that Toronto Hydro assumes EV owners smart-charge in response to the Ultra-Low Overnight rate [cite:rds-823165:94].\n\n**k) Whether bi-directional chargers are a priority and a lost opportunity if delayed**\n- The filing doesn't address this argument directly.\n- It does say Toronto Hydro expects the EV DR pilot to inform a full-scale program, and that significant EV uptake is expected over the next 10\u201330 years [cite:rds-823163:736].\n- Toronto Hydro's own forecast is 220,000 light-duty EVs in Toronto by 2030 [cite:rds-823165:21]. That is a Toronto figure, not the \"1 million customers\" in your premise.\n\n**l) Technical installation guide like Hydro Quebec's**\nI found no such guide in the filings and no statement about whether one is under consideration.\n\nThis looks like an interrogatory set. The unanswered parts (c, f, g, the specifics of h\u2013j, k, l) would need to go to Toronto Hydro as written questions. I can search the Hydro One filing (EB-2026-0164) for comparison if that would help.",
+  "answer_rendered": "**Short answer:** The Toronto Hydro filing (EB-2023-0195) only partly answers these questions. It supports a general discussion of V2G, the existing EV pilots, the proposed Innovation Fund, and the utility's own fleet. It says nothing on bi-directional charger models or prices, the share of its own chargers that are bi-directional, the specific non-wires concepts in (h)\u2013(j), or a Hydro Quebec-style installation guide. I haven't drawn on the Hydro One filing, because the questions are addressed to Toronto Hydro. I also haven't used outside knowledge for charger specs or prices. Those answers would need to come from Toronto Hydro itself or from vendor sources.\n\n**a) Potential of car batteries to reduce peaks**\n- Toronto Hydro's modelling treats smart charging and V2G as flexibility options. They move demand away from peak, and V2G lets cars \"discharge to the network at times of high demand, effectively acting as grid storage units\" [EB-2023-0195 / Exhibit 2B / p.560].\n- The utility says EVs, especially in high concentrations, can overload secondary transformers and stress overhead conductors and underground cables. It says managing EV load, and potentially discharge, could serve as a non-wires solution in place of grid expansion [EB-2023-0195 / Exhibit 1B / p.476].\n- Its V2G uptake scenarios are described as \"conservative due to high costs of bi-directional chargers and current limitations around the business case\". The Low scenario has no V2G. In the High scenario, V2G uptake starts immediately and all EVs charge flexibly from 2030 [EB-2023-0195 / Exhibit 2B / p.631] [EB-2023-0195 / Exhibit 2B / p.632].\n- The filing does not quantify the avoided infrastructure.\n\n**b) Steps to help customers install EV chargers, and to install chargers for its own use**\n- **Customers:**\n  - I found no customer charger purchase or installation incentive program.\n  - The filing describes an EV Smart Charging Pilot with Plug'n Drive and Elocity. It studies charging patterns and supports tools for EV owners to monitor, schedule and control charging [EB-2023-0195 / Exhibit 2B / p.692].\n  - Phase 1 tested adding internet-connected on/off devices to simple chargers [EB-2023-0195 / Exhibit 2B / p.736].\n  - Toronto Hydro is also budgeting more contact-centre staff to handle EV inquiries about service upgrades, installing or troubleshooting charging stations, pricing plans, and on-street charging [EB-2023-0195 / Exhibit 4 / p.415].\n  - It identifies EV charging for public streets, City and TTC fleets, Toronto Parking Authority lots, and homes as growth areas it serves [EB-2023-0195 / Exhibit 1B / p.90].\n- **Own use:**\n  - Toronto Hydro owns 13 electric and 20 hybrid light-duty vehicles. It plans to keep buying electric or hybrid light-duty vehicles at a measured pace [EB-2023-0195 / Exhibit 2B / p.748].\n  - A faster fleet-electrification option was considered. It would replace all light-duty vehicles and 20 heavy-duty vehicles with electric or hybrid vehicles [EB-2023-0195 / Exhibit 2B / p.786].\n  - I did not find a description of the chargers it will install for its own fleet.\n\n**c) Share of its own chargers that are bi-directional**\nThe filings I can access do not state this.\n\n**d) and e) Would Toronto Hydro pilot V2G or V2B? Would that need approvals before 2029?**\n- Toronto Hydro has proposed an Innovation Fund of about $16M (0.3% of revenue requirement) for 2025\u20132029. It would be collected through a rate rider and tracked in a new variance account [EB-2023-0195 / Exhibit 1B / p.455] [EB-2023-0195 / Exhibit 1B / p.470].\n- The fund's four pilot concepts include an EV Demand Response pilot and an EV Commercial Fleet pilot. The EV Demand Response pilot explicitly contemplates \"coordinated charging and potential discharging of EV batteries\", i.e. V2G [EB-2023-0195 / Exhibit 1B / p.476]. The fleet pilot lists V2G among the flexibility services it could test [EB-2023-0195 / Exhibit 1B / p.474].\n- The pilots are concepts, not committed projects. Specific pilots would be selected later through the fund's governance framework [EB-2023-0195 / Exhibit 1B / p.463].\n- On approvals, Toronto Hydro seeks OEB approval for the fund and its governance framework, not for individual pilots [EB-2023-0195 / Exhibit 1B / p.459]. Whether a V2G pilot would need further approval depends on the final OEB decision on the fund. I can't tell from the filings whether it would.\n- Nova Scotia Power appears only as running a utility-controlled smart charging pilot [EB-2023-0195 / Exhibit 2B / p.631]. Toronto Hydro does not mention the other utilities listed in (e), and the filing contains no commitment to replicate them.\n\n**f) and g) Six chargers with kW ratings and prices, and the price gap with one-directional chargers**\nThe filings contain no charger models, ratings or prices. They say only that bi-directional charger costs are high, which limits the V2G business case [EB-2023-0195 / Exhibit 2B / p.631]. I can't say whether the price gap is expected to narrow.\n\n**h), i) and j) Proposed non-wires alternatives (school buses, municipal chargers, V2B discount with an EV rate)**\n- None of these specific concepts appears in the filing.\n- The closest items are the EV Commercial Fleet pilot, which works with major fleet operators and could test V2G [EB-2023-0195 / Exhibit 1B / p.474], and the EV Demand Response pilot [EB-2023-0195 / Exhibit 1B / p.476].\n- The planned expansion of Local Demand Response into a broader Flexibility Services program is also relevant. It would procure up to 30 MW of demand response, including customer-owned DERs [EB-2023-0195 / Exhibit 2B / p.692].\n- Toronto Hydro's stated criteria for choosing pilots are business value, feasibility within the rate period, scalability, and leveraging external funding [EB-2023-0195 / Exhibit 1B / p.463]. A cost-effective concept could be considered on that basis, but the filing makes no commitment.\n- For (j), the filing notes that Toronto Hydro assumes EV owners smart-charge in response to the Ultra-Low Overnight rate [EB-2023-0195 / Exhibit 3 / p.94].\n\n**k) Whether bi-directional chargers are a priority and a lost opportunity if delayed**\n- The filing doesn't address this argument directly.\n- It does say Toronto Hydro expects the EV DR pilot to inform a full-scale program, and that significant EV uptake is expected over the next 10\u201330 years [EB-2023-0195 / Exhibit 2B / p.736].\n- Toronto Hydro's own forecast is 220,000 light-duty EVs in Toronto by 2030 [EB-2023-0195 / Exhibit 3 / p.21]. That is a Toronto figure, not the \"1 million customers\" in your premise.\n\n**l) Technical installation guide like Hydro Quebec's**\nI found no such guide in the filings and no statement about whether one is under consideration.\n\nThis looks like an interrogatory set. The unanswered parts (c, f, g, the specifics of h\u2013j, k, l) would need to go to Toronto Hydro as written questions. I can search the Hydro One filing (EB-2026-0164) for comparison if that would help.",
+  "citations": [
+    {
+      "doc_id": "rds-823163",
+      "page": 560,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 476,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 631,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 632,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 692,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 736,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-832675",
+      "page": 415,
+      "case_number": "EB-2023-0195",
+      "exhibit": "4",
+      "title": "THESL_Exhibit 4_Operating Expenses_20240124",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 90,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823163",
+      "page": 748,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Asset Management Process_Part2of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 786,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 455,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 470,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 474,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 463,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 459,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 94,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823165",
+      "page": 21,
+      "case_number": "EB-2023-0195",
+      "exhibit": "3",
+      "title": "THESL_Exhibit 3_Operating Revenue_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B",
+    "3",
+    "4"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 8,
+  "num_turns": 9,
+  "seconds": 35.1,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.27865379999999995,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate matches the reference on several points: V2G has future potential, any pilots would go through the Innovation Fund, the evidence gives no charger models or prices, and Toronto Hydro has no installation guide. It also correctly notes that the utility's own fleet chargers come with its fleet electrification. However, it misses key positions in the reference. Toronto Hydro has looked at bi-directional charging for its own fleet and found the technology not ready (part c). It would use bi-directional chargers as demand response once aggregated volumes provide grid value. On customer support, the reference cites its website guidance and help through the connections process.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0621516
+  }
+}

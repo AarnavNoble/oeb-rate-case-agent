@@ -40,6 +40,35 @@ def test_split_irs_labels_from_response():
     assert (b.page_start, b.page_end) == (2, 2)
 
 
+PAGE_MULTIPART = """INTERROGATORY 2B-VECC-13
+Reference: Exhibit 2B, Section E5.4
+QUESTION (A):
+a) Please provide the number of new meters installed by year.
+RESPONSE (A):
+Please see Table 1 below.
+QUESTION (B):
+b) What strategy avoids a repeat of the bunching up of expired meters?
+RESPONSE (B):
+As noted in Exhibit 4, Tab 2, Schedule 1, meters are replaced over five years.
+2 EB-2018-0165, Exhibit 2B, Section E5.4; see especially page 16.
+"""
+
+
+def test_multipart_ir_keeps_later_questions_out_of_response():
+    (row,) = split_irs("doc", [(1, PAGE_MULTIPART)], VALID, "EB-2023-0195")
+    assert "a) Please provide" in row.question and "b) What strategy" in row.question
+    assert "QUESTION" not in row.response and "b) What strategy" not in row.response
+    assert row.response.startswith("Please see Table 1") and "replaced over five years" in row.response
+
+
+def test_exhibits_of_other_proceedings_are_not_gold():
+    (row,) = split_irs("doc", [(1, PAGE_MULTIPART)], VALID, "EB-2023-0195")
+    assert row.response_exhibits == ["4"]  # 'EB-2018-0165, Exhibit 2B' is the previous rate case
+    assert row.response_units == ["4||2|1"]
+    same_case = PAGE_MULTIPART.replace("EB-2018-0165", "EB-2023-0195")
+    assert split_irs("doc", [(1, same_case)], VALID, "EB-2023-0195")[0].response_exhibits == ["4", "2B"]
+
+
 def test_units_and_matching():
     rows = split_irs("doc", [(1, PAGE_1)], VALID)
     assert rows[0].response_units == ["2B|E6||", "4||2|1"]

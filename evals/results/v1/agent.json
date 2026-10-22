@@ -1,0 +1,21 @@
+{
+  "n": 20,
+  "agent_model": "claude-sonnet-5-5",
+  "judge_model": "claude-opus-5-5",
+  "citation_accuracy": 0.9,
+  "citation_unit_accuracy": 0.75,
+  "n_unit": 20,
+  "answers_with_citations": 1.0,
+  "unverified_citation_rate": 0.0,
+  "verdicts": {
+    "correct": 7,
+    "abstained": 4,
+    "partially_correct": 8,
+    "incorrect": 1
+  },
+  "correct_rate": 0.35,
+  "correct_or_partial_rate": 0.75,
+  "median_seconds": 26.7,
+  "median_tool_calls": 6,
+  "cost_usd_equivalent_total": 4.95
+}

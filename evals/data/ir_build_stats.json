@@ -1,10 +1,10 @@
 {
   "case": "EB-2023-0195",
-  "ir_documents_parsed": 21,
-  "ir_blocks_found": 1360,
+  "ir_documents_parsed": 41,
+  "ir_blocks_found": 2828,
   "unique_irs": 938,
-  "with_response_exhibit_ref": 474,
-  "labelled_rows": 472,
+  "with_response_exhibit_ref": 470,
+  "labelled_rows": 470,
   "heldout_rows": 20,
   "valid_evidence_exhibits": [
     "1A",
@@ -23,23 +23,23 @@
   "gold_exhibit_counts": [
     [
       "2B",
-      285
+      283
     ],
     [
       "1B",
-      135
+      134
     ],
     [
       "4",
-      116
+      114
     ],
     [
       "3",
-      36
+      38
     ],
     [
       "2A",
-      30
+      29
     ],
     [
       "9",
@@ -55,7 +55,7 @@
     ],
     [
       "7",
-      7
+      5
     ],
     [
       "5",
@@ -70,7 +70,7 @@
       1
     ]
   ],
-  "gold_equals_ir_exhibit_share": 0.513,
+  "gold_equals_ir_exhibit_share": 0.511,
   "intervenors": [
     [
       "STAFF",
@@ -78,7 +78,7 @@
     ],
     [
       "SEC",
-      69
+      68
     ],
     [
       "CCC",
@@ -86,7 +86,7 @@
     ],
     [
       "AMPCO",
-      38
+      37
     ],
     [
       "PP",
@@ -94,11 +94,11 @@
     ],
     [
       "VECC",
-      30
+      29
     ],
     [
       "ED",
-      26
+      27
     ],
     [
       "EP",

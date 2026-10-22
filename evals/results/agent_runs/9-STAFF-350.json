@@ -1,0 +1,76 @@
+{
+  "ir_id": "9-STAFF-350",
+  "gold_exhibits": [
+    "9"
+  ],
+  "query": "Toronto Hydro stated that it is not proposing to dispose any residual balances in Account 1595.\nToronto Hydro stated that it does not have any sub-accounts that have not already been approved\nfor disposition and no sub-account will meet the two-year requirement for 2025 disposition.\nHowever, OEB staff notes that DVA balances were cleared in Toronto Hydro\u2019s 2021 Custom IR\nUpdate decision and Account 1595 (2021) would be eligible for disposition in the current\nproceeding, consistent with the OEB\u2019s filing requirements. Toronto Hydro\u2019s rate riders were to be\nin effect over a one-year period from January 1 to December 31, 2021, relating to its 2021 Custom\nIR Update decision.\nThe OEB\u2019s filing requirements state that distributors become eligible to seek disposition of residual\nbalances two years after the expiry of the rate rider.\nConsistent with the filing requirements, if the 2021 rate riders expired on December 31, 2021, the\nbalance of sub-account 1595 (2021) is eligible to be disposed after the account balance as at\nDecember 31, 2023 has been audited. Therefore, sub-account 1595 (2021) would be eligible for\ndisposition in the 2025 rate year, as the respective balance has been audited.\na) Please update all evidence that relates to the disposition of Account 1595 (2021).\nb) If there is a material residual balance being proposed for disposition, please provide a\ndetailed explanation, including quantifying any significant drivers of the residual balance.",
+  "answer": "I can't answer parts (a) and (b) from the filings available to me. They don't contain Toronto Hydro's response to this question or a separate 2021 sub-account figure for Account 1595. So I can't give you updated evidence or a quantified residual-balance explanation. I'd be inventing numbers if I did.\n\n**What the filings show**\n\n- **Original position.** The November 2023 filing says Toronto Hydro \"will not be proposing to dispose any residual balances in Account 1595.\" Its reason is that any sub-accounts not already approved for disposition \"will not meet the 2-year requirement for 2025 disposition\" [cite:rds-823176:28]. The December 2023 version of Exhibit 9 repeats this [cite:rds-828907:28].\n- **Evidence update (April 2, 2024).** Account 1595 (RARA) is still shown as \"No\" for proposed disposition and \"Yes\" for continuation. The balance is $(37.0)M principal and $(14.2)M carrying charges, for $(51.1)M in total at Dec 31, 2023. The table shows only the total account, not a 2021 sub-account [cite:rds-847604:44].\n- **Earlier snapshot.** At Dec 31, 2022, the account was $(7.3)M principal and $(2.0)M carrying charges, for $(9.4)M in total, also marked \"No\" for disposition [cite:rds-828907:1].\n- **Description of the account.** Toronto Hydro describes 1595 as holding \"residual amounts related to clearance of DVAs previously approved by the OEB for recovery through rate riders\" [cite:rds-828907:3].\n- **Rate-rider schedule.** The proposed rate-rider table (Table 16) has no Account 1595 rider [cite:rds-847604:50].\n\n**Gaps**\n\n- **2021 sub-account balance.** I found no amount for the 1595 (2021) sub-account. This includes the audited balance at Dec 31, 2023, and any split between principal and carrying charges. Much of the $(51.1)M total may relate to other sub-accounts. I can't tell how much is 2021 without the continuity schedule, which I didn't locate.\n- **Drivers of the residual.** I found no analysis of the 2021 rate riders' recovery against the amounts approved. That would include billed volumes versus forecast, and the timing of the riders.\n- **Rate-year status.** The evidence update doesn't say whether the 2021 riders expired on December 31, 2021, or whether the balance is eligible for 2025 disposition.\n\n**What the response would need to cover**\n\n1. Concede, or rebut, the two-year eligibility point. That point is that the 2021 riders ended on Dec 31, 2021, and the account was audited at Dec 31, 2023.\n2. Update the continuity schedule, the rate-rider calculations, the allocators and the recovery period, and the bill impacts. It should also update Exhibit 9 Tab 1's Table 1 and the Exhibit 1B summary tables. The 1595 line would change from \"No\" to \"Yes\" for disposition, and the total proposed for disposition would change with it.\n3. Quantify the 1595 (2021) principal and carrying charges. If the balance is material, break it into volume variance, rate-rider timing and any billing or rate-class true-ups.\n\nToronto Hydro's own staff would have to supply these figures. If you have the interrogatory response or the 2021 sub-account continuity schedule, send it and I can check the draft against the evidence.",
+  "answer_rendered": "I can't answer parts (a) and (b) from the filings available to me. They don't contain Toronto Hydro's response to this question or a separate 2021 sub-account figure for Account 1595. So I can't give you updated evidence or a quantified residual-balance explanation. I'd be inventing numbers if I did.\n\n**What the filings show**\n\n- **Original position.** The November 2023 filing says Toronto Hydro \"will not be proposing to dispose any residual balances in Account 1595.\" Its reason is that any sub-accounts not already approved for disposition \"will not meet the 2-year requirement for 2025 disposition\" [EB-2023-0195 / Exhibit 9 / p.28]. The December 2023 version of Exhibit 9 repeats this [EB-2023-0195 / Exhibit 9 / p.28].\n- **Evidence update (April 2, 2024).** Account 1595 (RARA) is still shown as \"No\" for proposed disposition and \"Yes\" for continuation. The balance is $(37.0)M principal and $(14.2)M carrying charges, for $(51.1)M in total at Dec 31, 2023. The table shows only the total account, not a 2021 sub-account [EB-2023-0195 / Exhibit 1B / p.44].\n- **Earlier snapshot.** At Dec 31, 2022, the account was $(7.3)M principal and $(2.0)M carrying charges, for $(9.4)M in total, also marked \"No\" for disposition [EB-2023-0195 / Exhibit 9 / p.1].\n- **Description of the account.** Toronto Hydro describes 1595 as holding \"residual amounts related to clearance of DVAs previously approved by the OEB for recovery through rate riders\" [EB-2023-0195 / Exhibit 9 / p.3].\n- **Rate-rider schedule.** The proposed rate-rider table (Table 16) has no Account 1595 rider [EB-2023-0195 / Exhibit 1B / p.50].\n\n**Gaps**\n\n- **2021 sub-account balance.** I found no amount for the 1595 (2021) sub-account. This includes the audited balance at Dec 31, 2023, and any split between principal and carrying charges. Much of the $(51.1)M total may relate to other sub-accounts. I can't tell how much is 2021 without the continuity schedule, which I didn't locate.\n- **Drivers of the residual.** I found no analysis of the 2021 rate riders' recovery against the amounts approved. That would include billed volumes versus forecast, and the timing of the riders.\n- **Rate-year status.** The evidence update doesn't say whether the 2021 riders expired on December 31, 2021, or whether the balance is eligible for 2025 disposition.\n\n**What the response would need to cover**\n\n1. Concede, or rebut, the two-year eligibility point. That point is that the 2021 riders ended on Dec 31, 2021, and the account was audited at Dec 31, 2023.\n2. Update the continuity schedule, the rate-rider calculations, the allocators and the recovery period, and the bill impacts. It should also update Exhibit 9 Tab 1's Table 1 and the Exhibit 1B summary tables. The 1595 line would change from \"No\" to \"Yes\" for disposition, and the total proposed for disposition would change with it.\n3. Quantify the 1595 (2021) principal and carrying charges. If the balance is material, break it into volume variance, rate-rider timing and any billing or rate-class true-ups.\n\nToronto Hydro's own staff would have to supply these figures. If you have the interrogatory response or the 2021 sub-account continuity schedule, send it and I can check the draft against the evidence.",
+  "citations": [
+    {
+      "doc_id": "rds-823176",
+      "page": 28,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 28,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 44,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 1,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-828907",
+      "page": 3,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231219",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 50,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "9"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 5,
+  "num_turns": 6,
+  "seconds": 28.6,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.20808659999999998,
+  "judge": {
+    "verdict": "abstained",
+    "rationale": "The candidate says outright it can't answer parts (a) and (b) and never takes a position on eligibility. It misses the reference's key points: other Group 2 balances were transferred into sub-account 1595 (2021), and the last rider ends in December 2024, so the two-year requirement isn't met. Its remaining content is background and a conditional to-do list, not a substantive answer.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.036211600000000004
+  }
+}

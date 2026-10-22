@@ -1,0 +1,124 @@
+{
+  "case": "EB-2023-0195",
+  "ir_documents_parsed": 21,
+  "ir_blocks_found": 1360,
+  "unique_irs": 938,
+  "with_response_exhibit_ref": 474,
+  "labelled_rows": 472,
+  "heldout_rows": 20,
+  "valid_evidence_exhibits": [
+    "1A",
+    "1B",
+    "1C",
+    "2A",
+    "2B",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "gold_exhibit_counts": [
+    [
+      "2B",
+      285
+    ],
+    [
+      "1B",
+      135
+    ],
+    [
+      "4",
+      116
+    ],
+    [
+      "3",
+      36
+    ],
+    [
+      "2A",
+      30
+    ],
+    [
+      "9",
+      24
+    ],
+    [
+      "6",
+      16
+    ],
+    [
+      "8",
+      8
+    ],
+    [
+      "7",
+      7
+    ],
+    [
+      "5",
+      3
+    ],
+    [
+      "1A",
+      1
+    ],
+    [
+      "1C",
+      1
+    ]
+  ],
+  "gold_equals_ir_exhibit_share": 0.513,
+  "intervenors": [
+    [
+      "STAFF",
+      189
+    ],
+    [
+      "SEC",
+      69
+    ],
+    [
+      "CCC",
+      39
+    ],
+    [
+      "AMPCO",
+      38
+    ],
+    [
+      "PP",
+      32
+    ],
+    [
+      "VECC",
+      30
+    ],
+    [
+      "ED",
+      26
+    ],
+    [
+      "EP",
+      18
+    ],
+    [
+      "DRC",
+      11
+    ],
+    [
+      "CCMBC",
+      10
+    ],
+    [
+      "PWU",
+      9
+    ],
+    [
+      "BOMA",
+      1
+    ]
+  ]
+}

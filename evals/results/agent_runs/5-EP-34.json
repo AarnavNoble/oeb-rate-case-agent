@@ -1,0 +1,95 @@
+{
+  "ir_id": "5-EP-34",
+  "gold_exhibits": [
+    "1B"
+  ],
+  "query": "\u201cToronto Hydro\u2019s sets its capital structure for ratemaking purposes in accordance with the OEB\u2019s\nCost of Capital guidelines issued in , Report of the Board on the Cost of Capital for\nOntario\u2019s Regulated Utilities (December 11, 2009) (\u201cReport of the Board\u201d). For Toronto Hydro, the\ndebt to equity split for the test years is set at 60:40. The debt component in each year includes a\ndeemed 4 percent short-term debt component\u201d.\na) Is Toronto Hydro\u2019s debt to equity split of 60:40 the same as that of other electricity\ndistributors regulated by the OEB?\nb) Please confirm that the proposed Custom IR lowers the business risk of Toronto Hydro. If\nthe answer is no, please explain why not?\nc) Please confirm that the recent OEB decision in Getting Ontario Connected\nAct Variance account lowers the regulatory risk of Toronto Hydro.\nd) If the OEB approves Toronto Hydro\u2019s Custom IR, should it adjust the debt to equity split\ncommensurate with the reduction in the business risk and regulatory risk? Please explain\nyour answer.",
+  "answer": "These questions are interrogatories, and the filings I can search don't include Toronto Hydro's responses to them. I found the evidence that bears on each part, but nothing that states Toronto Hydro's position. Where I go beyond the record below, I say so.\n\n**a) Is 60:40 the same as other distributors?**\nProbably yes, though the filings don't say so directly.\n- Toronto Hydro states that its 60:40 split follows the OEB's 2009 Cost of Capital Report (EB-2009-0084), and that the 60% debt includes a deemed 4% short-term component [cite:rds-823177:1].\n- In the filing, a DBRS Morningstar rating report says the OEB's deemed equity of 40% for Toronto Hydro \"is consistent with other electricity distribution companies in Ontario\" [cite:rds-823162:506].\n- From my own knowledge (not from the filings): the OEB's standard deemed structure is 56% long-term debt, 4% short-term debt and 40% equity, so 60:40 is the usual structure for distributors.\n\n**b) Does the Custom IR lower Toronto Hydro's business risk?**\nThe filings don't contain a confirmation from Toronto Hydro. What I found:\n- DBRS describes Custom IR as pre-approving the capital program for five years, with recovery through distribution rates. It also notes that residential customers have paid a fully fixed monthly distribution charge since 2020, which significantly reduces volume risk [cite:rds-823162:506].\n- Toronto Hydro already operates under Custom IR. The proposal is described as an evolution of the existing approach, not a new one [cite:rds-823236:64].\n- Risk-sharing features remain. These include an earnings-sharing mechanism for returns more than 100 basis points above the allowed ROE, and a regulatory review if actual ROE differs from the allowed ROE by 300 basis points [cite:rds-823162:504].\n- Toronto Hydro proposes to discontinue some protections, including the Externally Driven Capital Variance Account and the Capital Related Revenue Requirement Variance Account. It says it has shown it can deliver its capital programs within small variances [cite:rds-823236:64] [cite:rds-823176:29].\n- Toronto Hydro also says a standard price-cap framework, with ICM/ACM funding, would leave a funding gap. About $66M of the gap is non-capital costs that those mechanisms can't fund [cite:rds-847604:437].\n\nOn this evidence, I can't confirm that business risk falls. The Custom IR keeps a continuing framework, and some variance protections are being removed.\n\n**c) Does the Getting Ontario Connected Act (GOCA) variance account lower regulatory risk?**\nI can't confirm this from the filings.\n- The OEB created the GOCA variance account on October 31, 2023 (EB-2023-0143). It is a generic, industry-wide account that records incremental locate costs from Bill 93, effective April 1, 2023 [cite:rds-823176:26].\n- Toronto Hydro asks to continue the account because the cost of complying with the locates regime is uncertain [cite:rds-823176:26].\n- An industry-wide account applies to all distributors, so it doesn't clearly set Toronto Hydro apart from them. The filings contain no analysis of its effect on regulatory risk. That is my inference.\n\n**d) Should the OEB adjust the debt-equity split if the Custom IR is approved?**\nThe filings don't answer this either, but they do show Toronto Hydro's position.\n- Toronto Hydro proposes to keep the 60:40 split with 4% short-term debt for all of 2025\u20132029. A later evidence update confirmed this in response to 5-Staff-314 [cite:rds-851816:2].\n- Its evidence calls 60:40 the OEB-prescribed structure [cite:rds-823177:1].\n- Toronto Hydro has been under Custom IR since 2015, and its 2020\u201324 structure was also 60:40 [cite:rds-823162:504]. Its position is therefore likely that Custom IR is not a new risk reduction and doesn't justify a departure from the policy.\n- From my own knowledge (not from the filings): the 2009 Report treats the deemed structure as a policy default, and it is usually reviewed only when the OEB reviews its policy.\n\nI couldn't find Toronto Hydro's actual interrogatory answers or the OEB's decision. If you have the interrogatory reference number, such as an SEC or VECC question, I can look for it directly.",
+  "answer_rendered": "These questions are interrogatories, and the filings I can search don't include Toronto Hydro's responses to them. I found the evidence that bears on each part, but nothing that states Toronto Hydro's position. Where I go beyond the record below, I say so.\n\n**a) Is 60:40 the same as other distributors?**\nProbably yes, though the filings don't say so directly.\n- Toronto Hydro states that its 60:40 split follows the OEB's 2009 Cost of Capital Report (EB-2009-0084), and that the 60% debt includes a deemed 4% short-term component [EB-2023-0195 / Exhibit 5 / p.1].\n- In the filing, a DBRS Morningstar rating report says the OEB's deemed equity of 40% for Toronto Hydro \"is consistent with other electricity distribution companies in Ontario\" [EB-2023-0195 / Exhibit 1C / p.506].\n- From my own knowledge (not from the filings): the OEB's standard deemed structure is 56% long-term debt, 4% short-term debt and 40% equity, so 60:40 is the usual structure for distributors.\n\n**b) Does the Custom IR lower Toronto Hydro's business risk?**\nThe filings don't contain a confirmation from Toronto Hydro. What I found:\n- DBRS describes Custom IR as pre-approving the capital program for five years, with recovery through distribution rates. It also notes that residential customers have paid a fully fixed monthly distribution charge since 2020, which significantly reduces volume risk [EB-2023-0195 / Exhibit 1C / p.506].\n- Toronto Hydro already operates under Custom IR. The proposal is described as an evolution of the existing approach, not a new one [EB-2023-0195 / Exhibit 1B / p.64].\n- Risk-sharing features remain. These include an earnings-sharing mechanism for returns more than 100 basis points above the allowed ROE, and a regulatory review if actual ROE differs from the allowed ROE by 300 basis points [EB-2023-0195 / Exhibit 1C / p.504].\n- Toronto Hydro proposes to discontinue some protections, including the Externally Driven Capital Variance Account and the Capital Related Revenue Requirement Variance Account. It says it has shown it can deliver its capital programs within small variances [EB-2023-0195 / Exhibit 1B / p.64] [EB-2023-0195 / Exhibit 9 / p.29].\n- Toronto Hydro also says a standard price-cap framework, with ICM/ACM funding, would leave a funding gap. About $66M of the gap is non-capital costs that those mechanisms can't fund [EB-2023-0195 / Exhibit 4 / p.437].\n\nOn this evidence, I can't confirm that business risk falls. The Custom IR keeps a continuing framework, and some variance protections are being removed.\n\n**c) Does the Getting Ontario Connected Act (GOCA) variance account lower regulatory risk?**\nI can't confirm this from the filings.\n- The OEB created the GOCA variance account on October 31, 2023 (EB-2023-0143). It is a generic, industry-wide account that records incremental locate costs from Bill 93, effective April 1, 2023 [EB-2023-0195 / Exhibit 9 / p.26].\n- Toronto Hydro asks to continue the account because the cost of complying with the locates regime is uncertain [EB-2023-0195 / Exhibit 9 / p.26].\n- An industry-wide account applies to all distributors, so it doesn't clearly set Toronto Hydro apart from them. The filings contain no analysis of its effect on regulatory risk. That is my inference.\n\n**d) Should the OEB adjust the debt-equity split if the Custom IR is approved?**\nThe filings don't answer this either, but they do show Toronto Hydro's position.\n- Toronto Hydro proposes to keep the 60:40 split with 4% short-term debt for all of 2025\u20132029. A later evidence update confirmed this in response to 5-Staff-314 [EB-2023-0195 / cvrLtr_THESL_2025-2029 Rate Application_Evidence Updates_20240507 / p.2].\n- Its evidence calls 60:40 the OEB-prescribed structure [EB-2023-0195 / Exhibit 5 / p.1].\n- Toronto Hydro has been under Custom IR since 2015, and its 2020\u201324 structure was also 60:40 [EB-2023-0195 / Exhibit 1C / p.504]. Its position is therefore likely that Custom IR is not a new risk reduction and doesn't justify a departure from the policy.\n- From my own knowledge (not from the filings): the 2009 Report treats the deemed structure as a policy default, and it is usually reviewed only when the OEB reviews its policy.\n\nI couldn't find Toronto Hydro's actual interrogatory answers or the OEB's decision. If you have the interrogatory reference number, such as an SEC or VECC question, I can look for it directly.",
+  "citations": [
+    {
+      "doc_id": "rds-823177",
+      "page": 1,
+      "case_number": "EB-2023-0195",
+      "exhibit": "5",
+      "title": "THESL_Exhibit 5_Cost of Capital and Capital Structure_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823162",
+      "page": 506,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1C",
+      "title": "THESL_Exhibit 1C_Corporate Information_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 64,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823162",
+      "page": 504,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1C",
+      "title": "THESL_Exhibit 1C_Corporate Information_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823176",
+      "page": 29,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 437,
+      "case_number": "EB-2023-0195",
+      "exhibit": "4",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823176",
+      "page": 26,
+      "case_number": "EB-2023-0195",
+      "exhibit": "9",
+      "title": "THESL_Exhibit 9_Deferral and Variance Accounts_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-851816",
+      "page": 2,
+      "case_number": "EB-2023-0195",
+      "exhibit": null,
+      "title": "cvrLtr_THESL_2025-2029 Rate Application_Evidence Updates_20240507",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "1C",
+    "4",
+    "5",
+    "9"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 4,
+  "num_turns": 5,
+  "seconds": 37.9,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.1673152,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "For (a), the candidate correctly says 60:40 is the standard split for distributors. For (b) through (d), it leans toward Toronto Hydro's actual position (it can't confirm a risk reduction and infers no change to the split is warranted) but never states it. It also leaves out the reference's main reasons: the roughly $81M earnings risk under the performance incentive mechanism, the future prudence review that keeps the variance account from reducing risk, and the point that Custom IR and cost-of-capital policy are separate constructs.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.0390036
+  }
+}

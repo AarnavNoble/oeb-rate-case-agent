@@ -3,18 +3,10 @@
   "gold_exhibits": [
     "2B"
   ],
-  "query": "Clearspring provides benchmarking values for SAIFI, SAIDI and CAIDI.\na. Why is there the expectation that the SAIDI benchmark value increase with time? What\nis the physical justification for this versus theoretical modelling? Please provide empirical\nquantitative evidence and not qualitative correlation explanation.",
-  "answer": "The filings I can access don't give the empirical, physical justification you're asking for. They show that the rising SAIDI benchmark is a mechanical output of the model. I found no outage-physics evidence, and no separate test showing that benchmark SAIDI should rise.\n\n**What the filing shows**\n\n- Clearspring's SAIDI benchmark for Toronto Hydro rises from 50.7 in 2005 to 60.3 in 2022. It then rises to 71.1 by 2029, which is 64.3 in 2025 and 71.1 in 2029 within the Custom IR period [cite:rds-823236:365].\n- SAIDI is not modelled directly. It is the product of the SAIFI and CAIDI benchmarks, because SAIDI = SAIFI \u00d7 CAIDI [cite:rds-823236:359]. The study estimates only SAIFI and CAIDI models [cite:rds-823236:359].\n- The SAIFI benchmark is roughly flat to slightly falling, from 0.46 in 2005 to 0.43 in 2022 [cite:rds-823236:339].\n- The CAIDI benchmark is what rises, from 110.0 in 2005 to 138.95 in 2022 [cite:rds-823236:339]. So the upward SAIDI benchmark comes from the CAIDI side.\n\n**What drives the CAIDI benchmark**\n\n- The CAIDI model's variables are customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban. The congested-urban coefficient is 20.199 with a t-statistic of 8.63 [cite:rds-823236:363].\n- Only some of these inputs change over time for Toronto Hydro. The congested-urban variable is the one the filing explicitly makes time-varying in the cost study. I did not confirm that the same time-varying variable feeds the reliability models.\n- In the cost study, Clearspring scales the variable using high-rise (100 m+) building counts from the Council on Tall Buildings and Urban Habitat (CTBUH). A 1% change in the number of high-rises is estimated to change the congested-urban variable by 0.63% [cite:rds-823236:345] [cite:rds-823236:346].\n- Toronto's high-rise count grew at an average of 7.1% a year from 2012 to 2022. Future years are projected using that 10-year growth rate [cite:rds-823236:346].\n- I infer, but the filing doesn't say outright, that this projected growth is the likely driver of the rising CAIDI and SAIDI benchmarks. I did not find a decomposition that confirms it.\n\n**What I did not find**\n\n- I found no empirical outage data, such as restoration-time studies for underground or congested networks, that tests the claim that benchmark SAIDI should rise.\n- I found no out-of-sample test of the projected benchmark values.\n- The sample is 80 U.S. distributors plus Toronto Hydro. The U.S. reliability data comes from EIA Form 861, which starts in 2013. The model estimates exclude Toronto Hydro itself [cite:rds-823236:359] [cite:rds-823236:360]. The benchmarks before 2013 and after 2021 therefore rest on extrapolated variable values. They do not rest on observed U.S. outcomes in those years.\n\nYour question reads like an interrogatory, so the answer may sit in an interrogatory response I couldn't reach. The documents available to me contain only the study text. You may want to put the question to Clearspring directly. A useful version would ask for the CAIDI model's time-varying inputs and for any back-test of the post-2021 benchmark path.",
-  "answer_rendered": "The filings I can access don't give the empirical, physical justification you're asking for. They show that the rising SAIDI benchmark is a mechanical output of the model. I found no outage-physics evidence, and no separate test showing that benchmark SAIDI should rise.\n\n**What the filing shows**\n\n- Clearspring's SAIDI benchmark for Toronto Hydro rises from 50.7 in 2005 to 60.3 in 2022. It then rises to 71.1 by 2029, which is 64.3 in 2025 and 71.1 in 2029 within the Custom IR period [EB-2023-0195 / Exhibit 1B / p.365].\n- SAIDI is not modelled directly. It is the product of the SAIFI and CAIDI benchmarks, because SAIDI = SAIFI \u00d7 CAIDI [EB-2023-0195 / Exhibit 1B / p.359]. The study estimates only SAIFI and CAIDI models [EB-2023-0195 / Exhibit 1B / p.359].\n- The SAIFI benchmark is roughly flat to slightly falling, from 0.46 in 2005 to 0.43 in 2022 [EB-2023-0195 / Exhibit 1B / p.339].\n- The CAIDI benchmark is what rises, from 110.0 in 2005 to 138.95 in 2022 [EB-2023-0195 / Exhibit 1B / p.339]. So the upward SAIDI benchmark comes from the CAIDI side.\n\n**What drives the CAIDI benchmark**\n\n- The CAIDI model's variables are customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban. The congested-urban coefficient is 20.199 with a t-statistic of 8.63 [EB-2023-0195 / Exhibit 1B / p.363].\n- Only some of these inputs change over time for Toronto Hydro. The congested-urban variable is the one the filing explicitly makes time-varying in the cost study. I did not confirm that the same time-varying variable feeds the reliability models.\n- In the cost study, Clearspring scales the variable using high-rise (100 m+) building counts from the Council on Tall Buildings and Urban Habitat (CTBUH). A 1% change in the number of high-rises is estimated to change the congested-urban variable by 0.63% [EB-2023-0195 / Exhibit 1B / p.345] [EB-2023-0195 / Exhibit 1B / p.346].\n- Toronto's high-rise count grew at an average of 7.1% a year from 2012 to 2022. Future years are projected using that 10-year growth rate [EB-2023-0195 / Exhibit 1B / p.346].\n- I infer, but the filing doesn't say outright, that this projected growth is the likely driver of the rising CAIDI and SAIDI benchmarks. I did not find a decomposition that confirms it.\n\n**What I did not find**\n\n- I found no empirical outage data, such as restoration-time studies for underground or congested networks, that tests the claim that benchmark SAIDI should rise.\n- I found no out-of-sample test of the projected benchmark values.\n- The sample is 80 U.S. distributors plus Toronto Hydro. The U.S. reliability data comes from EIA Form 861, which starts in 2013. The model estimates exclude Toronto Hydro itself [EB-2023-0195 / Exhibit 1B / p.359] [EB-2023-0195 / Exhibit 1B / p.360]. The benchmarks before 2013 and after 2021 therefore rest on extrapolated variable values. They do not rest on observed U.S. outcomes in those years.\n\nYour question reads like an interrogatory, so the answer may sit in an interrogatory response I couldn't reach. The documents available to me contain only the study text. You may want to put the question to Clearspring directly. A useful version would ask for the CAIDI model's time-varying inputs and for any back-test of the post-2021 benchmark path.",
+  "query": "Clearspring provides benchmarking values for SAIFI, SAIDI and CAIDI.\na. Why is there the expectation that the SAIDI benchmark value increase with time? What\nis the physical justification for this versus theoretical modelling? Please provide empirical\nquantitative evidence and not qualitative correlation explanation.\nb) How does the proposed benchmark and forecasted SAIFI, CAIDI and SAIDI values differ in\nconsideration of Toronto Hydro\u2019s proposed IRM as compared to the IRM scenario in\nReference 2?",
+  "answer": "**Short answer:** The filings I can access don't give the empirical, physical justification you ask for in (a). They also don't show a separate Clearspring benchmark run on the IRM scenario, which is what (b) asks about. I also can't identify \"Reference 2\" from the filings, so I've read it as the IRM scenario in Toronto Hydro's reliability projections. Please confirm that reading. Below is what the record does show.\n\n## a. Why the SAIDI benchmark rises\n\n**What the study does.** Clearspring does not model SAIDI directly. It estimates separate SAIFI and CAIDI models and multiplies the two to get a SAIDI benchmark ([cite:rds-823236:359]). Toronto Hydro's benchmarks for future years use the same estimated parameters, combined with projected values of the explanatory variables ([cite:rds-823236:347]).\n\n**What the numbers show.**\n- The SAIFI benchmark is essentially flat at about 0.43 to 0.46 ([cite:rds-823236:364]).\n- The CAIDI benchmark rises steadily, from 110.00 in 2005 to 138.95 in 2022 and 163.82 in 2029 ([cite:rds-823236:364]).\n- The SAIDI benchmark therefore rises from 50.7 in 2005 to 60.3 in 2022 and 71.1 in 2029 ([cite:rds-823236:365]).\n- So the rising SAIDI benchmark comes almost entirely from CAIDI.\n\n**What drives the CAIDI benchmark.**\n- The CAIDI model uses these variables: number of customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban ([cite:rds-823236:363]).\n- The congested urban coefficient is large and significant, at 20.199 with a t-statistic of 8.63 ([cite:rds-823236:363]).\n- The report does not say which variable moves the CAIDI benchmark over time.\n- The one variable the report shows changing with time is the congested urban variable. Clearspring made it time-varying by tying it to Toronto's high-rise count.\n- It estimated that a 1% change in skyscraper count equates to a 0.63% change in the congested urban variable. Toronto's high-rises grew 7.1% a year from 2012 to 2022, and the projection uses the last ten-year average growth rate ([cite:rds-823236:346]).\n- Clearspring says the congested urban challenge \"will be much larger in 2029 than its historical values\" ([cite:rds-823236:345]).\n- This is my inference. The filings don't decompose the CAIDI benchmark by variable, so I can't quantify each driver's contribution.\n\n**What is missing.**\n- The pages I reviewed contain no empirical test, such as a back-test or event study, of why longer restoration times follow from congestion. They give no physical or engineering measurement either.\n- Support in the report is statistical: the sample is 80 U.S. distributors plus Toronto Hydro, with 687 observations. The model excludes Toronto Hydro itself, and coefficients are signed to theory and significant at 90% ([cite:rds-823236:360], [cite:rds-823236:361]).\n- The congested urban variable was first built from 2016\u20132017 data, and Clearspring says the time-varying refinement changed total cost results by less than 1% ([cite:rds-823236:345]). That figure is for total cost, not reliability.\n- The U.S. reliability data begin in 2013 and end in 2021 ([cite:rds-823236:359]). The benchmark path to 2029 is therefore an extrapolation from projected inputs, not an observed trend.\n\nIf you need the empirical evidence, this is a question for an interrogatory to Clearspring. The CAIDI regression output and the time path of the congested urban variable would be the first things to ask for.\n\n## b. Proposed plan versus the IRM scenario\n\n**The benchmark.** Clearspring's benchmarks use Toronto Hydro's proposed projections. The benchmark itself depends only on the explanatory variables, such as customers, forestation and congested urban. The filings do not show those variables changing under an IRM case.\n\n**What the IRM scenario is.** Toronto Hydro defines the IRM scenario as funding limited to less than inflation under standard IRM, which allows a capital plan of about $2.4 billion. It would drop the grid modernization strategy and cut proactive System Renewal by nearly 75% ([cite:rds-823236:194]). Toronto Hydro says reliability would deteriorate under that scenario. This appears in its custom SAIDI and SAIFI (Defective Equipment) figures ([cite:rds-823236:194], [cite:rds-823236:201]).\n\n**Forecast values.** The filings give no IRM-scenario forecast values for SAIFI, CAIDI or SAIDI in the pages I reviewed. The IRM line appears only as a chart series. The text I retrieved doesn't give its numbers, so I can't quantify the difference.\n\n**Proposed-plan values that Clearspring benchmarks** ([cite:rds-823236:364], [cite:rds-823236:365]):\n\n| 2025\u20132029 average | Actual/projected | Benchmark | Difference |\n|---|---|---|---|\n| SAIFI | 1.17 | 0.43 | +99.4% |\n| CAIDI (minutes) | 51.70 | 155.71 | \u2212110.2% |\n| SAIDI (minutes) | 60.6 | 67.6 | \u221210.8% |\n\nBy 2029 the proposed-plan SAIDI is 60.2 against a benchmark of 71.1, a gap of \u221216.7%.\n\n**Comparability.** Clearspring's SAIDI includes loss of supply and excludes major event days ([cite:rds-823236:359]). Toronto Hydro's custom SAIDI and the IRM line exclude loss of supply, major event days and scheduled outages, and use a five-year rolling average ([cite:rds-823236:194]). The two bases are not directly comparable.\n\nClearspring's report also notes that improved outage tracking has slightly increased the projected reliability estimates ([cite:rds-823236:337]).",
+  "answer_rendered": "**Short answer:** The filings I can access don't give the empirical, physical justification you ask for in (a). They also don't show a separate Clearspring benchmark run on the IRM scenario, which is what (b) asks about. I also can't identify \"Reference 2\" from the filings, so I've read it as the IRM scenario in Toronto Hydro's reliability projections. Please confirm that reading. Below is what the record does show.\n\n## a. Why the SAIDI benchmark rises\n\n**What the study does.** Clearspring does not model SAIDI directly. It estimates separate SAIFI and CAIDI models and multiplies the two to get a SAIDI benchmark ([EB-2023-0195 / Exhibit 1B / p.359]). Toronto Hydro's benchmarks for future years use the same estimated parameters, combined with projected values of the explanatory variables ([EB-2023-0195 / Exhibit 1B / p.347]).\n\n**What the numbers show.**\n- The SAIFI benchmark is essentially flat at about 0.43 to 0.46 ([EB-2023-0195 / Exhibit 1B / p.364]).\n- The CAIDI benchmark rises steadily, from 110.00 in 2005 to 138.95 in 2022 and 163.82 in 2029 ([EB-2023-0195 / Exhibit 1B / p.364]).\n- The SAIDI benchmark therefore rises from 50.7 in 2005 to 60.3 in 2022 and 71.1 in 2029 ([EB-2023-0195 / Exhibit 1B / p.365]).\n- So the rising SAIDI benchmark comes almost entirely from CAIDI.\n\n**What drives the CAIDI benchmark.**\n- The CAIDI model uses these variables: number of customers, % forestation, standard deviation of elevation, sq. km per customer, and % congested urban ([EB-2023-0195 / Exhibit 1B / p.363]).\n- The congested urban coefficient is large and significant, at 20.199 with a t-statistic of 8.63 ([EB-2023-0195 / Exhibit 1B / p.363]).\n- The report does not say which variable moves the CAIDI benchmark over time.\n- The one variable the report shows changing with time is the congested urban variable. Clearspring made it time-varying by tying it to Toronto's high-rise count.\n- It estimated that a 1% change in skyscraper count equates to a 0.63% change in the congested urban variable. Toronto's high-rises grew 7.1% a year from 2012 to 2022, and the projection uses the last ten-year average growth rate ([EB-2023-0195 / Exhibit 1B / p.346]).\n- Clearspring says the congested urban challenge \"will be much larger in 2029 than its historical values\" ([EB-2023-0195 / Exhibit 1B / p.345]).\n- This is my inference. The filings don't decompose the CAIDI benchmark by variable, so I can't quantify each driver's contribution.\n\n**What is missing.**\n- The pages I reviewed contain no empirical test, such as a back-test or event study, of why longer restoration times follow from congestion. They give no physical or engineering measurement either.\n- Support in the report is statistical: the sample is 80 U.S. distributors plus Toronto Hydro, with 687 observations. The model excludes Toronto Hydro itself, and coefficients are signed to theory and significant at 90% ([EB-2023-0195 / Exhibit 1B / p.360], [EB-2023-0195 / Exhibit 1B / p.361]).\n- The congested urban variable was first built from 2016\u20132017 data, and Clearspring says the time-varying refinement changed total cost results by less than 1% ([EB-2023-0195 / Exhibit 1B / p.345]). That figure is for total cost, not reliability.\n- The U.S. reliability data begin in 2013 and end in 2021 ([EB-2023-0195 / Exhibit 1B / p.359]). The benchmark path to 2029 is therefore an extrapolation from projected inputs, not an observed trend.\n\nIf you need the empirical evidence, this is a question for an interrogatory to Clearspring. The CAIDI regression output and the time path of the congested urban variable would be the first things to ask for.\n\n## b. Proposed plan versus the IRM scenario\n\n**The benchmark.** Clearspring's benchmarks use Toronto Hydro's proposed projections. The benchmark itself depends only on the explanatory variables, such as customers, forestation and congested urban. The filings do not show those variables changing under an IRM case.\n\n**What the IRM scenario is.** Toronto Hydro defines the IRM scenario as funding limited to less than inflation under standard IRM, which allows a capital plan of about $2.4 billion. It would drop the grid modernization strategy and cut proactive System Renewal by nearly 75% ([EB-2023-0195 / Exhibit 1B / p.194]). Toronto Hydro says reliability would deteriorate under that scenario. This appears in its custom SAIDI and SAIFI (Defective Equipment) figures ([EB-2023-0195 / Exhibit 1B / p.194], [EB-2023-0195 / Exhibit 1B / p.201]).\n\n**Forecast values.** The filings give no IRM-scenario forecast values for SAIFI, CAIDI or SAIDI in the pages I reviewed. The IRM line appears only as a chart series. The text I retrieved doesn't give its numbers, so I can't quantify the difference.\n\n**Proposed-plan values that Clearspring benchmarks** ([EB-2023-0195 / Exhibit 1B / p.364], [EB-2023-0195 / Exhibit 1B / p.365]):\n\n| 2025\u20132029 average | Actual/projected | Benchmark | Difference |\n|---|---|---|---|\n| SAIFI | 1.17 | 0.43 | +99.4% |\n| CAIDI (minutes) | 51.70 | 155.71 | \u2212110.2% |\n| SAIDI (minutes) | 60.6 | 67.6 | \u221210.8% |\n\nBy 2029 the proposed-plan SAIDI is 60.2 against a benchmark of 71.1, a gap of \u221216.7%.\n\n**Comparability.** Clearspring's SAIDI includes loss of supply and excludes major event days ([EB-2023-0195 / Exhibit 1B / p.359]). Toronto Hydro's custom SAIDI and the IRM line exclude loss of supply, major event days and scheduled outages, and use a five-year rolling average ([EB-2023-0195 / Exhibit 1B / p.194]). The two bases are not directly comparable.\n\nClearspring's report also notes that improved outage tracking has slightly increased the projected reliability estimates ([EB-2023-0195 / Exhibit 1B / p.337]).",
   "citations": [
-    {
-      "doc_id": "rds-823236",
-      "page": 365,
-      "case_number": "EB-2023-0195",
-      "exhibit": "1B",
-      "title": "THESL_Exhibit 1B - Application Overview_20231117",
-      "seen": true
-    },
     {
       "doc_id": "rds-823236",
       "page": 359,
@@ -25,7 +17,23 @@
     },
     {
       "doc_id": "rds-823236",
-      "page": 339,
+      "page": 347,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 364,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 365,
       "case_number": "EB-2023-0195",
       "exhibit": "1B",
       "title": "THESL_Exhibit 1B - Application Overview_20231117",
@@ -41,7 +49,7 @@
     },
     {
       "doc_id": "rds-823236",
-      "page": 345,
+      "page": 346,
       "case_number": "EB-2023-0195",
       "exhibit": "1B",
       "title": "THESL_Exhibit 1B - Application Overview_20231117",
@@ -49,7 +57,7 @@
     },
     {
       "doc_id": "rds-823236",
-      "page": 346,
+      "page": 345,
       "case_number": "EB-2023-0195",
       "exhibit": "1B",
       "title": "THESL_Exhibit 1B - Application Overview_20231117",
@@ -62,6 +70,38 @@
       "exhibit": "1B",
       "title": "THESL_Exhibit 1B - Application Overview_20231117",
       "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 361,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 194,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 201,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 337,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
     }
   ],
   "cited_exhibits": [
@@ -69,15 +109,15 @@
   ],
   "citation_hit": false,
   "n_unverified": 0,
-  "tool_calls": 7,
-  "num_turns": 8,
-  "seconds": 42.8,
+  "tool_calls": 9,
+  "num_turns": 10,
+  "seconds": 45.9,
   "agent_error": null,
-  "agent_cost_usd_equivalent": 0.15831889999999998,
+  "agent_cost_usd_equivalent": 0.2770129,
   "judge": {
-    "verdict": "correct",
-    "rationale": "Like the reference, the candidate traces the rising SAIDI benchmark to the rising CAIDI benchmark, driven by the increasing congested-urban variable. It also cites that variable's high statistical significance in the CAIDI model (t-stat 8.63), which is the empirical evidence the reference relies on. It presents the link as an inference and says it found no physical evidence, but it does not contradict the reference.",
+    "verdict": "partially_correct",
+    "rationale": "For (a), the candidate correctly finds that the rising SAIDI benchmark comes from CAIDI, driven by the increasing and highly significant congested urban variable, which matches the reference. For (b), it gives no IRM-scenario forecast values. It also misses the reference's explanation that scheduled-outage improvements offset the worse unplanned outages under IRM, and its proposed-plan figures differ slightly from the reference's updated tables (e.g., CAIDI average 51.70 vs 51.74, SAIDI 2029 60.2 vs 60.0).",
     "model": "claude-opus-5-5",
-    "cost_usd_equivalent": 0.0608396
+    "cost_usd_equivalent": 0.0651156
   }
 }

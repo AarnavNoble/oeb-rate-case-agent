@@ -1,0 +1,68 @@
+{
+  "ir_id": "2B-STAFF-248",
+  "gold_exhibits": [
+    "2B"
+  ],
+  "query": "Toronto Hydro states: \u201cNWSs are viewed as additive to conventional utility expansion strategies,\nenabling Toronto Hydro to expand its planning toolbox to include additional strategies for keeping\nup with load growth.\u201d\nPlease provide examples of DERs or other Non-Wires Solutions presently existing on\nToronto Hydro\u2019s system that enabled it to avoid more costly wires solutions to address\nsystem constraints.\ni. Please quantify the cost savings for each of the examples.",
+  "answer": "Toronto Hydro points to two existing examples, both Local Demand Response (LDR) projects. It gives a dollar figure for one of them (Manby/Horner TS) and none for the other (Cecil TS). I looked only for LDR and energy storage examples. I didn't find a storage example that was quantified as an avoided wires cost.\n\n**1. Cecil TS LDR pilot (downtown core, 2015\u20132019 period)**\n- Toronto Hydro expected capacity constraints on two busses at Cecil TS in 2020. It contracted 8 MW of demand response from commercial and institutional customers and cut summer peak demand by 8 MW in 2018 and 2019. [cite:rds-834051:127]\n- The anticipated capital investment was first deferred to 2025\u20132026. It was then avoided entirely, because the load profile at Cecil TS changed over 2020\u20132022 and station expansion was no longer needed. [cite:rds-834051:127]\n- **Savings:** The pages I reviewed give no dollar figure for the avoided Cecil TS investment or for the net saving. I can't quantify this one.\n\n**2. Manby TS / Horner TS LDR (2020\u20132024 period)**\n- Toronto Hydro contracted 4 MW for summer 2023 and 6 MW for summer 2024. Manby TS has been at capacity on two busses for several years, and Horner TS overloading was forecast. [cite:rds-823236:232]\n- Further load transfers were difficult. LDR let Toronto Hydro avoid some transfers from Manby and Horner TS until load could be permanently moved from Manby to Horner TS in 2025, after the Horner expansion. [cite:rds-823236:232]\n- **Savings:** Toronto Hydro estimated that 10 MW of load transfers from Manby or Horner TS would cost about $4 million in capital. [cite:rds-823164:570]\n  - LDR was initially projected to cost $4 million but is expected to cost closer to $2 million over the current rate period. That is $1.4 million in capacity payments plus $0.6 million in administration. [cite:rds-823164:570]\n  - Comparing the two, the gross difference is roughly $2 million. That is my own arithmetic, not a figure Toronto Hydro states. The filing does not give an NPV saving for this example.\n  - This is a deferral or avoidance of transfers while the Horner expansion proceeds. It is not a permanent avoidance of the expansion itself.\n\n**Forward-looking figures (not existing examples)**\nFor 2025\u20132029, Toronto Hydro plans up to 30 MW of LDR in the Horseshoe North area. It puts the cost at about $5.7 million of operating spending, against roughly $10 million of load-transfer capital avoided or deferred. [cite:rds-834051:137] Its benefit-cost analysis gives total NPV benefits of $3.32 million. That is about $0.06 million from deferral and $3.27 million from avoidance. [cite:rds-823236:235] These are projections, so they don't answer your question about systems already in place.",
+  "answer_rendered": "Toronto Hydro points to two existing examples, both Local Demand Response (LDR) projects. It gives a dollar figure for one of them (Manby/Horner TS) and none for the other (Cecil TS). I looked only for LDR and energy storage examples. I didn't find a storage example that was quantified as an avoided wires cost.\n\n**1. Cecil TS LDR pilot (downtown core, 2015\u20132019 period)**\n- Toronto Hydro expected capacity constraints on two busses at Cecil TS in 2020. It contracted 8 MW of demand response from commercial and institutional customers and cut summer peak demand by 8 MW in 2018 and 2019. [EB-2023-0195 / Exhibit 2B / p.127]\n- The anticipated capital investment was first deferred to 2025\u20132026. It was then avoided entirely, because the load profile at Cecil TS changed over 2020\u20132022 and station expansion was no longer needed. [EB-2023-0195 / Exhibit 2B / p.127]\n- **Savings:** The pages I reviewed give no dollar figure for the avoided Cecil TS investment or for the net saving. I can't quantify this one.\n\n**2. Manby TS / Horner TS LDR (2020\u20132024 period)**\n- Toronto Hydro contracted 4 MW for summer 2023 and 6 MW for summer 2024. Manby TS has been at capacity on two busses for several years, and Horner TS overloading was forecast. [EB-2023-0195 / Exhibit 1B / p.232]\n- Further load transfers were difficult. LDR let Toronto Hydro avoid some transfers from Manby and Horner TS until load could be permanently moved from Manby to Horner TS in 2025, after the Horner expansion. [EB-2023-0195 / Exhibit 1B / p.232]\n- **Savings:** Toronto Hydro estimated that 10 MW of load transfers from Manby or Horner TS would cost about $4 million in capital. [EB-2023-0195 / Exhibit 2B / p.570]\n  - LDR was initially projected to cost $4 million but is expected to cost closer to $2 million over the current rate period. That is $1.4 million in capacity payments plus $0.6 million in administration. [EB-2023-0195 / Exhibit 2B / p.570]\n  - Comparing the two, the gross difference is roughly $2 million. That is my own arithmetic, not a figure Toronto Hydro states. The filing does not give an NPV saving for this example.\n  - This is a deferral or avoidance of transfers while the Horner expansion proceeds. It is not a permanent avoidance of the expansion itself.\n\n**Forward-looking figures (not existing examples)**\nFor 2025\u20132029, Toronto Hydro plans up to 30 MW of LDR in the Horseshoe North area. It puts the cost at about $5.7 million of operating spending, against roughly $10 million of load-transfer capital avoided or deferred. [EB-2023-0195 / Exhibit 2B / p.137] Its benefit-cost analysis gives total NPV benefits of $3.32 million. That is about $0.06 million from deferral and $3.27 million from avoidance. [EB-2023-0195 / Exhibit 1B / p.235] These are projections, so they don't answer your question about systems already in place.",
+  "citations": [
+    {
+      "doc_id": "rds-834051",
+      "page": 127,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 232,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 570,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-834051",
+      "page": 137,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240129.pdf",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 235,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 4,
+  "num_turns": 5,
+  "seconds": 24.4,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.1218042,
+  "judge": {
+    "verdict": "correct",
+    "rationale": "The reference has almost no substance of its own. It only points to Exhibit 2B Section E7.2 and other interrogatory responses on Toronto Hydro's non-wires plans. The candidate's examples (the Cecil TS and Manby/Horner TS demand response projects, with costs and avoided capital) come from that same pre-filed non-wires evidence, and nothing it says contradicts the reference.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.025463600000000003
+  }
+}

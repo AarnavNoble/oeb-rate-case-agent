@@ -6,6 +6,8 @@ Toronto Hydro IRR layout (EB-2023-0195):
     Preamble: ...
     QUESTION (A) – (F): a) ... b) ...
     RESPONSE (A) – (F): ...
+or, for multi-part IRs, interleaved 'QUESTION (A): / RESPONSE (A): / QUESTION (B): ...'
+blocks, which are folded into one question and one response.
 The IR id prefix ('5-') and the References block name the exhibit the *question* is
 about; gold labels instead come from exhibits cited in the *response* body."""
 
@@ -20,6 +22,8 @@ _QUESTION = re.compile(r"^\s*QUESTIONS?\b[^\n]*:?", re.M)
 _RESPONSE = re.compile(r"^\s*RESPONSES?\b(?!\s+TO\b)[^\n]*:?", re.M)
 _SECTION_BANNER = re.compile(r"^\s*RESPONSES?\s+TO\s+[^\n]*INTERROGATOR[^\n]*$", re.M)
 _EXHIBIT_MENTION = re.compile(r"\bExhibits?\s+([0-9]{1,2}[A-Z]?)\b")
+# 'EB-2018-0165, Exhibit 2B' / 'EB-2022-0220 at Exhibit 1': an exhibit of another proceeding
+_OTHER_CASE_PREFIX = re.compile(r"(EB-\d{4}-\d{4})\s*(?:,|\bat\b)?\s*$")
 
 # Everything that names a location in the record; removed from queries to avoid leakage.
 _LOCATION = re.compile(
@@ -79,11 +83,17 @@ def unit_matches(gold: str, page_unit: str) -> bool:
     return all(g == "" or g == p for g, p in zip(gold.split("|"), page_unit.split("|"), strict=True))
 
 
-def _units(text: str, valid: set[str]) -> list[str]:
+def _other_case(text: str, start: int, case_number: str | None) -> bool:
+    """True if the exhibit mention at `start` is qualified by a different EB case number."""
+    m = _OTHER_CASE_PREFIX.search(text[max(0, start - 30):start])
+    return m is not None and m.group(1) != case_number
+
+
+def _units(text: str, valid: set[str], case_number: str | None = None) -> list[str]:
     seen: list[str] = []
     for m in _UNIT_REF.finditer(text):
         ex, section, tab, schedule = m.groups()
-        if ex.upper() not in valid or not (section or tab):
+        if ex.upper() not in valid or not (section or tab) or _other_case(text, m.start(), case_number):
             continue  # exhibit-only references carry no finer location
         key = unit_key(ex, section, tab, schedule)
         if key not in seen:
@@ -91,11 +101,11 @@ def _units(text: str, valid: set[str]) -> list[str]:
     return seen
 
 
-def _exhibits(text: str, valid: set[str]) -> list[str]:
+def _exhibits(text: str, valid: set[str], case_number: str | None = None) -> list[str]:
     seen: list[str] = []
     for m in _EXHIBIT_MENTION.finditer(text):
         ex = m.group(1).upper()
-        if ex in valid and ex not in seen:
+        if ex in valid and ex not in seen and not _other_case(text, m.start(), case_number):
             seen.append(ex)
     return seen
 
@@ -118,8 +128,24 @@ def _split_unlabelled_refs(head: str, start: int) -> tuple[str, int]:
     return head[start:pos].strip(), pos
 
 
-def split_irs(doc_id: str, pages: list[tuple[int, str]], valid_exhibits: set[str]) -> list[IRRow]:
-    """pages: [(page_no, text)] for one IRR document."""
+def _interleaved(rest: str) -> tuple[list[str], list[str]]:
+    """Split the body from the first RESPONSE marker on into question and response parts.
+    Multi-part IRs alternate 'RESPONSE (A):' / 'QUESTION (B):' / 'RESPONSE (B):' ..."""
+    marks = sorted([(m.start(), m.end(), "q") for m in _QUESTION.finditer(rest)]
+                   + [(m.start(), m.end(), "r") for m in _RESPONSE.finditer(rest)])
+    questions: list[str] = []
+    responses: list[str] = []
+    for i, (_, end, kind) in enumerate(marks):
+        part = rest[end:marks[i + 1][0] if i + 1 < len(marks) else len(rest)].strip()
+        if part:
+            (questions if kind == "q" else responses).append(part)
+    return questions, responses
+
+
+def split_irs(doc_id: str, pages: list[tuple[int, str]], valid_exhibits: set[str],
+              case_number: str | None = None) -> list[IRRow]:
+    """pages: [(page_no, text)] for one IRR document. Exhibits qualified by an EB number other
+    than `case_number` (a previous proceeding's evidence) are not counted."""
     text_parts, offsets = [], []
     pos = 0
     for page_no, t in pages:
@@ -158,17 +184,18 @@ def split_irs(doc_id: str, pages: list[tuple[int, str]], valid_exhibits: set[str
                 refs, body_start = head[rm.end():nxt.start()].strip(), nxt.start()
             else:
                 refs, body_start = _split_unlabelled_refs(head, rm.end())
+        later_questions, responses = _interleaved(response)
         question = head[body_start:].strip()
         question = _PREAMBLE.sub("", question, count=1)
-        question = _QUESTION.sub("", question).strip()
-        response = _RESPONSE.sub("", response).strip()
+        question = "\n".join([_QUESTION.sub("", question).strip(), *later_questions]).strip()
+        response = "\n\n".join(responses)
         ex, who, num = m.group(1).upper(), m.group(2).upper(), m.group(3)
         rows.append(IRRow(
             ir_id=f"{ex}-{who}-{num}", ir_exhibit=ex, intervenor=who, doc_id=doc_id,
             page_start=page_at(m.start()), page_end=page_at(max(m.start(), block_end - 1)),
             references=refs, question=question, response=response,
-            reference_exhibits=_exhibits(refs, valid_exhibits),
-            response_exhibits=_exhibits(response, valid_exhibits),
-            response_units=_units(response, valid_exhibits),
+            reference_exhibits=_exhibits(refs, valid_exhibits, case_number),
+            response_exhibits=_exhibits(response, valid_exhibits, case_number),
+            response_units=_units(response, valid_exhibits, case_number),
         ))
     return rows

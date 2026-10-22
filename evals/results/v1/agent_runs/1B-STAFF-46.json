@@ -1,0 +1,206 @@
+{
+  "ir_id": "1B-STAFF-46",
+  "gold_exhibits": [
+    "1B",
+    "2B",
+    "4"
+  ],
+  "query": "Toronto Hydro has proposed a 2025-2029 custom scorecard with 12 measures. In its\nDecision and Order, the OEB set a 2020-2024 custom scorecard with 15 measures.\na) Please confirm, by a list identifying each, which items in the proposed 2025-2029 custom\nscorecard are exactly the same measure as the 2020-2024 scorecard measure, without\nconsidering the target itself.\nb) Please list and explain the rationale supporting all measures that have the same or similar\nname, but Toronto Hydro proposes a different definition of the measure for 2025-2029.\nc) For each applicable measure, please explain the rationale supporting the removal of a\n2020-2024 scorecard measure from the 2025-2029 scorecard.",
+  "answer": "Two 2020-2024 measures carry over unchanged. The filings I can access give no measure-by-measure reason for dropping the rest.\n\n**Caveats on your premise and my sources.** Toronto Hydro's own table of the 2020-2024 custom measures, which cites the OEB decision at pp. 44-45, lists 16 measures, not 15 [cite:rds-823236:274]. A footnote in that table also refers to \"15\" proposed 2025-2029 measures, but Table 1 of Exhibit 1B, Tab 3, Schedule 1 shows 12 [cite:rds-823236:274] [cite:rds-823236:191]. I could not access the OEB Decision itself. I relied on Toronto Hydro's description of it.\n\nThe 16 measures in the 2020-2024 list are:\n- Customers on eBills\n- Total Recordable Injury Frequency (TRIF)\n- Network Units Modernization\n- SAIDI \u2013 Defective Equipment\n- SAIFI \u2013 Defective Equipment\n- FESI-7\n- FESI-6 (Large Customers)\n- MAIFI\n- System Capacity (# of stations)\n- System Health \u2013 Wood Poles\n- Direct Buried Cable Replacement\n- In-Service Additions\n- Average Wood Pole Replacement Cost\n- Vegetation Management Cost per km\n- Oil Spills Containing PCBs\n- Waste Diversion Rate [cite:rds-823236:274]\n\n**a) Same measure, ignoring the target**\n\n1. **Outage Frequency is the same as SAIFI \u2013 Defective Equipment.** Toronto Hydro says it \"intends to continue reporting on this metric\" [cite:rds-823236:279]. The 2025-2029 version is defined as SAIFI \u2013 Defective Equipment [cite:rds-823236:191].\n2. **TRIF is the same measure.** It is defined as recordable injuries per 200,000 exposure hours, and Toronto Hydro says it \"intends to continue reporting TRIF as a custom measure\" [cite:rds-823236:276]. The 2025-2029 wording is \"injuries per 100 employees (or 200,000 hours worked)\" [cite:rds-823236:191].\n\n**b) Same or similar name, different definition**\n\n- **Outage Duration (SAIDI).**\n  - The 2020-2024 measure was SAIDI \u2013 Defective Equipment, which counts only interruptions caused by equipment failure [cite:rds-823236:279].\n  - The 2025-2029 measure is SAIDI excluding Major Event Days, Loss of Supply and Scheduled Outages [cite:rds-823236:191].\n  - Toronto Hydro's stated reasons concern excluding Scheduled Outages. There is major forecasting uncertainty from the Oracle Utility Analytics (OUA) outage-data system rollout. Scheduled outages are also expected to rise with a larger work program. Excluding them gives more visibility into unforeseen interruptions [cite:rds-823236:192] [cite:rds-823236:193].\n  - The target is a five-year rolling average, \"consistent with OEB's approach\" on the Electricity Distributor Scorecard (EDS) [cite:rds-823236:193].\n  - Customer research showed customers (except Key Accounts) prioritize shorter outages over fewer outages [cite:rds-823236:193].\n  - I found no explicit reason for moving from defective-equipment-only to a broader cause base.\n- **Customer Satisfaction.**\n  - In 2020-2024 the custom measure in the customer satisfaction category was Customers on eBills [cite:rds-823236:274].\n  - The 2025-2029 \"Customer Satisfaction\" measure uses post-transactional surveys. These cover phone and email inquiries, Key Accounts, customer connections, and outage and construction communications [cite:rds-823236:211].\n  - Toronto Hydro says it complements the EDS survey measure by tracking satisfaction \"at a more operational level\" to produce \"actionable insights\" [cite:rds-823236:211].\n  - Surveys for connections and for outage and construction communications are still being set up [cite:rds-823236:211].\n- **System Capacity.**\n  - 2020-2024 counted stations unable to connect at least one large customer [cite:rds-823236:283].\n  - 2025-2029 \"System Capacity (Non-Wires)\" measures MW of flexible capacity procured through demand response, with a target of 30 MW by 2029 [cite:rds-823236:191].\n  - The rationale is to integrate non-wires incentives into the scorecard, aligned with the OEB's Filing Guidelines for Incentives for Electricity Distributors to Use Third-Party DERs as NWA (non-wires alternatives). Toronto Hydro cites avoiding or deferring about $10 million of load transfers in the Horseshoe North area [cite:rds-823236:232]. It proposes a weighting of 5% of the $65M incentive, about $3.3M [cite:rds-823236:233].\n- **New Services Connected on Time (partial overlap).**\n  - This is not on the 2020-2024 custom list. A similar measure exists on the EDS and in the ESQR, the OEB's Electricity Service Quality Requirements [cite:rds-823236:292].\n  - The custom version is a weighted composite of low-voltage connections (70%), high-voltage (20%) and DER connections (10%), with 5-day and 10-day standards [cite:rds-823236:208].\n  - The stated rationale is the obligation to serve, plus forecast growth in load and DER connections [cite:rds-823236:208] [cite:rds-823236:209].\n\n**c) Rationale for removing 2020-2024 measures**\n\n- **No per-measure rationale found.** Toronto Hydro says only that \"in place of some of these measures\" it proposes new custom measures [cite:rds-823236:274].\n- **Measures with no 2025-2029 equivalent.** This covers eBills, Network Units Modernization, FESI-7, FESI-6, MAIFI, Wood Pole System Health, Direct Buried Cable Replacement, In-Service Additions, Wood Pole Cost, Vegetation Cost, PCB Oil Spills and Waste Diversion.\n- **General selection principles.** These are focus on long-term goals, unambiguous metrics, outcomes within the utility's control, and strong linkage to the investment plan [cite:rds-823236:188] [cite:rds-823236:189]. They are not tied to specific dropped measures.\n- **Measurement caveats in the 2020-2024 results discussion.** These are my observations, not stated removal reasons.\n  - MAIFI is affected by SCADA coverage and \"must be interpreted with a degree of practical caution\" [cite:rds-823236:278]. The OEB required it in the last case [cite:rds-823236:277].\n  - FESI-7 and FESI-6 increases are attributed to better outage capture under OUA [cite:rds-823236:281] [cite:rds-823236:282].\n  - The wood pole health methodology was refined [cite:rds-823236:284].\n  - eBills exceeded its 347,000 target [cite:rds-823236:275].\n- **Some dropped measures may still be reported.** Appendix B (\"Annually Reported Measures\") still lists the 2020-2024 custom measures. I could not confirm which will continue to be reported [cite:rds-823236:292]. The Distribution System Plan (DSP) also says progress on lead cable replacement will continue to be reported as a 2025-2029 custom performance measure [cite:rds-823164:43].\n\nFor part (c), the likely place for a per-measure answer is an interrogatory or undertaking response, which I did not find.",
+  "answer_rendered": "Two 2020-2024 measures carry over unchanged. The filings I can access give no measure-by-measure reason for dropping the rest.\n\n**Caveats on your premise and my sources.** Toronto Hydro's own table of the 2020-2024 custom measures, which cites the OEB decision at pp. 44-45, lists 16 measures, not 15 [EB-2023-0195 / Exhibit 1B / p.274]. A footnote in that table also refers to \"15\" proposed 2025-2029 measures, but Table 1 of Exhibit 1B, Tab 3, Schedule 1 shows 12 [EB-2023-0195 / Exhibit 1B / p.274] [EB-2023-0195 / Exhibit 1B / p.191]. I could not access the OEB Decision itself. I relied on Toronto Hydro's description of it.\n\nThe 16 measures in the 2020-2024 list are:\n- Customers on eBills\n- Total Recordable Injury Frequency (TRIF)\n- Network Units Modernization\n- SAIDI \u2013 Defective Equipment\n- SAIFI \u2013 Defective Equipment\n- FESI-7\n- FESI-6 (Large Customers)\n- MAIFI\n- System Capacity (# of stations)\n- System Health \u2013 Wood Poles\n- Direct Buried Cable Replacement\n- In-Service Additions\n- Average Wood Pole Replacement Cost\n- Vegetation Management Cost per km\n- Oil Spills Containing PCBs\n- Waste Diversion Rate [EB-2023-0195 / Exhibit 1B / p.274]\n\n**a) Same measure, ignoring the target**\n\n1. **Outage Frequency is the same as SAIFI \u2013 Defective Equipment.** Toronto Hydro says it \"intends to continue reporting on this metric\" [EB-2023-0195 / Exhibit 1B / p.279]. The 2025-2029 version is defined as SAIFI \u2013 Defective Equipment [EB-2023-0195 / Exhibit 1B / p.191].\n2. **TRIF is the same measure.** It is defined as recordable injuries per 200,000 exposure hours, and Toronto Hydro says it \"intends to continue reporting TRIF as a custom measure\" [EB-2023-0195 / Exhibit 1B / p.276]. The 2025-2029 wording is \"injuries per 100 employees (or 200,000 hours worked)\" [EB-2023-0195 / Exhibit 1B / p.191].\n\n**b) Same or similar name, different definition**\n\n- **Outage Duration (SAIDI).**\n  - The 2020-2024 measure was SAIDI \u2013 Defective Equipment, which counts only interruptions caused by equipment failure [EB-2023-0195 / Exhibit 1B / p.279].\n  - The 2025-2029 measure is SAIDI excluding Major Event Days, Loss of Supply and Scheduled Outages [EB-2023-0195 / Exhibit 1B / p.191].\n  - Toronto Hydro's stated reasons concern excluding Scheduled Outages. There is major forecasting uncertainty from the Oracle Utility Analytics (OUA) outage-data system rollout. Scheduled outages are also expected to rise with a larger work program. Excluding them gives more visibility into unforeseen interruptions [EB-2023-0195 / Exhibit 1B / p.192] [EB-2023-0195 / Exhibit 1B / p.193].\n  - The target is a five-year rolling average, \"consistent with OEB's approach\" on the Electricity Distributor Scorecard (EDS) [EB-2023-0195 / Exhibit 1B / p.193].\n  - Customer research showed customers (except Key Accounts) prioritize shorter outages over fewer outages [EB-2023-0195 / Exhibit 1B / p.193].\n  - I found no explicit reason for moving from defective-equipment-only to a broader cause base.\n- **Customer Satisfaction.**\n  - In 2020-2024 the custom measure in the customer satisfaction category was Customers on eBills [EB-2023-0195 / Exhibit 1B / p.274].\n  - The 2025-2029 \"Customer Satisfaction\" measure uses post-transactional surveys. These cover phone and email inquiries, Key Accounts, customer connections, and outage and construction communications [EB-2023-0195 / Exhibit 1B / p.211].\n  - Toronto Hydro says it complements the EDS survey measure by tracking satisfaction \"at a more operational level\" to produce \"actionable insights\" [EB-2023-0195 / Exhibit 1B / p.211].\n  - Surveys for connections and for outage and construction communications are still being set up [EB-2023-0195 / Exhibit 1B / p.211].\n- **System Capacity.**\n  - 2020-2024 counted stations unable to connect at least one large customer [EB-2023-0195 / Exhibit 1B / p.283].\n  - 2025-2029 \"System Capacity (Non-Wires)\" measures MW of flexible capacity procured through demand response, with a target of 30 MW by 2029 [EB-2023-0195 / Exhibit 1B / p.191].\n  - The rationale is to integrate non-wires incentives into the scorecard, aligned with the OEB's Filing Guidelines for Incentives for Electricity Distributors to Use Third-Party DERs as NWA (non-wires alternatives). Toronto Hydro cites avoiding or deferring about $10 million of load transfers in the Horseshoe North area [EB-2023-0195 / Exhibit 1B / p.232]. It proposes a weighting of 5% of the $65M incentive, about $3.3M [EB-2023-0195 / Exhibit 1B / p.233].\n- **New Services Connected on Time (partial overlap).**\n  - This is not on the 2020-2024 custom list. A similar measure exists on the EDS and in the ESQR, the OEB's Electricity Service Quality Requirements [EB-2023-0195 / Exhibit 1B / p.292].\n  - The custom version is a weighted composite of low-voltage connections (70%), high-voltage (20%) and DER connections (10%), with 5-day and 10-day standards [EB-2023-0195 / Exhibit 1B / p.208].\n  - The stated rationale is the obligation to serve, plus forecast growth in load and DER connections [EB-2023-0195 / Exhibit 1B / p.208] [EB-2023-0195 / Exhibit 1B / p.209].\n\n**c) Rationale for removing 2020-2024 measures**\n\n- **No per-measure rationale found.** Toronto Hydro says only that \"in place of some of these measures\" it proposes new custom measures [EB-2023-0195 / Exhibit 1B / p.274].\n- **Measures with no 2025-2029 equivalent.** This covers eBills, Network Units Modernization, FESI-7, FESI-6, MAIFI, Wood Pole System Health, Direct Buried Cable Replacement, In-Service Additions, Wood Pole Cost, Vegetation Cost, PCB Oil Spills and Waste Diversion.\n- **General selection principles.** These are focus on long-term goals, unambiguous metrics, outcomes within the utility's control, and strong linkage to the investment plan [EB-2023-0195 / Exhibit 1B / p.188] [EB-2023-0195 / Exhibit 1B / p.189]. They are not tied to specific dropped measures.\n- **Measurement caveats in the 2020-2024 results discussion.** These are my observations, not stated removal reasons.\n  - MAIFI is affected by SCADA coverage and \"must be interpreted with a degree of practical caution\" [EB-2023-0195 / Exhibit 1B / p.278]. The OEB required it in the last case [EB-2023-0195 / Exhibit 1B / p.277].\n  - FESI-7 and FESI-6 increases are attributed to better outage capture under OUA [EB-2023-0195 / Exhibit 1B / p.281] [EB-2023-0195 / Exhibit 1B / p.282].\n  - The wood pole health methodology was refined [EB-2023-0195 / Exhibit 1B / p.284].\n  - eBills exceeded its 347,000 target [EB-2023-0195 / Exhibit 1B / p.275].\n- **Some dropped measures may still be reported.** Appendix B (\"Annually Reported Measures\") still lists the 2020-2024 custom measures. I could not confirm which will continue to be reported [EB-2023-0195 / Exhibit 1B / p.292]. The Distribution System Plan (DSP) also says progress on lead cable replacement will continue to be reported as a 2025-2029 custom performance measure [EB-2023-0195 / Exhibit 2B / p.43].\n\nFor part (c), the likely place for a per-measure answer is an interrogatory or undertaking response, which I did not find.",
+  "citations": [
+    {
+      "doc_id": "rds-823236",
+      "page": 274,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 191,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 279,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 276,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 192,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 193,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 211,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 283,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 232,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 233,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 292,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 208,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 209,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 188,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 189,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 278,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 277,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 281,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 282,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 284,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 275,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823164",
+      "page": 43,
+      "case_number": "EB-2023-0195",
+      "exhibit": "2B",
+      "title": "THESL_Exhibit 2B_Capital Expenditure Plan_Part3of3_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B",
+    "2B"
+  ],
+  "citation_hit": true,
+  "n_unverified": 0,
+  "tool_calls": 50,
+  "num_turns": 51,
+  "seconds": 135.4,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.8457760999999999,
+  "judge": {
+    "verdict": "partially_correct",
+    "rationale": "The candidate matches the reference on parts (a) and (b): SAIFI and TRIF carry over, and SAIDI is redefined, with the customer priority on shorter outages as the reason. For part (c) it says it found no per-measure removal rationale, so it misses most of the reference's explanations, including ISO 55001 and ISO 14001 management, the efficiency measure replacing the cost measures, and the shift to outcome metrics. It also treats System Capacity as redefined around non-wires capacity, while the reference says it was replaced by a timely-connections measure.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.055443599999999996
+  }
+}

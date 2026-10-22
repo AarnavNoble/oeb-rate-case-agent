@@ -1,0 +1,67 @@
+{
+  "ir_id": "1-ED-02",
+  "gold_exhibits": [
+    "9"
+  ],
+  "query": "a) Toronto Hydro states that its proposed Innovation Fund \u201cis the low end of a range found in\nresearch of comparable ratepayer-funded initiatives aimed at facilitating innovation by\nutilities and regulatory bodies in other jurisdictions, as well as general data on utility\nspending for research and development activities.\u201d Please provide this analysis.",
+  "answer": "The filings don't contain a standalone analysis, study or workpaper behind that statement. They contain a short summary of the research in Exhibit 1B, Tab 4, Schedule 2, Section 2. I searched only for the research behind the Innovation Fund statement. I did not look through interrogatory responses or other exhibits.\n\n**Where the statement appears.** The \"low end of a range\" sentence is in the Exhibit 1B overview (Section 3.2.2). It says Toronto Hydro allocated 0.3 percent of the proposed revenue requirement, about $16 million over 2025\u20132029, to the fund [cite:rds-823236:92][cite:rds-847604:84].\n\n**The range.** Section 2 of the Innovation Fund proposal says Toronto Hydro's research found that utility investments in comparable innovation initiatives and R&D activities \"range from 0.3 to 1 percent of revenues.\" It therefore proposes 0.3 percent, or about $16 million [cite:rds-823236:459].\n\n**The comparators it cites** [cite:rds-823236:459][cite:rds-823236:460]:\n- **UK, Ofgem RIIO-2:** networks may recover 0.5 to 1 percent of base revenues for innovation. The projects are those that facilitate decarbonization while lowering network costs, address consumer vulnerability, or deliver longer-term financial or environmental benefits.\n- **New York, Reforming the Energy Vision (REV):** utilities can recover 0.5 percent of their total revenue requirement, up to a maximum of $10 million per year. This covers REV demonstration projects that advance new utility and third-party service or business models, or enable DER integration without hurting reliability.\n- **Ontario, Enbridge Gas Energy Transition Technology Fund (ETTF):** Enbridge proposed $25 million, about 0.4 percent of the test-year revenue requirement. The source is cited as EB-2022-0200, Exhibit 1, Tab 10, Schedule 7. The filing describes this as a proposal, not an approved amount.\n\n**Qualitative examples.** A separate appendix lists regulatory mechanisms that have enabled utility innovation. They include the FortisBC Clean Growth Innovation Fund, the Nova Scotia (NSUARB) innovation justification criteria, Ofgem's Network Innovation Allowance and the OEB Innovation Sandbox. The excerpt I saw gives no funding percentages for these [cite:rds-823236:484].\n\n**What the filings don't show.** The \"general data on utility spending for research and development\" is not identified or quantified. The only figures given are the three comparators above, and the bottom of the range, 0.3 percent, is not tied to any named comparator. Each comparator is at 0.4 percent or higher, so 0.3 percent is at or below all of them. The filings also don't say how the range was built or what else was considered.\n\nIf you want the underlying analysis, ask Toronto Hydro for it in an interrogatory. It would need to include the full list of jurisdictions and sources, the R&D spending data, and the calculations behind 0.3 to 1 percent.",
+  "answer_rendered": "The filings don't contain a standalone analysis, study or workpaper behind that statement. They contain a short summary of the research in Exhibit 1B, Tab 4, Schedule 2, Section 2. I searched only for the research behind the Innovation Fund statement. I did not look through interrogatory responses or other exhibits.\n\n**Where the statement appears.** The \"low end of a range\" sentence is in the Exhibit 1B overview (Section 3.2.2). It says Toronto Hydro allocated 0.3 percent of the proposed revenue requirement, about $16 million over 2025\u20132029, to the fund [EB-2023-0195 / Exhibit 1B / p.92][EB-2023-0195 / Exhibit 1B / p.84].\n\n**The range.** Section 2 of the Innovation Fund proposal says Toronto Hydro's research found that utility investments in comparable innovation initiatives and R&D activities \"range from 0.3 to 1 percent of revenues.\" It therefore proposes 0.3 percent, or about $16 million [EB-2023-0195 / Exhibit 1B / p.459].\n\n**The comparators it cites** [EB-2023-0195 / Exhibit 1B / p.459][EB-2023-0195 / Exhibit 1B / p.460]:\n- **UK, Ofgem RIIO-2:** networks may recover 0.5 to 1 percent of base revenues for innovation. The projects are those that facilitate decarbonization while lowering network costs, address consumer vulnerability, or deliver longer-term financial or environmental benefits.\n- **New York, Reforming the Energy Vision (REV):** utilities can recover 0.5 percent of their total revenue requirement, up to a maximum of $10 million per year. This covers REV demonstration projects that advance new utility and third-party service or business models, or enable DER integration without hurting reliability.\n- **Ontario, Enbridge Gas Energy Transition Technology Fund (ETTF):** Enbridge proposed $25 million, about 0.4 percent of the test-year revenue requirement. The source is cited as EB-2022-0200, Exhibit 1, Tab 10, Schedule 7. The filing describes this as a proposal, not an approved amount.\n\n**Qualitative examples.** A separate appendix lists regulatory mechanisms that have enabled utility innovation. They include the FortisBC Clean Growth Innovation Fund, the Nova Scotia (NSUARB) innovation justification criteria, Ofgem's Network Innovation Allowance and the OEB Innovation Sandbox. The excerpt I saw gives no funding percentages for these [EB-2023-0195 / Exhibit 1B / p.484].\n\n**What the filings don't show.** The \"general data on utility spending for research and development\" is not identified or quantified. The only figures given are the three comparators above, and the bottom of the range, 0.3 percent, is not tied to any named comparator. Each comparator is at 0.4 percent or higher, so 0.3 percent is at or below all of them. The filings also don't say how the range was built or what else was considered.\n\nIf you want the underlying analysis, ask Toronto Hydro for it in an interrogatory. It would need to include the full list of jurisdictions and sources, the R&D spending data, and the calculations behind 0.3 to 1 percent.",
+  "citations": [
+    {
+      "doc_id": "rds-823236",
+      "page": 92,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-847604",
+      "page": 84,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_2025-2029 Rate Application_Evidence Update_20240402",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 459,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 460,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    },
+    {
+      "doc_id": "rds-823236",
+      "page": 484,
+      "case_number": "EB-2023-0195",
+      "exhibit": "1B",
+      "title": "THESL_Exhibit 1B - Application Overview_20231117",
+      "seen": true
+    }
+  ],
+  "cited_exhibits": [
+    "1B"
+  ],
+  "citation_hit": false,
+  "n_unverified": 0,
+  "tool_calls": 2,
+  "num_turns": 3,
+  "seconds": 19.7,
+  "agent_error": null,
+  "agent_cost_usd_equivalent": 0.0607341,
+  "judge": {
+    "verdict": "correct",
+    "rationale": "For part a), the reference only refers to 1B-DRC-06 part d) and gives no figures of its own, so the candidate has nothing to contradict. The candidate gives a real answer drawn from the evidence: a range of 0.3\u20131% of revenues, with Ofgem RIIO-2, New York REV and Enbridge's ETTF as comparators. It also notes, correctly, that the evidence doesn't fully set out the analysis.",
+    "model": "claude-opus-5-5",
+    "cost_usd_equivalent": 0.035552
+  }
+}
