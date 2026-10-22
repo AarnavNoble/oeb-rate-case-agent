@@ -8,6 +8,30 @@ links to the page of the filing it came from. Built over two real proceedings:
 | [EB-2023-0195](https://www.rds.oeb.ca/CMWebDrawer/Record?q=CaseNumber:EB-2023-0195) | Toronto Hydro-Electric System Limited | 2025–2029 custom IR application, settled 2024 |
 | EB-2026-0164 | Hydro One Networks Inc. | 2028–2032 joint transmission + distribution application, filed 2026-10-07 |
 
+![Demo: a cited answer, opening a footnote, the figure check jumping to the right page, passage search and the filings list](docs/demo.gif)
+
+## At a glance
+
+The app runs locally: it needs the ~1.2 GB of downloaded PDFs, Postgres, Temporal and a Claude login.
+Everything below is committed, so the work can be checked without running anything.
+
+| | |
+|---|---|
+| **Corpus** | 340 PDFs, 41,867 pages, ingested by a Temporal workflow into Postgres + pgvector |
+| **Retrieval eval** | 470 questions taken from the utility's own interrogatory responses. Section-level recall@5 is **0.68** (vector), **0.66** (hybrid) and **0.54** (full-text), against **0.16** for random chunks. Without the leakage control, the answer itself is in the top 5 for **66%** of questions. |
+| **Agent eval** | 20 held-out questions. It cited the section the utility itself cited for **18/20**, an LLM judge rated **19/20** correct or partially correct, and it made **0** citations to pages it never retrieved. |
+
+**Read the outputs directly**
+- [Agent transcripts](evals/results/agent_runs/): one JSON file per held-out question, with the answer, every tool call, the citations and the judge's verdict
+- [Agent eval summary](evals/results/agent.md) and [retrieval eval summary](evals/results/retrieval.md)
+- [Cross-case comparison answers](evals/results/comparisons.md): Toronto Hydro vs Hydro One, with both cases cited in every answer
+- [Eval-label review](evals/ir_sample_review.md) and [judge review](evals/judge_review.md): spot checks marked as done by Claude, not a human
+- [Previous eval version](evals/results/v1/): the results from before two parser bugs were fixed, kept so the change can be audited
+
+| Passage search (no LLM) | Filings |
+|---|---|
+| ![Passage search with the source panel open](docs/search.jpg) | ![Filings by case and type](docs/filings.jpg) |
+
 ## The problem
 
 A single rate case is hundreds of PDFs and tens of thousands of pages: pre-filed evidence,
