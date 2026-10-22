@@ -50,7 +50,7 @@ export function FilingsView({ corpus, active, onOpen, scope, onScope }: { corpus
 
   return (
     <div className="mx-auto w-full max-w-[1000px] px-4 py-6 sm:px-6">
-      <PageHeader eyebrow="Record" title="Filings" />
+      <PageHeader eyebrow="The record" title="Filings" />
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {(corpus ?? []).map((c) => {
@@ -60,13 +60,13 @@ export function FilingsView({ corpus, active, onOpen, scope, onScope }: { corpus
             <button
               key={c.case_number}
               onClick={() => onScope(selected ? null : c.case_number)}
-              className={`rounded-xl border bg-panel p-4 text-left transition-colors ${selected ? "border-navy/50 ring-2 ring-tint-strong" : "border-line hover:border-line-strong"}`}
+              className={`rounded-lg border bg-panel p-4 text-left transition-colors ${selected ? "border-accent/50 ring-2 ring-tint-strong" : "border-line hover:border-line-strong"}`}
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[11px] text-muted">{c.case_number}</span>
                 <span className="rounded-full border border-line px-2 py-0.5 text-[10.5px] text-muted">{meta?.period} rates</span>
               </div>
-              <p className="mt-2 text-[15px] font-semibold tracking-tight">{meta?.utility ?? c.applicant}</p>
+              <p className="mt-2 font-serif text-[20px] font-semibold tracking-tight">{meta?.utility ?? c.applicant}</p>
               <p className="truncate text-[12px] text-muted">{c.applicant}</p>
               <dl className="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3">
                 {[
@@ -87,7 +87,7 @@ export function FilingsView({ corpus, active, onOpen, scope, onScope }: { corpus
         })}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-2 rounded-xl border border-line bg-sunken/70 p-2">
+      <div className="mt-8 flex flex-wrap items-center gap-2">
         <label className="flex min-w-[220px] flex-1 items-center gap-2 rounded-lg border border-line-strong bg-panel px-3">
           <Icon name="search" className="size-4 text-faint" />
           <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by title or exhibit" className="h-8 w-full bg-transparent text-[13px] outline-none placeholder:text-faint" />
@@ -104,7 +104,7 @@ export function FilingsView({ corpus, active, onOpen, scope, onScope }: { corpus
         </div>
       </div>
 
-      <div className="mt-3 overflow-x-auto rounded-xl border border-line bg-panel">
+      <div className="mt-3 overflow-x-auto rounded-lg border border-line bg-panel">
         <table className="w-full min-w-[680px] table-fixed text-left text-[12.5px]">
           <colgroup>
             <col />
@@ -136,7 +136,7 @@ export function FilingsView({ corpus, active, onOpen, scope, onScope }: { corpus
             {rows.map((d) => {
               const isActive = active?.docId === d.doc_id;
               return (
-                <tr key={d.doc_id} className={isActive ? "bg-tint" : "hover:bg-sunken/50"}>
+                <tr key={d.doc_id} className={isActive ? "bg-cite-bg" : "hover:bg-sunken/50"}>
                   <td className="px-4 py-2">
                     <span className="block truncate font-medium" title={d.title}>
                       {d.title}

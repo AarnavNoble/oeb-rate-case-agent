@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { caseLabel, CASES, fmt, readSSE, type CaseStats, type Citation, type SourceRef, type ToolEvent } from "../lib";
 import { Answer } from "./Answer";
 import { Composer, type Scope } from "./Composer";
-import { Icon, Mark } from "./Icon";
+import { Icon } from "./Icon";
 
 const EXAMPLES = [
   "What return on equity did Toronto Hydro use for its 2025 revenue requirement?",
@@ -48,7 +48,7 @@ function Steps({ steps, running }: { steps: ToolEvent[]; running: boolean }) {
         <Icon name="chevron" className={`size-3.5 transition-transform ${expanded ? "rotate-90" : ""}`} />
         {running ? (
           <span className="flex items-center gap-2">
-            Researching the filings
+            Reading the record
             <span className="flex gap-0.5">
               {[0, 1, 2].map((d) => (
                 <span key={d} className="size-1 animate-bounce rounded-full bg-muted" style={{ animationDelay: `${d * 120}ms` }} />
@@ -104,6 +104,7 @@ export function AskView({
   scope,
   onScope,
   resetSignal,
+  onBrowse,
 }: {
   corpus: CaseStats[] | null;
   active: SourceRef | null;
@@ -111,6 +112,7 @@ export function AskView({
   scope: Scope;
   onScope: (s: Scope) => void;
   resetSignal: number;
+  onBrowse: (s: Scope) => void;
 }) {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [draft, setDraft] = useState("");
@@ -182,92 +184,108 @@ export function AskView({
 
   if (!turns.length)
     return (
-      <div className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center px-4 py-12 lg:min-h-screen">
-        <div className="w-full max-w-[680px]">
-          <div className="mb-7 flex flex-col items-center text-center">
-            <Mark className="size-10" />
-            <h1 className="mt-4 text-[26px] font-semibold tracking-tight">Ask the rate-case record</h1>
-            <p className="mt-2 max-w-md text-[13.5px] leading-relaxed text-muted">
-              Answers come only from Ontario Energy Board filings, and every claim links to the page it came from.
-            </p>
-            {totals && (
-              <p className="mt-3 font-mono text-[11px] text-faint">
-                {corpus!.length} cases · {fmt.format(totals.docs)} filings · {fmt.format(totals.pages)} pages indexed
-              </p>
-            )}
+      <div className="mx-auto grid w-full max-w-[1120px] gap-10 px-4 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:py-16">
+        <div className="min-w-0">
+          <p className="eyebrow">Ontario Energy Board · rate applications</p>
+          <h1 className="mt-3 font-serif text-[40px] font-semibold leading-[1.1] tracking-tight sm:text-[46px]">Ask the record.</h1>
+          <p className="mt-3 max-w-[540px] text-[15px] leading-relaxed text-muted">
+            Questions are answered only from the filed evidence, interrogatory responses and decisions. Every sentence
+            carries a footnote to the page it came from.
+          </p>
+          <div className="mt-8">
+            <Composer
+              value={draft}
+              onChange={setDraft}
+              onSubmit={() => ask(draft)}
+              onStop={() => abort.current?.abort()}
+              busy={false}
+              scope={scope}
+              onScope={onScope}
+              placeholder="e.g. How does Hydro One justify its vegetation management spending?"
+              autoFocus
+            />
           </div>
-          <Composer
-            value={draft}
-            onChange={setDraft}
-            onSubmit={() => ask(draft)}
-            onStop={() => abort.current?.abort()}
-            busy={false}
-            scope={scope}
-            onScope={onScope}
-            placeholder="Ask about a filing, an interrogatory, or how the two cases compare…"
-            autoFocus
-          />
-          <div className="mt-6">
-            <p className="mb-2 flex items-center gap-1.5 text-[12px] text-muted">
-              <Icon name="bulb" className="size-3.5" /> Need ideas?
-            </p>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {EXAMPLES.map((ex) => (
-                <button
-                  key={ex}
-                  onClick={() => ask(ex)}
-                  className="rounded-lg border border-line bg-panel px-3 py-2.5 text-left text-[13px] leading-snug text-ink/85 transition-colors hover:border-line-strong hover:bg-sunken"
-                >
-                  {ex}
-                </button>
+          <div className="mt-10">
+            <p className="eyebrow mb-1">Try one of these</p>
+            <ol className="divide-y divide-line border-y border-line">
+              {EXAMPLES.map((ex, i) => (
+                <li key={ex}>
+                  <button onClick={() => ask(ex)} className="group flex w-full items-baseline gap-4 py-3 text-left">
+                    <span className="font-mono text-[11px] text-faint">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="flex-1 text-[14px] leading-snug text-ink/85 group-hover:text-ink">{ex}</span>
+                    <span className="text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-accent">→</span>
+                  </button>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </div>
+
+        <aside className="space-y-3 lg:pt-[52px]">
+          <p className="eyebrow">On the record</p>
+          {(corpus ?? []).map((c) => (
+            <div key={c.case_number} className="rounded-lg border border-line bg-panel p-4">
+              <p className="font-mono text-[11px] text-muted">{c.case_number}</p>
+              <p className="mt-1 font-serif text-[19px] font-semibold leading-tight">{CASES[c.case_number]?.utility ?? c.applicant}</p>
+              <p className="text-[12.5px] text-muted">{CASES[c.case_number]?.period} rate application</p>
+              <div className="mt-3 flex gap-5 border-t border-dashed border-line pt-3 text-[12.5px]">
+                <span>
+                  <span className="font-medium tabular-nums">{fmt.format(c.documents)}</span> <span className="text-muted">filings</span>
+                </span>
+                <span>
+                  <span className="font-medium tabular-nums">{fmt.format(c.pages)}</span> <span className="text-muted">pages</span>
+                </span>
+              </div>
+              <button onClick={() => onBrowse(c.case_number)} className="mt-3 text-[12.5px] font-medium text-accent hover:underline">
+                Browse filings →
+              </button>
+            </div>
+          ))}
+          {totals && (
+            <p className="px-1 text-[11.5px] leading-relaxed text-faint">
+              {fmt.format(totals.docs)} PDFs, {fmt.format(totals.pages)} pages, from rds.oeb.ca and the utilities&apos; own sites.
+            </p>
+          )}
+        </aside>
       </div>
     );
 
   return (
-    <div className="flex min-h-[calc(100vh-3.5rem)] flex-col lg:min-h-screen">
-      <div className="mx-auto w-full max-w-[760px] flex-1 px-4 pb-8 pt-8 sm:px-6">
-        <div className="space-y-10">
+    <div className="flex min-h-full flex-col">
+      <div className="mx-auto w-full max-w-[780px] flex-1 px-4 pb-8 pt-10 sm:px-8">
+        <div className="space-y-14">
           {turns.map((t) => (
             <section key={t.id}>
-              <div className="flex justify-end">
-                <div className="max-w-[85%] rounded-2xl rounded-br-md bg-sunken px-4 py-2.5 text-[14px] leading-relaxed">{t.question}</div>
-              </div>
-              <p className="mt-5 font-mono text-[10.5px] text-faint">
-                {new Date(t.startedAt).toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit" })}
-                {" · "}
+              <p className="eyebrow">
                 {t.scope ? `${CASES[t.scope]?.utility} · ${t.scope}` : "Both cases"}
+                {" · "}
+                {new Date(t.startedAt).toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit" })}
                 {t.durationMs ? ` · ${Math.round(t.durationMs / 1000)} s` : ""}
               </p>
-              <div className="mt-2 flex gap-3">
-                <Mark className="size-7 shrink-0" />
-                <div className="min-w-0 flex-1 pt-0.5">
-                  <Steps steps={t.steps} running={t.status === "running"} />
-                  {t.answer && <Answer text={t.answer} citations={t.citations} streaming={t.status === "running"} active={active} onOpen={onOpen} />}
-                  {t.status === "stopped" && <p className="mt-2 text-[13px] text-muted">Stopped.</p>}
-                  {t.error && (
-                    <div className="mt-3 flex gap-2 rounded-lg border border-warn/30 bg-warn-bg px-3 py-2 text-[13px] text-warn">
-                      <Icon name="alert" className="mt-0.5 size-4 shrink-0" />
-                      <span className="break-words">{t.error}</span>
-                    </div>
-                  )}
-                  {t.status === "done" && t.answer && (
-                    <div className="mt-2 flex items-center gap-0.5">
-                      <CopyButton text={t.answer} />
-                    </div>
-                  )}
-                </div>
+              <h2 className="mt-2 font-serif text-[24px] font-semibold leading-snug tracking-tight">{t.question}</h2>
+              <div className="mt-4 border-t border-line pt-4">
+                <Steps steps={t.steps} running={t.status === "running"} />
+                {t.answer && <Answer text={t.answer} citations={t.citations} streaming={t.status === "running"} active={active} onOpen={onOpen} />}
+                {t.status === "stopped" && <p className="mt-2 text-[13px] text-muted">Stopped.</p>}
+                {t.error && (
+                  <div className="mt-3 flex gap-2 rounded-lg border border-warn/30 bg-warn-bg px-3 py-2 text-[13px] text-warn">
+                    <Icon name="alert" className="mt-0.5 size-4 shrink-0" />
+                    <span className="break-words">{t.error}</span>
+                  </div>
+                )}
+                {t.status === "done" && t.answer && (
+                  <div className="mt-3 flex items-center gap-0.5">
+                    <CopyButton text={t.answer} />
+                  </div>
+                )}
               </div>
             </section>
           ))}
         </div>
         <div ref={bottom} />
       </div>
-      <div className="sticky bottom-0 bg-gradient-to-t from-canvas via-canvas to-canvas/0 px-4 pb-4 pt-6 sm:px-6">
-        <div className="mx-auto max-w-[760px]">
+      <div className="sticky bottom-0 border-t border-line bg-canvas/95 px-4 py-3 backdrop-blur sm:px-8">
+        <div className="mx-auto max-w-[780px]">
           <Composer
             value={draft}
             onChange={setDraft}
@@ -276,7 +294,8 @@ export function AskView({
             busy={busy}
             scope={scope}
             onScope={onScope}
-            placeholder="Ask a follow-up (each question is answered from the filings on its own)…"
+            placeholder="Ask another question (each one is answered from the filings on its own)…"
+            compact
           />
         </div>
       </div>

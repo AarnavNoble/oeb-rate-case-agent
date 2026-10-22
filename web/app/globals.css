@@ -2,42 +2,48 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* Palette follows utility-regulatory tooling (Senpilot's Pilot, OEB RDS): near-white canvas,
-   hairline borders, one deep navy accent, lavender tint for cited passages. */
+/* A filing-room palette: warm paper, ink, an evergreen accent for actions, a copper accent for
+   citation footnotes, and highlighter yellow for cited passages. */
 :root {
-  --canvas: #f7f7f8;
-  --panel: #ffffff;
-  --sunken: #f1f1f4;
-  --line: #e5e5ea;
-  --line-strong: #d4d4dc;
-  --ink: #15161c;
-  --muted: #6a6e7a;
-  --faint: #9a9daa;
-  --navy: #111a44;
-  --navy-hover: #1d2a63;
-  --on-navy: #ffffff;
-  --tint: #e9ecf8;
-  --tint-strong: #c9d0ee;
-  --warn: #8a5a00;
-  --warn-bg: #fdf3dc;
+  --canvas: #f5f3ee;
+  --panel: #fdfcf9;
+  --sunken: #ece9e1;
+  --line: #e0dcd2;
+  --line-strong: #cbc6b9;
+  --ink: #1d1c19;
+  --muted: #6b675e;
+  --faint: #9c978b;
+  --accent: #1f5c4a;
+  --accent-hover: #2a7059;
+  --on-accent: #fdfcf9;
+  --tint: #e3ede8;
+  --tint-strong: #b9d3c8;
+  --cite: #a8572a;
+  --cite-bg: #f6e7dc;
+  --hl: #fbeca3;
+  --warn: #8a4b00;
+  --warn-bg: #fbeedd;
   --ok: #1f6b45;
 }
 
-/* light by default, like the tools it is modelled on; dark is opt-in from the sidebar */
+/* light by default; dark is opt-in from the header */
 :root[data-theme="dark"] {
-  --canvas: #0d0e12;
-  --panel: #15161c;
-  --sunken: #1b1c23;
-  --line: #262833;
-  --line-strong: #353846;
-  --ink: #ececf1;
-  --muted: #9da1ad;
-  --faint: #6d717d;
-  --navy: #c9d0ee;
-  --navy-hover: #dfe3f6;
-  --on-navy: #0d0e12;
-  --tint: #1c2240;
-  --tint-strong: #2c3566;
+  --canvas: #141412;
+  --panel: #1b1b18;
+  --sunken: #23231f;
+  --line: #2f2e29;
+  --line-strong: #403e37;
+  --ink: #ecebe6;
+  --muted: #a3a093;
+  --faint: #737066;
+  --accent: #7cc4a6;
+  --accent-hover: #97d3b9;
+  --on-accent: #141412;
+  --tint: #1e2c26;
+  --tint-strong: #2d4a3e;
+  --cite: #e3a67c;
+  --cite-bg: #3a2618;
+  --hl: #4a4220;
   --warn: #f0c46a;
   --warn-bg: #2b2110;
   --ok: #7fd1a6;
@@ -52,16 +58,20 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
-  --color-navy: var(--navy);
-  --color-navy-hover: var(--navy-hover);
-  --color-on-navy: var(--on-navy);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
   --color-tint: var(--tint);
   --color-tint-strong: var(--tint-strong);
+  --color-cite: var(--cite);
+  --color-cite-bg: var(--cite-bg);
+  --color-hl: var(--hl);
   --color-warn: var(--warn);
   --color-warn-bg: var(--warn-bg);
   --color-ok: var(--ok);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif-display);
 }
 
 html[data-theme="dark"] {
@@ -77,7 +87,7 @@ body {
 .eyebrow {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 10.5px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
 }

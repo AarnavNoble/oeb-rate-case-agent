@@ -29,13 +29,11 @@ export function Icon({ name, className = "size-4" }: { name: IconName; className
   );
 }
 
-/** Product mark: a filing stack, drawn in the accent colour. */
+/** Product mark: a section sign, the way filings cite their own provisions. */
 export function Mark({ className = "size-7" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 28 28" className={className} aria-hidden>
-      <rect width="28" height="28" rx="6" className="fill-navy" />
-      <path d="M8 9.5h8.5M8 13.5h12M8 17.5h6" className="stroke-on-navy" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="19.5" cy="18.5" r="2.2" className="fill-on-navy" />
-    </svg>
+    <span className={`inline-flex shrink-0 items-center justify-center rounded-full border border-accent/30 bg-tint font-serif text-accent ${className}`} aria-hidden>
+      <span className="text-[0.95em] leading-none">§</span>
+    </span>
   );
 }

@@ -15,18 +15,15 @@ function highlight(text: string, q: string): ReactNode[] {
   const words = [...new Set(q.toLowerCase().match(/[a-z0-9]{4,}/g) ?? [])];
   if (!words.length) return [text];
   const re = new RegExp(`(${words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
-  return text.split(re).map((part, i) => (i % 2 ? <mark key={i} className="rounded-sm bg-tint text-navy">{part}</mark> : part));
+  return text.split(re).map((part, i) => (i % 2 ? <mark key={i} className="rounded-sm bg-hl text-ink">{part}</mark> : part));
 }
 
 export function PageHeader({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-line bg-panel px-4 py-3">
-      <span className="flex size-9 items-center justify-center rounded-lg border border-line bg-sunken text-muted">
-        <Icon name={eyebrow === "Search" ? "search" : "files"} />
-      </span>
+    <div className="flex items-end gap-3 border-b border-line pb-4">
       <div className="min-w-0 flex-1">
         <p className="eyebrow">{eyebrow}</p>
-        <h1 className="text-[17px] font-semibold tracking-tight">{title}</h1>
+        <h1 className="mt-1 font-serif text-[30px] font-semibold leading-tight tracking-tight">{title}</h1>
       </div>
       {children}
     </div>
@@ -60,9 +57,9 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
 
   return (
     <div className="mx-auto w-full max-w-[900px] px-4 py-6 sm:px-6">
-      <PageHeader eyebrow="Search" title="Passage search" />
-      <p className="mt-3 px-1 text-[12.5px] text-muted">
-        Searches the same index the agent uses, with no language model involved. Useful for checking what retrieval finds for a question.
+      <PageHeader eyebrow="Retrieval only · no language model" title="Search passages" />
+      <p className="mt-3 text-[13.5px] text-muted">
+        The same index and retrievers the agent searches. Use it to see what retrieval finds for a question before the agent reads anything.
       </p>
 
       <form
@@ -70,9 +67,9 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
           e.preventDefault();
           run();
         }}
-        className="mt-4 flex flex-wrap items-center gap-2 rounded-xl border border-line bg-sunken/70 p-2"
+        className="mt-5 flex flex-wrap items-center gap-2"
       >
-        <label className="flex min-w-[240px] flex-1 items-center gap-2 rounded-lg border border-line-strong bg-panel px-3 focus-within:border-navy/40">
+        <label className="flex min-w-[240px] flex-1 items-center gap-2 rounded-lg border border-line-strong bg-panel px-3 focus-within:border-accent/40">
           <Icon name="search" className="size-4 text-faint" />
           <input
             value={q}
@@ -90,13 +87,13 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
                 setRetriever(k);
                 if (result) run(k);
               }}
-              className={`rounded-md px-2.5 py-1.5 ${retriever === k ? "bg-navy text-on-navy" : "text-muted hover:text-ink"}`}
+              className={`rounded-md px-2.5 py-1.5 ${retriever === k ? "bg-accent text-on-accent" : "text-muted hover:text-ink"}`}
             >
               {label}
             </button>
           ))}
         </div>
-        <button type="submit" disabled={busy || q.trim().length < 2} className="h-9 rounded-lg bg-navy px-4 text-[13px] font-medium text-on-navy hover:bg-navy-hover disabled:opacity-40">
+        <button type="submit" disabled={busy || q.trim().length < 2} className="h-9 rounded-lg bg-accent px-4 text-[13px] font-medium text-on-accent hover:bg-accent-hover disabled:opacity-40">
           {busy ? "Searching…" : "Search"}
         </button>
       </form>
@@ -113,7 +110,7 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
       {error && <p className="mt-4 text-[13px] text-warn">{error}</p>}
 
       {result && (
-        <div className="mt-5 overflow-hidden rounded-xl border border-line bg-panel">
+        <div className="mt-5 overflow-hidden rounded-lg border border-line bg-panel">
           <div className="grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-line bg-sunken/60 px-4 py-2 text-[11.5px] text-muted">
             <span className="font-mono">#</span>
             <span>
@@ -129,7 +126,7 @@ export function SearchView({ active, onOpen, scope, onScope }: { active: SourceR
                 <li key={h.chunk_id}>
                   <button
                     onClick={() => onOpen({ docId: h.doc_id, page: h.page_start, claim: result.q })}
-                    className={`grid w-full grid-cols-[2.5rem_1fr] gap-3 px-4 py-3 text-left transition-colors ${isActive ? "bg-tint" : "hover:bg-sunken/60"}`}
+                    className={`grid w-full grid-cols-[2.5rem_1fr] gap-3 px-4 py-3 text-left transition-colors ${isActive ? "bg-cite-bg" : "hover:bg-sunken/60"}`}
                   >
                     <span className="pt-0.5 font-mono text-[11px] text-faint">{String(i + 1).padStart(2, "0")}</span>
                     <span className="min-w-0">

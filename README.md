@@ -91,19 +91,20 @@ MCP server:
 Every claim must carry a `[cite:doc_id:page]` token copied from a tool result. Tokens are then checked
 against the pages the agent actually saw, and unverified ones are flagged in the UI.
 
-**UI.** The layout follows the tools regulatory teams already use (Senpilot's Pilot workbench, OEB RDS):
-a research thread with case-scope chips, numbered citation markers, and a source panel beside the answer.
+**UI.** The UI is designed to read like the record itself: serif text, footnote citations, and a source
+panel that shows the cited page, with the matching passage highlighted, beside the answer.
 
 ![Research thread with a cited answer and the source panel open](docs/ui.jpg)
 
 - **Thread:** the agent's searches and page reads stream in as steps, then the answer arrives with a
-  numbered source list. Every source has to pass the citation check.
+  footnoted source list. Every source has to pass the citation check.
 - **Source panel:** shows the cited page's extracted text with the passage that best matches the cited
   sentence highlighted, or the PDF itself.
 - **Figure check:** if none of a claim's figures (for example "$220.9M") appear on the cited page, the
-  panel says so and checks the two pages on either side. In testing, this caught an answer that cited
-  p. 352 of an undertaking response when the figures were on p. 354. The page was one the agent had
-  retrieved, so the citation check alone passed it.
+  panel says so and checks the two pages on either side. In two test questions it caught off-by-page
+  citations: p. 352 instead of p. 354 in a Toronto Hydro undertaking response, and p. 78 instead of
+  p. 79 in Hydro One's Exhibit E (shown above). In both cases the agent had retrieved the page, so
+  the citation check alone passed them.
 - **Other views:** *Passage search* runs the same retrievers with no language model, and you can switch
   between hybrid, vector and full-text. *Filings* lists every ingested document by case and type.
 

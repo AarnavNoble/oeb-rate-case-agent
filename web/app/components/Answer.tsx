@@ -79,15 +79,12 @@ export function Answer({
             key={`${key}-${idx}`}
             onClick={() => onOpen({ docId, page, claim, n: entry.n })}
             title={`${sourceLabel(entry.citation, docId, page)}${unverified ? " — the agent never retrieved this page" : ""}`}
-            className={`relative -top-px mx-[1px] inline-flex size-[18px] items-center justify-center rounded-full align-middle font-mono text-[10px] font-medium leading-none transition-colors ${
-              unverified
-                ? "bg-warn-bg text-warn ring-1 ring-warn/40"
-                : isActive
-                  ? "bg-navy text-on-navy"
-                  : "bg-tint text-navy ring-1 ring-tint-strong hover:bg-navy hover:text-on-navy"
+            className={`relative -top-[0.5em] ml-[1px] rounded-[3px] px-[2px] font-sans text-[11px] font-semibold leading-none transition-colors ${
+              unverified ? "bg-warn-bg text-warn" : isActive ? "bg-cite text-panel" : "text-cite hover:bg-cite-bg"
             }`}
           >
             {entry.n}
+            {unverified && "?"}
           </button>,
         );
       }
@@ -124,7 +121,7 @@ export function Answer({
       } else if (/^#{1,4}\s/.test(lines[0])) {
         blocks.push(
           <Fragment key={key}>
-            <h3 className="pt-1 text-[15px] font-semibold tracking-tight">{inline(lines[0].replace(/^#+\s*/, ""), key)}</h3>
+            <h3 className="pt-1 text-[18px] font-semibold tracking-tight">{inline(lines[0].replace(/^#+\s*/, ""), key)}</h3>
             {lines.length > 1 && <p>{inline(lines.slice(1).join(" "), `${key}-r`)}</p>}
           </Fragment>,
         );
@@ -149,15 +146,15 @@ export function Answer({
 
   return (
     <div>
-      <div className="space-y-3 text-[14.5px] leading-[1.7] text-ink">
+      <div className="space-y-3.5 font-serif text-[16.5px] leading-[1.7] text-ink">
         {blocks}
-        {streaming && <span className="ml-0.5 inline-block h-4 w-[7px] animate-pulse rounded-[1px] bg-navy align-middle" />}
+        {streaming && <span className="ml-0.5 inline-block h-4 w-[7px] animate-pulse rounded-[1px] bg-accent align-middle" />}
       </div>
 
       {!streaming && sources.length > 0 && (
-        <div className="mt-5 overflow-hidden rounded-lg border border-line bg-panel">
-          <div className="flex items-center justify-between border-b border-line px-3 py-2">
-            <span className="eyebrow">Sources · {sources.length}</span>
+        <div className="mt-7">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t-2 border-ink/80 pt-2">
+            <span className="eyebrow !text-ink">Sources ({sources.length})</span>
             {citations &&
               (unverified ? (
                 <span className="flex items-center gap-1 text-[11.5px] text-warn">
@@ -169,27 +166,23 @@ export function Answer({
                 </span>
               ))}
           </div>
-          <ol className="divide-y divide-line">
+          <ol className="mt-1.5 divide-y divide-dashed divide-line">
             {sources.map((s) => {
               const isActive = active?.docId === s.docId && active.page === s.page;
               return (
                 <li key={`${s.docId}:${s.page}`}>
                   <button
                     onClick={() => onOpen({ docId: s.docId, page: s.page, claim: s.claim, n: s.n })}
-                    className={`group flex w-full items-center gap-3 px-3 py-2 text-left text-[13px] transition-colors ${isActive ? "bg-tint" : "hover:bg-sunken"}`}
+                    className={`group flex w-full items-baseline gap-3 rounded-sm px-1 py-2 text-left text-[13px] transition-colors ${isActive ? "bg-cite-bg" : "hover:bg-sunken"}`}
                   >
-                    <span
-                      className={`flex size-[18px] shrink-0 items-center justify-center rounded-full font-mono text-[10px] ${
-                        s.citation && !s.citation.seen ? "bg-warn-bg text-warn" : isActive ? "bg-navy text-on-navy" : "bg-tint text-navy"
-                      }`}
-                    >
-                      {s.n}
+                    <span className={`w-5 shrink-0 text-right font-mono text-[11.5px] font-semibold ${s.citation && !s.citation.seen ? "text-warn" : "text-cite"}`}>
+                      {s.n}.
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="font-medium">{sourceLabel(s.citation, s.docId, s.page)}</span>
                       {s.citation?.title && <span className="block truncate text-[12px] text-muted">{s.citation.title}</span>}
                     </span>
-                    <Icon name="chevron" className="size-3.5 shrink-0 text-faint group-hover:text-ink" />
+                    <span className="shrink-0 text-[12px] text-faint group-hover:text-cite">View →</span>
                   </button>
                 </li>
               );

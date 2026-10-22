@@ -67,12 +67,12 @@ export function SourcePanel({
   const found = nearby?.key === key ? nearby : null;
 
   return (
-    <aside className="fixed inset-0 z-30 flex flex-col bg-panel lg:sticky lg:top-0 lg:z-auto lg:h-screen lg:w-[46%] lg:max-w-[720px] lg:shrink-0 lg:border-l lg:border-line">
+    <aside className="fixed inset-0 z-30 flex flex-col bg-panel lg:static lg:z-auto lg:w-[46%] lg:max-w-[720px] lg:shrink-0 lg:border-l lg:border-line">
       <header className="border-b border-line px-5 pb-3 pt-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2 font-mono text-[11px] text-muted">
             {source.n && (
-              <span className="flex size-[18px] shrink-0 items-center justify-center rounded-full bg-navy text-[10px] text-on-navy">{source.n}</span>
+              <span className="rounded-[3px] bg-cite px-1 py-px text-[10.5px] font-semibold text-panel">{source.n}</span>
             )}
             <span className="truncate">
               {page ? `${page.case_number} · ${page.exhibit_ref ?? (page.exhibit ? `Exhibit ${page.exhibit}` : page.record_number ?? page.doc_id)}` : source.docId}
@@ -92,7 +92,7 @@ export function SourcePanel({
             </button>
           </div>
         </div>
-        <h2 className="mt-2 text-[15px] font-semibold leading-snug tracking-tight">
+        <h2 className="mt-2 font-serif text-[19px] font-semibold leading-snug tracking-tight">
           {page ? `${caseLabel(page.case_number)} · p. ${page.page_no}` : `Page ${source.page}`}
           {page?.n_pages ? <span className="font-normal text-faint"> of {page.n_pages}</span> : null}
         </h2>
@@ -167,23 +167,27 @@ export function SourcePanel({
                 </div>
               )}
               {best >= 0 && !missing && (
-                <p className="mb-3 text-[11.5px] text-muted">
-                  Highlighted: the passage on this page that best matches {source.n ? "the cited sentence" : "your search"} (by shared terms).
+                <p className="mx-auto mb-3 max-w-[620px] text-[11.5px] text-muted">
+                  <span className="mr-1 rounded-sm bg-hl px-1 text-ink">Highlighted</span>
+                  is the passage on this page that best matches {source.n ? "the cited sentence" : "your search"} (by shared terms).
                 </p>
               )}
-              <div className="rounded-lg border border-line bg-panel py-2">
+              <div className="mx-auto max-w-[620px] rounded-sm border border-line bg-panel px-3 py-6 font-serif shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                 {blocks.map((b, i) => (
                   <p
                     key={i}
                     ref={i === best ? mark : undefined}
-                    className={`whitespace-pre-wrap px-4 py-1.5 text-[13px] leading-relaxed ${
-                      i === best ? "border-l-2 border-navy bg-tint text-ink" : "border-l-2 border-transparent text-ink/80"
+                    className={`whitespace-pre-wrap rounded-sm px-4 py-1 text-[14px] leading-relaxed ${
+                      i === best ? "bg-hl text-ink" : "text-ink/80"
                     }`}
                   >
                     {b}
                   </p>
                 ))}
                 {!blocks.length && <p className="px-4 text-sm text-muted">No text was extracted from this page (it may be an image).</p>}
+                <p className="mt-6 text-center font-mono text-[10.5px] text-faint">
+                  {page.exhibit_ref ?? page.title} · page {page.page_no}
+                </p>
               </div>
             </>
           )}

@@ -6,23 +6,24 @@ import { Icon } from "./Icon";
 
 export type Scope = string | null; // a case number, or null for both
 
+/** Segmented case filter: Both / Toronto Hydro / Hydro One. */
 export function ScopeChips({ scope, onScope }: { scope: Scope; onScope: (s: Scope) => void }) {
   const options: [Scope, string][] = [[null, "Both cases"], ...Object.entries(CASES).map(([k, v]) => [k, v.utility] as [Scope, string])];
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="inline-flex rounded-md border border-line bg-canvas p-0.5" role="radiogroup" aria-label="Case">
       {options.map(([value, label]) => (
         <button
           key={label}
           type="button"
+          role="radio"
+          aria-checked={scope === value}
           onClick={() => onScope(value)}
-          aria-pressed={scope === value}
-          className={`flex items-center gap-1.5 rounded-full border px-2.5 py-[3px] text-[12px] transition-colors ${
-            scope === value ? "border-tint-strong bg-tint text-navy" : "border-line bg-panel text-muted hover:border-line-strong hover:text-ink"
+          title={value ?? "EB-2023-0195 and EB-2026-0164"}
+          className={`rounded-[5px] px-2.5 py-1 text-[12px] transition-colors ${
+            scope === value ? "bg-panel font-medium text-ink shadow-[0_1px_2px_rgba(0,0,0,0.08)]" : "text-muted hover:text-ink"
           }`}
         >
-          <Icon name="files" className="size-3.5" />
           {label}
-          {value && <span className="font-mono text-[10.5px] opacity-70">{value}</span>}
         </button>
       ))}
     </div>
@@ -39,6 +40,7 @@ export function Composer({
   onScope,
   placeholder,
   autoFocus,
+  compact,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -49,6 +51,7 @@ export function Composer({
   onScope: (s: Scope) => void;
   placeholder: string;
   autoFocus?: boolean;
+  compact?: boolean;
 }) {
   const ref = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
@@ -59,57 +62,48 @@ export function Composer({
   }, [value]);
 
   return (
-    <div className="w-full">
-      <div className="mb-2">
-        <ScopeChips scope={scope} onScope={onScope} />
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmit();
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+      className="rounded-lg border border-line-strong bg-panel transition-shadow focus-within:border-accent/50 focus-within:shadow-[0_0_0_3px_var(--tint)]"
+    >
+      <textarea
+        ref={ref}
+        value={value}
+        autoFocus={autoFocus}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+            e.preventDefault();
+            onSubmit();
+          }
         }}
-        className="overflow-hidden rounded-xl border border-line-strong bg-panel shadow-[0_1px_2px_rgba(16,24,40,0.04),0_4px_16px_-6px_rgba(16,24,40,0.08)] focus-within:border-navy/40"
-      >
-        <textarea
-          ref={ref}
-          value={value}
-          autoFocus={autoFocus}
-          onChange={(e) => onChange(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-              e.preventDefault();
-              onSubmit();
-            }
-          }}
-          rows={1}
-          placeholder={placeholder}
-          className="block w-full resize-none bg-transparent px-4 pb-2 pt-3.5 text-[14.5px] outline-none placeholder:text-faint"
-        />
-        <div className="flex items-center justify-between gap-2 border-t border-line bg-sunken/60 px-2.5 py-2">
-          <span className="pl-1 text-[11.5px] text-faint">
-            Answers cite filing pages · <kbd className="font-mono">Enter</kbd> to send, <kbd className="font-mono">Shift+Enter</kbd> for a new line
-          </span>
-          {busy ? (
-            <button
-              type="button"
-              onClick={onStop}
-              aria-label="Stop"
-              className="flex size-8 items-center justify-center rounded-lg border border-line-strong bg-panel text-ink hover:bg-sunken"
-            >
-              <Icon name="stop" className="size-3.5" />
-            </button>
-          ) : (
-            <button
-              type="submit"
-              disabled={!value.trim()}
-              aria-label="Send"
-              className="flex size-8 items-center justify-center rounded-lg bg-navy text-on-navy transition-colors hover:bg-navy-hover disabled:opacity-35"
-            >
-              <Icon name="arrowUp" />
-            </button>
-          )}
-        </div>
-      </form>
-    </div>
+        rows={compact ? 1 : 2}
+        placeholder={placeholder}
+        className={`block w-full resize-none bg-transparent px-4 outline-none placeholder:text-faint ${compact ? "pb-1 pt-3 text-[14px]" : "pb-2 pt-4 text-[15.5px]"}`}
+      />
+      <div className="flex flex-wrap items-center justify-between gap-2 px-2.5 pb-2.5 pt-1">
+        <ScopeChips scope={scope} onScope={onScope} />
+        {busy ? (
+          <button
+            type="button"
+            onClick={onStop}
+            className="flex h-8 items-center gap-1.5 rounded-md border border-line-strong px-3 text-[12.5px] text-ink hover:bg-sunken"
+          >
+            <Icon name="stop" className="size-3.5" /> Stop
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={!value.trim()}
+            className="flex h-8 items-center gap-2 rounded-md bg-accent px-3.5 text-[13px] font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-40"
+          >
+            Ask <span className="font-mono text-[11px] opacity-70">↵</span>
+          </button>
+        )}
+      </div>
+    </form>
   );
 }
