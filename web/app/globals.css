@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Palette follows utility-regulatory tooling (Senpilot's Pilot, OEB RDS): near-white canvas,
+   hairline borders, one deep navy accent, lavender tint for cited passages. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas: #f7f7f8;
+  --panel: #ffffff;
+  --sunken: #f1f1f4;
+  --line: #e5e5ea;
+  --line-strong: #d4d4dc;
+  --ink: #15161c;
+  --muted: #6a6e7a;
+  --faint: #9a9daa;
+  --navy: #111a44;
+  --navy-hover: #1d2a63;
+  --on-navy: #ffffff;
+  --tint: #e9ecf8;
+  --tint-strong: #c9d0ee;
+  --warn: #8a5a00;
+  --warn-bg: #fdf3dc;
+  --ok: #1f6b45;
+}
+
+/* light by default, like the tools it is modelled on; dark is opt-in from the sidebar */
+:root[data-theme="dark"] {
+  --canvas: #0d0e12;
+  --panel: #15161c;
+  --sunken: #1b1c23;
+  --line: #262833;
+  --line-strong: #353846;
+  --ink: #ececf1;
+  --muted: #9da1ad;
+  --faint: #6d717d;
+  --navy: #c9d0ee;
+  --navy-hover: #dfe3f6;
+  --on-navy: #0d0e12;
+  --tint: #1c2240;
+  --tint-strong: #2c3566;
+  --warn: #f0c46a;
+  --warn-bg: #2b2110;
+  --ok: #7fd1a6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-navy: var(--navy);
+  --color-navy-hover: var(--navy-hover);
+  --color-on-navy: var(--on-navy);
+  --color-tint: var(--tint);
+  --color-tint-strong: var(--tint-strong);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-ok: var(--ok);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--canvas);
+  color: var(--ink);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
 }
